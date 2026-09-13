@@ -10,7 +10,7 @@ const ROOT = __dirname;
 const SRC = path.join(ROOT, 'src');
 const PAGES = path.join(SRC, 'pages');
 const PARTIALS = path.join(SRC, 'partials');
-const SITE = 'https://nexoraofficial.org';
+const SITE = 'https://www.nexoraofficial.org';
 const BUILD_ID = new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '');
 
 const partials = {};
