@@ -35,9 +35,18 @@
       li.classList.toggle('open', !isOpen);
       btn.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
     });
-    // desktop hover
-    li.addEventListener('mouseenter', function () { if (window.innerWidth > 1100) { li.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); } });
-    li.addEventListener('mouseleave', function () { if (window.innerWidth > 1100) { li.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); } });
+    // desktop hover — a short close delay so the cursor can travel from the
+    // button down into the menu without the menu vanishing under it
+    var closeTimer = null;
+    function openIt() { if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; } li.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    function closeSoon() {
+      if (closeTimer) clearTimeout(closeTimer);
+      closeTimer = setTimeout(function () { li.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); closeTimer = null; }, 260);
+    }
+    li.addEventListener('mouseenter', function () { if (window.innerWidth > 1100) openIt(); });
+    li.addEventListener('mouseleave', function () { if (window.innerWidth > 1100) closeSoon(); });
+    li.addEventListener('focusin', function () { if (window.innerWidth > 1100) openIt(); });
+    li.addEventListener('focusout', function (e) { if (window.innerWidth > 1100 && !li.contains(e.relatedTarget)) closeSoon(); });
   });
   document.addEventListener('click', function () {
     $$('.nav .has-dd.open').forEach(function (o) { o.classList.remove('open'); $('.navbtn', o).setAttribute('aria-expanded', 'false'); });
@@ -214,6 +223,7 @@
     var total = matCost + convCost;
     txt('f_net', fmtKg(netKg));
     txt('f_gross', fmtKg(grossKg));
+    txt('f_grossbig', grossKg.toFixed(1));
     txt('f_ppkg', fmtKg(ppKg));
     txt('f_mbkg', fmtKg(mbKg));
     txt('f_mat', fmtInr(matCost));
@@ -222,7 +232,10 @@
     txt('f_perbag', '₹' + (qty ? total / qty : 0).toFixed(3));
     txt('f_wastekg', fmtKg(grossKg - netKg));
   }
-  $$('#f_qty, #f_bag, #f_waste, #f_mb, #f_pp, #f_mbrate, #f_conv').forEach(function (el) { el.addEventListener('input', runForecast); });
+  $$('#f_qty, #f_bag, #f_waste, #f_mb, #f_pp, #f_mbrate, #f_conv').forEach(function (el) {
+    el.addEventListener('input', function () { if (el.id === 'f_bag') el.dataset.touched = '1'; runForecast(); });
+  });
+  window.nxForecast = runForecast;
   runForecast();
 
   /* ---------- Header shadow ---------- */

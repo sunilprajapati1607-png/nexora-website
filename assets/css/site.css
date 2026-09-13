@@ -170,6 +170,9 @@ h4 { font-size: 17px; }
   padding: 8px; display: none; z-index: 50;
 }
 .nav li.open > .dropdown { display: block; }
+/* hover bridge */
+.nav .has-dd > .dropdown::before { content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px; }
+.nav .has-dd { padding-bottom: 2px; }
 .dropdown a { display: flex; gap: 12px; align-items: flex-start; padding: 10px 12px; border-radius: 10px; width: 100%; color: var(--text); }
 .dropdown a .icon { width: 20px; height: 20px; color: var(--primary); margin-top: 2px; }
 .dropdown a b { display: block; font-size: 14px; }
@@ -547,3 +550,14 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 .field input[readonly] { background: var(--bg-3); color: var(--text-2); }
 .field label.split-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+
+.fieldset-title { font-size: 11.5px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+.fieldset-title:first-of-type { margin-top: 0; }
+.auto-tag { display: inline-block; font-size: 9.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--primary); background: var(--primary-50); border-radius: 999px; padding: 2px 7px; margin-left: 6px; vertical-align: middle; }
+.inline-check.standalone { margin-left: 0; margin-top: 24px; font-size: 13.5px; }
+.calc.sim .locked .cost-grid { gap: 10px 14px; }
+.calc.sim .locked .cost-grid b { font-size: 20px; }
+.calc.sim .locked .cost-grid > div:first-child b { font-size: 24px; color: var(--cyan); }
+.locked .cost-total { color: #93a4c4; }
+.blur { filter: blur(7px); user-select: none; pointer-events: none; }
+@media (max-width: 480px) { .blur { filter: blur(5px); } }

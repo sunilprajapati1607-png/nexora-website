@@ -36,7 +36,7 @@
     if ($('#g2d_gsm')) {
       var m2 = meshOf('g2d'); var g = num('g2d_gsm');
       var d = (m2.epi + m2.ppi) > 0 ? g * 228.6 / (m2.epi + m2.ppi) : 0;
-      txt('g2d_out', Math.round(d));
+      txt('g2d_out', Math.round(d / 10) * 10);
       txt('g2d_formula', 'Denier = ' + g + ' × 228.6 / (' + m2.epi + ' + ' + m2.ppi + ') = ' + d.toFixed(0));
     }
     /* gsm → gpm */
@@ -64,9 +64,9 @@
     if ($('#p2d_gpm')) {
       var m4 = meshOf('p2d'); var gp4 = num('p2d_gpm'); var wm4 = widthM('p2d');
       var gsm4 = wm4 > 0 ? gp4 / wm4 : 0; var den4 = (m4.epi + m4.ppi) > 0 ? gsm4 * 228.6 / (m4.epi + m4.ppi) : 0;
-      txt('p2d_gsm', gsm4.toFixed(1)); txt('p2d_out', Math.round(den4));
+      txt('p2d_gsm', gsm4.toFixed(1)); txt('p2d_out', Math.round(den4 / 10) * 10);
       txt('p2d_formula', 'GSM = ' + gp4 + ' / ' + wm4.toFixed(3) + ' = ' + gsm4.toFixed(1) + ' → Denier = ' + gsm4.toFixed(1) + ' × 228.6 / (' + m4.epi + ' + ' + m4.ppi + ') = ' + den4.toFixed(0));
-      var tg = num('p2d_tape'); if (tg) txt('p2d_tapeout', Math.round(tg * 9000));
+      var tg = num('p2d_tape'); if (tg) txt('p2d_tapeout', Math.round(tg * 9000 / 10) * 10);
     }
     /* width × length × gsm = weight */
     if ($('#fw_w')) {

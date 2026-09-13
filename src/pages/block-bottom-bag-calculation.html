@@ -3,7 +3,7 @@ title: Block Bottom Bag Calculation — Pasted / Valve Bag Weight & Cost Calcula
 description: Block bottom bag calculation online: bag width, length, bottom width, patch depth, valve, mesh, denier, coating and BOPP micron to get block bottom bag weight, laminated GSM and indicative cost per bag. For BOPP block bottom, pinch bottom and cement valve bags.
 keywords: block bottom bag calculation, block bottom bag weight, bopp block bottom bag calculation, valve bag weight calculation, cement bag weight calculation, pasted bag weight formula, ad star bag weight
 priority: 0.8
-preset: bopp-bb
+preset: 3l-bb-om
 -->
 {{> head}}
 {{> header}}
@@ -14,7 +14,7 @@ preset: bopp-bb
       <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>Block bottom bag calculation</span></div>
       <div class="eyebrow"><svg class="icon"><use href="#i-box"/></svg> Free block bottom bag calculator</div>
       <h1>Block bottom bag calculation: pasted, pinch &amp; valve bags</h1>
-      <p class="lead">Calculate the weight of a block bottom woven bag from bag width, length, bottom width, patch depth and valve, with fabric mesh and denier, coating GSM and BOPP micron. Choose the BOPP block bottom or cement-type valve bag structure and get weight, GSM and an indicative cost per bag.</p>
+      <p class="lead">Calculate the weight of a block bottom woven bag from lay-flat width, length, patch / bottom width and valve depth, with fabric mesh and denier, coating GSM, BOPP and metallised micron. Choose the open-mouth block bottom, cement valve or 4L BOPP structure and get bag weight, laminated GSM and GPM.</p>
     </div>
   </section>
 
@@ -29,15 +29,15 @@ preset: bopp-bb
       <h2>How block bottom bag weight is calculated</h2>
       <p>A block bottom bag (also called a pasted bottom, pinch bottom or AD*STAR-type bag) is made from a gusseted or flat woven tube whose ends are folded into a rectangular bottom and top and closed with pasted patches. A valve bag adds a valve strip at one corner for filling. Compared with a stitched sack, three things change the weight:</p>
       <ul>
-        <li><b>Cut length</b> includes the bottom width: cut length = bag length + bottom width.</li>
-        <li><b>Patches</b>: two laminated fabric pieces (top and bottom), each roughly bag width × patch depth plus a margin.</li>
-        <li><b>Valve strip</b>: a short laminated strip, typically bottom width × 12–15 cm.</li>
+        <li><b>Cut length</b> includes the bottom forming: cut length = bag length + patch width + patch overlap.</li>
+        <li><b>Patches</b>: two laminated pieces cut from flat fabric, each sized from the patch width and the bag width less a 5 mm trim allowance.</li>
+        <li><b>Valve strip</b>: valve depth plus extra valve, by twice the patch width plus a 15 mm overlap.</li>
       </ul>
       <div class="formula-box">
-        Tube width = 2 × (bag width + bottom width)<br>
-        Body weight = tube width × (length + bottom width) ÷ 10,000 × (fabric GSM + coating GSM + BOPP GSM)<br>
-        Patches = 2 × (width + 2 cm) × (patch depth + 2 cm) ÷ 10,000 × (fabric GSM + coating GSM)<br>
-        Valve = (bottom width + 2 cm) × 14 cm ÷ 10,000 × (fabric GSM + coating GSM)<br>
+        Tube width = 2 × lay-flat bag width<br>
+        Body weight = width × (length + patch + overlap) × 2 ÷ 1,000,000 × (fabric + coating + film GSM)<br>
+        Top patch = (patch − 5 mm) × (width + extra valve − patch − 5 mm) · Bottom patch = (patch − 5 mm) × (width − patch − 5 mm)<br>
+        Valve = (valve depth + extra valve) × (patch × 2 + 15 mm) ÷ 1,000,000 × (fabric + coating GSM)<br>
         Bag weight = body + patches + valve + ink (no stitching thread)
       </div>
       <h3>Typical block bottom specifications</h3>
@@ -51,7 +51,7 @@ preset: bopp-bb
       <div class="faq">
         <details><summary>What is the difference between block bottom and pinch bottom?</summary><p>Both form a rectangular bottom from the tube. A block bottom (pasted) bag closes the bottom with a pasted patch; a pinch bottom folds and hot-melt seals the end. Weight calculation is nearly the same; pinch bottom bags have a smaller patch or none.</p></details>
         <details><summary>How much does a patch and valve add?</summary><p>For a 50 × 60 cm cement bag with 10 cm bottom at 86 GSM laminated fabric, the two patches add about 10–11 g and the valve strip about 1.5 g on a bag of roughly 75 g.</p></details>
-        <details><summary>Can I calculate a BOPP block bottom bag?</summary><p>Yes — choose "BOPP block bottom bag" in the structure list. The BOPP micron field appears and the film weight is added to the body.</p></details>
+        <details><summary>Can I calculate a BOPP block bottom bag?</summary><p>Yes — choose a 3L or 4L block bottom structure. Enter the BOPP micron (and metallised micron for a 4L bag) and the film weight is added to the body and the patches.</p></details>
       </div>
       <div class="related" style="margin-top:18px;"><a href="/calculator">All bag structures</a><a href="/bopp-bag-calculation">BOPP bag calculation</a><a href="/denier-to-gsm">Denier to GSM</a><a href="/fabric-weight-calculator">Width × length × GSM</a></div>
     </div>
@@ -63,7 +63,7 @@ preset: bopp-bb
     {"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"What is the difference between block bottom and pinch bottom?","acceptedAnswer":{"@type":"Answer","text":"Both form a rectangular bottom from the tube. A block bottom bag closes the bottom with a pasted patch; a pinch bottom folds and hot-melt seals the end."}},
       {"@type":"Question","name":"How much does a patch and valve add to bag weight?","acceptedAnswer":{"@type":"Answer","text":"For a 50 × 60 cm cement bag with 10 cm bottom at 86 GSM laminated fabric, the two patches add about 10–11 g and the valve strip about 1.5 g on a bag of roughly 75 g."}},
-      {"@type":"Question","name":"Can I calculate a BOPP block bottom bag?","acceptedAnswer":{"@type":"Answer","text":"Yes, choose the BOPP block bottom bag structure; the BOPP micron field appears and the film weight is added to the body."}}
+      {"@type":"Question","name":"Can I calculate a BOPP block bottom bag?","acceptedAnswer":{"@type":"Answer","text":"Yes, choose a 3L or 4L block bottom structure and enter the BOPP micron; the film weight is added to the body and the patches."}}
     ]}
   ]}
   </script>
