@@ -277,10 +277,13 @@
 
   /* ---- wiring ---- */
   sel.addEventListener('change', function () { applyStructure(sel.value); });
-  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); syncFabric(); recalc(); });
+  // Mesh is a loom setting: changing it must produce a new GSM from the same tape,
+  // so a mesh change always puts the fabric back on the denier -> GSM direction.
+  // Without this, a user who had typed a GSM saw mesh change nothing but the denier.
+  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); driver = 'den'; syncFabric(); recalc(); });
   $('#s_den').addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); });
   $('#s_gsm').addEventListener('input', function () { driver = 'gsm'; syncFabric(); recalc(); });
-  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { syncFabric(); recalc(); }); });
+  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); }); });
   $$('input, select').forEach(function (el) {
     if (['s_structure', 's_mesh', 's_den', 's_gsm', 's_epi', 's_ppi'].indexOf(el.id) >= 0) return;
     el.addEventListener('input', recalc); el.addEventListener('change', recalc);
