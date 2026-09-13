@@ -1,7 +1,9 @@
 <!--
-title: Free Woven Sack Bag Weight & GSM Calculator + RM Cost Forecast | Nexora
-description: Free online calculator for PP/HDPE woven sack fabric GSM, bag weight and cost per bag from denier, mesh and size — plus an order-level raw material and cost forecast tool. No login, no signup.
+title: Woven Bag Calculation — Free Bag Weight & Costing Calculator (PP/HDPE, BOPP, Block Bottom) | Nexora
+description: Free woven bag calculation tool: choose the bag structure, enter size, mesh, denier, GSM, coating, BOPP micron, liner and fold, and get bag weight, laminated GSM, GPM and cost per bag with example RM prices. Made for PP/HDPE woven sack and packaging costing.
+keywords: woven bag calculation, woven sack calculation, bag weight calculator, bag costing, packaging costing, pp woven bag weight calculation, hdpe bag weight formula, bopp bag calculation, block bottom bag calculation, gsm calculator, denier to gsm
 priority: 0.9
+preset: pp-plain
 -->
 {{> head}}
 {{> header}}
@@ -9,58 +11,54 @@ priority: 0.9
 <main>
   <section class="page-hero">
     <div class="wrap">
-      <div class="crumbs"><a href="/">Home</a> / <span>Free Calculator</span></div>
-      <div class="eyebrow"><svg class="icon"><use href="#i-calc"/></svg> Free tools &bull; no login, no signup</div>
-      <h1>Woven sack GSM, bag weight &amp; RM forecast calculator</h1>
-      <p class="lead">Two quick tools from the Nexora engine. The first turns denier, mesh and size into fabric GSM, bag weight and cost per bag. The second forecasts raw material and cost for a whole order. Type and the numbers update instantly.</p>
+      <div class="crumbs"><a href="/">Home</a> / <span>Calculators</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-calc"/></svg> Free &bull; no login &bull; works on phone</div>
+      <h1>Woven bag calculation: bag weight &amp; costing calculator</h1>
+      <p class="lead">Select the bag structure, enter size, mesh, denier, coating, BOPP micron, liner and fold, and get the finished bag weight, GSM, GPM and an indicative cost per bag. Built on the same principles as the Nexora bag weight engine used by PP/HDPE woven sack and packaging plants.</p>
+      <div class="related" style="margin-top:18px;">
+        <a href="/bopp-bag-calculation">BOPP bag calculation</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/denier-to-gsm">Denier to GSM</a><a href="/gsm-to-gpm">GSM to GPM</a><a href="/denier-to-gpm">Denier to GPM</a><a href="/fabric-weight-calculator">Width × length × GSM</a>
+      </div>
     </div>
   </section>
 
-  <!-- Tool 1: bag weight -->
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap">
+      {{> calculator}}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>How woven bag weight is calculated</h2>
+      <p>A woven sack is a tube of PP or HDPE tape fabric, cut to length, folded or pasted at the ends, and optionally coated, laminated with BOPP film, lined with an LDPE liner and printed. The weight of the bag is the sum of every layer's area multiplied by its GSM.</p>
+      <div class="formula-box">
+        Fabric GSM = Denier × (warp mesh + weft mesh) ÷ 228.6<br>
+        Film GSM = micron × density (BOPP ≈ 0.91, LDPE ≈ 0.92)<br>
+        Tube width = 2 × (bag width + gusset) &nbsp;·&nbsp; Cut length = bag length + fold allowance (stitched) or + bottom width (block bottom)<br>
+        Body weight (g) = tube width × cut length ÷ 10,000 × (fabric GSM + coating GSM + film GSM)<br>
+        Bag weight = body + patches + valve + liner + ink + thread
+      </div>
+      <h3>Why the plant number is different from a quick formula</h3>
+      <p>Every plant runs its own fold allowance, patch depth, valve size, ink coverage and waste norm, and each bag construction uses a different set of fields. This page uses common defaults so a buyer or a sales engineer can sanity-check a quotation in a minute. The <a href="/products/bag-weight-calculation">Nexora desktop app</a> holds 29 constructions with their own field sets, your own constants and a versioned raw material price master, and shows the formula behind every value.</p>
+      <h3>Bag costing and packaging costing</h3>
+      <p>Cost per bag = raw material kilograms (including process waste) × rate for each material, plus conversion cost per kilogram for extrusion, weaving, lamination, printing and finishing. The rates on this page are examples for demonstration. In production costing, resin and film prices change every week, so a rate must be dated and versioned — an approved quote keeps the rate it was costed at. That is exactly what the RM master in Nexora does, and why the component-wise breakdown here is reserved for the demo.</p>
+      <h2>Frequently asked questions</h2>
+      <div class="faq">
+        <details><summary>How do I calculate the GSM of woven fabric from denier?</summary><p>GSM = denier × (warp mesh + weft mesh) ÷ 228.6. For 900 denier tape at 10 × 10 mesh: 900 × 20 ÷ 228.6 = 78.7 GSM. Use the <a href="/denier-to-gsm">denier to GSM calculator</a> for any combination.</p></details>
+        <details><summary>How much does BOPP lamination add to bag weight?</summary><p>BOPP film weight in GSM is roughly micron × 0.91. An 18 micron film adds about 16.4 GSM, plus the extrusion-coated sandwich layer, typically 15–22 GSM. See the <a href="/bopp-bag-calculation">BOPP bag calculation</a> page.</p></details>
+        <details><summary>What is a block bottom bag and how is its weight different?</summary><p>A block bottom (pasted or pinch bottom) bag has a rectangular bottom and top formed from the tube, with pasted patches and optionally a valve. Its cut length includes the bottom width and its patches add weight. See <a href="/block-bottom-bag-calculation">block bottom bag calculation</a>.</p></details>
+        <details><summary>Are the prices in the costing real?</summary><p>No — they are example rates so you can see how material and conversion cost build up. Enter your own rates in the "Edit example RM prices" panel, or request a demo to cost with your own dated price master and process rates.</p></details>
+        <details><summary>Can I get the weight of each component: body, patch, valve, liner?</summary><p>The component-wise breakdown, with the formula for every intermediate value, is a feature of the Nexora desktop app. Request a demo and we will run your own bag spec through it.</p></details>
+      </div>
+    </div>
+  </section>
+
   <section class="section">
     <div class="wrap">
       <div class="sec-head reveal">
-        <div class="eyebrow">Tool 1</div>
-        <h2>Fabric GSM &amp; bag weight</h2>
-        <p>Plain single-layer body fabric on a tubular loom. The full desktop app adds patches, valves, liners, BOPP, ink and 29 constructions with saved history.</p>
-      </div>
-      <div class="calc reveal">
-        <div class="calc-in">
-          <h3>Bag specification</h3>
-          <div class="calc-fields">
-            <div class="field"><label for="c_len">Bag length (cm)</label><input type="number" id="c_len" value="90" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="c_wid">Bag width (cm)</label><input type="number" id="c_wid" value="55" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="c_epi">Warp mesh (EPI)</label><input type="number" id="c_epi" value="10" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="c_ppi">Weft mesh (PPI)</label><input type="number" id="c_ppi" value="10" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="c_den">Tape denier</label><input type="number" id="c_den" value="800" min="0" step="10" inputmode="decimal"></div>
-            <div class="field"><label for="c_rate">Fabric rate (₹ / kg)</label><input type="number" id="c_rate" value="95" min="0" step="1" inputmode="decimal"></div>
-          </div>
-          <label class="calc-check"><input type="checkbox" id="c_lam"> BOPP / lamination coating applied (+12 GSM)</label>
-          <p class="calc-note">Assumes tubular fabric (two layers), 5% cutting and stitching allowance and 1.2 g of stitching thread. Indicative only — your plant's constants may differ.</p>
-        </div>
-        <div class="calc-out">
-          <div class="calc-big"><small>Fabric GSM</small><b><span id="c_gsm">0</span><em>g/m²</em></b></div>
-          <div class="calc-rows">
-            <div><span>Fabric area (2-layer tube)</span><b id="c_area">0 m²</b></div>
-            <div><span>Fabric weight incl. allowance</span><b id="c_fw">0 g</b></div>
-            <div class="total"><span>Finished bag weight</span><b id="c_bw">0 g</b></div>
-            <div><span>Cost per bag (fabric)</span><b id="c_cost">₹0.000</b></div>
-            <div><span>Cost per 1,000 bags</span><b id="c_cost1000">₹0</b></div>
-          </div>
-          <div class="calc-formula" id="c_formula">GSM = (Denier × EPI + Denier × PPI) / 228.6</div>
-          <button class="btn btn-primary btn-block" data-open-demo data-interest="Bag Weight & Cost Forecasting">Get exact costing for your full spec <svg class="icon"><use href="#i-arrow"/></svg></button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tool 2: order forecast -->
-  <section class="section section-alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow">Tool 2</div>
-        <h2>Order-level RM &amp; cost forecast</h2>
-        <p>How much granule and masterbatch will an order consume, and what will it cost including waste and conversion? The desktop app does this per material and per process; this is the one-line version.</p>
+        <div class="eyebrow">Order-level tool</div>
+        <h2>Order RM &amp; cost forecast</h2>
+        <p>Already know the bag weight? Forecast the granule, masterbatch and total cost for a whole order.</p>
       </div>
       <div class="calc reveal">
         <div class="calc-in">
@@ -72,9 +70,9 @@ priority: 0.9
             <div class="field"><label for="f_mb">Masterbatch / filler share (%)</label><input type="number" id="f_mb" value="3" min="0" max="100" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="f_pp">PP granule rate (₹ / kg)</label><input type="number" id="f_pp" value="98" min="0" step="1" inputmode="decimal"></div>
             <div class="field"><label for="f_mbrate">Masterbatch rate (₹ / kg)</label><input type="number" id="f_mbrate" value="160" min="0" step="1" inputmode="decimal"></div>
-            <div class="field" style="grid-column:1/-1;"><label for="f_conv">Conversion cost — power, manpower, machine (₹ / kg)</label><input type="number" id="f_conv" value="14" min="0" step="0.5" inputmode="decimal"><div class="hint">In Nexora this comes from resource rates held per process on the route.</div></div>
+            <div class="field" style="grid-column:1/-1;"><label for="f_conv">Conversion cost — power, manpower, machine (₹ / kg)</label><input type="number" id="f_conv" value="14" min="0" step="0.5" inputmode="decimal"></div>
           </div>
-          <p class="calc-note">Waste is applied to the whole order weight and carried in the cost — scrap is still paid for. Ink, film, liner and thread are not included here; the full app forecasts each material separately.</p>
+          <p class="calc-note">Example rates. Waste is applied to the whole order weight and carried in the cost — scrap is still paid for.</p>
         </div>
         <div class="calc-out">
           <div class="calc-big"><small>Forecast cost of this order</small><b><span id="f_total">₹0</span></b></div>
@@ -94,24 +92,18 @@ priority: 0.9
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="split">
-        <div class="reveal">
-          <div class="eyebrow">What the full app adds</div>
-          <h2>From a quick estimate to a locked, audit-ready costing</h2>
-          <ul class="checks">
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>29 constructions with component-wise weights: body, patch, valve, liner, coating, BOPP, ink, adhesive</li>
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>Material-wise RM forecast with waste carried through each process</li>
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>Resource rates per process, versioned RM prices, reconciled BOM</li>
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>Revision history, print / PDF / Excel, formula traceability on every value</li>
-          </ul>
-          <div class="hero-cta"><a class="btn btn-primary" href="/products/bag-weight-calculation">See the product</a><a class="btn btn-outline" href="/screens">Real app screens</a></div>
-        </div>
-        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/07-bom.webp" alt="Nexora costed BOM screen" loading="lazy" width="1560" height="819" /></figure>
-      </div>
-    </div>
-  </section>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Woven Bag Weight & Costing Calculator","url":"https://nexoraofficial.org/calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How do I calculate the GSM of woven fabric from denier?","acceptedAnswer":{"@type":"Answer","text":"GSM = denier × (warp mesh + weft mesh) ÷ 228.6. For 900 denier tape at 10 × 10 mesh: 900 × 20 ÷ 228.6 = 78.7 GSM."}},
+      {"@type":"Question","name":"How much does BOPP lamination add to bag weight?","acceptedAnswer":{"@type":"Answer","text":"BOPP film GSM is roughly micron × 0.91, so an 18 micron film adds about 16.4 GSM, plus the extrusion coating layer of typically 15–22 GSM."}},
+      {"@type":"Question","name":"What is a block bottom bag and how is its weight different?","acceptedAnswer":{"@type":"Answer","text":"A block bottom bag has a rectangular pasted bottom and top formed from the tube, with patches and optionally a valve. Its cut length includes the bottom width and its patches add weight."}},
+      {"@type":"Question","name":"Are the prices in the costing real?","acceptedAnswer":{"@type":"Answer","text":"No, they are example rates. Enter your own rates in the price panel or request a demo to cost with a dated, versioned price master."}}
+    ]}
+  ]}
+  </script>
+  <script src="/assets/js/calc.js?v={{build}}" defer></script>
 </main>
 
 {{> footer}}

@@ -1,0 +1,79 @@
+<!--
+title: GSM to GPM Calculator & GPM to GSM Converter — Woven Fabric Grams per Metre | Nexora
+description: Convert fabric GSM to GPM (grams per running metre) and GPM to GSM using fabric width, flat or tubular. GPM = GSM × width in metres. Free tool for woven sack fabric rolls with roll weight calculation.
+keywords: gsm to gpm, gpm to gsm, gpm calculation woven fabric, grams per metre fabric, fabric roll weight calculation, tubular fabric gpm, woven sack gpm formula
+priority: 0.8
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>GSM to GPM</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-route"/></svg> Free converter</div>
+      <h1>GSM to GPM &amp; GPM to GSM calculator</h1>
+      <p class="lead">GPM is the weight of one running metre of fabric — the number the loom operator and the roll weighing scale actually see. It equals GSM multiplied by the fabric width in metres; for tubular fabric the width counts twice.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div class="tool">
+          <h2>GSM → GPM</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="g2p_gsm">Fabric GSM</label><input type="number" id="g2p_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="g2p_w">Fabric width (cm)</label><input type="number" id="g2p_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="g2p_form">Fabric form</label><select id="g2p_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
+            <div class="field"><label for="g2p_len">Roll length (m, optional)</label><input type="number" id="g2p_len" value="1000" min="0" step="10" inputmode="decimal"></div>
+          </div>
+          <div class="tool-out"><small>GPM — grams per running metre</small><b><span id="g2p_out">0</span><em>g/m</em></b><div class="aux">Roll weight at this length: <b id="g2p_roll">0 kg</b></div><div class="calc-formula" id="g2p_formula"></div></div>
+        </div>
+        <div class="tool">
+          <h2>GPM → GSM</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="p2g_gpm">GPM (g per running metre)</label><input type="number" id="p2g_gpm" value="80" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="p2g_w">Fabric width (cm)</label><input type="number" id="p2g_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="p2g_form">Fabric form</label><select id="p2g_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
+          </div>
+          <div class="tool-out"><small>Fabric GSM</small><b><span id="p2g_out">0</span><em>g/m²</em></b><div class="calc-formula" id="p2g_formula"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>GSM to GPM formula</h2>
+      <div class="formula-box">
+        GPM = GSM × fabric width (m) &nbsp;·&nbsp; tubular fabric: width (m) = 2 × flat width<br>
+        GSM = GPM ÷ fabric width (m)<br>
+        Roll weight (kg) = GPM × roll length (m) ÷ 1000
+      </div>
+      <p>Example: 80 GSM tubular fabric, 50 cm flat width. Fabric width = 2 × 0.50 = 1.00 m, so GPM = 80 g/m. A 1,000 m roll weighs 80 kg. The same 80 GSM as 50 cm flat (open) fabric is 40 g/m.</p>
+      <p>Plants use GPM to check looms in real time: weigh a metre of tube, compare with the target GPM, and adjust mesh or tape denier before a whole roll runs heavy. Nexora reports both unlaminated GPM and laminated GPM for every calculation, so lamination lines have a target too.</p>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>Is GPM the same as grams per metre of tape?</summary><p>No. Fabric GPM is grams per running metre of fabric. Tape g/m is denier ÷ 9,000 (900 denier = 0.1 g/m). See the <a href="/denier-to-gpm">denier to GPM</a> page for both.</p></details>
+        <details><summary>Why does tubular fabric count the width twice?</summary><p>A circular loom weaves a tube; one running metre contains two layers of the flat width, so the fabric area per metre is 2 × flat width.</p></details>
+        <details><summary>How do I get roll weight from GSM?</summary><p>Roll weight = GSM × width (m) × length (m) ÷ 1000. The GSM → GPM tool above does it with the optional roll length field.</p></details>
+      </div>
+      <div class="related" style="margin-top:18px;"><a href="/denier-to-gsm">Denier to GSM</a><a href="/denier-to-gpm">Denier to GPM</a><a href="/fabric-weight-calculator">Width × length × GSM</a><a href="/calculator">Bag weight &amp; costing calculator</a></div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"GSM to GPM Calculator","url":"https://nexoraofficial.org/gsm-to-gpm","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Is GPM the same as grams per metre of tape?","acceptedAnswer":{"@type":"Answer","text":"No. Fabric GPM is grams per running metre of fabric. Tape g/m is denier ÷ 9,000, so 900 denier tape is 0.1 g/m."}},
+      {"@type":"Question","name":"Why does tubular fabric count the width twice?","acceptedAnswer":{"@type":"Answer","text":"A circular loom weaves a tube; one running metre contains two layers of the flat width."}},
+      {"@type":"Question","name":"How do I get roll weight from GSM?","acceptedAnswer":{"@type":"Answer","text":"Roll weight = GSM × width in metres × length in metres ÷ 1000."}}
+    ]}
+  ]}
+  </script>
+  <script src="/assets/js/tools.js?v={{build}}" defer></script>
+</main>
+
+{{> footer}}

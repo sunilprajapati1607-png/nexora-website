@@ -196,32 +196,8 @@
     });
   }
 
-  /* ---------- Free calculator (same formula as the desktop app's quick tool) ---------- */
   function num(id, d) { var el = $('#' + id); if (!el) return d || 0; var v = parseFloat(el.value); return isNaN(v) ? (d || 0) : v; }
   function txt(id, v) { var el = $('#' + id); if (el) el.textContent = v; }
-  function runCalculator() {
-    if (!$('#c_len')) return;
-    var len = num('c_len'), wid = num('c_wid'), epi = num('c_epi'), ppi = num('c_ppi'), den = num('c_den'), rate = num('c_rate');
-    var lam = $('#c_lam') && $('#c_lam').checked;
-    var gsm = (den * epi + den * ppi) / 228.6;
-    if (lam) gsm += 12;
-    var areaM2 = (len / 100) * (wid / 100) * 2;
-    var wastage = 0.05;
-    var fabricWeight = areaM2 * gsm * (1 + wastage);
-    var threadWeight = 1.2;
-    var bagWeight = fabricWeight + threadWeight;
-    var costPerBag = (bagWeight / 1000) * rate;
-    txt('c_gsm', gsm.toFixed(1));
-    txt('c_area', areaM2.toFixed(3) + ' m²');
-    txt('c_fw', fabricWeight.toFixed(2) + ' g');
-    txt('c_bw', bagWeight.toFixed(2) + ' g');
-    txt('c_cost', '₹' + costPerBag.toFixed(3));
-    txt('c_cost1000', '₹' + (costPerBag * 1000).toFixed(0));
-    txt('c_formula', 'GSM = (' + den + '×' + epi + ' + ' + den + '×' + ppi + ') / 228.6' + (lam ? ' + 12 (lamination)' : '') + ' = ' + gsm.toFixed(1));
-  }
-  $$('#c_len, #c_wid, #c_epi, #c_ppi, #c_den, #c_rate').forEach(function (el) { el.addEventListener('input', runCalculator); });
-  if ($('#c_lam')) $('#c_lam').addEventListener('change', runCalculator);
-  runCalculator();
 
   /* ---------- Order RM & cost forecast (illustrative) ---------- */
   function fmtInr(n) { return '₹' + Math.round(n).toLocaleString('en-IN'); }

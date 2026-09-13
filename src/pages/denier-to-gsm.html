@@ -1,0 +1,87 @@
+<!--
+title: Denier to GSM Calculator & GSM to Denier Converter for Woven Fabric | Nexora
+description: Convert tape denier to woven fabric GSM (and GSM to denier) using mesh count: GSM = denier × (warp + weft mesh) ÷ 228.6. Free DNR to GSM calculator for PP/HDPE woven sack fabric with formula and examples.
+keywords: denier to gsm, dnr to gsm, gsm to denier, gsm to dnr, denier to gsm calculator, woven fabric gsm formula, pp woven fabric gsm calculation, mesh denier gsm
+priority: 0.8
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>Denier to GSM</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-scale"/></svg> Free converter</div>
+      <h1>Denier to GSM &amp; GSM to denier calculator</h1>
+      <p class="lead">Woven fabric GSM depends on the tape denier and the mesh (tapes per inch in warp and weft). Convert in either direction with the standard woven sack formula.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div class="tool">
+          <h2>Denier → GSM</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="d2g_den">Tape denier (DNR)</label><input type="number" id="d2g_den" value="900" min="0" step="10" inputmode="decimal"></div>
+            <div class="field"><label for="d2g_mesh">Mesh (warp × weft / inch)</label><select id="d2g_mesh"></select></div>
+            <div class="field" id="d2g_custom" hidden style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="d2g_epi">Warp (EPI)</label><input type="number" id="d2g_epi" value="10" step="0.5"></div><div><label for="d2g_ppi">Weft (PPI)</label><input type="number" id="d2g_ppi" value="10" step="0.5"></div></div>
+          </div>
+          <div class="tool-out"><small>Fabric GSM</small><b><span id="d2g_out">0</span><em>g/m²</em></b><div class="calc-formula" id="d2g_formula"></div></div>
+        </div>
+        <div class="tool">
+          <h2>GSM → Denier</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="g2d_gsm">Fabric GSM</label><input type="number" id="g2d_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="g2d_mesh">Mesh (warp × weft / inch)</label><select id="g2d_mesh"></select></div>
+            <div class="field" id="g2d_custom" hidden style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="g2d_epi">Warp (EPI)</label><input type="number" id="g2d_epi" value="10" step="0.5"></div><div><label for="g2d_ppi">Weft (PPI)</label><input type="number" id="g2d_ppi" value="10" step="0.5"></div></div>
+          </div>
+          <div class="tool-out"><small>Tape denier (same warp &amp; weft)</small><b><span id="g2d_out">0</span><em>denier</em></b><div class="calc-formula" id="g2d_formula"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>Denier to GSM formula for woven fabric</h2>
+      <div class="formula-box">
+        GSM = (warp denier × warp mesh + weft denier × weft mesh) ÷ 228.6<br>
+        Denier = GSM × 228.6 ÷ (warp mesh + weft mesh) &nbsp;(same denier both ways)
+      </div>
+      <p>Where does 228.6 come from? One denier is 1 gram per 9,000 metres of tape. Mesh is counted per inch, and there are 39.37 inches in a metre, so one square metre of fabric holds 39.37 × mesh tapes of 1 m each in every direction. 9,000 ÷ 39.37 = 228.6.</p>
+      <h3>Quick reference (same denier warp and weft)</h3>
+      <div class="table-wrap"><table class="t">
+        <tr><th>Denier</th><th class="num">8 × 8</th><th class="num">10 × 10</th><th class="num">12 × 12</th><th class="num">14 × 14</th></tr>
+        <tr><td>700</td><td class="num">49.0</td><td class="num">61.2</td><td class="num">73.5</td><td class="num">85.7</td></tr>
+        <tr><td>800</td><td class="num">56.0</td><td class="num">70.0</td><td class="num">84.0</td><td class="num">98.0</td></tr>
+        <tr><td>900</td><td class="num">63.0</td><td class="num">78.7</td><td class="num">94.5</td><td class="num">110.2</td></tr>
+        <tr><td>1000</td><td class="num">70.0</td><td class="num">87.5</td><td class="num">105.0</td><td class="num">122.5</td></tr>
+        <tr><td>1100</td><td class="num">77.0</td><td class="num">96.2</td><td class="num">115.5</td><td class="num">134.7</td></tr>
+        <tr><td>1200</td><td class="num">84.0</td><td class="num">105.0</td><td class="num">126.0</td><td class="num">147.0</td></tr>
+      </table></div>
+      <p style="margin-top:12px;">These are theoretical GSM values. Actual fabric GSM runs slightly higher because of tape width tolerance, crimp and moisture; most plants apply a 2–4% correction or measure a 10 × 10 cm sample. Coated or laminated fabric adds the coating GSM on top.</p>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>What is DNR in woven sacks?</summary><p>DNR is short for denier, the linear density of the PP or HDPE tape: grams per 9,000 metres. A 900 denier tape weighs 0.1 g per metre.</p></details>
+        <details><summary>What GSM is a 10 × 10 mesh, 900 denier fabric?</summary><p>900 × (10 + 10) ÷ 228.6 = 78.7 GSM unlaminated.</p></details>
+        <details><summary>How do I get GSM for laminated fabric?</summary><p>Add the coating GSM (typically 12–25) and, for BOPP lamination, the film GSM (micron × 0.91). Use the <a href="/bopp-bag-calculation">BOPP bag calculator</a>.</p></details>
+      </div>
+      <div class="related" style="margin-top:18px;"><a href="/gsm-to-gpm">GSM to GPM</a><a href="/denier-to-gpm">Denier to GPM</a><a href="/fabric-weight-calculator">Width × length × GSM</a><a href="/calculator">Bag weight &amp; costing calculator</a></div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Denier to GSM Calculator","url":"https://nexoraofficial.org/denier-to-gsm","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is DNR in woven sacks?","acceptedAnswer":{"@type":"Answer","text":"DNR is short for denier, the linear density of the tape: grams per 9,000 metres. A 900 denier tape weighs 0.1 g per metre."}},
+      {"@type":"Question","name":"What GSM is a 10 × 10 mesh, 900 denier fabric?","acceptedAnswer":{"@type":"Answer","text":"900 × (10 + 10) ÷ 228.6 = 78.7 GSM unlaminated."}},
+      {"@type":"Question","name":"How do I get GSM for laminated fabric?","acceptedAnswer":{"@type":"Answer","text":"Add the coating GSM (typically 12–25) and, for BOPP lamination, the film GSM (micron × 0.91)."}}
+    ]}
+  ]}
+  </script>
+  <script src="/assets/js/tools.js?v={{build}}" defer></script>
+</main>
+
+{{> footer}}

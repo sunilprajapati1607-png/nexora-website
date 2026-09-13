@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Staff & Shop-floor Tracking Software — Operator-wise Output, Waste & Productivity | Nexora</title>
   <meta name="description" content="Track which operator ran which machine in which shift, with output, waste and downtime per person. Shop-floor staff tracking for woven sack and packaging plants, connected to payroll and production." />
+  <meta name="keywords" content="" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://nexoraofficial.org/products/staff-tracking" />
   <meta name="theme-color" content="#050c1a" />
@@ -25,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609131314" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609131339" />
   <script>
     (function () {
       var t = 'light';
@@ -146,7 +147,18 @@
             <a href="/services" class="dd-all">All services <svg class="icon"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li><a href="/calculator" data-nav="/calculator">Free Calculator</a></li>
+        <li class="has-dd" data-nav="/calculator">
+          <button class="navbtn" aria-expanded="false" aria-haspopup="true">Calculators <svg class="icon"><use href="#i-chev"/></svg></button>
+          <div class="dropdown">
+            <a href="/calculator"><svg class="icon"><use href="#i-calc"/></svg><span><b>Woven Bag Weight &amp; Costing Calculator</b><small>Structure, size, mesh, denier, BOPP, liner → weight &amp; cost</small></span></a>
+            <a href="/bopp-bag-calculation"><svg class="icon"><use href="#i-layers"/></svg><span><b>BOPP Bag Calculation</b><small>Laminated woven bag weight with film micron</small></span></a>
+            <a href="/block-bottom-bag-calculation"><svg class="icon"><use href="#i-box"/></svg><span><b>Block Bottom Bag Calculation</b><small>Patches, bottom width, valve — pasted bags</small></span></a>
+            <a href="/denier-to-gsm"><svg class="icon"><use href="#i-scale"/></svg><span><b>Denier ↔ GSM</b><small>Tape denier and mesh to fabric GSM, and back</small></span></a>
+            <a href="/gsm-to-gpm"><svg class="icon"><use href="#i-route"/></svg><span><b>GSM ↔ GPM</b><small>Grams per square metre to grams per running metre</small></span></a>
+            <a href="/denier-to-gpm"><svg class="icon"><use href="#i-trend"/></svg><span><b>Denier ↔ GPM</b><small>Denier, mesh and width to fabric GPM</small></span></a>
+            <a href="/fabric-weight-calculator"><svg class="icon"><use href="#i-grid"/></svg><span><b>Width × Length × GSM = Weight</b><small>Fabric, bag and roll weight from GSM</small></span></a>
+          </div>
+        </li>
         <li><a href="/screens" data-nav="/screens">App Screens</a></li>
         <li><a href="/about" data-nav="/about">About</a></li>
         <li><a href="/contact" data-nav="/contact">Contact</a></li>
@@ -156,7 +168,7 @@
         <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon moon"><use href="#i-moon"/></svg><svg class="icon sun"><use href="#i-sun"/></svg>
         </button>
-        <a class="btn btn-outline" href="/calculator">Try Calculator</a>
+        <a class="btn btn-outline" href="/calculator">Bag Calculator</a>
         <button class="btn btn-primary" data-open-demo>Request Demo</button>
       </div>
     </div>
@@ -253,9 +265,20 @@
         </ul>
       </div>
       <div>
+        <h5>Free calculators</h5>
+        <ul>
+          <li><a href="/calculator">Woven bag weight &amp; costing</a></li>
+          <li><a href="/bopp-bag-calculation">BOPP bag calculation</a></li>
+          <li><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a></li>
+          <li><a href="/denier-to-gsm">Denier to GSM / GSM to denier</a></li>
+          <li><a href="/gsm-to-gpm">GSM to GPM / GPM to GSM</a></li>
+          <li><a href="/denier-to-gpm">Denier to GPM / GPM to denier</a></li>
+          <li><a href="/fabric-weight-calculator">Width × length × GSM = weight</a></li>
+        </ul>
+      </div>
+      <div>
         <h5>Company</h5>
         <ul>
-          <li><a href="/calculator">Free Calculator</a></li>
           <li><a href="/screens">App Screens</a></li>
           <li><a href="/about">About &amp; Founder</a></li>
           <li><a href="/contact">Contact</a></li>
@@ -329,7 +352,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609131314" defer></script>
+<script src="/assets/js/site.js?v=202609131339" defer></script>
 </body>
 </html>
 

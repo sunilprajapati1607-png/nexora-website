@@ -1,0 +1,81 @@
+<!--
+title: Denier to GPM Calculator & GPM to Denier Converter (Woven Fabric & Tape) | Nexora
+description: Convert tape denier to fabric GPM (grams per running metre) via mesh and width, and GPM back to denier. Also converts tape denier to grams per metre (denier ÷ 9000). Free DNR to GPM tool for PP/HDPE woven sacks.
+keywords: denier to gpm, dnr to gpm, gpm to denier, gpm to dnr, denier to grams per metre, tape denier calculation, woven fabric gpm from denier, denier gpm formula
+priority: 0.8
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>Denier to GPM</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-trend"/></svg> Free converter</div>
+      <h1>Denier to GPM &amp; GPM to denier calculator</h1>
+      <p class="lead">Go from tape denier to the grams per running metre of woven fabric — through mesh and fabric width — or back from a weighed GPM to the denier the loom must be running. Includes the simple tape conversion: grams per metre = denier ÷ 9,000.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap">
+      <div class="grid grid-2">
+        <div class="tool">
+          <h2>Denier → GPM (fabric)</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="d2p_den">Tape denier</label><input type="number" id="d2p_den" value="900" min="0" step="10" inputmode="decimal"></div>
+            <div class="field"><label for="d2p_mesh">Mesh (warp × weft / inch)</label><select id="d2p_mesh"></select></div>
+            <div class="field" id="d2p_custom" hidden style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="d2p_epi">Warp (EPI)</label><input type="number" id="d2p_epi" value="10" step="0.5"></div><div><label for="d2p_ppi">Weft (PPI)</label><input type="number" id="d2p_ppi" value="10" step="0.5"></div></div>
+            <div class="field"><label for="d2p_w">Fabric width (cm)</label><input type="number" id="d2p_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="d2p_form">Fabric form</label><select id="d2p_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
+          </div>
+          <div class="tool-out"><small>Fabric GPM</small><b><span id="d2p_out">0</span><em>g/m</em></b><div class="aux">Fabric GSM: <b id="d2p_gsm">0</b> · Tape weight: <b id="d2p_tape">0</b> g per metre of tape</div><div class="calc-formula" id="d2p_formula"></div></div>
+        </div>
+        <div class="tool">
+          <h2>GPM → Denier</h2>
+          <div class="calc-fields">
+            <div class="field"><label for="p2d_gpm">Fabric GPM (weighed)</label><input type="number" id="p2d_gpm" value="80" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="p2d_mesh">Mesh (warp × weft / inch)</label><select id="p2d_mesh"></select></div>
+            <div class="field" id="p2d_custom" hidden style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="p2d_epi">Warp (EPI)</label><input type="number" id="p2d_epi" value="10" step="0.5"></div><div><label for="p2d_ppi">Weft (PPI)</label><input type="number" id="p2d_ppi" value="10" step="0.5"></div></div>
+            <div class="field"><label for="p2d_w">Fabric width (cm)</label><input type="number" id="p2d_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="p2d_form">Fabric form</label><select id="p2d_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
+            <div class="field" style="grid-column:1/-1;"><label for="p2d_tape">Or: tape weight (g per metre of tape) → denier</label><input type="number" id="p2d_tape" value="0.1" min="0" step="0.005" inputmode="decimal"></div>
+          </div>
+          <div class="tool-out"><small>Tape denier implied by the fabric</small><b><span id="p2d_out">0</span><em>denier</em></b><div class="aux">Fabric GSM: <b id="p2d_gsm">0</b> · Tape g/m → denier: <b id="p2d_tapeout">0</b></div><div class="calc-formula" id="p2d_formula"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>Denier, GSM and GPM — how they connect</h2>
+      <div class="formula-box">
+        Tape: g per metre = denier ÷ 9,000 &nbsp;(900 denier = 0.100 g/m)<br>
+        Fabric GSM = denier × (warp + weft mesh) ÷ 228.6<br>
+        Fabric GPM = GSM × fabric width (m); tubular width = 2 × flat width<br>
+        Denier from GPM = GPM ÷ width (m) × 228.6 ÷ (warp + weft mesh)
+      </div>
+      <p>Example: 900 denier, 10 × 10 mesh, 50 cm tubular fabric → GSM 78.7 → GPM 78.7 × 1.00 m = 78.7 g/m. If the scale reads 84 g/m at the same mesh, the tape is running at about 960 denier — the GPM → denier tool tells you that at once.</p>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>What does 1 denier mean?</summary><p>One denier is one gram per 9,000 metres. It is the standard unit for PP and HDPE tape linear density in woven sack plants.</p></details>
+        <details><summary>Why does my measured GPM differ from the calculated one?</summary><p>Tape width and thickness tolerance, mesh variation across the loom and moisture all shift the real weight by a few percent. Use the GPM → denier tool to see the effective denier the loom is delivering.</p></details>
+      </div>
+      <div class="related" style="margin-top:18px;"><a href="/denier-to-gsm">Denier to GSM</a><a href="/gsm-to-gpm">GSM to GPM</a><a href="/fabric-weight-calculator">Width × length × GSM</a><a href="/calculator">Bag weight &amp; costing calculator</a></div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"Denier to GPM Calculator","url":"https://nexoraofficial.org/denier-to-gpm","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What does 1 denier mean?","acceptedAnswer":{"@type":"Answer","text":"One denier is one gram per 9,000 metres of tape or yarn."}},
+      {"@type":"Question","name":"Why does my measured GPM differ from the calculated one?","acceptedAnswer":{"@type":"Answer","text":"Tape width and thickness tolerance, mesh variation and moisture shift the real weight by a few percent; the GPM to denier tool shows the effective denier the loom is delivering."}}
+    ]}
+  ]}
+  </script>
+  <script src="/assets/js/tools.js?v={{build}}" defer></script>
+</main>
+
+{{> footer}}

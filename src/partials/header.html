@@ -51,7 +51,18 @@
             <a href="/services" class="dd-all">All services <svg class="icon"><use href="#i-arrow"/></svg></a>
           </div>
         </li>
-        <li><a href="/calculator" data-nav="/calculator">Free Calculator</a></li>
+        <li class="has-dd" data-nav="/calculator">
+          <button class="navbtn" aria-expanded="false" aria-haspopup="true">Calculators <svg class="icon"><use href="#i-chev"/></svg></button>
+          <div class="dropdown">
+            <a href="/calculator"><svg class="icon"><use href="#i-calc"/></svg><span><b>Woven Bag Weight &amp; Costing Calculator</b><small>Structure, size, mesh, denier, BOPP, liner → weight &amp; cost</small></span></a>
+            <a href="/bopp-bag-calculation"><svg class="icon"><use href="#i-layers"/></svg><span><b>BOPP Bag Calculation</b><small>Laminated woven bag weight with film micron</small></span></a>
+            <a href="/block-bottom-bag-calculation"><svg class="icon"><use href="#i-box"/></svg><span><b>Block Bottom Bag Calculation</b><small>Patches, bottom width, valve — pasted bags</small></span></a>
+            <a href="/denier-to-gsm"><svg class="icon"><use href="#i-scale"/></svg><span><b>Denier ↔ GSM</b><small>Tape denier and mesh to fabric GSM, and back</small></span></a>
+            <a href="/gsm-to-gpm"><svg class="icon"><use href="#i-route"/></svg><span><b>GSM ↔ GPM</b><small>Grams per square metre to grams per running metre</small></span></a>
+            <a href="/denier-to-gpm"><svg class="icon"><use href="#i-trend"/></svg><span><b>Denier ↔ GPM</b><small>Denier, mesh and width to fabric GPM</small></span></a>
+            <a href="/fabric-weight-calculator"><svg class="icon"><use href="#i-grid"/></svg><span><b>Width × Length × GSM = Weight</b><small>Fabric, bag and roll weight from GSM</small></span></a>
+          </div>
+        </li>
         <li><a href="/screens" data-nav="/screens">App Screens</a></li>
         <li><a href="/about" data-nav="/about">About</a></li>
         <li><a href="/contact" data-nav="/contact">Contact</a></li>
@@ -61,7 +72,7 @@
         <button class="theme-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
           <svg class="icon moon"><use href="#i-moon"/></svg><svg class="icon sun"><use href="#i-sun"/></svg>
         </button>
-        <a class="btn btn-outline" href="/calculator">Try Calculator</a>
+        <a class="btn btn-outline" href="/calculator">Bag Calculator</a>
         <button class="btn btn-primary" data-open-demo>Request Demo</button>
       </div>
     </div>

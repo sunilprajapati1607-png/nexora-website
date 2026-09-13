@@ -445,7 +445,7 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 /* Footer */
 .footer { background: var(--navy-950); color: #a9b8d3; padding: 64px 0 0; font-size: 14px; }
-.footer .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr; gap: 32px; }
+.footer .cols { display: grid; grid-template-columns: 1.3fr 1fr 1fr 1.1fr .9fr 1.1fr; gap: 28px; }
 @media (max-width: 1100px) { .footer .cols { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .footer .cols { grid-template-columns: 1fr; } }
 .footer h5 { color: #fff; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; }
@@ -493,3 +493,57 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 .forecast-out .k b { display: block; font-size: 20px; font-family: var(--mono); font-weight: 600; margin-top: 4px; }
 .forecast-out .k.hi b { color: var(--cyan); }
 @media (max-width: 480px) { .forecast-out { grid-template-columns: 1fr; } }
+
+/* ---------- Simulator calculator ---------- */
+.sim-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.sim-head h3 { margin: 0; }
+.unit-toggle { display: inline-flex; border: 1px solid var(--line-2); border-radius: 8px; overflow: hidden; }
+.unit-toggle button { border: 0; background: var(--bg-2); color: var(--text-2); padding: 6px 12px; font-weight: 700; font-size: 12.5px; }
+.unit-toggle button.on { background: var(--primary); color: #fff; }
+.inline-check { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; font-size: 12px; color: var(--primary); cursor: pointer; margin-left: 8px; }
+.inline-check input { accent-color: var(--primary); width: 14px; height: 14px; }
+.sim-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+.prices { margin-top: 14px; padding: 14px; border: 1px dashed var(--line-2); border-radius: 12px; background: var(--bg-3); }
+.calc.sim .calc-out { gap: 12px; }
+.o-sub { font-size: 12px; color: #93a4c4; margin-top: 6px; }
+.cost-box { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px 16px; }
+.cost-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #93a4c4; margin-bottom: 10px; }
+.cost-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px 14px; }
+.cost-grid small { display: block; font-size: 11px; color: #93a4c4; text-transform: uppercase; letter-spacing: .05em; }
+.cost-grid b { display: block; font-family: var(--mono); font-size: 18px; font-weight: 600; }
+.cost-grid > div:first-child b { color: var(--cyan); font-size: 24px; }
+.cost-total { font-size: 13px; color: #c7d2e5; border-top: 1px dashed rgba(255,255,255,.14); margin-top: 10px; padding-top: 10px; }
+.cost-total b { font-family: var(--mono); font-weight: 600; }
+.locked { position: relative; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 14px 16px; }
+.locked-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: #93a4c4; margin-bottom: 8px; }
+.locked-head .tag { background: rgba(0,210,255,.15); color: var(--cyan); border-color: transparent; }
+.locked-list { list-style: none; display: grid; gap: 6px; }
+.locked-list li { display: flex; justify-content: space-between; font-size: 13.5px; color: #c7d2e5; }
+.locked-list b { font-family: var(--mono); font-weight: 600; }
+.blur { filter: blur(6px); user-select: none; pointer-events: none; }
+.locked-cta { margin-top: 10px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,.14); display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.locked-cta p { font-size: 12.5px; color: #93a4c4; flex: 1 1 220px; margin: 0; }
+
+/* ---------- Conversion tools ---------- */
+.tool { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 24px; }
+.tool h2, .tool h3 { font-size: 20px; margin-bottom: 14px; }
+.tool .calc-fields { grid-template-columns: repeat(2, 1fr); }
+.tool-out { margin-top: 16px; background: var(--navy-900); color: #fff; border-radius: 12px; padding: 16px 18px; }
+.tool-out small { display: block; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #93a4c4; }
+.tool-out b { display: block; font-size: 34px; line-height: 1.1; letter-spacing: -.02em; margin-top: 4px; }
+.tool-out b em { font-style: normal; font-size: 15px; color: #93a4c4; margin-left: 6px; }
+.tool-out .calc-formula { margin-top: 10px; }
+.tool-out .aux { font-size: 13px; color: #c7d2e5; margin-top: 8px; }
+.tool-out .aux b { display: inline; font-size: 14px; font-family: var(--mono); font-weight: 600; margin: 0; }
+.formula-box { background: var(--bg-3); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; font-family: var(--mono); font-size: 13.5px; line-height: 1.8; overflow-x: auto; }
+.related { display: flex; gap: 8px; flex-wrap: wrap; }
+.related a { font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text-2); }
+.related a:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+.prose p { color: var(--text-2); margin-bottom: 12px; font-size: 15.5px; }
+.prose h2 { margin: 26px 0 10px; font-size: 24px; }
+.prose h3 { margin: 18px 0 8px; font-size: 18px; }
+.prose ul { color: var(--text-2); padding-left: 20px; margin-bottom: 12px; }
+.prose li { margin-bottom: 6px; }
+
+.field input[readonly] { background: var(--bg-3); color: var(--text-2); }
+.field label.split-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; }

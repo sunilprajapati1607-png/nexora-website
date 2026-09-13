@@ -1,0 +1,83 @@
+<div class="calc sim" id="nxCalc" data-preset="{{preset}}">
+  <div class="calc-in">
+    <div class="sim-head">
+      <h3>Bag specification</h3>
+      <div class="unit-toggle" role="group" aria-label="Units"><button type="button" class="on" data-unit="cm">cm</button><button type="button" data-unit="in">inch</button></div>
+    </div>
+    <div class="field" style="margin-bottom:14px;">
+      <label for="s_structure">Bag structure / construction</label>
+      <select id="s_structure"></select>
+      <div class="hint" id="s_struct_hint"></div>
+    </div>
+    <div class="calc-fields">
+      <div class="field"><label for="s_w">Bag width (<span class="unitlbl">cm</span>)</label><input type="number" id="s_w" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field"><label for="s_l">Bag length / height (<span class="unitlbl">cm</span>)</label><input type="number" id="s_l" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field" id="f_g"><label for="s_g"><span id="lbl_g">Gusset (each side)</span> (<span class="unitlbl">cm</span>)</label><input type="number" id="s_g" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field" id="f_fold"><label for="s_fold">Fold / hem allowance (<span class="unitlbl">cm</span>)</label><input type="number" id="s_fold" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field"><label for="s_mesh">Mesh (warp × weft per inch)</label><select id="s_mesh"></select></div>
+      <div class="field"><label for="s_den">Tape denier</label><input type="number" id="s_den" min="0" step="10" inputmode="decimal"></div>
+      <div class="field" id="f_meshcustom" hidden style="grid-column:1/-1;"><div class="row2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="s_epi">Warp (EPI)</label><input type="number" id="s_epi" min="0" step="0.5"></div><div><label for="s_ppi">Weft (PPI)</label><input type="number" id="s_ppi" min="0" step="0.5"></div></div></div>
+      <div class="field"><label for="s_gsm" class="split-label"><span>Fabric GSM</span> <label class="inline-check"><input type="checkbox" id="s_gsm_custom"> enter my own</label></label><input type="number" id="s_gsm" min="0" step="0.5" inputmode="decimal" readonly></div>
+      <div class="field" id="f_coat"><label for="s_coat">Coating / lamination GSM</label><input type="number" id="s_coat" min="0" step="1" inputmode="decimal"></div>
+      <div class="field" id="f_bopp"><label for="s_bopp">BOPP film (micron)</label><input type="number" id="s_bopp" min="0" step="1" inputmode="decimal"></div>
+      <div class="field" id="f_liner"><label for="s_liner">LDPE liner (micron, 0 = none)</label><input type="number" id="s_liner" min="0" step="5" inputmode="decimal"></div>
+      <div class="field" id="f_patch"><label for="s_patch">Patch depth, top &amp; bottom (<span class="unitlbl">cm</span>)</label><input type="number" id="s_patch" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field" id="f_valve"><label class="inline-check" style="margin-top:26px;"><input type="checkbox" id="s_valve"> Valve strip</label></div>
+      <div class="field"><label for="s_print">Printing</label><select id="s_print"><option value="0">None</option><option value="1">One side</option><option value="2">Both sides</option></select></div>
+      <div class="field"><label for="s_waste">Process waste (%)</label><input type="number" id="s_waste" value="3" min="0" step="0.5" inputmode="decimal"></div>
+      <div class="field"><label for="s_qty">Order quantity (bags)</label><input type="number" id="s_qty" value="10000" min="1" step="1000" inputmode="numeric"></div>
+    </div>
+    <div class="sim-actions">
+      <button type="button" class="btn btn-outline btn-sm" id="s_prices_toggle">Edit example RM prices</button>
+      <button type="button" class="btn btn-ghost btn-sm" id="s_reset">Reset to defaults</button>
+    </div>
+    <div class="prices" id="s_prices" hidden>
+      <p class="hint" style="margin-bottom:10px;"><b>Example rates only</b> (₹ per kg). Real costing uses your own versioned price master in the Nexora app.</p>
+      <div class="calc-fields">
+        <div class="field"><label for="p_fabric">PP tape fabric</label><input type="number" id="p_fabric" step="1"></div>
+        <div class="field"><label for="p_coat">Coating / lamination</label><input type="number" id="p_coat" step="1"></div>
+        <div class="field"><label for="p_bopp">BOPP film</label><input type="number" id="p_bopp" step="1"></div>
+        <div class="field"><label for="p_liner">LDPE liner</label><input type="number" id="p_liner" step="1"></div>
+        <div class="field"><label for="p_ink">Printing ink</label><input type="number" id="p_ink" step="1"></div>
+        <div class="field"><label for="p_conv">Conversion (power, labour, machine)</label><input type="number" id="p_conv" step="0.5"></div>
+      </div>
+    </div>
+    <p class="calc-note">Indicative results for quotation checks. Formulas: GSM = denier × (warp + weft mesh) / 228.6; film GSM = micron × density; weight = area × GSM. Real plants differ in fold, patch, valve and waste norms — the desktop app carries construction-specific engines with 29 structures and your own constants.</p>
+  </div>
+
+  <div class="calc-out">
+    <div class="calc-big"><small>Finished bag weight</small><b><span id="o_total">0</span><em>g / bag</em></b><div class="o-sub" id="o_structname"></div></div>
+    <div class="calc-rows">
+      <div><span>Fabric GSM (unlaminated)</span><b id="o_gsm">0</b></div>
+      <div><span>Laminated GSM (fabric + coating + film)</span><b id="o_gsmlam">0</b></div>
+      <div><span>Fabric GPM · laminated GPM (g per running metre)</span><b><span id="o_gpm">0</span> · <span id="o_gpmlam">0</span></b></div>
+      <div><span>Cut length × tube width</span><b id="o_cut">0</b></div>
+      <div><span>Body fabric area per bag</span><b id="o_area">0</b></div>
+      <div><span>Weight per 1,000 bags</span><b id="o_per1000">0</b></div>
+      <div class="total"><span>RM required for <span id="o_qty">10,000</span> bags (incl. waste)</span><b id="o_rm">0</b></div>
+    </div>
+
+    <div class="cost-box">
+      <div class="cost-head"><span>Costing</span><span class="tag amber">RM prices are examples</span></div>
+      <div class="cost-grid">
+        <div><small>Cost per bag</small><b id="o_cost">₹0.00</b></div>
+        <div><small>Per 1,000 bags</small><b id="o_cost1000">₹0</b></div>
+        <div><small>Material</small><b id="o_mat">₹0.00</b></div>
+        <div><small>Conversion</small><b id="o_conv">₹0.00</b></div>
+      </div>
+      <div class="cost-total">Order value estimate: <b id="o_costqty">₹0</b> · waste alone: <b id="o_wastekg">0 kg</b></div>
+      <p class="hint" style="color:#93a4c4;">For accurate costing with your own RM prices, process rates and waste norms, <a href="#" data-open-demo data-interest="Bag Weight & Cost Forecasting" style="color:#7fb2ff;">request a demo</a>.</p>
+    </div>
+
+    <div class="locked">
+      <div class="locked-head"><span>Component-wise breakdown · <b id="o_compcount">0</b> parts</span><span class="tag">Demo feature</span></div>
+      <ul id="o_components" class="locked-list"></ul>
+      <div class="locked-cta">
+        <p>Body, patch, valve, film, liner, ink and thread grams with % share, plus formula traceability, are shown in the Nexora desktop app.</p>
+        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight & Cost Forecasting">Unlock in a free demo</button>
+      </div>
+    </div>
+
+    <div class="calc-formula" id="o_formula"></div>
+  </div>
+</div>

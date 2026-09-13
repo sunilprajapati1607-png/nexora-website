@@ -1,0 +1,68 @@
+<!--
+title: BOPP Bag Calculation — Laminated Woven Bag Weight & Cost Calculator | Nexora
+description: BOPP bag calculation online: enter bag size, mesh, denier, coating GSM and BOPP film micron to get laminated woven bag weight, laminated GSM, GPM and indicative cost per bag. Free tool for BOPP laminated PP woven bag manufacturers and buyers.
+keywords: bopp bag calculation, bopp laminated bag weight, bopp woven bag weight calculation, bopp micron to gsm, laminated pp bag costing, bopp bag price calculation
+priority: 0.8
+preset: bopp-om
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>BOPP bag calculation</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-layers"/></svg> Free BOPP bag calculator</div>
+      <h1>BOPP bag calculation: laminated woven bag weight &amp; cost</h1>
+      <p class="lead">Calculate the weight of a BOPP laminated PP woven bag from fabric mesh and denier, extrusion coating GSM and BOPP film micron. Switch to block bottom, add a liner or gusset, and see indicative cost per bag with example RM prices.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:44px;">
+    <div class="wrap">
+      {{> calculator}}
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>How a BOPP laminated bag is built up</h2>
+      <p>A BOPP bag is a woven PP tube (typically 700–1000 denier at 10 × 10 to 12 × 12 mesh) laminated with a reverse-printed BOPP film through an extrusion coating sandwich. Three layers contribute weight: the woven fabric, the extruded coating that bonds the film, and the BOPP film itself.</p>
+      <div class="formula-box">
+        Fabric GSM = denier × (warp + weft mesh) ÷ 228.6<br>
+        BOPP film GSM = micron × 0.91 (e.g. 18 µm ≈ 16.4 GSM, 20 µm ≈ 18.2 GSM, 25 µm ≈ 22.8 GSM)<br>
+        Laminated GSM = fabric GSM + coating GSM + BOPP film GSM<br>
+        Bag weight = tube width × cut length ÷ 10,000 × laminated GSM + liner + thread (+ patches for block bottom)
+      </div>
+      <h3>Typical BOPP bag specifications</h3>
+      <ul>
+        <li><b>Rice, flour, sugar 5–25 kg:</b> 800–900 denier, 10 × 10 mesh, 18–20 GSM coating, 18–20 µm BOPP, open mouth stitched or pinch bottom.</li>
+        <li><b>Pet food, seeds, fertiliser:</b> 900–1000 denier, 12 × 12 mesh, 20–25 µm BOPP, often block bottom with gusset.</li>
+        <li><b>Metallised BOPP:</b> same weight as clear BOPP of the same micron; the metallising layer is negligible in grams.</li>
+      </ul>
+      <h3>BOPP bag costing</h3>
+      <p>BOPP film and extrusion coating resin are priced per kilogram and move with the polymer market, so a BOPP bag quote is only as good as the rate date behind it. The costing here uses example rates; in the Nexora app every rate is versioned with an effective-from date, and the bag is costed component-wise (fabric, coating, film, ink, thread) with process-wise conversion cost and waste carried through lamination and printing.</p>
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>How do I convert BOPP micron to GSM?</summary><p>Multiply micron by the film density, about 0.91 g/cm³ for BOPP. 18 micron ≈ 16.4 GSM, 20 micron ≈ 18.2 GSM, 25 micron ≈ 22.8 GSM.</p></details>
+        <details><summary>What coating GSM is used for BOPP lamination?</summary><p>Extrusion coating for BOPP lamination is typically 15–22 GSM of PP or LDPE-based resin. Enter your plant's figure in the coating field.</p></details>
+        <details><summary>Does printing change the weight?</summary><p>Reverse printing on BOPP adds roughly 1–2 GSM of ink over the printed area. The calculator uses 1.2 GSM per printed side.</p></details>
+      </div>
+      <div class="related" style="margin-top:18px;"><a href="/calculator">All bag structures</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/denier-to-gsm">Denier to GSM</a><a href="/gsm-to-gpm">GSM to GPM</a></div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebApplication","name":"BOPP Bag Calculation","url":"https://nexoraofficial.org/bopp-bag-calculation","applicationCategory":"BusinessApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"How do I convert BOPP micron to GSM?","acceptedAnswer":{"@type":"Answer","text":"Multiply micron by the BOPP film density of about 0.91: 18 micron ≈ 16.4 GSM, 20 micron ≈ 18.2 GSM, 25 micron ≈ 22.8 GSM."}},
+      {"@type":"Question","name":"What coating GSM is used for BOPP lamination?","acceptedAnswer":{"@type":"Answer","text":"Extrusion coating for BOPP lamination is typically 15–22 GSM."}},
+      {"@type":"Question","name":"Does printing change the weight of a BOPP bag?","acceptedAnswer":{"@type":"Answer","text":"Reverse printing adds roughly 1–2 GSM of ink over the printed area."}}
+    ]}
+  ]}
+  </script>
+  <script src="/assets/js/calc.js?v={{build}}" defer></script>
+</main>
+
+{{> footer}}
