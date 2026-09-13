@@ -155,8 +155,14 @@
       var bodyTxt = lines.join('\n') + '\n\nPlease arrange a walkthrough for our plant.';
       location.href = 'mailto:info@nexoraofficial.org?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(bodyTxt);
     }
-    if (st) { st.className = 'form-status ok'; st.textContent = 'Thanks ' + d.name.split(' ')[0] + ' — your request is on its way. We reply within one business day.'; }
-    setTimeout(function () { freshForm(form); if (form.id === 'demoForm') closeDemo(); }, 1600);
+    var okMsg = 'Thanks ' + d.name.split(' ')[0] + ' — your request is on its way. We reply within one business day.';
+    if (st) { st.className = 'form-status ok'; st.textContent = okMsg; }
+    setTimeout(function () {
+      freshForm(form);
+      if (form.id === 'demoForm') { closeDemo(); return; }
+      // contact page: keep the confirmation readable for a while after the fields clear
+      if (st) { st.className = 'form-status ok'; st.textContent = okMsg; setTimeout(function () { st.className = 'form-status'; st.textContent = ''; }, 12000); }
+    }, 1600);
   }
 
   /* ---------- Demo modal ---------- */
