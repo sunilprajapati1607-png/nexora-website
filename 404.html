@@ -21,12 +21,19 @@
   <meta name="twitter:title" content="Page not found — Nexora" />
   <meta name="twitter:description" content="The page you were looking for does not exist on nexoraofficial.org." />
   <meta name="twitter:image" content="https://nexoraofficial.org/assets/img/dashboard-hero.jpg" />
-  <link rel="icon" type="image/png" href="/assets/img/logo.png" />
-  <link rel="apple-touch-icon" href="/assets/img/logo.png" />
+  <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
+       the logo beside the search result. Keep these URLs stable. -->
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/assets/img/favicon-48.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon-96.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
+  <meta name="msapplication-TileImage" content="/assets/img/favicon-192.png" />
+  <meta name="msapplication-TileColor" content="#050c1a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609131427" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609131535" />
   <script>
     (function () {
       var t = 'light';
@@ -37,15 +44,48 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Nexora",
-    "url": "https://nexoraofficial.org/",
-    "logo": "https://nexoraofficial.org/assets/img/logo.png",
-    "email": "info@nexoraofficial.org",
-    "telephone": "+91-75671-61607",
-    "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
-    "founder": { "@type": "Person", "name": "Sunil Prajapati" },
-    "description": "ERP, bag weight and cost forecasting software, and industrial tools for the woven sack and packaging industry."
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://nexoraofficial.org/#organization",
+        "name": "Nexora",
+        "alternateName": "Nexora Official",
+        "url": "https://nexoraofficial.org/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://nexoraofficial.org/#logo",
+          "url": "https://nexoraofficial.org/assets/img/logo-square.png",
+          "contentUrl": "https://nexoraofficial.org/assets/img/logo-square.png",
+          "width": 512,
+          "height": 512,
+          "caption": "Nexora"
+        },
+        "image": { "@id": "https://nexoraofficial.org/#logo" },
+        "email": "info@nexoraofficial.org",
+        "telephone": "+91-75671-61607",
+        "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
+        "founder": { "@type": "Person", "name": "Sunil Prajapati" },
+        "description": "ERP, bag weight and cost forecasting software, and industrial tools for the woven sack and packaging industry.",
+        "sameAs": ["https://wa.me/917567161607"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nexoraofficial.org/#website",
+        "url": "https://nexoraofficial.org/",
+        "name": "Nexora",
+        "publisher": { "@id": "https://nexoraofficial.org/#organization" },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://nexoraofficial.org/404#webpage",
+        "url": "https://nexoraofficial.org/404",
+        "name": "Page not found — Nexora",
+        "description": "The page you were looking for does not exist on nexoraofficial.org.",
+        "isPartOf": { "@id": "https://nexoraofficial.org/#website" },
+        "about": { "@id": "https://nexoraofficial.org/#organization" }
+      }
+    ]
   }
   </script>
 </head>
@@ -306,7 +346,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609131427" defer></script>
+<script src="/assets/js/site.js?v=202609131535" defer></script>
 </body>
 </html>
 

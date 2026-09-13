@@ -79,7 +79,7 @@ console.log('sitemap.xml:', urls.length, 'urls');
 // optional dev server with clean URLs (mirrors vercel.json cleanUrls: true)
 if (process.argv.includes('--serve')) {
   const http = require('http');
-  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.xml': 'application/xml', '.txt': 'text/plain', '.json': 'application/json' };
+  const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.xml': 'application/xml', '.txt': 'text/plain', '.json': 'application/json' };
   const port = process.env.PORT || 5173;
   http.createServer((req, res) => {
     let p = decodeURIComponent(req.url.split('?')[0].split('#')[0]);
