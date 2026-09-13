@@ -1,0 +1,154 @@
+<!--
+title: Inside Nexora — Every Screen of the Bag Weight & Costing App
+description: A screen-by-screen tour of the real Nexora desktop application: dashboard, workload, calculation with formula traceability, structure master, RM master with versioned prices, route builder, costed BOM and BOM roll-up.
+priority: 0.8
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <span>App Screens</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-monitor"/></svg> Real screenshots &bull; not a mockup</div>
+      <h1>Inside Nexora — every screen, straight off the shop-floor PC</h1>
+      <p class="lead">Eight screens from the installed desktop application running an actual saved calculation: from the dashboard that tells you what is broken, to the Bill of Materials that reconciles material and conversion cost to the rupee. Click any screen to enlarge.</p>
+    </div>
+  </section>
+
+  <section class="section-tight">
+    <div class="wrap">
+      <nav class="jump reveal" aria-label="Jump to screen">
+        <a href="#s01">01 Dashboard</a><a href="#s02">02 Workload</a><a href="#s03">03 Calculation</a><a href="#s04">04 Structures</a><a href="#s05">05 RM Master</a><a href="#s06">06 Route Builder</a><a href="#s07">07 BOM</a><a href="#s08">08 BOM Roll-up</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:20px;">
+    <div class="wrap">
+      <article class="screen" id="s01" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 01 &bull; DASHBOARD</div>
+          <h2>It tells you what is wrong before you ask</h2>
+          <p>The first screen is a to-do list, not a welcome page. Six live figures across the top, then everything the data says needs fixing, each with a button that takes you straight there.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Cost per bag, material share and waste across every recent calculation</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>"Needs attention" flags processes with no rate, constructions with no route, calculations that cannot yet produce a BOM</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Out-of-tolerance bags called out against their own weight band</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/01-dashboard.webp" alt="Nexora Dashboard screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s02" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 02 &bull; WORKLOAD</div>
+          <h2>Where the work actually is</h2>
+          <p>Usage by construction, most-used first, with the average bag weight beside each one — then the recent calculation log with weight, deviation against target and cost per bag.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Spot instantly which construction dominates your order book</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Every row shows weight, ± vs target and cost per bag together</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A construction with no route is labelled as such, because it cannot be costed</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/02-workload.webp" alt="Nexora Workload screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s03" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 03 &bull; CALCULATION</div>
+          <h2>Every gram traced back to the formula that produced it</h2>
+          <p>The calculation screen splits the bag into components, then shows the full traceability chain beside it — cut length, body width and length, area, base-fabric weight, denier, UL GPM and LAMI GPM.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Component-wise breakdown with each part's share of total bag weight</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Click any field to see how that value was derived</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>GSM quick-adjust stays pinned while you scroll, recalculating live</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>What-if analysis tests a change without touching the saved calculation</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/03-calculation.webp" alt="Nexora Calculation screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s04" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 04 &bull; STRUCTURES</div>
+          <h2>29 bag constructions, each with its own field set</h2>
+          <p>Every construction carries its own scope tags and active field count — a 1L stitch bag needs 27 fields, a block bottom with patch needs 80. The engine only asks for what that construction actually uses.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Scope tags: laminated, block bottom, open mouth, liner, backseam, easy-open, patch metallised</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Field counts make it obvious how much complexity each construction carries</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Duplicate an existing structure to build a variant in seconds</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/04-structures.webp" alt="Nexora Structures screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s05" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 05 &bull; RM MASTER</div>
+          <h2>A new price never overwrites the old one</h2>
+          <p>Materials sit in groups — granule, BOPP film, handle — and each keeps a versioned price history with effective-from dates, so a resin rate change can never silently rewrite a locked production batch.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Price versions with effective-from dates and notes</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>"Used in" shows every route and step that consumes the material, and at what basis</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Default waste percentage held against the material itself</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/05-rm-master.webp" alt="Nexora RM Master screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s06" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 06 &bull; ROUTE BUILDER</div>
+          <h2>Build the route the way the plant actually runs</h2>
+          <p>Drag processes into order — Tape, Weaving, Lamination, Flexo Printing, Finishing, Segregation, Packing — and each step declares what it consumes and what it produces.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Input → output material type shown on every process</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A sense check warns when a step expects something no earlier step produces</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Warnings never block a save — guidance, not a rule</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Routes link back to the constructions that use them</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/06-route-builder.webp" alt="Nexora Route Builder screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s07" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 07 &bull; BOM</div>
+          <h2>Material plus conversion, reconciled to the rupee</h2>
+          <p>The BOM turns a saved calculation into a per-order material requirement — kilograms and running metres — with material cost and conversion cost rolled up separately and then proved against each other.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Material, conversion, total and cost per bag as four live figures</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Each material line shows kg for basis, rate, cost and share of total</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A green reconciliation line confirms the BOM total matches the roll-up exactly</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/07-bom.webp" alt="Nexora BOM screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+
+      <article class="screen" id="s08" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 08 &bull; BOM ROLL-UP</div>
+          <h2>Waste carried forward, never credited back</h2>
+          <p>Conversion lines show the kilograms passing through each process at its own rate. Kilograms carry the waste of every stage they pass through — scrap is still paid for, so "lost to waste" is money gone, not a figure deducted from the total.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Process-level conversion cost with % of total</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Every figure is read from the roll-up above, never recomputed</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Saved calculations and their BOMs listed together, with cost per bag computed live</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/08-bom-rollup.webp" alt="Nexora BOM Roll-up screen" loading="lazy" width="1560" height="819" /><figcaption>Click to enlarge</figcaption></figure>
+      </article>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Want to see it run on your own bag spec?</h2>
+      <p>Send your fabric spec sheet on WhatsApp or email and we will return the full weight &amp; cost break-up within one business day.</p>
+      <div class="hero-cta"><button class="btn btn-white btn-lg" data-open-demo data-interest="Bag Weight & Cost Forecasting">Request a Demo</button><a class="btn btn-glass btn-lg" href="/calculator">Try the free calculator</a></div>
+    </div>
+  </section>
+</main>
+
+{{> footer}}

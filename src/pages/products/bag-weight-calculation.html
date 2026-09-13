@@ -1,0 +1,211 @@
+<!--
+title: Bag Weight & Cost Forecasting Software — Nexora for Woven Sack Plants
+description: Nexora Bag Weight Calculation forecasts GSM, component-wise bag weight, raw material consumption with waste, process resources and a costed BOM for 29 PP/PE woven sack and BOPP bag constructions. Offline-first Windows desktop app.
+priority: 0.9
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/products">Products</a> / <span>Bag Weight &amp; Cost Forecasting</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-scale"/></svg> Flagship product &bull; Windows desktop &bull; offline-first</div>
+      <h1>Bag weight, RM &amp; cost forecasting for woven sacks</h1>
+      <p class="lead">From denier and mesh to a costed Bill of Materials: Nexora calculates every gram, forecasts every kilogram of raw material and resource, and locks the answer with a revision history you can print for an audit.</p>
+      <div class="hero-cta">
+        <button class="btn btn-primary btn-lg" data-open-demo data-interest="Bag Weight & Cost Forecasting">Book a Demo on Your Spec</button>
+        <a class="btn btn-glass btn-lg" href="/calculator">Try the Free Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><b>29</b><span>constructions: stitched, BOPP, block bottom, pinch bottom, liner, handle, backseam</span></div>
+        <div class="stat"><b>11</b><span>production processes with resource rates per kg</span></div>
+        <div class="stat"><b>100%</b><span>traceable — every intermediate value shows its formula</span></div>
+        <div class="stat"><b>0</b><span>overwrites — every price change and approval is a new version</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">How the forecast works</div>
+        <h2>Five steps from spec to cost per bag</h2>
+      </div>
+      <div class="steps reveal">
+        <div class="step"><h4>Pick the construction</h4><p>Choose one of 29 structures. The engine only asks for the fields that construction actually uses.</p></div>
+        <div class="step"><h4>Enter the spec</h4><p>Size, mesh, denier, GSM, coating, patch, valve, liner, print — with target weight and tolerance band.</p></div>
+        <div class="step"><h4>Weight breakdown</h4><p>Component-wise grams for body, patch, valve, coating, BOPP, ink, adhesive, thread — with % share.</p></div>
+        <div class="step"><h4>Route &amp; RM forecast</h4><p>Order quantity flows through the route. Kilograms per material, waste carried forward at every stage.</p></div>
+        <div class="step"><h4>Costed BOM</h4><p>Material cost from the versioned price master plus conversion from process resource rates, reconciled.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature splits -->
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="kicker">Calculation</div>
+          <h2>Every gram traced back to the formula that produced it</h2>
+          <p>The calculation screen splits the bag into components and shows the full traceability chain beside it — cut length, body width and length, area, base-fabric weight, denier, UL GPM and LAMI GPM. Click any field to see how the value was derived.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Component-wise breakdown with share of total bag weight</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>GSM quick-adjust stays pinned while you scroll, recalculating live</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>What-if analysis tests a change without touching the saved calculation</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Target / minimum / maximum weight with tolerance and wastage</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/03-calculation.webp" alt="Nexora calculation screen with component-wise weight breakdown and formula traceability" loading="lazy" width="1560" height="819" /></figure>
+      </div>
+      <div class="divider" style="margin:60px 0;"></div>
+      <div class="split rev">
+        <div class="reveal">
+          <div class="kicker">Raw material &amp; price master</div>
+          <h2>A new price never overwrites the old one</h2>
+          <p>Materials sit in groups — granule, masterbatch, BOPP film, ink, adhesive, handle, liner — and each keeps a versioned price history with effective-from dates. A resin rate change can never silently rewrite a locked production batch.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Price versions with effective-from dates and notes</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Excel-like bulk price update when the market moves</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>"Used in" shows every route and step that consumes the material</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Default waste percentage held against the material itself</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/05-rm-master.webp" alt="Nexora RM master with versioned price history" loading="lazy" width="1560" height="819" /></figure>
+      </div>
+      <div class="divider" style="margin:60px 0;"></div>
+      <div class="split">
+        <div class="reveal">
+          <div class="kicker">Process, route &amp; resources</div>
+          <h2>Build the route the way the plant actually runs</h2>
+          <p>Drag processes into order — tape extrusion, weaving, lamination, flexo printing, cutting, stitching, finishing, segregation, packing — and each step declares what it consumes and produces. Resource rates (manpower, electricity, machine) are held per process as cost per kilogram.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A bag that skips lamination is simply a shorter route, not a code change</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A sense check warns when a step expects something no earlier step produces</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Component-wise BOM: body, patch and liner can each run their own route</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Saved workflows: set the recipe up once, load it on the next bag of that construction</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/06-route-builder.webp" alt="Nexora route builder with drag-and-drop processes" loading="lazy" width="1560" height="819" /></figure>
+      </div>
+      <div class="divider" style="margin:60px 0;"></div>
+      <div class="split rev">
+        <div class="reveal">
+          <div class="kicker">Costed BOM &amp; roll-up</div>
+          <h2>Material plus conversion, reconciled to the rupee</h2>
+          <p>The BOM turns a saved calculation into a per-order material requirement — kilograms and running metres — with material cost and conversion cost rolled up separately and then proved against each other. Waste is carried forward, never credited back: scrap is still paid for.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Material, conversion, total and cost per bag as four live figures</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Process-level conversion cost with % of total</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A green reconciliation line confirms the BOM matches the roll-up exactly</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Print, PDF and Excel export of the calculation sheet and BOM</li>
+          </ul>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/08-bom-rollup.webp" alt="Nexora BOM roll-up with process-level conversion cost" loading="lazy" width="1560" height="819" /></figure>
+      </div>
+      <div style="text-align:center; margin-top:44px;"><a class="btn btn-outline" href="/screens">See all eight app screens <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- Sample sheet -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Audit-ready output</div>
+        <h2>The calculation sheet your QA and supervisors sign off on</h2>
+        <p>Every approved calculation prints as a standardised sheet — item, construction, technical spec, weight breakdown and tolerance band. Below is a sample.</p>
+      </div>
+      <div class="sheet reveal" style="max-width:820px; margin:0 auto;">
+        <div class="sh-head">
+          <div style="display:flex; align-items:center; gap:10px;"><img src="/assets/img/logo.png" alt="" /><div><b style="font-size:18px; letter-spacing:.08em;">NEXORA</b><div style="font-size:10px; font-weight:700; text-transform:uppercase;">Bag Weight Calculation Sheet</div></div></div>
+          <div class="mono" style="text-align:right; font-size:11.5px;"><div>Calc No: <b>CAL-2026-000008 &bull; Rev 1</b></div><div>Item Code: <b>NX-00008</b></div><div>Status: <b style="color:#059669;">APPROVED</b></div></div>
+        </div>
+        <table><tr><td><b>Customer:</b> Sample Cement Ltd</td><td><b>Item:</b> 20 kg cement bag</td><td><b>Construction:</b> 2L Block Bottom</td></tr></table>
+        <h5>Technical specifications</h5>
+        <table>
+          <tr><td>Width: <b>500 mm</b></td><td>Length: <b>600 mm</b></td><td>Patch depth: <b>100 mm</b></td></tr>
+          <tr><td>Valve depth: <b>150 mm</b></td><td>Mesh warp: <b>32</b></td><td>Mesh weft: <b>32</b></td></tr>
+          <tr><td>Body fabric: <b>63 g/m²</b></td><td>Body coating: <b>23 g/m²</b></td><td>Patch fabric: <b>61 g/m²</b></td></tr>
+        </table>
+        <h5>Weight breakdown</h5>
+        <table>
+          <tr><th>Component</th><th class="num">Weight (g)</th><th class="num">% share</th></tr>
+          <tr><td>Body (fabric + coating + BOPP + metallised)</td><td class="num">62.68</td><td class="num">83.1%</td></tr>
+          <tr><td>Top patch</td><td class="num">4.43</td><td class="num">5.9%</td></tr>
+          <tr><td>Bottom patch</td><td class="num">4.17</td><td class="num">5.5%</td></tr>
+          <tr><td>Valve strip</td><td class="num">4.18</td><td class="num">5.5%</td></tr>
+          <tr class="total"><td>Total bag weight</td><td class="num">75.45</td><td class="num">100.0%</td></tr>
+        </table>
+        <div class="tol"><span>Target: <b>75.00 g</b></span><span>Calculated: <b>75.45 g</b></span><span>Tolerance band: <b>73.50 – 76.50 g</b> (within spec)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editions -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Editions &amp; licensing</div>
+        <h2>One engine, two ways to run it</h2>
+        <p>The company is the licence: one key, as many seats as you need, one clock. Extend the company and every machine extends with it.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <span class="tag blue">Licensed edition</span>
+          <h3 style="margin-top:12px;">For plants and customers</h3>
+          <p>Weight calculation on every seat, costing and BOM served by the Nexora costing service, licence console for your admin, optional offline allowance set per company.</p>
+          <ul class="checks" style="margin-top:14px;">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>One company key, N machines, one expiry</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Only counts and minutes leave the plant — never a calculation, material, price or name</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Expiry is read-only, never a shutdown: everything saved still opens and prints</li>
+          </ul>
+        </div>
+        <div class="card reveal">
+          <span class="tag green">Try it first</span>
+          <h3 style="margin-top:12px;">7-day demo on your own PC</h3>
+          <p>Install, skip the key, and you get a private single-seat demo company for seven days — real engine, real screens, your own bag specs.</p>
+          <ul class="checks" style="margin-top:14px;">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Windows desktop application, local-first data</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Backup and restore of all masters and calculations</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>We walk you through your first construction on a call</li>
+          </ul>
+          <div style="margin-top:18px;"><button class="btn btn-primary" data-open-demo data-interest="Bag Weight & Cost Forecasting">Request the demo build</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt">
+    <div class="wrap" style="max-width:820px;">
+      <div class="sec-head reveal"><h2>Frequently asked</h2></div>
+      <div class="faq reveal">
+        <details><summary>Does it work offline on the shop-floor PC?</summary><p>Yes. Nexora is an offline-first Windows desktop application. Data lives on the machine, with backup and restore. The licensed edition checks in with the licence service and can be granted an offline allowance per company.</p></details>
+        <details><summary>Can I edit the constants and formulas?</summary><p>The Constants Master is yours to edit, with per-construction overrides, and the Formula Traceability card shows every formula on screen by design. The engine itself is locked so every machine gives the same answer.</p></details>
+        <details><summary>How does it handle a resin price change?</summary><p>A new price is a new version with its own effective-from date. Approved calculations keep the rate they were costed at; new ones pick up the new rate. Bulk update is Excel-like when the whole market moves.</p></details>
+        <details><summary>Which bag constructions are covered?</summary><p>29 standard structures: plain and printed PP/HDPE woven sacks, BOPP laminated, block bottom, pinch bottom, valve, liner, handle, backseam and easy-open variants, each with its own field set and weight logic. New constructions can be added as structures, not code.</p></details>
+        <details><summary>Is this the Nexora ERP?</summary><p>It is the technical calculation module that the wider <a href="/products/erp">Nexora ERP</a> is built around. Masters created here — materials, prices, processes, routes — carry into the ERP modules.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>See it run on your own bag spec</h2>
+      <p>Send a spec sheet and get the full weight &amp; cost break-up back within one business day.</p>
+      <div class="hero-cta">
+        <button class="btn btn-white btn-lg" data-open-demo data-interest="Bag Weight & Cost Forecasting">Request a Demo</button>
+        <a class="btn btn-glass btn-lg" href="/calculator">Free Calculator</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{> footer}}

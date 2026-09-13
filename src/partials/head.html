@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://nexoraofficial.org{{path}}" />
+  <meta name="theme-color" content="#050c1a" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nexora" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:url" content="https://nexoraofficial.org{{path}}" />
+  <meta property="og:image" content="https://nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{title}}" />
+  <meta name="twitter:description" content="{{description}}" />
+  <meta name="twitter:image" content="https://nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <link rel="icon" type="image/png" href="/assets/img/logo.png" />
+  <link rel="apple-touch-icon" href="/assets/img/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/css/site.css?v={{build}}" />
+  <script>
+    (function () {
+      var t = 'light';
+      try { t = localStorage.getItem('nexora-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Nexora",
+    "url": "https://nexoraofficial.org/",
+    "logo": "https://nexoraofficial.org/assets/img/logo.png",
+    "email": "info@nexoraofficial.org",
+    "telephone": "+91-75671-61607",
+    "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
+    "founder": { "@type": "Person", "name": "Sunil Prajapati" },
+    "description": "ERP, bag weight and cost forecasting software, and industrial tools for the woven sack and packaging industry."
+  }
+  </script>
+</head>
+<body class="{{bodyClass}}">
+{{> icons}}

@@ -1,0 +1,117 @@
+<!--
+title: Free Woven Sack Bag Weight & GSM Calculator + RM Cost Forecast | Nexora
+description: Free online calculator for PP/HDPE woven sack fabric GSM, bag weight and cost per bag from denier, mesh and size — plus an order-level raw material and cost forecast tool. No login, no signup.
+priority: 0.9
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <span>Free Calculator</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-calc"/></svg> Free tools &bull; no login, no signup</div>
+      <h1>Woven sack GSM, bag weight &amp; RM forecast calculator</h1>
+      <p class="lead">Two quick tools from the Nexora engine. The first turns denier, mesh and size into fabric GSM, bag weight and cost per bag. The second forecasts raw material and cost for a whole order. Type and the numbers update instantly.</p>
+    </div>
+  </section>
+
+  <!-- Tool 1: bag weight -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Tool 1</div>
+        <h2>Fabric GSM &amp; bag weight</h2>
+        <p>Plain single-layer body fabric on a tubular loom. The full desktop app adds patches, valves, liners, BOPP, ink and 29 constructions with saved history.</p>
+      </div>
+      <div class="calc reveal">
+        <div class="calc-in">
+          <h3>Bag specification</h3>
+          <div class="calc-fields">
+            <div class="field"><label for="c_len">Bag length (cm)</label><input type="number" id="c_len" value="90" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="c_wid">Bag width (cm)</label><input type="number" id="c_wid" value="55" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="c_epi">Warp mesh (EPI)</label><input type="number" id="c_epi" value="10" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="c_ppi">Weft mesh (PPI)</label><input type="number" id="c_ppi" value="10" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="c_den">Tape denier</label><input type="number" id="c_den" value="800" min="0" step="10" inputmode="decimal"></div>
+            <div class="field"><label for="c_rate">Fabric rate (₹ / kg)</label><input type="number" id="c_rate" value="95" min="0" step="1" inputmode="decimal"></div>
+          </div>
+          <label class="calc-check"><input type="checkbox" id="c_lam"> BOPP / lamination coating applied (+12 GSM)</label>
+          <p class="calc-note">Assumes tubular fabric (two layers), 5% cutting and stitching allowance and 1.2 g of stitching thread. Indicative only — your plant's constants may differ.</p>
+        </div>
+        <div class="calc-out">
+          <div class="calc-big"><small>Fabric GSM</small><b><span id="c_gsm">0</span><em>g/m²</em></b></div>
+          <div class="calc-rows">
+            <div><span>Fabric area (2-layer tube)</span><b id="c_area">0 m²</b></div>
+            <div><span>Fabric weight incl. allowance</span><b id="c_fw">0 g</b></div>
+            <div class="total"><span>Finished bag weight</span><b id="c_bw">0 g</b></div>
+            <div><span>Cost per bag (fabric)</span><b id="c_cost">₹0.000</b></div>
+            <div><span>Cost per 1,000 bags</span><b id="c_cost1000">₹0</b></div>
+          </div>
+          <div class="calc-formula" id="c_formula">GSM = (Denier × EPI + Denier × PPI) / 228.6</div>
+          <button class="btn btn-primary btn-block" data-open-demo data-interest="Bag Weight & Cost Forecasting">Get exact costing for your full spec <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool 2: order forecast -->
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Tool 2</div>
+        <h2>Order-level RM &amp; cost forecast</h2>
+        <p>How much granule and masterbatch will an order consume, and what will it cost including waste and conversion? The desktop app does this per material and per process; this is the one-line version.</p>
+      </div>
+      <div class="calc reveal">
+        <div class="calc-in">
+          <h3>Order inputs</h3>
+          <div class="calc-fields">
+            <div class="field"><label for="f_qty">Order quantity (bags)</label><input type="number" id="f_qty" value="100000" min="0" step="1000" inputmode="numeric"></div>
+            <div class="field"><label for="f_bag">Bag weight (g)</label><input type="number" id="f_bag" value="75.45" min="0" step="0.05" inputmode="decimal"></div>
+            <div class="field"><label for="f_waste">Total process waste (%)</label><input type="number" id="f_waste" value="4" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="f_mb">Masterbatch / filler share (%)</label><input type="number" id="f_mb" value="3" min="0" max="100" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="f_pp">PP granule rate (₹ / kg)</label><input type="number" id="f_pp" value="98" min="0" step="1" inputmode="decimal"></div>
+            <div class="field"><label for="f_mbrate">Masterbatch rate (₹ / kg)</label><input type="number" id="f_mbrate" value="160" min="0" step="1" inputmode="decimal"></div>
+            <div class="field" style="grid-column:1/-1;"><label for="f_conv">Conversion cost — power, manpower, machine (₹ / kg)</label><input type="number" id="f_conv" value="14" min="0" step="0.5" inputmode="decimal"><div class="hint">In Nexora this comes from resource rates held per process on the route.</div></div>
+          </div>
+          <p class="calc-note">Waste is applied to the whole order weight and carried in the cost — scrap is still paid for. Ink, film, liner and thread are not included here; the full app forecasts each material separately.</p>
+        </div>
+        <div class="calc-out">
+          <div class="calc-big"><small>Forecast cost of this order</small><b><span id="f_total">₹0</span></b></div>
+          <div class="forecast-out">
+            <div class="k"><small>Net bag weight</small><b id="f_net">0 kg</b></div>
+            <div class="k"><small>Gross RM incl. waste</small><b id="f_gross">0 kg</b></div>
+            <div class="k"><small>PP granule to buy</small><b id="f_ppkg">0 kg</b></div>
+            <div class="k"><small>Masterbatch to buy</small><b id="f_mbkg">0 kg</b></div>
+            <div class="k"><small>Lost to waste</small><b id="f_wastekg">0 kg</b></div>
+            <div class="k"><small>Material cost</small><b id="f_mat">₹0</b></div>
+            <div class="k"><small>Conversion cost</small><b id="f_convc">₹0</b></div>
+            <div class="k hi"><small>Cost per bag</small><b id="f_perbag">₹0.000</b></div>
+          </div>
+          <button class="btn btn-primary btn-block" data-open-demo data-interest="Bag Weight & Cost Forecasting">Forecast every material &amp; process in Nexora <svg class="icon"><use href="#i-arrow"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="split">
+        <div class="reveal">
+          <div class="eyebrow">What the full app adds</div>
+          <h2>From a quick estimate to a locked, audit-ready costing</h2>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>29 constructions with component-wise weights: body, patch, valve, liner, coating, BOPP, ink, adhesive</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Material-wise RM forecast with waste carried through each process</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Resource rates per process, versioned RM prices, reconciled BOM</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Revision history, print / PDF / Excel, formula traceability on every value</li>
+          </ul>
+          <div class="hero-cta"><a class="btn btn-primary" href="/products/bag-weight-calculation">See the product</a><a class="btn btn-outline" href="/screens">Real app screens</a></div>
+        </div>
+        <figure class="shot reveal" data-zoom><img src="/assets/img/screens/07-bom.webp" alt="Nexora costed BOM screen" loading="lazy" width="1560" height="819" /></figure>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{> footer}}
