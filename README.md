@@ -12,9 +12,9 @@ build.js        assembles src → static HTML at the repo root, writes sitemap.x
 ```
 
 1. Edit files under `src/` (never the built HTML at the root — it is overwritten).
-2. `npm run build` (or `node build.js`) — rebuilds every page + sitemap.
+2. `npm run site:build` (or `node build.js`) — rebuilds every page + sitemap.
 3. `npm run serve` — local preview at http://localhost:5173 with Vercel-style clean URLs.
-4. Commit and push, or `npm run deploy` (`vercel --prod`) from the linked folder.
+4. Commit and push, then `npm run deploy` (`vercel --prod`). The Vercel project is `nexora-11092026` (personal account); GitHub is not connected, so a push alone does not deploy.
 
 Clean URLs are on (`vercel.json`): `/products/erp` serves `products/erp.html`.
 The Formspree endpoint for the forms is in `assets/js/site.js` (`FORMSPREE`).

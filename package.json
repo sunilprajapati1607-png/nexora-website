@@ -4,7 +4,7 @@
   "private": true,
   "description": "nexoraofficial.org — static multi-page site (built from src/ by build.js)",
   "scripts": {
-    "build": "node build.js",
+    "site:build": "node build.js",
     "serve": "node build.js --serve",
     "deploy": "node build.js && npx vercel --prod"
   }
