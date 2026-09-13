@@ -18,3 +18,16 @@ build.js        assembles src → static HTML at the repo root, writes sitemap.x
 
 Clean URLs are on (`vercel.json`): `/products/erp` serves `products/erp.html`.
 The Formspree endpoint for the forms is in `assets/js/site.js` (`FORMSPREE`).
+
+## If the domain does not update after a deploy
+
+`vercel --prod` on this Windows machine sometimes crashes at exit (libuv assertion) *after* the
+deployment is created but *before* the production alias is moved. Check with
+`npx vercel ls nexora-11092026`, then point the domain at the newest deployment:
+
+```
+npx vercel alias set https://<newest-deployment>.vercel.app www.nexoraofficial.org
+```
+
+The deploy folder `D:\nexora-deploy` must stay linked to project **nexora-11092026**
+(`.vercel/project.json`). The old project name `nexoraofficial_new` is not reachable from this account.
