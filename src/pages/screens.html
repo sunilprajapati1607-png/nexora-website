@@ -1,6 +1,6 @@
 <!--
 title: Inside Nexora — Every Screen of the Bag Weight & Costing App
-description: A screen-by-screen tour of the real Nexora desktop application: dashboard, workload, calculation with formula traceability, structure master, RM master with versioned prices, route builder, costed BOM and BOM roll-up.
+description: A screen-by-screen tour of the real Nexora desktop application: dashboard, workload, calculation with formula traceability, structure master, RM master with versioned prices, route builder, costed BOM, BOM roll-up and the 3D bag view.
 priority: 0.8
 -->
 {{> head}}
@@ -12,14 +12,14 @@ priority: 0.8
       <div class="crumbs"><a href="/">Home</a> / <span>App Screens</span></div>
       <div class="eyebrow"><svg class="icon"><use href="#i-monitor"/></svg> Real screenshots &bull; not a mockup</div>
       <h1>Inside Nexora — every screen, straight off the shop-floor PC</h1>
-      <p class="lead">Eight screens from the installed desktop application running an actual saved calculation: from the dashboard that tells you what is broken, to the Bill of Materials that reconciles material and conversion cost to the rupee. Click any screen to enlarge.</p>
+      <p class="lead">Nine screens from the installed desktop application running an actual saved calculation: from the dashboard that tells you what is broken, through the Bill of Materials that reconciles material and conversion cost to the rupee, to the 3D view that draws the bag and takes it apart. Click any screen to enlarge.</p>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="wrap">
       <nav class="jump reveal" aria-label="Jump to screen">
-        <a href="#s01">01 Dashboard</a><a href="#s02">02 Workload</a><a href="#s03">03 Calculation</a><a href="#s04">04 Structures</a><a href="#s05">05 RM Master</a><a href="#s06">06 Route Builder</a><a href="#s07">07 BOM</a><a href="#s08">08 BOM Roll-up</a>
+        <a href="#s01">01 Dashboard</a><a href="#s02">02 Workload</a><a href="#s03">03 Calculation</a><a href="#s04">04 Structures</a><a href="#s05">05 RM Master</a><a href="#s06">06 Route Builder</a><a href="#s07">07 BOM</a><a href="#s08">08 BOM Roll-up</a><a href="#s09">09 3D Bag View</a>
       </nav>
     </div>
   </section>
@@ -142,6 +142,30 @@ priority: 0.8
     </div>
   </section>
 
+      <article class="screen" id="s09" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 09 &bull; 3D BAG VIEW</div>
+          <h2>The bag drawn, turned and taken apart</h2>
+          <p>The newest screen. Nexora draws the construction your specification describes, prints the item name on its face, and lets you pull it apart part by part — each one carrying its own size, weight and share of the bag.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A pasted bag is drawn as a block whose ends are its patches; an open-mouth sack as the lay-flat tube</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Body, patches, valve, handle, liner, yarn, easy-open tape and back seam, each in its own colour</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>The flat view beside it is to scale and dimensioned, so a cutting size can be checked before the loom runs</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A parts table with size, weight and share, and the bag's total against its target</li>
+          </ul>
+        </div>
+        <figure class="video-frame reveal" style="margin:0;">
+          <video controls preload="none" playsinline poster="/assets/img/3d-view-poster.jpg" width="1902" height="998"
+                 aria-label="The Nexora 3D bag view turning a block bottom cement bag and pulling it apart into its parts">
+            <source src="/assets/video/nexora-3d-bag-view.mp4" type="video/mp4" />
+            Your browser cannot play this video. <a href="/assets/video/nexora-3d-bag-view.mp4">Download it instead</a>.
+          </video>
+          <figcaption>32 seconds, recorded in the application</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
   <section class="cta">
     <div class="wrap">
       <h2>Want to see it run on your own bag spec?</h2>
@@ -151,4 +175,7 @@ priority: 0.8
   </section>
 </main>
 
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoObject","name":"Nexora 3D bag view — a block bottom cement bag drawn, turned and taken apart","description":"The Nexora bag weight calculation software draws the bag a specification describes, prints the item name on its face, turns it, and pulls it apart into body, patches and valve with the size, weight and share of each part.","thumbnailUrl":"https://www.nexoraofficial.org/assets/img/3d-view-poster.jpg","uploadDate":"2026-09-14","duration":"PT33S","contentUrl":"https://www.nexoraofficial.org/assets/video/nexora-3d-bag-view.mp4","embedUrl":"https://www.nexoraofficial.org/screens#s09","publisher":{"@type":"Organization","name":"Nexora","logo":{"@type":"ImageObject","url":"https://www.nexoraofficial.org/assets/img/logo-square.png"}}}
+  </script>
 {{> footer}}
