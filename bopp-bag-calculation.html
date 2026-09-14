@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609140742" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609141445" />
   <script>
     (function () {
       var t = 'light';
@@ -197,6 +197,7 @@
             <a href="/gsm-to-gpm"><svg class="icon"><use href="#i-route"/></svg><span><b>GSM ↔ GPM</b><small>Grams per square metre to grams per running metre</small></span></a>
             <a href="/denier-to-gpm"><svg class="icon"><use href="#i-trend"/></svg><span><b>Denier ↔ GPM</b><small>Denier, mesh and width to fabric GPM</small></span></a>
             <a href="/fabric-weight-calculator"><svg class="icon"><use href="#i-grid"/></svg><span><b>Width × Length × GSM = Weight</b><small>Fabric, bag and roll weight from GSM</small></span></a>
+            <a href="/liner-calculator"><svg class="icon"><use href="#i-layers"/></svg><span><b>LDPE Liner Weight</b><small>Lay-flat width, seal and micron or gauge</small></span></a>
           </div>
         </li>
         <li><a href="/screens" data-nav="/screens">App Screens</a></li>
@@ -228,11 +229,11 @@
 
   <section class="section" style="padding-top:44px;">
     <div class="wrap">
-      <div class="calc sim" id="nxCalc" data-preset="4l-bopp-stitch">
+      <div class="calc sim" id="nxCalc" data-preset="3l-bopp-stitch">
   <div class="calc-in">
     <div class="sim-head">
       <h3>Bag specification</h3>
-      <div class="unit-toggle" role="group" aria-label="Units"><button type="button" class="on" data-unit="cm">cm</button><button type="button" data-unit="in">inch</button></div>
+      <div class="unit-toggle" role="group" aria-label="Units"><button type="button" data-unit="mm">mm</button><button type="button" class="on" data-unit="cm">cm</button><button type="button" data-unit="in">inch</button></div>
     </div>
 
     <div class="field" style="margin-bottom:16px;">
@@ -260,23 +261,25 @@
       <div class="hint">Mesh, denier and GSM are one equation, so a mesh change has to move one of the other two. Set this first, then enter the values below. Typing in either box always recalculates the other.</div>
     </div>
     <div class="calc-fields">
-      <div class="field" style="grid-column:1/-1;"><label for="s_mesh">Mesh (warp × weft per inch)</label><select id="s_mesh"></select></div>
-      <div class="field" id="f_meshcustom" style="grid-column:1/-1;" hidden><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="s_epi">Warp (EPI)</label><input type="number" id="s_epi" value="10" min="0" step="0.5"></div><div><label for="s_ppi">Weft (PPI)</label><input type="number" id="s_ppi" value="10" min="0" step="0.5"></div></div></div>
+      <div class="field" style="grid-column:1/-1;"><label for="s_mesh">Mesh (per inch)</label><select id="s_mesh"></select><div class="hint">Warp and weft carry the same count, so one figure covers both.</div></div>
+      <div class="field" id="f_meshcustom" style="grid-column:1/-1;" hidden><label for="s_meshcustom">Custom mesh (per inch)</label><input type="number" id="s_meshcustom" value="10" min="1" step="0.5" inputmode="decimal"></div>
       <div class="field"><label for="s_gsm">Fabric GSM <span class="auto-tag" id="tag_gsm" hidden>auto</span></label><input type="number" id="s_gsm" min="0" step="0.5" inputmode="decimal"></div>
       <div class="field"><label for="s_den">Tape denier <span class="auto-tag" id="tag_den">auto</span></label><input type="number" id="s_den" min="0" step="10" inputmode="decimal"></div>
     </div>
     <p class="sync-note" id="s_syncnote"></p>
 
-    <div class="fieldset-title">Lamination &amp; layers</div>
-    <div class="calc-fields">
-      <div class="field"><label for="s_coat">Coating / lamination GSM</label><input type="number" id="s_coat" min="0" step="1" inputmode="decimal"><div class="hint">0 for an uncoated 1L bag</div></div>
-      <div class="field"><label for="s_coat_sd">Coating applied</label><select id="s_coat_sd"><option value="both">Both sides (total GSM)</option><option value="one">One side</option></select></div>
-      <div class="field"><label for="s_bopp">BOPP film (micron)</label><input type="number" id="s_bopp" min="0" step="1" inputmode="decimal"><div class="hint">GSM = micron × 0.92</div></div>
-      <div class="field"><label for="s_bopp_sd">BOPP applied</label><select id="s_bopp_sd"><option value="both">Both sides</option><option value="one">One side</option></select></div>
-      <div class="field"><label for="s_met">Metallised film (micron)</label><input type="number" id="s_met" min="0" step="1" inputmode="decimal"><div class="hint">0 if not used</div></div>
-      <div class="field"><label for="s_liner">LDPE liner (micron)</label><input type="number" id="s_liner" min="0" step="5" inputmode="decimal"><div class="hint">0 = no liner</div></div>
-      <div class="field"><label for="s_print">Printing</label><select id="s_print"><option value="0">None</option><option value="1">One side</option><option value="2">Both sides</option></select><div class="hint">Adds 1.5 GSM ink to the film layer</div></div>
+    <div id="lam_block">
+      <div class="fieldset-title">Lamination &amp; layers</div>
+      <div class="calc-fields">
+        <div class="field" id="f_coat"><label for="s_coat">Coating / lamination GSM</label><input type="number" id="s_coat" min="0" step="1" inputmode="decimal"></div>
+        <div class="field" id="f_coat_sd"><label for="s_coat_sd">Coating applied</label><select id="s_coat_sd"><option value="both">Both sides (total GSM)</option><option value="one">One side</option></select></div>
+        <div class="field" id="f_bopp"><label for="s_bopp">BOPP film (micron)</label><input type="number" id="s_bopp" min="0" step="1" inputmode="decimal"><div class="hint">GSM = micron × 0.92</div></div>
+        <div class="field" id="f_bopp_sd"><label for="s_bopp_sd">BOPP applied</label><select id="s_bopp_sd"><option value="both">Both sides</option><option value="one">One side</option></select></div>
+        <div class="field" id="f_met"><label for="s_met">Metallised film (micron)</label><input type="number" id="s_met" min="0" step="1" inputmode="decimal"><div class="hint">Adhesive 2.5 GSM added with it</div></div>
+        <div class="field" id="f_print"><label for="s_print">Printing</label><select id="s_print"><option value="0">None</option><option value="1">One side</option><option value="2">Both sides</option></select><div class="hint">Adds 1.5 GSM ink to the film layer</div></div>
+      </div>
     </div>
+    <p class="hint" id="lam_none" hidden style="margin-top:14px;"><b>A 1 Layer bag has no lamination.</b> It is bare woven fabric, so there is no coating, no BOPP and no metallised film to enter. Pick a 2, 3 or 4 Layer construction above to add them.</p>
 
     <div class="fieldset-title">Order</div>
     <div class="calc-fields">
@@ -295,17 +298,17 @@
         <div class="field"><label for="p_coat">Coating / lamination</label><input type="number" id="p_coat" step="1"></div>
         <div class="field"><label for="p_bopp">BOPP film</label><input type="number" id="p_bopp" step="1"></div>
         <div class="field"><label for="p_met">Metallised film</label><input type="number" id="p_met" step="1"></div>
-        <div class="field"><label for="p_liner">LDPE liner</label><input type="number" id="p_liner" step="1"></div>
         <div class="field"><label for="p_ink">Printing ink</label><input type="number" id="p_ink" step="1"></div>
         <div class="field"><label for="p_conv">Conversion (power, labour, machine)</label><input type="number" id="p_conv" step="0.5"></div>
       </div>
     </div>
-    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora desktop engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92; liner by gauge ÷ 3300. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
+    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora desktop engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92. A liner is a separate article — use the <a href="/liner-calculator">liner calculator</a> for it. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
   </div>
 
   <div class="calc-out">
     <div class="calc-big"><small>Finished bag weight</small><b><span id="o_total">0</span><em>g / bag</em></b><div class="o-sub" id="o_structname"></div></div>
     <div class="calc-rows">
+      <div><span>Construction</span><b id="o_layers">—</b></div>
       <div><span>Tape denier · fabric GSM</span><b><span id="o_den">0</span> · <span id="o_gsm">0</span></b></div>
       <div><span>Laminated GSM (fabric + coating + films)</span><b id="o_gsmlam">0</b></div>
       <div><span>UL GPM · LAMI GPM (g per running metre)</span><b><span id="o_gpm">0</span> · <span id="o_gpmlam">0</span></b></div>
@@ -335,7 +338,7 @@
       <div class="locked-head"><span>Component-wise breakdown · <b id="o_compcount">0</b> parts</span><span class="tag">Demo feature</span></div>
       <ul id="o_components" class="locked-list"></ul>
       <div class="locked-cta">
-        <p>Body, patch, valve, film, liner, ink and thread grams with % share, plus the formula behind every value, are shown in the Nexora desktop app.</p>
+        <p>Body, patch, valve, film, ink and thread grams with % share, plus the formula behind every value, are shown in the Nexora desktop app.</p>
         <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Unlock in a free demo</button>
       </div>
     </div>
@@ -385,7 +388,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/calc.js?v=202609140742" defer></script>
+  <script src="/assets/js/calc.js?v=202609141445" defer></script>
 </main>
 
 <footer class="footer">
@@ -427,6 +430,7 @@
           <li><a href="/gsm-to-gpm">GSM to GPM / GPM to GSM</a></li>
           <li><a href="/denier-to-gpm">Denier to GPM / GPM to denier</a></li>
           <li><a href="/fabric-weight-calculator">Width × length × GSM = weight</a></li>
+          <li><a href="/liner-calculator">LDPE liner weight</a></li>
         </ul>
       </div>
       <div>
@@ -505,7 +509,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609140742" defer></script>
+<script src="/assets/js/site.js?v=202609141445" defer></script>
 </body>
 </html>
 

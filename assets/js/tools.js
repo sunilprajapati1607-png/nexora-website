@@ -4,18 +4,23 @@
   var $ = function (s) { return document.querySelector(s); };
   function num(id, d) { var el = $('#' + id); if (!el) return d || 0; var v = parseFloat(el.value); return isNaN(v) ? (d || 0) : v; }
   function txt(id, v) { var el = $('#' + id); if (el) el.textContent = v; }
+  // Warp and weft carry the same count, so one mesh figure covers both.
   function meshOf(prefix) {
-    var sel = $('#' + prefix + '_mesh'); if (!sel) return { epi: num(prefix + '_epi'), ppi: num(prefix + '_ppi') };
-    var v = sel.value;
-    var custom = $('#' + prefix + '_custom'); if (custom) custom.hidden = v !== 'custom';
-    if (v === 'custom') return { epi: num(prefix + '_epi'), ppi: num(prefix + '_ppi') };
-    var p = v.split('x'); return { epi: parseFloat(p[0]), ppi: parseFloat(p[1]) };
+    var sel = $('#' + prefix + '_mesh');
+    var m = 10;
+    if (!sel) m = num(prefix + '_meshcustom', 10);
+    else {
+      var custom = $('#' + prefix + '_custom'); if (custom) custom.hidden = sel.value !== 'custom';
+      m = sel.value === 'custom' ? num(prefix + '_meshcustom', 10) : (parseFloat(sel.value) || 10);
+    }
+    return { epi: m, ppi: m, m: m };
   }
   function fillMesh(sel) {
     if (!sel || sel.options.length) return;
-    ['6x6', '8x8', '9x9', '10x10', '11x11', '12x10', '12x12', '13x13', '14x14', 'custom'].forEach(function (m) {
-      var o = document.createElement('option'); o.value = m; o.textContent = m === 'custom' ? 'Custom' : m.replace('x', ' × ') + ' mesh'; if (m === '10x10') o.selected = true; sel.appendChild(o);
+    [6, 8, 9, 10, 11, 12, 13, 14].forEach(function (m) {
+      var o = document.createElement('option'); o.value = String(m); o.textContent = m + ' × ' + m + ' mesh'; if (m === 10) o.selected = true; sel.appendChild(o);
     });
+    var c = document.createElement('option'); c.value = 'custom'; c.textContent = 'Custom mesh…'; sel.appendChild(c);
   }
   Array.prototype.forEach.call(document.querySelectorAll('select[id$="_mesh"]'), fillMesh);
 
@@ -71,7 +76,8 @@
     /* width × length × gsm = weight */
     if ($('#fw_w')) {
       var w = num('fw_w'), l = num('fw_l'), gsm5 = num('fw_gsm'), layers = num('fw_layers', 1), q = num('fw_qty', 1);
-      var unitSel = $('#fw_unit'); var f = unitSel && unitSel.value === 'in' ? 2.54 : 1;
+      var unitSel = $('#fw_unit'); var uv = unitSel ? unitSel.value : 'cm';
+      var f = uv === 'in' ? 2.54 : uv === 'mm' ? 0.1 : 1;   // into cm
       var area = (w * f) * (l * f) / 10000 * layers;      // m²
       var gw = area * gsm5;
       txt('fw_area', area.toFixed(4) + ' m²'); txt('fw_out', gw.toFixed(2)); txt('fw_kg', (gw * q / 1000).toFixed(2) + ' kg');
