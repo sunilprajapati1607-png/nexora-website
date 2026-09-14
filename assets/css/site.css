@@ -573,3 +573,16 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 .video-frame { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); background: #0b1426; }
 .video-frame video { width: 100%; height: auto; display: block; background: #0b1426; }
 .video-frame figcaption { font-size: 12.5px; color: var(--muted); padding: 10px 14px; background: var(--card); border-top: 1px solid var(--line); }
+
+/* "Only in Nexora" cards */
+.only-card { position: relative; padding-top: 30px; }
+.only-no { position: absolute; top: 14px; right: 18px; font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--primary); opacity: .55; }
+.only-card h4 { font-size: 16px; line-height: 1.3; }
+.only-card p { font-size: 14px; }
+.only-card .more { margin-top: 12px; }
+
+/* three hero buttons stay on one line until the hero stacks */
+@media (min-width: 1101px) {
+  .hero-cta-3 { flex-wrap: nowrap; }
+  .hero-cta-3 .btn-lg { padding: 14px 20px; font-size: 15px; }
+}

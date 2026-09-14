@@ -1,6 +1,6 @@
 <!--
 title: Bag Weight & Cost Forecasting Software — Nexora for Woven Sack Plants
-description: Nexora Bag Weight Calculation forecasts GSM, component-wise bag weight, raw material consumption with waste, process resources and a costed BOM for 29 PP/PE woven sack and BOPP bag constructions. Offline-first Windows desktop app.
+description: Nexora Bag Weight Calculation forecasts GSM, component-wise bag weight, raw material with waste, process resources and a costed BOM for 29 PP/PE woven sack and BOPP constructions — plus a 3D bag view and an ink assumption that reads your artwork. Offline-first Windows desktop app.
 priority: 0.9
 -->
 {{> head}}
@@ -65,6 +65,19 @@ priority: 0.9
         </video>
         <figcaption>Recorded in the application. A 2L block bottom cement bag: turned, pulled apart, and every part costed by the same engine that weighs it.</figcaption>
       </figure>
+      <div class="split" style="margin-top:34px; align-items:center;">
+        <figure class="shot reveal" data-zoom style="margin:0;"><img src="/assets/img/screens/09-3d-bag-parts.png" alt="A 4 layer handle bag with liner pulled apart in the Nexora 3D view, each part labelled with its size, beside the dimensioned lay-flat view" loading="lazy" width="1464" height="907" /></figure>
+        <div class="reveal">
+          <div class="kicker">Every part, named and sized</div>
+          <h3 style="margin-bottom:12px;">A handle bag with a liner, taken apart</h3>
+          <p>Body, handle, liner and the stitching line, each in its own colour with its own size on the drawing — assembled or pulled apart, so an assembled bag still says what it is made of. The lay-flat view beside it is to scale and dimensioned, down to the liner at 480 × 820 mm and the handle at 25 × 250 mm.</p>
+          <ul class="checks" style="margin-top:14px;">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>An extended valve is drawn standing proud of the bag, to scale, and labelled</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A <b>Sizes</b> switch takes the labels off for a clean picture</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>The drawing prints on a sheet of its own, and on the calculation sheet</li>
+          </ul>
+        </div>
+      </div>
       <div class="grid grid-3" style="margin-top:34px;">
         <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-box"/></svg></div><h4>Your bag, not a picture of one</h4><p>A construction with a patch is drawn as a block whose ends are its patches. Without one it is the lay-flat tube. The item name is printed across the face, so the bag on screen is the bag on the order.</p></div>
         <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-layers"/></svg></div><h4>Pull it apart</h4><p>One button floats every part clear with its name, size and weight: body, top and bottom patch, valve, handle, liner, stitching yarn, easy-open tape and back seam, each in its own colour.</p></div>
@@ -77,8 +90,30 @@ priority: 0.9
     </div>
   </section>
 
+  <!-- Ink assumption -->
+  <section class="section section-alt" id="ink-assumption" style="scroll-margin-top:90px;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow"><svg class="icon"><use href="#i-zap"/></svg> New &bull; ink assumption (beta)</div>
+        <h2>What the artwork costs in ink, before the job runs</h2>
+        <p>Ink is the one material a bag costing usually guesses. Drop in the PNG or JPG you print and Nexora reads how much of the sheet each of cyan, magenta, yellow and black covers, then returns the ink and solvent the job should draw.</p>
+      </div>
+      <figure class="shot reveal" data-zoom style="max-width:1000px; margin:0 auto;"><img src="/assets/img/screens/10-ink-assumption.png" alt="The Nexora ink assumption window: substrate, white background patch, fabric GSM, bag size, faces printed, artwork upload and the trained model" loading="lazy" width="1279" height="538" /></figure>
+      <div class="grid grid-3" style="margin-top:34px;">
+        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-chart"/></svg></div><h4>Four figures, not a guess</h4><p>Ink and solvent per square metre, per bag, per 1,000 bags and per kilogram of fabric or film. Add them to the BOM section as ordinary lines in kilograms per 1,000 bags and they cost like any other material.</p></div>
+        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-layers"/></svg></div><h4>White, three ways</h4><p>No white, a patch behind the artwork only, or a flood white over the whole face. On a half-covered design the flood costs exactly twice the patch, and the line says which it is. GSM and micron carry the substrate effect.</p></div>
+        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-trend"/></svg></div><h4>It learns your press</h4><p>Until it is trained, the figures come from published trade practice and the window says so. Record what a job actually drew and train: ten jobs make it worth trusting, a hundred make it good, and it reports WEAK, FAIR or GOOD so you know which you have.</p></div>
+      </div>
+      <div class="card reveal" style="margin-top:22px; border-left:3px solid var(--primary);">
+        <h4>Your artwork never leaves the plant</h4>
+        <p>The image stays on your computer. What crosses the wire is four coverage fractions, a white share, a substrate and a size — a few hundred bytes, from which no image can be rebuilt. One company can never read or overwrite another's model. Each coefficient reads as a sentence a print manager can check: <em>we lay 3.1 grams of cyan per square metre at full coverage</em>.</p>
+        <div class="hero-cta" style="margin-top:14px;"><button class="btn btn-primary" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Ask for the ink beta</button></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Feature splits -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="wrap">
       <div class="split">
         <div class="reveal">
@@ -147,7 +182,7 @@ priority: 0.9
   </section>
 
   <!-- Sample sheet -->
-  <section class="section">
+  <section class="section section-alt">
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow">Audit-ready output</div>
@@ -197,6 +232,7 @@ priority: 0.9
             <li><svg class="icon"><use href="#i-check-circle"/></svg>One company key, N machines, one expiry</li>
             <li><svg class="icon"><use href="#i-check-circle"/></svg>Each person signs in with their own name and PIN, on any seat, and works offline once they have</li>
             <li><svg class="icon"><use href="#i-check-circle"/></svg>Masters shared across the company; your administrator decides who sees everyone's calculations and who sees only their own</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Optional parts switch on and off per installation: the 3D view, BOM workflow automation, online prices, the calculator and the debug window</li>
             <li><svg class="icon"><use href="#i-check-circle"/></svg>Only counts and minutes leave the plant — never a calculation, material, price or name</li>
             <li><svg class="icon"><use href="#i-check-circle"/></svg>Expiry is read-only, never a shutdown: everything saved still opens and prints</li>
           </ul>
@@ -227,6 +263,7 @@ priority: 0.9
         <details><summary>Which bag constructions are covered?</summary><p>29 standard structures: plain and printed PP/HDPE woven sacks, BOPP laminated, block bottom, pinch bottom, valve, liner, handle, backseam and easy-open variants, each with its own field set and weight logic. New constructions can be added as structures, not code.</p></details>
         <details><summary>Can more than one person use it in the same company?</summary><p>Yes. Each person signs in with their own name and PIN on any licensed seat. Materials, prices, processes and routes are shared company-wide and the latest save wins by the server's clock, while calculations stay private unless your administrator grants wider access.</p></details>
         <details><summary>What is the 3D bag view for?</summary><p>It draws the bag your specification describes so a wrong patch depth or valve size is visible at a glance, and it breaks the bag into parts with a size, weight and share against each. See <a href="#bag-3d-view">the recording above</a>.</p></details>
+        <details><summary>How does the ink assumption work, and is my artwork safe?</summary><p>Nexora reads the artwork on your own computer and works out the coverage of each colour. Only those coverage figures, the white share, the substrate and the size are sent for the calculation — never the image, and never to another company's model. Untrained it uses published trade practice; trained on your measured jobs it uses your own press.</p></details>
         <details><summary>Is this the Nexora ERP?</summary><p>It is the technical calculation module that the wider <a href="/products/erp">Nexora ERP</a> is built around. Masters created here — materials, prices, processes, routes — carry into the ERP modules.</p></details>
       </div>
     </div>
