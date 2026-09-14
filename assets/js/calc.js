@@ -117,6 +117,25 @@
     var m = meshPair();
     if (driver === 'gsm') set('s_den', denFromGsm(num('s_gsm'), m));
     else set('s_gsm', gsmFromDen(num('s_den'), m).toFixed(1));
+    // the "auto" tag belongs on whichever box the engine is filling in
+    show('tag_den', driver === 'gsm');
+    show('tag_gsm', driver !== 'gsm');
+  }
+
+  // One line saying what the last change actually moved, so nothing looks stuck.
+  function announce(what) {
+    var m = meshPair(), el = $('#s_syncnote');
+    if (!el) return;
+    var meshTxt = m.epi + ' × ' + m.ppi + ' mesh';
+    if (what === 'mesh') {
+      el.textContent = driver === 'gsm'
+        ? meshTxt + ' → tape denier recalculated to ' + num('s_den') + '. GSM and bag weight held.'
+        : meshTxt + ' → fabric GSM recalculated to ' + num('s_gsm') + ' and the bag weight updated. Denier held.';
+    } else if (what === 'den') {
+      el.textContent = 'Denier ' + num('s_den') + ' at ' + meshTxt + ' → fabric GSM ' + num('s_gsm') + ', bag weight updated.';
+    } else if (what === 'gsm') {
+      el.textContent = 'GSM ' + num('s_gsm') + ' at ' + meshTxt + ' → tape denier ' + num('s_den') + '.';
+    } else { el.textContent = ''; }
   }
 
   function applyStructure(key) {
@@ -132,9 +151,10 @@
     set('s_coat', d.coat); set('s_bopp', d.bopp); set('s_met', d.met); set('s_liner', d.liner);
     $('#s_fold').value = d.fold; $('#s_ham').value = d.ham; $('#s_print').value = String(d.print);
     $('#s_coat_sd').value = 'both'; $('#s_bopp_sd').value = 'both';
-    if ($('#s_meshmode')) $('#s_meshmode').value = 'gsm';
+    if ($('#s_meshmode')) $('#s_meshmode').value = 'keepgsm';
+    announce('');
     $('#s_valve_on').checked = !!s.valveDefault;
-    show('f_fold', s.stitched); show('f_ham', true);
+    show('f_fold', s.stitched);
     show('f_patch', s.bb); show('f_valve_on', s.bb); show('f_valve', s.bb && !!s.valveDefault); show('f_exv', s.bb && !!s.valveDefault);
     txt('s_struct_hint', s.hint);
     syncFabric(); recalc();
@@ -150,6 +170,9 @@
     var VALVE = valveOn ? toMM(num('s_valve')) : 0;
     var EXV = valveOn ? toMM(num('s_exv')) : 0;
     show('f_valve', valveOn); show('f_exv', valveOn);
+    // A valve bag's cut length is length + patch + overlap — no hamming term — so
+    // the hamming field would sit there doing nothing. Hide it for valve bags.
+    show('f_ham', !(s.bb && valveOn));
 
     var gsmFab = num('s_gsm');
     var coatSd = val('s_coat_sd') === 'one' ? num('s_coat') / 2 : num('s_coat');
@@ -281,11 +304,14 @@
   // Mesh, denier and GSM are one equation, so a mesh change must move one of the
   // other two. s_meshmode says which one holds: keep the denier (default) and the
   // GSM and bag weight move; keep the GSM and the denier moves instead.
-  function meshDriver() { return val('s_meshmode') === 'den' ? 'gsm' : 'den'; }
-  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); driver = meshDriver(); syncFabric(); recalc(); });
-  $('#s_den').addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); });
-  $('#s_gsm').addEventListener('input', function () { driver = 'gsm'; syncFabric(); recalc(); });
-  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { driver = meshDriver(); syncFabric(); recalc(); }); });
+  // "keepgsm" (default, and how the desktop engine works: GSM + mesh are the
+  // inputs, denier is a reported figure) -> the denier is recalculated.
+  // "keepden" -> the GSM, and therefore the bag weight, is recalculated instead.
+  function meshDriver() { return val('s_meshmode') === 'keepden' ? 'den' : 'gsm'; }
+  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); driver = meshDriver(); syncFabric(); recalc(); announce('mesh'); });
+  $('#s_den').addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); announce('den'); });
+  $('#s_gsm').addEventListener('input', function () { driver = 'gsm'; syncFabric(); recalc(); announce('gsm'); });
+  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { driver = meshDriver(); syncFabric(); recalc(); announce('mesh'); }); });
   $$('input, select').forEach(function (el) {
     if (['s_structure', 's_mesh', 's_den', 's_gsm', 's_epi', 's_ppi'].indexOf(el.id) >= 0) return;
     el.addEventListener('input', recalc); el.addEventListener('change', recalc);
