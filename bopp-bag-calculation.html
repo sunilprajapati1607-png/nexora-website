@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609140559" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609140613" />
   <script>
     (function () {
       var t = 'light';
@@ -254,15 +254,18 @@
     </div>
 
     <div class="fieldset-title">Fabric — denier and GSM update each other</div>
+    <div class="field mode-field">
+      <label for="s_meshmode">When I change the mesh</label>
+      <select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as the Nexora app does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select>
+      <div class="hint">Mesh, denier and GSM are one equation, so a mesh change has to move one of the other two. Set this first, then enter the values below. Typing in either box always recalculates the other.</div>
+    </div>
     <div class="calc-fields">
-      <div class="field"><label for="s_mesh">Mesh (warp × weft per inch)</label><select id="s_mesh"></select></div>
-      <div class="field" id="f_meshcustom" hidden><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="s_epi">Warp (EPI)</label><input type="number" id="s_epi" value="10" min="0" step="0.5"></div><div><label for="s_ppi">Weft (PPI)</label><input type="number" id="s_ppi" value="10" min="0" step="0.5"></div></div></div>
+      <div class="field" style="grid-column:1/-1;"><label for="s_mesh">Mesh (warp × weft per inch)</label><select id="s_mesh"></select></div>
+      <div class="field" id="f_meshcustom" style="grid-column:1/-1;" hidden><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;"><div><label for="s_epi">Warp (EPI)</label><input type="number" id="s_epi" value="10" min="0" step="0.5"></div><div><label for="s_ppi">Weft (PPI)</label><input type="number" id="s_ppi" value="10" min="0" step="0.5"></div></div></div>
       <div class="field"><label for="s_gsm">Fabric GSM <span class="auto-tag" id="tag_gsm" hidden>auto</span></label><input type="number" id="s_gsm" min="0" step="0.5" inputmode="decimal"></div>
       <div class="field"><label for="s_den">Tape denier <span class="auto-tag" id="tag_den">auto</span></label><input type="number" id="s_den" min="0" step="10" inputmode="decimal"></div>
-      <div class="field" style="grid-column:1/-1;"><label for="s_meshmode">When I change the mesh</label><select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as the Nexora app does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select></div>
     </div>
     <p class="sync-note" id="s_syncnote"></p>
-    <p class="hint" style="margin-top:8px;">Mesh, denier and GSM are one equation, so a mesh change has to move one of the other two. By default the GSM holds and the denier is recalculated, which is how the Nexora engine works: GSM and mesh are the inputs and the denier is a reported figure. Switch the choice above and a mesh change moves the GSM and the bag weight instead. Typing in either box always recalculates the other.</p>
 
     <div class="fieldset-title">Lamination &amp; layers</div>
     <div class="calc-fields">
@@ -382,7 +385,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/calc.js?v=202609140559" defer></script>
+  <script src="/assets/js/calc.js?v=202609140613" defer></script>
 </main>
 
 <footer class="footer">
@@ -502,7 +505,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609140559" defer></script>
+<script src="/assets/js/site.js?v=202609140613" defer></script>
 </body>
 </html>
 

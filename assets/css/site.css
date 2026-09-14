@@ -565,3 +565,7 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 .sync-note { font-size: 12.5px; font-weight: 600; color: var(--primary); background: var(--primary-50); border-radius: 8px; padding: 8px 12px; margin-top: 10px; line-height: 1.5; }
 .sync-note:empty { display: none; }
+
+.mode-field { margin-bottom: 16px; padding: 12px 14px; border: 1px solid var(--line); border-left: 3px solid var(--primary); border-radius: 10px; background: var(--bg-3); }
+.mode-field > label { font-size: 12.5px; }
+.mode-field .hint { margin-top: 7px; }
