@@ -132,6 +132,7 @@
     set('s_coat', d.coat); set('s_bopp', d.bopp); set('s_met', d.met); set('s_liner', d.liner);
     $('#s_fold').value = d.fold; $('#s_ham').value = d.ham; $('#s_print').value = String(d.print);
     $('#s_coat_sd').value = 'both'; $('#s_bopp_sd').value = 'both';
+    if ($('#s_meshmode')) $('#s_meshmode').value = 'gsm';
     $('#s_valve_on').checked = !!s.valveDefault;
     show('f_fold', s.stitched); show('f_ham', true);
     show('f_patch', s.bb); show('f_valve_on', s.bb); show('f_valve', s.bb && !!s.valveDefault); show('f_exv', s.bb && !!s.valveDefault);
@@ -277,13 +278,14 @@
 
   /* ---- wiring ---- */
   sel.addEventListener('change', function () { applyStructure(sel.value); });
-  // Mesh is a loom setting: changing it must produce a new GSM from the same tape,
-  // so a mesh change always puts the fabric back on the denier -> GSM direction.
-  // Without this, a user who had typed a GSM saw mesh change nothing but the denier.
-  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); driver = 'den'; syncFabric(); recalc(); });
+  // Mesh, denier and GSM are one equation, so a mesh change must move one of the
+  // other two. s_meshmode says which one holds: keep the denier (default) and the
+  // GSM and bag weight move; keep the GSM and the denier moves instead.
+  function meshDriver() { return val('s_meshmode') === 'den' ? 'gsm' : 'den'; }
+  meshSel.addEventListener('change', function () { show('f_meshcustom', meshSel.value === 'custom'); driver = meshDriver(); syncFabric(); recalc(); });
   $('#s_den').addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); });
   $('#s_gsm').addEventListener('input', function () { driver = 'gsm'; syncFabric(); recalc(); });
-  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { driver = 'den'; syncFabric(); recalc(); }); });
+  ['s_epi', 's_ppi'].forEach(function (id) { var el = $('#' + id); if (el) el.addEventListener('input', function () { driver = meshDriver(); syncFabric(); recalc(); }); });
   $$('input, select').forEach(function (el) {
     if (['s_structure', 's_mesh', 's_den', 's_gsm', 's_epi', 's_ppi'].indexOf(el.id) >= 0) return;
     el.addEventListener('input', recalc); el.addEventListener('change', recalc);
