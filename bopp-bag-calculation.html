@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609151905" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609152001" />
   <script>
     (function () {
       var t = 'light';
@@ -190,6 +190,7 @@
         <li class="has-dd" data-nav="/calculator">
           <button class="navbtn" aria-expanded="false" aria-haspopup="true">Calculators <svg class="icon"><use href="#i-chev"/></svg></button>
           <div class="dropdown">
+            <a href="/bag-costing"><svg class="icon"><use href="#i-chart"/></svg><span><b>Bag Costing Guide</b><small>Cost sheet, formula, conversion cost &amp; waste</small></span></a>
             <a href="/calculator"><svg class="icon"><use href="#i-calc"/></svg><span><b>Woven Bag Weight &amp; Costing Calculator</b><small>Structure, size, mesh, denier, BOPP, liner → weight &amp; cost</small></span></a>
             <a href="/bopp-bag-calculation"><svg class="icon"><use href="#i-layers"/></svg><span><b>BOPP Bag Calculation</b><small>Laminated woven bag weight with film micron</small></span></a>
             <a href="/block-bottom-bag-calculation"><svg class="icon"><use href="#i-box"/></svg><span><b>Block Bottom Bag Calculation</b><small>Patches, bottom width, valve — pasted bags</small></span></a>
@@ -223,7 +224,7 @@
       <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>BOPP bag calculation</span></div>
       <div class="eyebrow"><svg class="icon"><use href="#i-layers"/></svg> Free BOPP bag calculator</div>
       <h1>BOPP bag calculation: laminated woven bag weight &amp; cost</h1>
-      <p class="lead">Calculate the weight of a BOPP laminated PP woven bag from fabric mesh and denier, extrusion coating GSM and BOPP film micron. Switch to a block bottom or metallised structure, add a liner, and see the laminated GSM and GPM the lamination line should hold.</p>
+      <p class="lead">Calculate the weight of a BOPP laminated PP woven bag from fabric mesh and denier, extrusion coating GSM and BOPP film micron. Switch to a block bottom or metallised structure and see the laminated GSM and GPM the lamination line should hold.</p>
     </div>
   </section>
 
@@ -358,7 +359,7 @@
         Fabric GSM = denier × (warp + weft mesh) ÷ 228.6<br>
         BOPP film GSM = micron × 0.92 (e.g. 18 µm ≈ 16.6 GSM, 20 µm ≈ 18.4 GSM, 25 µm ≈ 23.0 GSM)<br>
         Laminated GSM = fabric GSM + coating GSM + BOPP film GSM<br>
-        Bag weight = tube width × cut length ÷ 10,000 × laminated GSM + liner + thread (+ patches for block bottom)
+        Bag weight = tube width × cut length ÷ 10,000 × laminated GSM + thread (+ patches for block bottom)
       </div>
       <h3>Typical BOPP bag specifications</h3>
       <ul>
@@ -374,7 +375,7 @@
         <details><summary>What coating GSM is used for BOPP lamination?</summary><p>Extrusion coating for BOPP lamination is typically 15–22 GSM of PP or LDPE-based resin. Enter your plant's figure in the coating field.</p></details>
         <details><summary>Does printing change the weight?</summary><p>Reverse printing adds ink over the laminated area. The calculator uses the app default of 1.5 GSM.</p></details>
       </div>
-      <div class="related" style="margin-top:18px;"><a href="/calculator">All bag structures</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/denier-to-gsm">Denier to GSM</a><a href="/gsm-to-gpm">GSM to GPM</a></div>
+      <div class="related" style="margin-top:18px;"><a href="/bag-costing">Bag costing guide</a><a href="/calculator">All bag structures</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/denier-to-gsm">Denier to GSM</a><a href="/gsm-to-gpm">GSM to GPM</a></div>
     </div>
   </section>
 
@@ -388,7 +389,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/calc.js?v=202609151905" defer></script>
+  <script src="/assets/js/calc.js?v=202609152001" defer></script>
 </main>
 
 <footer class="footer">
@@ -423,6 +424,7 @@
       <div>
         <h5>Free calculators</h5>
         <ul>
+          <li><a href="/bag-costing">Bag costing guide</a></li>
           <li><a href="/calculator">Woven bag weight &amp; costing</a></li>
           <li><a href="/bopp-bag-calculation">BOPP bag calculation</a></li>
           <li><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a></li>
@@ -509,7 +511,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609151905" defer></script>
+<script src="/assets/js/site.js?v=202609152001" defer></script>
 </body>
 </html>
 

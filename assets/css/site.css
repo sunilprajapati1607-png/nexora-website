@@ -599,3 +599,6 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 .faq-group { font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 22px 0 10px; }
 .faq-group:first-child { margin-top: 0; }
+
+.btn-link { background: none; border: 0; padding: 0; font: inherit; color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
+.btn-link:hover { text-decoration: none; }
