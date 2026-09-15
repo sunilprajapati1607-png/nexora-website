@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fabric Weight Calculator — Width × Length × GSM = Weight (Bags, Fabric, Rolls) | Nexora</title>
-  <meta name="description" content="Calculate fabric or bag weight from width, length and GSM: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and length. Free tool for woven sack and packaging." />
+  <meta name="description" content="Calculate fabric or bag weight from width, length and GSM in mm, cm or inch: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and roll length in metres, yards or feet. Free tool for woven sack and packaging." />
   <meta name="keywords" content="width x length x gsm weight, fabric weight calculator gsm, gsm to weight calculation, bag weight from gsm, roll weight calculation gsm, fabric weight formula, woven fabric weight per bag" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.nexoraofficial.org/fabric-weight-calculator" />
@@ -13,13 +13,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Nexora" />
   <meta property="og:title" content="Fabric Weight Calculator — Width × Length × GSM = Weight (Bags, Fabric, Rolls) | Nexora" />
-  <meta property="og:description" content="Calculate fabric or bag weight from width, length and GSM: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and length. Free tool for woven sack and packaging." />
+  <meta property="og:description" content="Calculate fabric or bag weight from width, length and GSM in mm, cm or inch: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and roll length in metres, yards or feet. Free tool for woven sack and packaging." />
   <meta property="og:url" content="https://www.nexoraofficial.org/fabric-weight-calculator" />
   <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fabric Weight Calculator — Width × Length × GSM = Weight (Bags, Fabric, Rolls) | Nexora" />
-  <meta name="twitter:description" content="Calculate fabric or bag weight from width, length and GSM: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and length. Free tool for woven sack and packaging." />
+  <meta name="twitter:description" content="Calculate fabric or bag weight from width, length and GSM in mm, cm or inch: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and roll length in metres, yards or feet. Free tool for woven sack and packaging." />
   <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609150848" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609150920" />
   <script>
     (function () {
       var t = 'light';
@@ -81,7 +81,7 @@
         "@id": "https://www.nexoraofficial.org/fabric-weight-calculator#webpage",
         "url": "https://www.nexoraofficial.org/fabric-weight-calculator",
         "name": "Fabric Weight Calculator — Width × Length × GSM = Weight (Bags, Fabric, Rolls) | Nexora",
-        "description": "Calculate fabric or bag weight from width, length and GSM: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and length. Free tool for woven sack and packaging.",
+        "description": "Calculate fabric or bag weight from width, length and GSM in mm, cm or inch: weight (g) = width × length ÷ 10,000 × GSM, with layers for tubular fabric and quantity for orders. Includes roll weight from GSM, width and roll length in metres, yards or feet. Free tool for woven sack and packaging.",
         "isPartOf": { "@id": "https://www.nexoraofficial.org/#website" },
         "about": { "@id": "https://www.nexoraofficial.org/#organization" }
       }
@@ -233,9 +233,8 @@
         <div class="tool">
           <h2>Piece / bag weight from GSM</h2>
           <div class="calc-fields">
-            <div class="field"><label for="fw_w">Width</label><input type="number" id="fw_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="fw_l">Length</label><input type="number" id="fw_l" value="90" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="fw_unit">Unit</label><select id="fw_unit"><option value="mm">Millimetres</option><option value="cm" selected>Centimetres</option><option value="in">Inches</option></select></div>
+            <div class="field"><label for="fw_w">Width</label><div class="input-unit"><input type="number" id="fw_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="fw_wunit" data-wfor="fw_w" aria-label="Unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="fw_l">Length</label><div class="input-unit"><input type="number" id="fw_l" value="90" min="0" step="0.5" inputmode="decimal"><select id="fw_lunit" data-wfor="fw_l" aria-label="Unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
             <div class="field"><label for="fw_gsm">GSM (g/m²)</label><input type="number" id="fw_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="fw_layers">Layers (2 for a tubular bag)</label><input type="number" id="fw_layers" value="2" min="1" step="1" inputmode="numeric"></div>
             <div class="field"><label for="fw_qty">Quantity (pieces)</label><input type="number" id="fw_qty" value="1000" min="1" step="100" inputmode="numeric"></div>
@@ -262,7 +261,7 @@
       <h2>The formula</h2>
       <div class="formula-box">
         Weight (g) = width (cm) × length (cm) ÷ 10,000 × layers × GSM<br>
-        Inches: multiply width and length by 2.54 first<br>
+        Each size carries its own unit — millimetres, centimetres or inches — and the tool converts<br>
         Roll (kg) = width (m) × length (m) × GSM ÷ 1000
       </div>
       <p>Example: a 50 × 90 cm tubular bag at 80 GSM. Area = 0.50 × 0.90 = 0.45 m² per layer, two layers = 0.90 m², weight = 0.90 × 80 = 72 g of fabric. Add fold allowance, coating, liner, ink and thread for the finished bag — the <a href="/calculator">bag weight &amp; costing calculator</a> does all of that per structure.</p>
@@ -284,7 +283,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/tools.js?v=202609150848" defer></script>
+  <script src="/assets/js/tools.js?v=202609150920" defer></script>
 </main>
 
 <footer class="footer">
@@ -405,7 +404,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609150848" defer></script>
+<script src="/assets/js/site.js?v=202609150920" defer></script>
 </body>
 </html>
 
