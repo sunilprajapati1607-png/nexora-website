@@ -21,24 +21,24 @@ priority: 0.8
     <div class="wrap">
       <div class="grid grid-2">
         <div class="tool">
-          <h2>Denier → GPM (fabric)</h2>
+          <div class="tool-head"><h2>Denier → GPM (fabric)</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="d2p_w" data-u="mm">mm</button><button type="button" class="on" data-ufor="d2p_w" data-u="cm">cm</button><button type="button" data-ufor="d2p_w" data-u="in">inch</button></div></div>
           <div class="calc-fields">
             <div class="field"><label for="d2p_den">Tape denier</label><input type="number" id="d2p_den" value="900" min="0" step="10" inputmode="decimal"></div>
             <div class="field"><label for="d2p_mesh">Mesh (per inch)</label><select id="d2p_mesh"></select></div>
             <div class="field" id="d2p_custom" hidden style="grid-column:1/-1;"><label for="d2p_meshcustom">Custom mesh (per inch)</label><input type="number" id="d2p_meshcustom" value="10" min="1" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="d2p_w">Fabric width</label><div class="input-unit"><input type="number" id="d2p_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="d2p_wunit" data-wfor="d2p_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="d2p_w">Fabric width</label><input type="number" id="d2p_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="d2p_form">Fabric form</label><select id="d2p_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
           </div>
           <div class="tool-out"><small>Fabric GPM</small><b><span id="d2p_out">0</span><em>g/m</em></b><div class="aux">Fabric GSM: <b id="d2p_gsm">0</b> · Tape weight: <b id="d2p_tape">0</b> g per metre of tape</div><div class="calc-formula" id="d2p_formula"></div></div>
           <p class="hint" style="margin-top:10px;">Here the denier is yours and the mesh decides the GSM and GPM. To hold a GPM and see what the mesh does to the <b>denier</b>, use the tool on the right.</p>
         </div>
         <div class="tool">
-          <h2>GPM → Denier</h2>
+          <div class="tool-head"><h2>GPM → Denier</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="p2d_w" data-u="mm">mm</button><button type="button" class="on" data-ufor="p2d_w" data-u="cm">cm</button><button type="button" data-ufor="p2d_w" data-u="in">inch</button></div></div>
           <div class="calc-fields">
             <div class="field"><label for="p2d_gpm">Fabric GPM (weighed)</label><input type="number" id="p2d_gpm" value="80" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="p2d_mesh">Mesh (per inch)</label><select id="p2d_mesh"></select></div>
             <div class="field" id="p2d_custom" hidden style="grid-column:1/-1;"><label for="p2d_meshcustom">Custom mesh (per inch)</label><input type="number" id="p2d_meshcustom" value="10" min="1" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="p2d_w">Fabric width</label><div class="input-unit"><input type="number" id="p2d_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="p2d_wunit" data-wfor="p2d_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="p2d_w">Fabric width</label><input type="number" id="p2d_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="p2d_form">Fabric form</label><select id="p2d_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
             <div class="field" style="grid-column:1/-1;"><label for="p2d_tape">Or: tape weight (g per metre of tape) → denier</label><input type="number" id="p2d_tape" value="0.1" min="0" step="0.005" inputmode="decimal"></div>
           </div>

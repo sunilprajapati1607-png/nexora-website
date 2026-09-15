@@ -21,20 +21,20 @@ priority: 0.8
     <div class="wrap">
       <div class="grid grid-2">
         <div class="tool">
-          <h2>GSM → GPM</h2>
+          <div class="tool-head"><h2>GSM → GPM</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="g2p_w" data-u="mm">mm</button><button type="button" class="on" data-ufor="g2p_w" data-u="cm">cm</button><button type="button" data-ufor="g2p_w" data-u="in">inch</button></div></div>
           <div class="calc-fields">
             <div class="field"><label for="g2p_gsm">Fabric GSM</label><input type="number" id="g2p_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="g2p_w">Fabric width</label><div class="input-unit"><input type="number" id="g2p_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="g2p_wunit" data-wfor="g2p_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="g2p_w">Fabric width</label><input type="number" id="g2p_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="g2p_form">Fabric form</label><select id="g2p_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
-            <div class="field"><label for="g2p_len">Roll length (optional)</label><div class="input-unit"><input type="number" id="g2p_len" value="1000" min="0" step="10" inputmode="decimal"><select id="g2p_lenunit" data-lfor="g2p_len" aria-label="Length unit"><option value="m" selected>m</option><option value="yd">yd</option><option value="ft">ft</option></select></div></div>
+            <div class="field"><label for="g2p_len">Roll length (optional)</label><input type="number" id="g2p_len" value="1000" min="0" step="10" inputmode="decimal"><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" class="on" data-lfor="g2p_len" data-u="m">m</button><button type="button" data-lfor="g2p_len" data-u="yd">yd</button><button type="button" data-lfor="g2p_len" data-u="ft">ft</button></div></div>
           </div>
           <div class="tool-out"><small>GPM — grams per running metre</small><b><span id="g2p_out">0</span><em>g/m</em></b><div class="aux">Roll weight at this length: <b id="g2p_roll">0 kg</b></div><div class="calc-formula" id="g2p_formula"></div></div>
         </div>
         <div class="tool">
-          <h2>GPM → GSM</h2>
+          <div class="tool-head"><h2>GPM → GSM</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="p2g_w" data-u="mm">mm</button><button type="button" class="on" data-ufor="p2g_w" data-u="cm">cm</button><button type="button" data-ufor="p2g_w" data-u="in">inch</button></div></div>
           <div class="calc-fields">
             <div class="field"><label for="p2g_gpm">GPM (g per running metre)</label><input type="number" id="p2g_gpm" value="80" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="p2g_w">Fabric width</label><div class="input-unit"><input type="number" id="p2g_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="p2g_wunit" data-wfor="p2g_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="p2g_w">Fabric width</label><input type="number" id="p2g_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="p2g_form">Fabric form</label><select id="p2g_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
           </div>
           <div class="tool-out"><small>Fabric GSM</small><b><span id="p2g_out">0</span><em>g/m²</em></b><div class="calc-formula" id="p2g_formula"></div></div>

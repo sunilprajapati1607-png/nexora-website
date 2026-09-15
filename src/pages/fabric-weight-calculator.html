@@ -21,10 +21,10 @@ priority: 0.8
     <div class="wrap">
       <div class="grid grid-2">
         <div class="tool">
-          <h2>Piece / bag weight from GSM</h2>
+          <div class="tool-head"><h2>Piece / bag weight from GSM</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="fw_w,fw_l" data-u="mm">mm</button><button type="button" class="on" data-ufor="fw_w,fw_l" data-u="cm">cm</button><button type="button" data-ufor="fw_w,fw_l" data-u="in">inch</button></div></div>
           <div class="calc-fields">
-            <div class="field"><label for="fw_w">Width</label><div class="input-unit"><input type="number" id="fw_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="fw_wunit" data-wfor="fw_w" aria-label="Unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
-            <div class="field"><label for="fw_l">Length</label><div class="input-unit"><input type="number" id="fw_l" value="90" min="0" step="0.5" inputmode="decimal"><select id="fw_lunit" data-wfor="fw_l" aria-label="Unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="fw_w">Width</label><input type="number" id="fw_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="fw_l">Length</label><input type="number" id="fw_l" value="90" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="fw_gsm">GSM (g/m²)</label><input type="number" id="fw_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
             <div class="field"><label for="fw_layers">Layers (2 for a tubular bag)</label><input type="number" id="fw_layers" value="2" min="1" step="1" inputmode="numeric"></div>
             <div class="field"><label for="fw_qty">Quantity (pieces)</label><input type="number" id="fw_qty" value="1000" min="1" step="100" inputmode="numeric"></div>
@@ -32,10 +32,10 @@ priority: 0.8
           <div class="tool-out"><small>Weight per piece</small><b><span id="fw_out">0</span><em>g</em></b><div class="aux">Area: <b id="fw_area">0</b> · Total for quantity: <b id="fw_kg">0 kg</b></div><div class="calc-formula" id="fw_formula"></div></div>
         </div>
         <div class="tool">
-          <h2>Roll weight from GSM</h2>
+          <div class="tool-head"><h2>Roll weight from GSM</h2><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" data-ufor="fw_rw" data-u="mm">mm</button><button type="button" class="on" data-ufor="fw_rw" data-u="cm">cm</button><button type="button" data-ufor="fw_rw" data-u="in">inch</button></div></div>
           <div class="calc-fields">
-            <div class="field"><label for="fw_rw">Fabric width (tubular = 2 × flat)</label><div class="input-unit"><input type="number" id="fw_rw" value="100" min="0" step="0.5" inputmode="decimal"><select id="fw_rwunit" data-wfor="fw_rw" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
-            <div class="field"><label for="fw_rl">Roll length</label><div class="input-unit"><input type="number" id="fw_rl" value="1000" min="0" step="10" inputmode="decimal"><select id="fw_rlunit" data-lfor="fw_rl" aria-label="Length unit"><option value="m" selected>m</option><option value="yd">yd</option><option value="ft">ft</option></select></div></div>
+            <div class="field"><label for="fw_rw">Fabric width (tubular = 2 × flat)</label><input type="number" id="fw_rw" value="100" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="fw_rl">Roll length</label><input type="number" id="fw_rl" value="1000" min="0" step="10" inputmode="decimal"><div class="unit-toggle" role="group" aria-label="Unit"><button type="button" class="on" data-lfor="fw_rl" data-u="m">m</button><button type="button" data-lfor="fw_rl" data-u="yd">yd</button><button type="button" data-lfor="fw_rl" data-u="ft">ft</button></div></div>
             <div class="field" style="grid-column:1/-1;"><label for="fw_rgsm">GSM (g/m²)</label><input type="number" id="fw_rgsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
           </div>
           <div class="tool-out"><small>Roll weight</small><b><span id="fw_roll">0 kg</span></b><div class="calc-formula">Roll kg = width (m) × length (m) × GSM ÷ 1000</div></div>
@@ -51,7 +51,7 @@ priority: 0.8
       <h2>The formula</h2>
       <div class="formula-box">
         Weight (g) = width (cm) × length (cm) ÷ 10,000 × layers × GSM<br>
-        Each size carries its own unit — millimetres, centimetres or inches — and the tool converts<br>
+        Pick mm, cm or inch at the top of the tool and the sizes convert with it<br>
         Roll (kg) = width (m) × length (m) × GSM ÷ 1000
       </div>
       <p>Example: a 50 × 90 cm tubular bag at 80 GSM. Area = 0.50 × 0.90 = 0.45 m² per layer, two layers = 0.90 m², weight = 0.90 × 80 = 72 g of fabric. Add fold allowance, coating, liner, ink and thread for the finished bag — the <a href="/calculator">bag weight &amp; costing calculator</a> does all of that per structure.</p>

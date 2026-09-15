@@ -24,18 +24,14 @@
   }
   Array.prototype.forEach.call(document.querySelectorAll('select[id$="_mesh"]'), fillMesh);
 
-  // every width carries its own mm / cm / inch select
+  // one segmented toggle per tool, the same control the simulator uses
   var UNIT_MM = { mm: 1, cm: 10, in: 25.4 };
   // a roll length is quoted in metres, yards or feet — never millimetres
   var UNIT_M = { m: 1, yd: 0.9144, ft: 0.3048 };
-  function lenM(inputId) {
-    var sel = document.querySelector('[data-lfor="' + inputId + '"]');
-    return UNIT_M[sel ? sel.value : 'm'] || 1;
-  }
-  function unitFor(inputId) {
-    var sel = document.querySelector('[data-wfor="' + inputId + '"]');
-    return UNIT_MM[sel ? sel.value : 'cm'] || 10;
-  }
+  var unitOf = {};   // inputId -> 'mm' | 'cm' | 'in'
+  var lenOf = {};    // inputId -> 'm' | 'yd' | 'ft'
+  function unitFor(inputId) { return UNIT_MM[unitOf[inputId] || 'cm'] || 10; }
+  function lenM(inputId) { return UNIT_M[lenOf[inputId] || 'm'] || 1; }
   function widthM(prefix) {
     var mm = num(prefix + '_w') * unitFor(prefix + '_w');
     var form = $('#' + prefix + '_form'); var f = form ? form.value : 'flat';
@@ -99,31 +95,33 @@
       if ($('#fw_rw')) txt('fw_roll', (rw * rl * rg / 1000).toFixed(2) + ' kg');
     }
   }
-  function retitle(sel, inputId) {
-    var inp = document.getElementById(inputId);
-    if (!inp) return;
-    var prev = sel.dataset.prev || 'cm';
-    var mm = (parseFloat(inp.value) || 0) * (UNIT_MM[prev] || 10);
-    var v = mm / (UNIT_MM[sel.value] || 10);
-    inp.value = +v.toFixed(sel.value === 'mm' ? 0 : sel.value === 'cm' ? 1 : 2);
-    inp.step = sel.value === 'mm' ? 5 : sel.value === 'cm' ? 0.5 : 0.25;
-    sel.dataset.prev = sel.value;
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-lfor]'), function (sel) {
-    sel.dataset.prev = sel.value;
-    sel.addEventListener('change', function () {
-      var inp = document.getElementById(sel.getAttribute('data-lfor'));
-      if (inp) {
-        var metres = (parseFloat(inp.value) || 0) * (UNIT_M[sel.dataset.prev] || 1);
-        inp.value = +(metres / (UNIT_M[sel.value] || 1)).toFixed(1);
-      }
-      sel.dataset.prev = sel.value; run();
+  // switching a unit converts the value, so the physical size never moves
+  function convert(ids, from, to, table, decimals) {
+    ids.forEach(function (id) {
+      var inp = document.getElementById(id); if (!inp) return;
+      var base = (parseFloat(inp.value) || 0) * (table[from] || 1);
+      inp.value = +(base / (table[to] || 1)).toFixed(decimals(to));
+      if (table === UNIT_MM) inp.step = to === 'mm' ? 5 : to === 'cm' ? 0.5 : 0.25;
     });
-  });
-  Array.prototype.forEach.call(document.querySelectorAll('[data-wfor]'), function (sel) {
-    sel.dataset.prev = sel.value;
-    sel.addEventListener('change', function () { retitle(sel, sel.getAttribute('data-wfor')); run(); });
-  });
+  }
+  function wireToggle(attr, table, state, decimals) {
+    Array.prototype.forEach.call(document.querySelectorAll('[' + attr + ']'), function (btn) {
+      var ids = btn.getAttribute(attr).split(',');
+      ids.forEach(function (id) { if (btn.classList.contains('on')) state[id] = btn.getAttribute('data-u'); });
+      btn.addEventListener('click', function () {
+        var to = btn.getAttribute('data-u');
+        var from = state[ids[0]] || (table === UNIT_MM ? 'cm' : 'm');
+        if (to === from) return;
+        convert(ids, from, to, table, decimals);
+        ids.forEach(function (id) { state[id] = to; });
+        var group = btn.parentNode;
+        Array.prototype.forEach.call(group.children, function (b) { b.classList.toggle('on', b === btn); });
+        run();
+      });
+    });
+  }
+  wireToggle('data-ufor', UNIT_MM, unitOf, function (u) { return u === 'mm' ? 0 : u === 'cm' ? 1 : 2; });
+  wireToggle('data-lfor', UNIT_M, lenOf, function () { return 1; });
   Array.prototype.forEach.call(document.querySelectorAll('.tool input, .tool select'), function (el) { el.addEventListener('input', run); el.addEventListener('change', run); });
   run();
 })();
