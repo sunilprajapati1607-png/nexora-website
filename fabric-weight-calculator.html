@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609142039" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609150848" />
   <script>
     (function () {
       var t = 'light';
@@ -245,8 +245,8 @@
         <div class="tool">
           <h2>Roll weight from GSM</h2>
           <div class="calc-fields">
-            <div class="field"><label for="fw_rw">Fabric width (cm, tubular = 2 × flat)</label><input type="number" id="fw_rw" value="100" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="fw_rl">Roll length (m)</label><input type="number" id="fw_rl" value="1000" min="0" step="10" inputmode="decimal"></div>
+            <div class="field"><label for="fw_rw">Fabric width (tubular = 2 × flat)</label><div class="input-unit"><input type="number" id="fw_rw" value="100" min="0" step="0.5" inputmode="decimal"><select id="fw_rwunit" data-wfor="fw_rw" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
+            <div class="field"><label for="fw_rl">Roll length</label><div class="input-unit"><input type="number" id="fw_rl" value="1000" min="0" step="10" inputmode="decimal"><select id="fw_rlunit" data-lfor="fw_rl" aria-label="Length unit"><option value="m" selected>m</option><option value="yd">yd</option><option value="ft">ft</option></select></div></div>
             <div class="field" style="grid-column:1/-1;"><label for="fw_rgsm">GSM (g/m²)</label><input type="number" id="fw_rgsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
           </div>
           <div class="tool-out"><small>Roll weight</small><b><span id="fw_roll">0 kg</span></b><div class="calc-formula">Roll kg = width (m) × length (m) × GSM ÷ 1000</div></div>
@@ -284,7 +284,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/tools.js?v=202609142039" defer></script>
+  <script src="/assets/js/tools.js?v=202609150848" defer></script>
 </main>
 
 <footer class="footer">
@@ -405,7 +405,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609142039" defer></script>
+<script src="/assets/js/site.js?v=202609150848" defer></script>
 </body>
 </html>
 

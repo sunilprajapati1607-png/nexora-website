@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609142039" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609150848" />
   <script>
     (function () {
       var t = 'light';
@@ -234,9 +234,9 @@
           <h2>GSM → GPM</h2>
           <div class="calc-fields">
             <div class="field"><label for="g2p_gsm">Fabric GSM</label><input type="number" id="g2p_gsm" value="80" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="g2p_w">Fabric width (cm)</label><input type="number" id="g2p_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="g2p_w">Fabric width</label><div class="input-unit"><input type="number" id="g2p_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="g2p_wunit" data-wfor="g2p_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
             <div class="field"><label for="g2p_form">Fabric form</label><select id="g2p_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
-            <div class="field"><label for="g2p_len">Roll length (m, optional)</label><input type="number" id="g2p_len" value="1000" min="0" step="10" inputmode="decimal"></div>
+            <div class="field"><label for="g2p_len">Roll length (optional)</label><div class="input-unit"><input type="number" id="g2p_len" value="1000" min="0" step="10" inputmode="decimal"><select id="g2p_lenunit" data-lfor="g2p_len" aria-label="Length unit"><option value="m" selected>m</option><option value="yd">yd</option><option value="ft">ft</option></select></div></div>
           </div>
           <div class="tool-out"><small>GPM — grams per running metre</small><b><span id="g2p_out">0</span><em>g/m</em></b><div class="aux">Roll weight at this length: <b id="g2p_roll">0 kg</b></div><div class="calc-formula" id="g2p_formula"></div></div>
         </div>
@@ -244,7 +244,7 @@
           <h2>GPM → GSM</h2>
           <div class="calc-fields">
             <div class="field"><label for="p2g_gpm">GPM (g per running metre)</label><input type="number" id="p2g_gpm" value="80" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="p2g_w">Fabric width (cm)</label><input type="number" id="p2g_w" value="50" min="0" step="0.5" inputmode="decimal"></div>
+            <div class="field"><label for="p2g_w">Fabric width</label><div class="input-unit"><input type="number" id="p2g_w" value="50" min="0" step="0.5" inputmode="decimal"><select id="p2g_wunit" data-wfor="p2g_w" aria-label="Width unit"><option value="mm">mm</option><option value="cm" selected>cm</option><option value="in">inch</option></select></div></div>
             <div class="field"><label for="p2g_form">Fabric form</label><select id="p2g_form"><option value="tube">Tubular (circular loom)</option><option value="flat">Flat / open width</option></select></div>
           </div>
           <div class="tool-out"><small>Fabric GSM</small><b><span id="p2g_out">0</span><em>g/m²</em></b><div class="calc-formula" id="p2g_formula"></div></div>
@@ -284,7 +284,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/tools.js?v=202609142039" defer></script>
+  <script src="/assets/js/tools.js?v=202609150848" defer></script>
 </main>
 
 <footer class="footer">
@@ -405,7 +405,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" /></div>
 
-<script src="/assets/js/site.js?v=202609142039" defer></script>
+<script src="/assets/js/site.js?v=202609150848" defer></script>
 </body>
 </html>
 

@@ -586,3 +586,7 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
   .hero-cta-3 { flex-wrap: nowrap; }
   .hero-cta-3 .btn-lg { padding: 14px 20px; font-size: 15px; }
 }
+
+.input-unit { display: grid; grid-template-columns: 1fr 88px; gap: 8px; align-items: start; }
+.input-unit select { padding-left: 10px; padding-right: 26px; }
+@media (max-width: 420px) { .input-unit { grid-template-columns: 1fr 76px; } }

@@ -24,9 +24,22 @@
   }
   Array.prototype.forEach.call(document.querySelectorAll('select[id$="_mesh"]'), fillMesh);
 
+  // every width carries its own mm / cm / inch select
+  var UNIT_MM = { mm: 1, cm: 10, in: 25.4 };
+  // a roll length is quoted in metres, yards or feet — never millimetres
+  var UNIT_M = { m: 1, yd: 0.9144, ft: 0.3048 };
+  function lenM(inputId) {
+    var sel = document.querySelector('[data-lfor="' + inputId + '"]');
+    return UNIT_M[sel ? sel.value : 'm'] || 1;
+  }
+  function unitFor(inputId) {
+    var sel = document.querySelector('[data-wfor="' + inputId + '"]');
+    return UNIT_MM[sel ? sel.value : 'cm'] || 10;
+  }
   function widthM(prefix) {
-    var w = num(prefix + '_w'); var form = $('#' + prefix + '_form'); var f = form ? form.value : 'flat';
-    var wm = w / 100; if (f === 'tube') wm *= 2; return wm;
+    var mm = num(prefix + '_w') * unitFor(prefix + '_w');
+    var form = $('#' + prefix + '_form'); var f = form ? form.value : 'flat';
+    var wm = mm / 1000; if (f === 'tube') wm *= 2; return wm;
   }
 
   function run() {
@@ -49,7 +62,7 @@
       var wm = widthM('g2p'); var gs = num('g2p_gsm'); var gpm = gs * wm;
       txt('g2p_out', gpm.toFixed(2));
       txt('g2p_formula', 'GPM = ' + gs + ' gsm × ' + wm.toFixed(3) + ' m fabric width = ' + gpm.toFixed(2) + ' g per running metre');
-      var rollLen = num('g2p_len'); if (rollLen) txt('g2p_roll', (gpm * rollLen / 1000).toFixed(2) + ' kg');
+      var rollLen = num('g2p_len') * lenM('g2p_len'); if (rollLen) txt('g2p_roll', (gpm * rollLen / 1000).toFixed(2) + ' kg');
     }
     /* gpm → gsm */
     if ($('#p2g_gpm')) {
@@ -77,14 +90,53 @@
     if ($('#fw_w')) {
       var w = num('fw_w'), l = num('fw_l'), gsm5 = num('fw_gsm'), layers = num('fw_layers', 1), q = num('fw_qty', 1);
       var unitSel = $('#fw_unit'); var uv = unitSel ? unitSel.value : 'cm';
-      var f = uv === 'in' ? 2.54 : uv === 'mm' ? 0.1 : 1;   // into cm
+      var f = (UNIT_MM[uv] || 10) / 10;   // into cm
       var area = (w * f) * (l * f) / 10000 * layers;      // m²
       var gw = area * gsm5;
       txt('fw_area', area.toFixed(4) + ' m²'); txt('fw_out', gw.toFixed(2)); txt('fw_kg', (gw * q / 1000).toFixed(2) + ' kg');
       txt('fw_formula', 'Weight = ' + (w * f).toFixed(1) + ' cm × ' + (l * f).toFixed(1) + ' cm ÷ 10,000 × ' + layers + ' layer(s) × ' + gsm5 + ' gsm = ' + gw.toFixed(2) + ' g');
-      var rw = num('fw_rw'), rl = num('fw_rl'), rg = num('fw_rgsm');
-      if ($('#fw_rw')) txt('fw_roll', ((rw / 100) * rl * rg / 1000).toFixed(2) + ' kg');
+      var rw = num('fw_rw') * unitFor('fw_rw') / 1000, rl = num('fw_rl') * lenM('fw_rl'), rg = num('fw_rgsm');
+      if ($('#fw_rw')) txt('fw_roll', (rw * rl * rg / 1000).toFixed(2) + ' kg');
     }
+  }
+  function retitle(sel, inputId) {
+    var inp = document.getElementById(inputId);
+    if (!inp) return;
+    var prev = sel.dataset.prev || 'cm';
+    var mm = (parseFloat(inp.value) || 0) * (UNIT_MM[prev] || 10);
+    var v = mm / (UNIT_MM[sel.value] || 10);
+    inp.value = +v.toFixed(sel.value === 'mm' ? 0 : sel.value === 'cm' ? 1 : 2);
+    inp.step = sel.value === 'mm' ? 5 : sel.value === 'cm' ? 0.5 : 0.25;
+    sel.dataset.prev = sel.value;
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-lfor]'), function (sel) {
+    sel.dataset.prev = sel.value;
+    sel.addEventListener('change', function () {
+      var inp = document.getElementById(sel.getAttribute('data-lfor'));
+      if (inp) {
+        var metres = (parseFloat(inp.value) || 0) * (UNIT_M[sel.dataset.prev] || 1);
+        inp.value = +(metres / (UNIT_M[sel.value] || 1)).toFixed(1);
+      }
+      sel.dataset.prev = sel.value; run();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-wfor]'), function (sel) {
+    sel.dataset.prev = sel.value;
+    sel.addEventListener('change', function () { retitle(sel, sel.getAttribute('data-wfor')); run(); });
+  });
+  var fwUnit = document.getElementById('fw_unit');
+  if (fwUnit) {
+    fwUnit.dataset.prev = fwUnit.value;
+    fwUnit.addEventListener('change', function () {
+      ['fw_w', 'fw_l'].forEach(function (id) {
+        var inp = document.getElementById(id); if (!inp) return;
+        var mm = (parseFloat(inp.value) || 0) * (UNIT_MM[fwUnit.dataset.prev] || 10);
+        var v = mm / (UNIT_MM[fwUnit.value] || 10);
+        inp.value = +v.toFixed(fwUnit.value === 'mm' ? 0 : fwUnit.value === 'cm' ? 1 : 2);
+      });
+      fwUnit.dataset.prev = fwUnit.value;
+      run();
+    });
   }
   Array.prototype.forEach.call(document.querySelectorAll('.tool input, .tool select'), function (el) { el.addEventListener('input', run); el.addEventListener('change', run); });
   run();
