@@ -596,3 +596,6 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 .field .unit-toggle { margin-top: 7px; }
 .unit-toggle button { cursor: pointer; }
 @media (max-width: 420px) { .tool-head { align-items: flex-start; } }
+
+.faq-group { font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); margin: 22px 0 10px; }
+.faq-group:first-child { margin-top: 0; }
