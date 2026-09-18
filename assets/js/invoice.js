@@ -105,14 +105,14 @@
   function totals(items) {
     var sub = items.reduce(function (a, i) { return a + i.amt; }, 0);
     var charges = [
-      { label: 'Freight', v: num(val('inv_freight')) },
-      { label: 'Packing', v: num(val('inv_packing')) },
+      { label: 'Freight', v: num(val('inv_freight')) || (sampling ? SAMPLE.freight : 0) },
+      { label: 'Packing', v: num(val('inv_packing')) || (sampling ? SAMPLE.packing : 0) },
       { label: val('inv_other_label') || 'Other charges', v: num(val('inv_other')) }
     ].filter(function (c) { return c.v; });
     var chargeTotal = charges.reduce(function (a, c) { return a + c.v; }, 0);
     var discount = num(val('inv_discount'));
     var taxable = sub + chargeTotal - discount;
-    var rate = num(val('inv_taxrate'));
+    var rate = num(val('inv_taxrate')) || (sampling && state.tax !== 'none' ? SAMPLE.taxrate : 0);
     var tax = [];
     if (state.tax === 'cgst' && rate) {
       tax.push({ label: 'CGST @ ' + (rate / 2) + '%', v: taxable * rate / 200 });
@@ -130,32 +130,64 @@
   /* ---------- the document ---------- */
   var TITLES = { quotation: 'QUOTATION', proforma: 'PROFORMA INVOICE', invoice: 'TAX INVOICE' };
 
+  /* Shown so a visitor can see the format before typing anything. It is replaced
+     field by field as they fill the form in, and disappears entirely the moment
+     any line has content. Nothing here is a real rate — it is a layout, not a price. */
+  var SAMPLE = {
+    co: 'Shree Ganesh Polymers Pvt Ltd',
+    coaddr: 'Plot 42, GIDC Phase II\nNaroda, Ahmedabad 382330\nGujarat, India',
+    cogst: '24AAACN1234A1Z5',
+    cophone: '+91 98250 00000',
+    coemail: 'sales@shreeganeshpolymers.in',
+    buyer: 'Sunrise Foods Pvt Ltd',
+    buyeraddr: 'Survey 118, Rakanpur\nKalol, Gandhinagar 382721\nGujarat',
+    buyergst: '24AABCS9999B1Z2',
+    pos: 'Gujarat (24)',
+    no: 'QTN/2026-27/014',
+    due: '30/09/2026',
+    terms: 'Payment: 30 days from the date of invoice\nRate valid for 15 days, subject to resin price\nWeight tolerance +/- 3% on the bag\nGoods once sold will not be taken back',
+    bank: 'Bank: HDFC Bank, Naroda Branch\nA/c: 50200012345678\nIFSC: HDFC0000123',
+    items: [
+      { desc: 'PP woven sack 50 x 90 cm, 78 GSM, printed 2 colour', hsn: '63053200', qty: 50000, unit: 'Nos', rate: 16.5 },
+      { desc: 'BOPP laminated bag 45 x 75 cm, 18 micron film', hsn: '39232990', qty: 20000, unit: 'Nos', rate: 24.25 },
+      { desc: 'LDPE liner 48 x 92 cm, 50 micron', hsn: '39232100', qty: 20000, unit: 'Nos', rate: 4.1 }
+    ],
+    freight: 25000, packing: 5000, taxrate: 18
+  };
+  var sampling = false;
+  /* in sample mode, anything the visitor has not filled falls back to the sample */
+  function fb(id, key) { return sampling ? (val(id) || SAMPLE[key]) : val(id); }
+
   function render() {
     var items = readItems();
+    sampling = items.length === 0;
+    if (sampling) items = SAMPLE.items.map(function (i) {
+      return { desc: i.desc, hsn: i.hsn, qty: i.qty, unit: i.unit, rate: i.rate, amt: i.qty * i.rate };
+    });
     var t = totals(items);
     var isQuote = state.type === 'quotation';
 
     var head = '<div class="doc-head">' +
       '<div class="doc-brand">' +
       (state.logo ? '<img src="' + state.logo + '" alt="">' : '') +
-      '<div><div class="doc-co">' + (esc(val('inv_co')) || 'Your Company Name') + '</div>' +
-      lines(val('inv_coaddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
-      (val('inv_cogst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(val('inv_cogst')) + '</div>' : '') +
-      (val('inv_cophone') ? '<div class="doc-sm">' + esc(val('inv_cophone')) + (val('inv_coemail') ? ' &bull; ' + esc(val('inv_coemail')) : '') + '</div>'
-        : (val('inv_coemail') ? '<div class="doc-sm">' + esc(val('inv_coemail')) + '</div>' : '')) +
+      '<div><div class="doc-co">' + (esc(fb('inv_co', 'co')) || 'Your Company Name') + '</div>' +
+      lines(fb('inv_coaddr', 'coaddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
+      (fb('inv_cogst', 'cogst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(fb('inv_cogst', 'cogst')) + '</div>' : '') +
+      (fb('inv_cophone', 'cophone') ? '<div class="doc-sm">' + esc(fb('inv_cophone', 'cophone')) + (fb('inv_coemail', 'coemail') ? ' &bull; ' + esc(fb('inv_coemail', 'coemail')) : '') + '</div>'
+        : (fb('inv_coemail', 'coemail') ? '<div class="doc-sm">' + esc(fb('inv_coemail', 'coemail')) + '</div>' : '')) +
       '</div></div>' +
       '<div class="doc-type"><div class="doc-t">' + TITLES[state.type] + '</div>' +
-      (val('inv_no') ? '<div class="doc-sm"><b>No:</b> ' + esc(val('inv_no')) + '</div>' : '') +
+      (fb('inv_no', 'no') ? '<div class="doc-sm"><b>No:</b> ' + esc(fb('inv_no', 'no')) + '</div>' : '') +
       (val('inv_date') ? '<div class="doc-sm"><b>Date:</b> ' + esc(val('inv_date')) + '</div>' : '') +
-      (val('inv_due') ? '<div class="doc-sm"><b>' + (isQuote ? 'Valid until' : 'Due') + ':</b> ' + esc(val('inv_due')) + '</div>' : '') +
+      (fb('inv_due', 'due') ? '<div class="doc-sm"><b>' + (isQuote ? 'Valid until' : 'Due') + ':</b> ' + esc(fb('inv_due', 'due')) + '</div>' : '') +
       '</div></div>';
 
     var party = '<div class="doc-party">' +
       '<div><div class="doc-lbl">' + (isQuote ? 'Quotation for' : 'Bill to') + '</div>' +
-      '<div class="doc-co2">' + (esc(val('inv_buyer')) || '—') + '</div>' +
-      lines(val('inv_buyeraddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
-      (val('inv_buyergst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(val('inv_buyergst')) + '</div>' : '') + '</div>' +
-      (val('inv_pos') ? '<div><div class="doc-lbl">Place of supply</div><div class="doc-sm">' + esc(val('inv_pos')) + '</div></div>' : '') +
+      '<div class="doc-co2">' + (esc(fb('inv_buyer', 'buyer')) || '—') + '</div>' +
+      lines(fb('inv_buyeraddr', 'buyeraddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
+      (fb('inv_buyergst', 'buyergst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(fb('inv_buyergst', 'buyergst')) + '</div>' : '') + '</div>' +
+      (fb('inv_pos', 'pos') ? '<div><div class="doc-lbl">Place of supply</div><div class="doc-sm">' + esc(fb('inv_pos', 'pos')) + '</div></div>' : '') +
       '</div>';
 
     var body = items.length
@@ -164,7 +196,7 @@
             '<td class="r">' + (it.qty ? it.qty.toLocaleString('en-IN') : '') + '</td><td class="c">' + esc(it.unit) + '</td>' +
             '<td class="r">' + (it.rate ? money(it.rate) : '') + '</td><td class="r">' + money(it.amt) + '</td></tr>';
         }).join('')
-      : '<tr class="doc-empty"><td colspan="7">Add a line and it appears here</td></tr>';
+      : '';
 
     var sumRows = '';
     if (items.length) {
@@ -180,7 +212,7 @@
     var w = items.length ? words(t.grand) : '';
     var foot = '';
     if (w) foot += '<div class="doc-words"><b>Amount in words:</b> ' + esc(w) + '</div>';
-    var terms = lines(val('inv_terms')), bank = lines(val('inv_bank'));
+    var terms = lines(fb('inv_terms', 'terms')), bank = lines(fb('inv_bank', 'bank'));
     if (terms.length || bank.length) {
       foot += '<div class="doc-cols">' +
         (terms.length ? '<div><div class="doc-lbl">Terms &amp; conditions</div><ol class="doc-terms">' +
@@ -191,7 +223,7 @@
     }
     foot += '<div class="doc-sign"><div>' +
       (isQuote ? 'We look forward to your order.' : 'Received the above goods in good condition.') +
-      '</div><div class="doc-sig">For <b>' + (esc(val('inv_co')) || 'Your Company Name') + '</b>' +
+      '</div><div class="doc-sig">For <b>' + (esc(fb('inv_co', 'co')) || 'Your Company Name') + '</b>' +
       '<div class="doc-sigline">Authorised signatory</div></div></div>';
 
     $('#inv_doc').innerHTML = head + party +
@@ -199,6 +231,10 @@
       '<th class="r">Qty</th><th class="c">Unit</th><th class="r">Rate</th><th class="r">Amount</th></tr></thead>' +
       '<tbody>' + body + '</tbody></table>' +
       (sumRows ? '<div class="doc-sum"><table>' + sumRows + '</table></div>' : '') + foot;
+
+    var badge = document.getElementById('inv_badge');
+    if (badge) badge.hidden = !sampling;
+    root.classList.toggle('is-sample', sampling);
 
     saveSeller();
     fit();

@@ -638,7 +638,10 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 .inv-scale { position: relative; overflow: hidden; }
 .inv-scale > .doc { transform-origin: top left; }
 .invtool.scaled .inv-scale > .doc { width: 720px; }
-.inv-preview-head { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+.inv-preview-head { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; margin-bottom: 8px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.inv-badge { background: #fff4e0; color: #9a5b00; border: 1px solid #f0cf9a; border-radius: 999px; padding: 3px 10px; font-size: 10px; letter-spacing: .04em; text-transform: none; font-weight: 700; }
+.invtool.is-sample .doc { opacity: .82; }
+@media print { .inv-badge { display: none !important; } }
 
 /* the document itself */
 .doc { background: #fff; color: #111; border: 1px solid var(--line); border-radius: 8px; padding: 28px; font-size: 12.5px; line-height: 1.5; box-shadow: var(--shadow-sm); }
