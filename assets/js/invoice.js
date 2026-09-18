@@ -14,7 +14,7 @@
   if (!root) return;
 
   var STORE = 'nx_inv_seller_v1';
-  var state = { type: 'quotation', tax: 'cgst', logo: '' };
+  var state = { type: 'quotation', tax: 'cgst', logo: '', colour: '#1f3864' };
 
   /* ---------- helpers ---------- */
   function num(v) { var n = parseFloat(String(v == null ? '' : v).replace(/,/g, '')); return isFinite(n) ? n : 0; }
@@ -167,75 +167,99 @@
     var t = totals(items);
     var isQuote = state.type === 'quotation';
 
-    var head = '<div class="doc-head">' +
-      '<div class="doc-brand">' +
-      (state.logo ? '<img src="' + state.logo + '" alt="">' : '') +
-      '<div><div class="doc-co">' + (esc(fb('inv_co', 'co')) || 'Your Company Name') + '</div>' +
-      lines(fb('inv_coaddr', 'coaddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
-      (fb('inv_cogst', 'cogst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(fb('inv_cogst', 'cogst')) + '</div>' : '') +
-      (fb('inv_cophone', 'cophone') ? '<div class="doc-sm">' + esc(fb('inv_cophone', 'cophone')) + (fb('inv_coemail', 'coemail') ? ' &bull; ' + esc(fb('inv_coemail', 'coemail')) : '') + '</div>'
-        : (fb('inv_coemail', 'coemail') ? '<div class="doc-sm">' + esc(fb('inv_coemail', 'coemail')) + '</div>' : '')) +
-      '</div></div>' +
-      '<div class="doc-type"><div class="doc-t">' + TITLES[state.type] + '</div>' +
-      (fb('inv_no', 'no') ? '<div class="doc-sm"><b>No:</b> ' + esc(fb('inv_no', 'no')) + '</div>' : '') +
-      (val('inv_date') ? '<div class="doc-sm"><b>Date:</b> ' + esc(val('inv_date')) + '</div>' : '') +
-      (fb('inv_due', 'due') ? '<div class="doc-sm"><b>' + (isQuote ? 'Valid until' : 'Due') + ':</b> ' + esc(fb('inv_due', 'due')) + '</div>' : '') +
-      '</div></div>';
+    var co = esc(fb('inv_co', 'co')) || 'Your Company Name';
+    var meta = [
+      ['No', fb('inv_no', 'no')],
+      ['Date', val('inv_date')],
+      [isQuote ? 'Valid until' : 'Due', fb('inv_due', 'due')]
+    ].filter(function (m) { return m[1]; });
 
-    var party = '<div class="doc-party">' +
-      '<div><div class="doc-lbl">' + (isQuote ? 'Quotation for' : 'Bill to') + '</div>' +
-      '<div class="doc-co2">' + (esc(fb('inv_buyer', 'buyer')) || '—') + '</div>' +
-      lines(fb('inv_buyeraddr', 'buyeraddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
-      (fb('inv_buyergst', 'buyergst') ? '<div class="doc-sm"><b>GSTIN:</b> ' + esc(fb('inv_buyergst', 'buyergst')) + '</div>' : '') + '</div>' +
-      (fb('inv_pos', 'pos') ? '<div><div class="doc-lbl">Place of supply</div><div class="doc-sm">' + esc(fb('inv_pos', 'pos')) + '</div></div>' : '') +
+    var head =
+      '<div class="doc-band"></div>' +
+      '<div class="doc-head">' +
+        '<div class="doc-brand">' +
+          (state.logo ? '<img src="' + state.logo + '" alt="">' : '') +
+          '<div class="doc-brandtext">' +
+            '<div class="doc-co">' + co + '</div>' +
+            lines(fb('inv_coaddr', 'coaddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
+            (fb('inv_cogst', 'cogst') ? '<div class="doc-sm doc-gst"><b>GSTIN</b> ' + esc(fb('inv_cogst', 'cogst')) + '</div>' : '') +
+            (fb('inv_cophone', 'cophone') || fb('inv_coemail', 'coemail')
+              ? '<div class="doc-sm">' + [fb('inv_cophone', 'cophone'), fb('inv_coemail', 'coemail')].filter(Boolean).map(esc).join(' &nbsp;&bull;&nbsp; ') + '</div>'
+              : '') +
+          '</div>' +
+        '</div>' +
+        '<div class="doc-type">' +
+          '<div class="doc-t">' + TITLES[state.type] + '</div>' +
+          (meta.length ? '<table class="doc-meta">' + meta.map(function (m) {
+            return '<tr><td>' + m[0] + '</td><td>' + esc(m[1]) + '</td></tr>';
+          }).join('') + '</table>' : '') +
+        '</div>' +
       '</div>';
 
-    var body = items.length
-      ? items.map(function (it, i) {
-          return '<tr><td class="c">' + (i + 1) + '</td><td>' + (esc(it.desc) || '—') + '</td><td class="c">' + esc(it.hsn) + '</td>' +
-            '<td class="r">' + (it.qty ? it.qty.toLocaleString('en-IN') : '') + '</td><td class="c">' + esc(it.unit) + '</td>' +
-            '<td class="r">' + (it.rate ? money(it.rate) : '') + '</td><td class="r">' + money(it.amt) + '</td></tr>';
-        }).join('')
-      : '';
+    var party = '<div class="doc-party">' +
+      '<div class="doc-pcard">' +
+        '<div class="doc-lbl">' + (isQuote ? 'Quotation for' : 'Bill to') + '</div>' +
+        '<div class="doc-co2">' + (esc(fb('inv_buyer', 'buyer')) || '—') + '</div>' +
+        lines(fb('inv_buyeraddr', 'buyeraddr')).map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') +
+        (fb('inv_buyergst', 'buyergst') ? '<div class="doc-sm doc-gst"><b>GSTIN</b> ' + esc(fb('inv_buyergst', 'buyergst')) + '</div>' : '') +
+      '</div>' +
+      (fb('inv_pos', 'pos')
+        ? '<div class="doc-pcard doc-pos"><div class="doc-lbl">Place of supply</div><div class="doc-co2">' + esc(fb('inv_pos', 'pos')) + '</div></div>'
+        : '') +
+      '</div>';
+
+    var body = items.map(function (it, i) {
+      return '<tr><td class="c">' + (i + 1) + '</td><td>' + (esc(it.desc) || '—') + '</td><td class="c">' + esc(it.hsn) + '</td>' +
+        '<td class="r">' + (it.qty ? it.qty.toLocaleString('en-IN') : '') + '</td><td class="c">' + esc(it.unit) + '</td>' +
+        '<td class="r">' + (it.rate ? money(it.rate) : '') + '</td><td class="r">' + money(it.amt) + '</td></tr>';
+    }).join('');
 
     var sumRows = '';
     if (items.length) {
       sumRows += '<tr><td>Subtotal</td><td class="r">' + money(t.sub) + '</td></tr>';
       t.charges.forEach(function (c) { sumRows += '<tr><td>' + esc(c.label) + '</td><td class="r">' + money(c.v) + '</td></tr>'; });
-      if (t.discount) sumRows += '<tr><td>Less: discount</td><td class="r">- ' + money(t.discount) + '</td></tr>';
-      if (t.charges.length || t.discount) sumRows += '<tr><td>Taxable value</td><td class="r">' + money(t.taxable) + '</td></tr>';
+      if (t.discount) sumRows += '<tr><td>Less: discount</td><td class="r">&minus; ' + money(t.discount) + '</td></tr>';
+      if (t.charges.length || t.discount) sumRows += '<tr class="doc-sub"><td>Taxable value</td><td class="r">' + money(t.taxable) + '</td></tr>';
       t.tax.forEach(function (x) { sumRows += '<tr><td>' + esc(x.label) + '</td><td class="r">' + money(x.v) + '</td></tr>'; });
-      if (t.round) sumRows += '<tr><td>Rounding</td><td class="r">' + (t.round < 0 ? '- ' : '') + money(Math.abs(t.round)) + '</td></tr>';
-      sumRows += '<tr class="doc-grand"><td>Total</td><td class="r">&#8377; ' + money(t.grand) + '</td></tr>';
+      if (t.round) sumRows += '<tr><td>Rounding</td><td class="r">' + (t.round < 0 ? '&minus; ' : '') + money(Math.abs(t.round)) + '</td></tr>';
     }
 
     var w = items.length ? words(t.grand) : '';
-    var foot = '';
-    if (w) foot += '<div class="doc-words"><b>Amount in words:</b> ' + esc(w) + '</div>';
     var terms = lines(fb('inv_terms', 'terms')), bank = lines(fb('inv_bank', 'bank'));
-    if (terms.length || bank.length) {
-      foot += '<div class="doc-cols">' +
-        (terms.length ? '<div><div class="doc-lbl">Terms &amp; conditions</div><ol class="doc-terms">' +
-          terms.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ol></div>' : '') +
-        (bank.length ? '<div><div class="doc-lbl">Bank details</div>' +
+
+    var mid = '<div class="doc-mid">' +
+      '<div class="doc-midleft">' +
+        (w ? '<div class="doc-words"><span class="doc-lbl">Amount in words</span>' + esc(w) + '</div>' : '') +
+        (bank.length ? '<div class="doc-bank"><div class="doc-lbl">Bank details</div>' +
           bank.map(function (l) { return '<div class="doc-sm">' + l + '</div>'; }).join('') + '</div>' : '') +
-        '</div>';
+      '</div>' +
+      '<div class="doc-midright">' +
+        (sumRows ? '<table class="doc-sum">' + sumRows + '</table>' : '') +
+        (items.length ? '<div class="doc-grand"><span>Total</span><b>&#8377; ' + money(t.grand) + '</b></div>' : '') +
+      '</div>' +
+      '</div>';
+
+    var foot = '';
+    if (terms.length) {
+      foot += '<div class="doc-terms-box"><div class="doc-lbl">Terms &amp; conditions</div><ol class="doc-terms">' +
+        terms.map(function (l) { return '<li>' + l + '</li>'; }).join('') + '</ol></div>';
     }
-    foot += '<div class="doc-sign"><div>' +
-      (isQuote ? 'We look forward to your order.' : 'Received the above goods in good condition.') +
-      '</div><div class="doc-sig">For <b>' + (esc(fb('inv_co', 'co')) || 'Your Company Name') + '</b>' +
-      '<div class="doc-sigline">Authorised signatory</div></div></div>';
+    foot += '<div class="doc-sign">' +
+      '<div class="doc-thanks">' + (isQuote ? 'We look forward to your order.' : 'Received the above goods in good condition.') + '</div>' +
+      '<div class="doc-sig">For <b>' + co + '</b><div class="doc-sigline">Authorised signatory</div></div>' +
+      '</div>' +
+      '<div class="doc-footnote">' + co + ' &nbsp;&bull;&nbsp; This is a computer-generated document.</div>';
 
     $('#inv_doc').innerHTML = head + party +
       '<table class="doc-items"><thead><tr><th class="c">#</th><th>Description</th><th class="c">HSN/SAC</th>' +
       '<th class="r">Qty</th><th class="c">Unit</th><th class="r">Rate</th><th class="r">Amount</th></tr></thead>' +
-      '<tbody>' + body + '</tbody></table>' +
-      (sumRows ? '<div class="doc-sum"><table>' + sumRows + '</table></div>' : '') + foot;
+      '<tbody>' + body + '</tbody></table>' + mid + foot;
 
     var badge = document.getElementById('inv_badge');
     if (badge) badge.hidden = !sampling;
     root.classList.toggle('is-sample', sampling);
 
+    paint();
     saveSeller();
     fit();
   }
@@ -260,11 +284,17 @@
 
   /* ---------- seller details remembered, buyer and items never ---------- */
   var SELLER = ['inv_co', 'inv_coaddr', 'inv_cogst', 'inv_cophone', 'inv_coemail', 'inv_terms', 'inv_bank'];
+  function paint() {
+    var d = $('#inv_doc');
+    if (d) d.style.setProperty('--dc', state.colour);
+    $$('[data-colour]').forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-colour') === state.colour); });
+  }
   function saveSeller() {
     try {
       var o = {};
       SELLER.forEach(function (k) { o[k] = val(k); });
       if (state.logo && state.logo.length < 400000) o.logo = state.logo;
+      o.colour = state.colour;
       localStorage.setItem(STORE, JSON.stringify(o));
     } catch (e) { /* private window, blocked storage — the tool still works */ }
   }
@@ -273,6 +303,7 @@
       var o = JSON.parse(localStorage.getItem(STORE) || '{}');
       SELLER.forEach(function (k) { if (o[k] && document.getElementById(k)) document.getElementById(k).value = o[k]; });
       if (o.logo) { state.logo = o.logo; showLogo(); }
+      if (o.colour) state.colour = o.colour;
     } catch (e) { /* ignore */ }
   }
 
@@ -322,6 +353,25 @@
   if ($('#inv_logo_clear')) $('#inv_logo_clear').addEventListener('click', function () {
     state.logo = ''; if (file) file.value = ''; showLogo(); render();
   });
+
+  $$('[data-colour]').forEach(function (btn) {
+    btn.addEventListener('click', function () { state.colour = btn.getAttribute('data-colour'); paint(); saveSeller(); });
+  });
+
+  /* The browser prints its own header from the page title, which would otherwise
+     read "… | Nexora" on a document going to someone else's buyer. While printing,
+     the title becomes the document's own name — that is also the filename Chrome
+     offers under Save as PDF. (The URL line next to it is the browser's setting:
+     untick "Headers and footers" in the print dialogue to drop that too.) */
+  var realTitle = document.title;
+  function printTitle() {
+    var n = val('inv_no') || (sampling ? SAMPLE.no : '');
+    var who = val('inv_buyer') || (sampling ? SAMPLE.buyer : '');
+    var name = TITLES[state.type].replace(/\b(\w)(\w*)/g, function (_, a, b) { return a + b.toLowerCase(); });
+    return [name, n, who].filter(Boolean).join(' - ').replace(/[\\/:*?"<>|]/g, '-');
+  }
+  window.addEventListener('beforeprint', function () { document.title = printTitle(); });
+  window.addEventListener('afterprint', function () { document.title = realTitle; });
 
   if ($('#inv_print')) $('#inv_print').addEventListener('click', function () { window.print(); });
   if ($('#inv_reset')) $('#inv_reset').addEventListener('click', function () {
