@@ -606,3 +606,92 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 .steps-list { counter-reset: sl; list-style: none; display: grid; gap: 10px; margin: 6px 0 0; }
 .steps-list li { counter-increment: sl; position: relative; padding-left: 40px; }
 .steps-list li::before { content: counter(sl); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 999px; background: var(--primary-50); color: var(--primary); font-size: 13px; font-weight: 800; display: grid; place-items: center; }
+
+
+/* ---------- Invoice & quotation generator ---------- */
+.invtool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 1080px) { .invtool { grid-template-columns: minmax(0, 1fr); } }
+.inv-block { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
+.inv-block h2 { font-size: 16px; margin: 0 0 14px; }
+.inv-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.inv-head h2 { margin: 0; }
+.inv-logo { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.inv-logo-prev img { max-height: 46px; max-width: 160px; border: 1px solid var(--line); border-radius: 6px; padding: 4px; background: #fff; }
+.inv-rowhead, .inv-row { display: grid; grid-template-columns: minmax(0,3fr) minmax(0,1.1fr) 68px 62px minmax(0,1.2fr) minmax(0,1.3fr) 30px; gap: 6px; align-items: center; }
+.inv-rowhead { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); padding: 0 0 6px; font-weight: 700; }
+.inv-row { margin-bottom: 6px; }
+.inv-row input { width: 100%; padding: 8px 9px; font-size: 13.5px; }
+.inv-c.amt { font-family: var(--mono); font-size: 13px; text-align: right; padding-right: 2px; overflow: hidden; text-overflow: ellipsis; }
+.inv-rowhead .amt, .inv-rowhead .rate, .inv-rowhead .qty { text-align: right; }
+.inv-x { background: none; border: 0; color: var(--muted); font-size: 20px; line-height: 1; cursor: pointer; padding: 0 4px; }
+.inv-x:hover { color: #e23; }
+@media (max-width: 720px) {
+  .inv-rowhead { display: none; }
+  .inv-row { grid-template-columns: 1fr 1fr; gap: 6px; padding: 12px; border: 1px solid var(--line); border-radius: 10px; }
+  .inv-c.desc, .inv-c.amt { grid-column: 1 / -1; }
+  .inv-c.amt { text-align: left; }
+  .inv-c.del { grid-column: 2; justify-self: end; }
+}
+.inv-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
+.inv-preview { position: sticky; top: 86px; }
+.inv-preview-head { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
+
+/* the document itself */
+.doc { background: #fff; color: #111; border: 1px solid var(--line); border-radius: 8px; padding: 28px; font-size: 12.5px; line-height: 1.5; box-shadow: var(--shadow-sm); }
+.doc * { color: inherit; }
+.doc-head { display: flex; justify-content: space-between; gap: 18px; border-bottom: 2px solid #111; padding-bottom: 14px; margin-bottom: 14px; }
+.doc-brand { display: flex; gap: 12px; align-items: flex-start; }
+.doc-brand img { max-height: 54px; max-width: 150px; }
+.doc-co { font-size: 16px; font-weight: 800; }
+.doc-co2 { font-weight: 700; }
+.doc-sm { font-size: 11.5px; color: #333; }
+.doc-type { text-align: right; white-space: nowrap; }
+.doc-t { font-size: 17px; font-weight: 800; letter-spacing: .05em; margin-bottom: 4px; }
+.doc-party { display: flex; justify-content: space-between; gap: 24px; margin-bottom: 14px; }
+.doc-lbl { font-size: 10px; text-transform: uppercase; letter-spacing: .07em; color: #666; font-weight: 700; margin-bottom: 3px; }
+table.doc-items { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+table.doc-items th, table.doc-items td { border: 1px solid #bbb; padding: 6px 7px; text-align: left; vertical-align: top; }
+table.doc-items th { background: #f1f1f1; font-size: 10px; text-transform: uppercase; letter-spacing: .04em; }
+table.doc-items .r, .doc-sum .r { text-align: right; font-family: var(--mono); }
+table.doc-items .c { text-align: center; }
+.doc-empty td { text-align: center; color: #999; padding: 18px; font-style: italic; }
+.doc-sum { display: flex; justify-content: flex-end; margin-top: 10px; }
+.doc-sum table { border-collapse: collapse; min-width: 260px; font-size: 12px; }
+.doc-sum td { padding: 4px 8px; }
+.doc-sum td.r { font-family: var(--mono); }
+.doc-grand td { border-top: 2px solid #111; font-weight: 800; font-size: 13.5px; padding-top: 7px; }
+.doc-words { margin-top: 12px; font-size: 11.5px; }
+.doc-cols { display: flex; gap: 28px; margin-top: 16px; }
+.doc-cols > div { flex: 1; }
+.doc-terms { margin: 0; padding-left: 16px; font-size: 11px; }
+.doc-terms li { margin-bottom: 2px; }
+.doc-sign { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 22px; font-size: 11.5px; gap: 24px; }
+.doc-sig { text-align: right; }
+.doc-sigline { margin-top: 38px; border-top: 1px solid #999; padding-top: 4px; font-size: 10.5px; color: #555; }
+
+/* a notice block, used for the legal statement */
+.notice { background: var(--bg-3); border: 1px solid var(--line); border-left: 4px solid var(--primary); border-radius: 12px; padding: 20px 22px; margin-top: 26px; }
+.notice h2 { font-size: 17px; margin: 0 0 10px; }
+.notice p { font-size: 13.5px; margin-bottom: 10px; }
+.notice p:last-child { margin-bottom: 0; }
+.notice-legal { border-left-color: #d98218; }
+
+@media print {
+  body > *:not(main), .topbar, .header, .footer, .page-hero, .section-alt,
+  .inv-form, .inv-preview-head, .notice, .cta, .wa-float, .demo-modal, .lightbox { display: none !important; }
+  .section { padding: 0 !important; background: #fff !important; }
+  .wrap { max-width: none !important; padding: 0 !important; }
+  .invtool { display: block !important; }
+  .inv-preview { position: static !important; }
+  .doc { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; font-size: 12px; }
+  @page { size: A4; margin: 14mm; }
+}
+
+/* the document keeps its proportions on a phone by scrolling inside its own box,
+   rather than pushing the page sideways */
+.inv-preview { overflow-x: auto; }
+@media (max-width: 720px) {
+  .doc { padding: 16px; font-size: 11.5px; min-width: 460px; }
+  .doc-head, .doc-party, .doc-cols, .doc-sign { gap: 12px; }
+  .inv-block { padding: 16px; }
+}

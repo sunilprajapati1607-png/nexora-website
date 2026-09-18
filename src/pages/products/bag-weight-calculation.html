@@ -15,7 +15,6 @@ priority: 0.9
       <p class="lead">From denier and mesh to a costed Bill of Materials: Nexora calculates every gram, forecasts every kilogram of raw material and resource, and locks the answer with a revision history you can print for an audit.</p>
       <div class="hero-cta">
         <button class="btn btn-primary btn-lg" data-open-demo data-interest="Bag Weight & Cost Forecasting">Book a Demo on Your Spec</button>
-        <a class="btn btn-glass btn-lg" href="#bag-3d-view">Watch the 3D bag view</a>
         <a class="btn btn-glass btn-lg" href="/calculator">Try the Free Calculator</a>
       </div>
     </div>
@@ -45,47 +44,6 @@ priority: 0.9
         <div class="step"><h4>Weight breakdown</h4><p>Component-wise grams for body, patch, valve, coating, BOPP, ink, adhesive, thread — with % share.</p></div>
         <div class="step"><h4>Route &amp; RM forecast</h4><p>Order quantity flows through the route. Kilograms per material, waste carried forward at every stage.</p></div>
         <div class="step"><h4>Costed BOM</h4><p>Material cost from the versioned price master plus conversion from process resource rates, reconciled.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3D bag view -->
-  <section class="section" id="bag-3d-view" style="scroll-margin-top:90px;">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow"><svg class="icon"><use href="#i-box"/></svg> New &bull; 3D bag view</div>
-        <h2>See the bag before a single tape is extruded</h2>
-        <p>A weight is a number until you can look at it. Nexora draws the bag your specification describes, turns it, pulls it apart, and puts a size, a weight and a share against every part.</p>
-      </div>
-      <figure class="video-frame reveal">
-        <video controls preload="none" playsinline poster="/assets/img/3d-view-poster.jpg"
-               width="1902" height="998" aria-label="The Nexora 3D bag view turning a block bottom cement bag, pulling it apart into its parts, and showing each part's size, weight and share">
-          <source src="/assets/video/nexora-3d-bag-view.mp4" type="video/mp4" />
-          Your browser cannot play this video. <a href="/assets/video/nexora-3d-bag-view.mp4">Download it instead</a>.
-        </video>
-        <figcaption>Recorded in the application. A 2L block bottom cement bag: turned, pulled apart, and every part costed by the same engine that weighs it.</figcaption>
-      </figure>
-      <div class="split" style="margin-top:34px; align-items:center;">
-        <figure class="shot reveal" data-zoom style="margin:0;"><img src="/assets/img/screens/09-3d-bag-parts.png" alt="A 4 layer handle bag with liner pulled apart in the Nexora 3D view, each part labelled with its size, beside the dimensioned lay-flat view" loading="lazy" width="1464" height="907" /></figure>
-        <div class="reveal">
-          <div class="kicker">Every part, named and sized</div>
-          <h3 style="margin-bottom:12px;">A handle bag with a liner, taken apart</h3>
-          <p>Body, handle, liner and the stitching line, each in its own colour with its own size on the drawing — assembled or pulled apart, so an assembled bag still says what it is made of. The lay-flat view beside it is to scale and dimensioned, down to the liner at 480 × 820 mm and the handle at 25 × 250 mm.</p>
-          <ul class="checks" style="margin-top:14px;">
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>An extended valve is drawn standing proud of the bag, to scale, and labelled</li>
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>A <b>Sizes</b> switch takes the labels off for a clean picture</li>
-            <li><svg class="icon"><use href="#i-check-circle"/></svg>The drawing prints on a sheet of its own, and on the calculation sheet</li>
-          </ul>
-        </div>
-      </div>
-      <div class="grid grid-3" style="margin-top:34px;">
-        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-box"/></svg></div><h4>Your bag, not a picture of one</h4><p>A construction with a patch is drawn as a block whose ends are its patches. Without one it is the lay-flat tube. The item name is printed across the face, so the bag on screen is the bag on the order.</p></div>
-        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-layers"/></svg></div><h4>Pull it apart</h4><p>One button floats every part clear with its name, size and weight: body, top and bottom patch, valve, handle, liner, stitching yarn, easy-open tape and back seam, each in its own colour.</p></div>
-        <div class="card reveal"><div class="ico"><svg class="icon"><use href="#i-scale"/></svg></div><h4>Click a part, get the truth</h4><p>Any part opens a card with its size, weight, share of the bag and what it is made of, down to the fabric GSM, mesh, denier and coating. Every figure is the engine's; the drawing calculates nothing.</p></div>
-      </div>
-      <div class="card reveal" style="margin-top:22px; display:flex; gap:18px; align-items:center; flex-wrap:wrap; justify-content:space-between;">
-        <div><h4>Where a drawing earns its keep</h4><p>A supervisor spots a wrong patch depth in a second on a drawing and never in a field. The lay-flat view beside it is to scale, with the valve strip and both patches dimensioned, so the cutting size can be checked before the loom runs.</p></div>
-        <button class="btn btn-primary" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">See it on your own bag</button>
       </div>
     </div>
   </section>
@@ -251,7 +209,7 @@ priority: 0.9
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow">Recent releases</div>
-        <h2>What has shipped since the 3D view</h2>
+        <h2>What has shipped recently</h2>
         <p>Nexora ships weekly. These are the changes a plant actually notices.</p>
       </div>
       <div class="grid grid-3">
@@ -342,7 +300,7 @@ priority: 0.9
         <details><summary>How does it handle a resin price change?</summary><p>A new price is a new version with its own effective-from date. Approved calculations keep the rate they were costed at; new ones pick up the new rate. Bulk update is Excel-like when the whole market moves.</p></details>
         <details><summary>Which bag constructions are covered?</summary><p>29 standard structures: plain and printed PP/HDPE woven sacks, BOPP laminated, block bottom, pinch bottom, valve, liner, handle, backseam and easy-open variants, each with its own field set and weight logic. New constructions can be added as structures, not code.</p></details>
         <details><summary>Can more than one person use it in the same company?</summary><p>Yes. Each person signs in with their own name and PIN on any licensed seat. Materials, prices, processes and routes are shared company-wide and the latest save wins by the server's clock, while calculations stay private unless your administrator grants wider access.</p></details>
-        <details><summary>What is the 3D bag view for?</summary><p>It draws the bag your specification describes so a wrong patch depth or valve size is visible at a glance, and it breaks the bag into parts with a size, weight and share against each. See <a href="#bag-3d-view">the recording above</a>.</p></details>
+        <details><summary>What is the 3D bag view for?</summary><p>It draws the bag your specification describes, so a wrong patch depth or valve size is visible at a glance before anything is cut, and it breaks the bag into parts with a size, weight and share against each. It runs inside the installed application — ask for a demo and we will show it on your own construction.</p></details>
         <details><summary>How does the ink assumption work, and is my artwork safe?</summary><p>Nexora reads the artwork on your own computer and works out the coverage of each colour. Only those coverage figures, the white share, the substrate and the size are sent for the calculation — never the image, and never to another company's model. Untrained it uses published trade practice; trained on your measured jobs it uses your own press.</p></details>
         <details><summary>Can I send a quotation to a buyer from it?</summary><p>Yes. A finished calculation becomes a quotation on your own letterhead — several items on one sheet, freight and packing as their own lines, your own terms and conditions, the profit before tax visible while you type, and the sheet out by mail or WhatsApp in one click. See <a href="/bag-quotation-software">the quotation module</a>.</p></details>
         <details><summary>Which denier formula does the engine use?</summary><p>Denier = GSM &times; 228.6 &divide; (warp mesh + weft mesh), the physical denier of the tape in the fabric. A 70 GSM 10 &times; 10 fabric reports 800 denier. The factor is a constant you can edit if your plant allows for crimp, and the bag weight does not depend on it — denier is a reporting figure. The <a href="/denier-to-gsm">free converters</a> here use the same formula.</p></details>
@@ -364,7 +322,4 @@ priority: 0.9
   </section>
 </main>
 
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"VideoObject","name":"Nexora 3D bag view — a block bottom cement bag drawn, turned and taken apart","description":"The Nexora bag weight calculation software draws the bag a specification describes, prints the item name on its face, turns it, and pulls it apart into body, patches and valve with the size, weight and share of each part.","thumbnailUrl":"https://www.nexoraofficial.org/assets/img/3d-view-poster.jpg","uploadDate":"2026-09-14","duration":"PT33S","contentUrl":"https://www.nexoraofficial.org/assets/video/nexora-3d-bag-view.mp4","embedUrl":"https://www.nexoraofficial.org/products/bag-weight-calculation#bag-3d-view","publisher":{"@type":"Organization","name":"Nexora","logo":{"@type":"ImageObject","url":"https://www.nexoraofficial.org/assets/img/logo-square.png"}}}
-  </script>
 {{> footer}}
