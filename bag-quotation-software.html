@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LDPE Liner Weight Calculator for Woven Sacks | Nexora</title>
-  <meta name="description" content="Free LDPE liner weight calculator: lay-flat width, gusset, length, bottom seal and micron or gauge to liner weight and the kilograms an order needs." />
-  <meta name="keywords" content="liner weight calculation, ldpe liner calculator, pe liner weight woven sack, liner micron to gauge, poly liner weight formula, liner gsm calculation, inner liner bag weight" />
+  <title>Bag Quotation Software for Woven Sack Plants | Nexora</title>
+  <meta name="description" content="Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead." />
+  <meta name="keywords" content="bag quotation software, woven sack quotation, pp woven bag quotation format, packaging quotation software, bag price quotation, quotation software for manufacturers, cost to quotation, woven sack quotation format" />
   <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.nexoraofficial.org/liner-calculator" />
+  <link rel="canonical" href="https://www.nexoraofficial.org/bag-quotation-software" />
   <meta name="theme-color" content="#050c1a" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Nexora" />
-  <meta property="og:title" content="LDPE Liner Weight Calculator for Woven Sacks | Nexora" />
-  <meta property="og:description" content="Free LDPE liner weight calculator: lay-flat width, gusset, length, bottom seal and micron or gauge to liner weight and the kilograms an order needs." />
-  <meta property="og:url" content="https://www.nexoraofficial.org/liner-calculator" />
+  <meta property="og:title" content="Bag Quotation Software for Woven Sack Plants | Nexora" />
+  <meta property="og:description" content="Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead." />
+  <meta property="og:url" content="https://www.nexoraofficial.org/bag-quotation-software" />
   <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="LDPE Liner Weight Calculator for Woven Sacks | Nexora" />
-  <meta name="twitter:description" content="Free LDPE liner weight calculator: lay-flat width, gusset, length, bottom seal and micron or gauge to liner weight and the kilograms an order needs." />
+  <meta name="twitter:title" content="Bag Quotation Software for Woven Sack Plants | Nexora" />
+  <meta name="twitter:description" content="Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead." />
   <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
@@ -78,10 +78,10 @@
       },
       {
         "@type": "WebPage",
-        "@id": "https://www.nexoraofficial.org/liner-calculator#webpage",
-        "url": "https://www.nexoraofficial.org/liner-calculator",
-        "name": "LDPE Liner Weight Calculator for Woven Sacks | Nexora",
-        "description": "Free LDPE liner weight calculator: lay-flat width, gusset, length, bottom seal and micron or gauge to liner weight and the kilograms an order needs.",
+        "@id": "https://www.nexoraofficial.org/bag-quotation-software#webpage",
+        "url": "https://www.nexoraofficial.org/bag-quotation-software",
+        "name": "Bag Quotation Software for Woven Sack Plants | Nexora",
+        "description": "Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead.",
         "isPartOf": { "@id": "https://www.nexoraofficial.org/#website" },
         "about": { "@id": "https://www.nexoraofficial.org/#organization" }
       }
@@ -222,115 +222,130 @@
 <main>
   <section class="page-hero">
     <div class="wrap">
-      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>Liner calculator</span></div>
-      <div class="eyebrow"><svg class="icon"><use href="#i-layers"/></svg> Free liner calculator</div>
-      <h1>LDPE liner weight calculator</h1>
-      <p class="lead">A liner is its own article: its own lay-flat width, its own length and its own seal, in micron or gauge. Enter them here and get the weight of one liner, the kilograms an order needs and an indicative cost. Sizes in mm, cm or inch.</p>
-    </div>
-  </section>
-
-  <section class="section" style="padding-top:44px;">
-    <div class="wrap">
-      <div class="calc sim" id="nxLiner">
-        <div class="calc-in">
-          <div class="sim-head">
-            <h3>Liner specification</h3>
-            <div class="unit-toggle" role="group" aria-label="Units"><button type="button" data-lunit="mm">mm</button><button type="button" class="on" data-lunit="cm">cm</button><button type="button" data-lunit="in">inch</button></div>
-          </div>
-
-          <div class="fieldset-title">Size</div>
-          <div class="calc-fields">
-            <div class="field"><label for="l_w">Lay-flat width (<span class="lunitlbl">cm</span>)</label><input type="number" id="l_w" value="50" min="0" step="0.5" inputmode="decimal"><div class="hint">The flattened tube, not the circumference</div></div>
-            <div class="field"><label for="l_gusset">Gusset, total (<span class="lunitlbl">cm</span>)</label><input type="number" id="l_gusset" value="0" min="0" step="0.5" inputmode="decimal"><div class="hint">0 for a plain tube</div></div>
-            <div class="field"><label for="l_l">Finished length (<span class="lunitlbl">cm</span>)</label><input type="number" id="l_l" value="90" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field"><label for="l_seal">Bottom seal allowance (<span class="lunitlbl">cm</span>)</label><input type="number" id="l_seal" value="6" min="0" step="0.5" inputmode="decimal"></div>
-          </div>
-
-          <div class="fieldset-title">Thickness</div>
-          <div class="calc-fields">
-            <div class="field"><label for="l_thickmode">Entered as</label><select id="l_thickmode"><option value="micron">Micron</option><option value="gauge">Gauge</option></select><div class="hint">1 micron = 4 gauge</div></div>
-            <div class="field" id="f_micron"><label for="l_micron">Micron</label><input type="number" id="l_micron" value="40" min="0" step="1" inputmode="decimal"></div>
-            <div class="field" id="f_gauge" hidden><label for="l_gauge">Gauge</label><input type="number" id="l_gauge" value="160" min="0" step="5" inputmode="decimal"></div>
-          </div>
-
-          <div class="fieldset-title">Order</div>
-          <div class="calc-fields">
-            <div class="field"><label for="l_qty">Quantity (liners)</label><input type="number" id="l_qty" value="10000" min="1" step="1000" inputmode="numeric"></div>
-            <div class="field"><label for="l_waste">Process waste (%)</label><input type="number" id="l_waste" value="3" min="0" step="0.5" inputmode="decimal"></div>
-            <div class="field" style="grid-column:1/-1;"><label for="l_rate">LDPE rate (₹ / kg) — example</label><input type="number" id="l_rate" value="108" min="0" step="1" inputmode="decimal"></div>
-          </div>
-
-          <p class="calc-note">The formula is the one the Nexora engine uses for a liner: gauge = micron × 4, then weight = (gauge ÷ 3300) × width in inches × cut length in inches. The lay-flat width already accounts for the two layers of the tube, so do not double it. Plants differ in seal allowance and film tolerance, so treat this as a quotation check.</p>
-        </div>
-
-        <div class="calc-out">
-          <div class="calc-big"><small>Weight of one liner</small><b><span id="l_out">0</span><em>g</em></b><div class="o-sub" id="l_gaugeout"></div></div>
-          <div class="calc-rows">
-            <div><span>Size used</span><b id="l_cut">0</b></div>
-            <div><span>Weight per 1,000 liners</span><b id="l_per1000">0 kg</b></div>
-            <div class="total"><span>LDPE required for <span id="l_qtyout">10,000</span> liners (incl. waste)</span><b id="l_kg">0 kg</b></div>
-            <div><span>Cross-check by area × density (0.92)</span><b id="l_density">0 g</b></div>
-          </div>
-
-          <div class="locked">
-            <div class="locked-head"><span>Costing at the example rate</span><span class="tag">Demo feature</span></div>
-            <div class="cost-grid">
-              <div><small>Cost per liner</small><b class="blur" id="l_perbag">₹0.000</b></div>
-              <div><small>Order value</small><b class="blur" id="l_cost">₹0</b></div>
-            </div>
-            <div class="locked-cta">
-              <p>Real costing uses your own dated LDPE price and your plant's waste norms, and rolls the liner into the bag's own Bill of Materials.</p>
-              <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Get my costing</button>
-            </div>
-          </div>
-
-          <div class="calc-formula" id="l_formula"></div>
-        </div>
+      <div class="crumbs"><a href="/">Home</a> / <a href="/products">Products</a> / <span>Bag quotation</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-file"/></svg> Quotation module</div>
+      <h1>Bag Quotation Software for Woven Sack &amp; Packaging Plants</h1>
+      <p class="lead">A quotation is the costing with a buyer's name on it. Nexora turns a finished bag calculation into a quotation on your own letterhead — several items on one sheet, freight and packing carried separately, your own terms, and a clear answer to the only question that matters: does this row make money?</p>
+      <div class="hero-cta hero-cta-3" style="margin-top:22px;">
+        <button class="btn btn-primary btn-lg" data-open-demo data-interest="Quotation module">Request a Demo</button>
+        <a class="btn btn-outline btn-lg" href="/bag-costing">How bag costing works</a>
       </div>
     </div>
   </section>
 
-  <section class="section section-alt">
-    <div class="wrap prose" style="max-width:860px;">
-      <h2>How a liner's weight is calculated</h2>
-      <p>A liner is a lay-flat polyethylene tube dropped inside a woven sack to keep moisture out. Because it is a tube, its lay-flat width already carries both layers of film, which is why the woven sack formula divides by 3300 rather than multiplying an area by a density twice.</p>
+  <section class="section">
+    <div class="wrap prose" style="max-width:880px;">
+      <h2>What a woven sack quotation has to carry</h2>
+      <p>Most plants quote from a spreadsheet copied off the last enquiry. It works until the buyer asks why the rate moved, or until three sizes go out on one sheet and two of them are priced off last month's resin. A quotation is a document you can be held to, so everything on it has to come from somewhere.</p>
+      <div class="table-wrap"><table class="t">
+        <tr><th>On the sheet</th><th>Where it comes from</th></tr>
+        <tr><td>Buyer, reference, date, validity</td><td>Typed once, carried on every printed copy</td></tr>
+        <tr><td>Each item's construction and size</td><td>The saved calculation, not retyped</td></tr>
+        <tr><td>Bag weight, and the target it was quoted against</td><td>The calculation engine</td></tr>
+        <tr><td>Quantity and the rate basis</td><td>Per bag, per kilogram or per 1,000 — your choice per quotation</td></tr>
+        <tr><td>Freight, packing and any other charge</td><td>Entered as their own lines, not buried in the rate</td></tr>
+        <tr><td>Terms and conditions</td><td>Your own wording, kept and reused</td></tr>
+        <tr><td>The drawings</td><td>The flat pattern and the bag pulled apart, as on the calculation sheet</td></tr>
+      </table></div>
+
+      <h2>From costing to quotation, without retyping anything</h2>
+      <p>This is the part that saves the day. The <a href="/bag-costing">bag costing</a> already holds the construction, the size, the mesh and denier, the layer GSMs, the component weights and the raw material each bag consumes. A quotation does not recalculate any of it — it picks the saved calculation and puts a buyer, a quantity and a margin on top.</p>
       <div class="formula-box">
-        gauge = micron × 4<br>
-        cut length = finished length + bottom seal allowance<br>
-        weight (g) = (gauge ÷ 3300) × (lay-flat width in inches) × (cut length in inches)<br>
-        order kg = weight × quantity × (1 + waste %) ÷ 1000
+        specification &rarr; calculation &rarr; costed BOM &rarr; <b>quotation</b> &rarr; printed sheet, mail or WhatsApp
       </div>
-      <p>The calculator also shows a cross-check worked the other way — lay-flat width × cut length × 2 layers × micron × 0.92 — so you can see the two agree within a couple of percent. Where they differ, the difference is the film tolerance your supplier actually delivers.</p>
-      <h3>Typical liner specifications</h3>
-      <ul>
-        <li><b>Cement and putty 25–50 kg:</b> 40–60 micron (160–240 gauge), lay-flat width matching the sack, 5–8 cm bottom seal.</li>
-        <li><b>Food grain and sugar:</b> 50–75 micron, often with a gusset so the liner opens square inside the sack.</li>
-        <li><b>Chemicals and fertiliser:</b> 75–100 micron, sometimes co-extruded or with a moisture barrier layer.</li>
-      </ul>
-      <h2>FAQ</h2>
+      <p>Nothing is re-keyed between those steps, so nothing can drift between them. If the specification changes, the calculation changes, and the quotation built on it is the one that changed — not a spreadsheet somebody forgot to update.</p>
+
+      <h3>A quotation is a table of rows</h3>
+      <p>One enquiry rarely means one bag. A buyer asks for three sizes, or the same sack in two GSMs, or a plain sack and a BOPP version of it side by side. Each row on the quotation is its own item, with its own construction, its own quantity and its own rate — and the sheet totals them. You are not sending three separate quotations for one enquiry any more.</p>
+
+      <h3>A quotation with nothing calculated behind it</h3>
+      <p>Not every line in a quotation is a bag you make. A bought-out liner, a traded item, a printing cylinder charge — those need a row too. Nexora lets a quotation carry an item with no calculation behind it, typed in directly, so the sheet the buyer receives is complete rather than complete-except-for-one-thing.</p>
+
+      <h2>Does this row make money?</h2>
+      <p>This is the question a quotation usually cannot answer until the order is finished and the year is closed. Nexora answers it while you are still typing.</p>
+      <p>Each row carries its own profit or loss against the costing behind it, and the quotation carries its <b>profit before tax</b>. A row that is under water is visible <i>before</i> the sheet is printed, not in a review three months later. That is the difference between quoting and discovering.</p>
+      <p>It matters most where you would least expect it. A buyer negotiates the headline rate on the big item and you concede it, and the small item nobody argued about is the one that was carrying the order. Priced row by row, that shows up immediately.</p>
+      <p class="hint">The money itself lives in your own installation, against your own dated price master and process rates. Nothing of that is published here — request a demo and we will run your own enquiry.</p>
+
+      <h3>Freight, packing and anything else</h3>
+      <p>Charges that are not the bag belong on their own lines. Freight to the buyer's godown, bale packing, a pallet, a cylinder charge for a first print job — each entered separately so the bag rate stays the bag rate. Bury them in the per-kilogram figure and neither you nor the buyer can explain the quotation six months later.</p>
+
+      <h3>Terms and conditions, in your own words</h3>
+      <p>Payment terms, delivery period, tolerance on weight and count, GST treatment, validity of the rate, what happens if resin moves before the order is confirmed. Written once in your own wording, kept, and carried onto every quotation — because the terms are what you are actually agreeing to.</p>
+
+      <h2>Printed on your own letterhead</h2>
+      <p>The quotation prints in your own house style with your company details, and carries the two drawings from the calculation sheet — the flat pattern and the bag pulled apart with its parts named. A buyer who can see the bag drawn to the sizes you are quoting asks fewer questions, and the ones they do ask are the right ones.</p>
+
+      <h3>Mail or WhatsApp, in one click</h3>
+      <p>The finished sheet goes out from the task bar — email or WhatsApp, configured once under Settings → Company. In this industry a quotation reaches the buyer on WhatsApp more often than it reaches them any other way, so it is a button, not an export-then-attach-then-find-the-number.</p>
+
+      <h2>Where the quotation sits in Nexora</h2>
+      <div class="table-wrap"><table class="t">
+        <tr><th>Step</th><th>What you do</th><th>Read more</th></tr>
+        <tr><td>1. Specification</td><td>Pick the construction, enter the sizes, mesh, GSM and lamination</td><td><a href="/products/bag-weight-calculation">Bag weight calculation</a></td></tr>
+        <tr><td>2. Weight</td><td>Component-wise bag weight, with the formula against every value</td><td><a href="/calculator">Free calculator</a></td></tr>
+        <tr><td>3. Cost</td><td>Costed BOM on your dated price master and process rates</td><td><a href="/bag-costing">Bag costing guide</a></td></tr>
+        <tr><td>4. Quotation</td><td>Buyer, rows, charges, terms, margin — on your letterhead</td><td>This page</td></tr>
+        <tr><td>5. Out</td><td>Print, mail or WhatsApp</td><td><a href="/screens">See the screens</a></td></tr>
+      </table></div>
+
+      <h2>Frequently asked questions</h2>
       <div class="faq">
-        <details><summary>How do I convert liner micron to gauge?</summary><p>Multiply by four. A 40 micron liner is 160 gauge; a 75 micron liner is 300 gauge. The calculator accepts either and shows both.</p></details>
-        <details><summary>Should I double the width for the two layers?</summary><p>No. Enter the lay-flat width as measured flat. The formula's divisor already accounts for the tube being two layers.</p></details>
-        <details><summary>Why is the liner no longer in the bag calculator?</summary><p>Because it is a separate article with its own width, length and seal, and it is often bought rather than made. Calculate it here and add it to the bag when you cost the order. In the desktop app the liner is one line of the bag's Bill of Materials.</p></details>
-        <details><summary>What bottom seal allowance should I use?</summary><p>Most plants allow 50–80 mm for the bottom seal. Use your own figure; the calculator adds it to the finished length to get the cut length.</p></details>
+        <details><summary>What is a woven sack quotation, and how does Nexora build one?</summary><p>A quotation is the costing with a buyer on it: the items, their specifications, the quantity, the rate basis, the charges that are not the bag, and the terms you are agreeing to. Nexora builds it from a saved calculation rather than a blank page, so the construction, the size and the bag weight on the sheet are the ones the engine worked out, not ones somebody typed again.</p></details>
+        <details><summary>Can one quotation carry more than one bag?</summary><p>Yes. A quotation is a table of rows, and each row is its own item with its own construction, quantity and rate. Three sizes, or the same sack in two GSMs, or a plain sack next to its BOPP version, all go out on one sheet with one total — instead of three separate quotations for one enquiry.</p></details>
+        <details><summary>Can I quote something that has no calculation behind it?</summary><p>Yes, and you will need to. A bought-out liner, a traded item, a cylinder charge for a first print job — none of those are bags you calculate, but all of them belong on the sheet. Such a row is typed in directly so the quotation the buyer receives is complete.</p></details>
+        <details><summary>Does it tell me whether a quotation is profitable before I send it?</summary><p>That is the point of it. Each row carries its own profit or loss against the costing behind it, and the quotation carries its profit before tax. A row that is under water is visible while you are still typing, rather than in a review after the order has run.</p></details>
+        <details><summary>Where do freight and packing go?</summary><p>On their own lines, never inside the bag rate. Freight to the buyer's godown, bale packing, a pallet, a cylinder charge — each is entered separately. Blend them into the per-kilogram figure and neither you nor the buyer can explain the quotation six months later.</p></details>
+        <details><summary>Can I quote per bag, per kilogram or per 1,000 bags?</summary><p>All three. The rate basis is yours to choose per quotation, because buyers differ: some purchase departments think in rupees per kilogram, some think per bag, and a few work in thousands. The underlying costing does not change — only how the sheet presents it.</p></details>
+        <details><summary>Can I put my own terms and conditions on it?</summary><p>Yes, in your own wording. Payment terms, delivery period, weight and count tolerance, GST treatment, how long the rate holds, and what happens if resin moves before the order is confirmed. Written once, kept, and carried onto every quotation.</p></details>
+        <details><summary>Does the quotation print on our own letterhead?</summary><p>It prints in your house style with your company details, and carries the two drawings from the calculation sheet: the flat pattern and the bag pulled apart with its parts named. A buyer who can see the bag drawn to the sizes being quoted asks fewer and better questions.</p></details>
+        <details><summary>How do I send the quotation to the buyer?</summary><p>From the task bar, by email or WhatsApp, configured once under Settings → Company. In this industry a quotation reaches the buyer on WhatsApp more often than by any other route, so it is one button rather than export, attach and hunt for the number.</p></details>
+        <details><summary>What happens to an old quotation when the resin price moves?</summary><p>Nothing, and that is deliberate. A quotation keeps the rates it was costed at, because you have to be able to explain a price you already sent. New quotations pick up the new rates automatically, and you can see which live quotations are now below cost instead of finding out at the year-end.</p></details>
+        <details><summary>Does the quotation reach the buyer with our cost in it?</summary><p>No. The buyer's sheet carries the rate, the quantity, the charges and the terms. The cost behind it, the margin and the profit before tax are yours, visible inside Nexora by role. Rates and costs are the most sensitive numbers in a plant and they are treated that way.</p></details>
+        <details><summary>Is the quotation module separate software, or part of the bag calculation app?</summary><p>Part of it. The same application holds the constructions, the constants, the dated price master, the process routes, the costed BOM and the quotation, so a quotation is one step further along the same record — not an export into another system.</p></details>
       </div>
-      <div class="related" style="margin-top:18px;"><a href="/calculator">Bag weight &amp; costing calculator</a><a href="/bopp-bag-calculation">BOPP bag calculation</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/fabric-weight-calculator">Width × length × GSM</a></div>
+
+      <div class="related" style="margin-top:22px;">
+        <a href="/products/bag-weight-calculation">Bag weight software</a>
+        <a href="/bag-costing">Bag costing guide</a>
+        <a href="/calculator">Free calculator</a>
+        <a href="/products/erp">Nexora ERP</a>
+        <a href="/screens">App screens</a>
+      </div>
     </div>
   </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Quote your next enquiry from the costing, not from a spreadsheet</h2>
+      <p>Send one enquiry with its specifications and we will build the quotation in Nexora and send it back to you.</p>
+      <div class="hero-cta">
+        <button class="btn btn-white btn-lg" data-open-demo data-interest="Quotation module">Request a Demo</button>
+        <a class="btn btn-glass btn-lg" href="/bag-costing">Bag Costing Guide</a>
+      </div>
+    </div>
+  </section>
+</main>
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@graph":[
-    {"@type":"WebApplication","name":"LDPE Liner Weight Calculator","url":"https://www.nexoraofficial.org/liner-calculator","applicationCategory":"UtilitiesApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"publisher":{"@type":"Organization","name":"Nexora"}},
+    {"@type":"SoftwareApplication","name":"Nexora Bag Quotation","applicationCategory":"BusinessApplication","operatingSystem":"Windows","url":"https://www.nexoraofficial.org/bag-quotation-software","description":"Quotation module for PP/PE woven sack and packaging plants: multi-item quotations built from saved bag calculations, freight and packing as their own lines, profit before tax per quotation, own terms and own letterhead.","publisher":{"@type":"Organization","name":"Nexora","logo":{"@type":"ImageObject","url":"https://www.nexoraofficial.org/assets/img/logo-square.png"}}},
     {"@type":"FAQPage","mainEntity":[
-      {"@type":"Question","name":"How do I convert liner micron to gauge?","acceptedAnswer":{"@type":"Answer","text":"Multiply micron by four. A 40 micron liner is 160 gauge and a 75 micron liner is 300 gauge."}},
-      {"@type":"Question","name":"Should I double the liner width for the two layers?","acceptedAnswer":{"@type":"Answer","text":"No. Enter the lay-flat width as measured flat; the divisor in the formula already accounts for the tube being two layers."}},
-      {"@type":"Question","name":"What bottom seal allowance should I use for a liner?","acceptedAnswer":{"@type":"Answer","text":"Most plants allow 50 to 80 mm for the bottom seal, added to the finished length to give the cut length."}}
+      {"@type":"Question","name":"What is a woven sack quotation, and how does Nexora build one?","acceptedAnswer":{"@type":"Answer","text":"A quotation is the costing with a buyer on it: the items, their specifications, the quantity, the rate basis, the charges that are not the bag, and the terms you are agreeing to. Nexora builds it from a saved calculation rather than a blank page, so the construction, the size and the bag weight on the sheet are the ones the engine worked out, not ones somebody typed again."}},
+      {"@type":"Question","name":"Can one quotation carry more than one bag?","acceptedAnswer":{"@type":"Answer","text":"Yes. A quotation is a table of rows, and each row is its own item with its own construction, quantity and rate. Three sizes, or the same sack in two GSMs, or a plain sack next to its BOPP version, all go out on one sheet with one total — instead of three separate quotations for one enquiry."}},
+      {"@type":"Question","name":"Can I quote something that has no calculation behind it?","acceptedAnswer":{"@type":"Answer","text":"Yes, and you will need to. A bought-out liner, a traded item, a cylinder charge for a first print job — none of those are bags you calculate, but all of them belong on the sheet. Such a row is typed in directly so the quotation the buyer receives is complete."}},
+      {"@type":"Question","name":"Does it tell me whether a quotation is profitable before I send it?","acceptedAnswer":{"@type":"Answer","text":"That is the point of it. Each row carries its own profit or loss against the costing behind it, and the quotation carries its profit before tax. A row that is under water is visible while you are still typing, rather than in a review after the order has run."}},
+      {"@type":"Question","name":"Where do freight and packing go?","acceptedAnswer":{"@type":"Answer","text":"On their own lines, never inside the bag rate. Freight to the buyer's godown, bale packing, a pallet, a cylinder charge — each is entered separately. Blend them into the per-kilogram figure and neither you nor the buyer can explain the quotation six months later."}},
+      {"@type":"Question","name":"Can I quote per bag, per kilogram or per 1,000 bags?","acceptedAnswer":{"@type":"Answer","text":"All three. The rate basis is yours to choose per quotation, because buyers differ: some purchase departments think in rupees per kilogram, some think per bag, and a few work in thousands. The underlying costing does not change — only how the sheet presents it."}},
+      {"@type":"Question","name":"Can I put my own terms and conditions on it?","acceptedAnswer":{"@type":"Answer","text":"Yes, in your own wording. Payment terms, delivery period, weight and count tolerance, GST treatment, how long the rate holds, and what happens if resin moves before the order is confirmed. Written once, kept, and carried onto every quotation."}},
+      {"@type":"Question","name":"Does the quotation print on our own letterhead?","acceptedAnswer":{"@type":"Answer","text":"It prints in your house style with your company details, and carries the two drawings from the calculation sheet: the flat pattern and the bag pulled apart with its parts named. A buyer who can see the bag drawn to the sizes being quoted asks fewer and better questions."}},
+      {"@type":"Question","name":"How do I send the quotation to the buyer?","acceptedAnswer":{"@type":"Answer","text":"From the task bar, by email or WhatsApp, configured once under Settings to Company. In this industry a quotation reaches the buyer on WhatsApp more often than by any other route, so it is one button rather than export, attach and hunt for the number."}},
+      {"@type":"Question","name":"What happens to an old quotation when the resin price moves?","acceptedAnswer":{"@type":"Answer","text":"Nothing, and that is deliberate. A quotation keeps the rates it was costed at, because you have to be able to explain a price you already sent. New quotations pick up the new rates automatically, and you can see which live quotations are now below cost instead of finding out at the year-end."}},
+      {"@type":"Question","name":"Does the quotation reach the buyer with our cost in it?","acceptedAnswer":{"@type":"Answer","text":"No. The buyer's sheet carries the rate, the quantity, the charges and the terms. The cost behind it, the margin and the profit before tax are yours, visible inside Nexora by role. Rates and costs are the most sensitive numbers in a plant and they are treated that way."}},
+      {"@type":"Question","name":"Is the quotation module separate software, or part of the bag calculation app?","acceptedAnswer":{"@type":"Answer","text":"Part of it. The same application holds the constructions, the constants, the dated price master, the process routes, the costed BOM and the quotation, so a quotation is one step further along the same record — not an export into another system."}}
     ]}
   ]}
   </script>
-  <script src="/assets/js/liner.js?v=202609180908" defer></script>
-</main>
-
 <footer class="footer">
   <div class="wrap">
     <div class="cols">

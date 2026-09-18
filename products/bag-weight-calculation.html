@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609180743" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609180908" />
   <script>
     (function () {
       var t = 'light';
@@ -168,6 +168,7 @@
           <button class="navbtn" aria-expanded="false" aria-haspopup="true">Products <svg class="icon"><use href="#i-chev"/></svg></button>
           <div class="dropdown">
             <a href="/products/bag-weight-calculation"><svg class="icon"><use href="#i-scale"/></svg><span><b>Bag Weight &amp; Cost Forecasting</b><small>Flagship: GSM, bag weight, RM forecast &amp; costed BOM</small></span></a>
+            <a href="/bag-quotation-software"><svg class="icon"><use href="#i-file"/></svg><span><b>Bag Quotation</b><small>Costing to buyer quotation, on your own letterhead</small></span></a>
             <a href="/products/erp"><svg class="icon"><use href="#i-factory"/></svg><span><b>Nexora ERP for Woven Sack &amp; Packaging</b><small>Order to dispatch, costing, planning &amp; masters</small></span></a>
             <a href="/products/inventory"><svg class="icon"><use href="#i-box"/></svg><span><b>Inventory &amp; Roll Traceability</b><small>RM, fabric rolls, WIP and finished goods stock</small></span></a>
             <a href="/products/hr-payroll"><svg class="icon"><use href="#i-users"/></svg><span><b>HR &amp; Payroll</b><small>Attendance, shifts, piece-rate &amp; daily wages</small></span></a>
@@ -427,6 +428,86 @@
     </div>
   </section>
 
+
+  <!-- Quotation -->
+  <section class="section section-alt" id="quotation" style="scroll-margin-top:90px;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">New — the quotation</div>
+        <h2>The costing walks out of the plant as a quotation</h2>
+        <p>A costing that stops at the costing still leaves somebody retyping it into a spreadsheet. Nexora carries it one step further, onto your own letterhead.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card reveal">
+          <h3>Several items, one sheet</h3>
+          <p>A quotation is a table of rows. Three sizes, or the same sack in two GSMs, or a plain sack beside its BOPP version — each row its own construction, quantity and rate, totalled on one sheet. A row can also carry a bought-out item with no calculation behind it, so the sheet the buyer receives is complete.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Does this row make money?</h3>
+          <p>Each row carries its own profit or loss against the costing behind it, and the quotation carries its profit before tax. A row that is under water shows while you are still typing, not in a review after the order has run. Freight, packing and any other charge sit on their own lines, so the bag rate stays the bag rate.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Your letterhead, your terms</h3>
+          <p>The sheet prints in your house style with your own terms and conditions, and carries both drawings from the calculation — the flat pattern and the bag pulled apart with its parts named.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Out by mail or WhatsApp</h3>
+          <p>One button on the task bar, configured once under Settings &rarr; Company. In this industry the quotation reaches the buyer on WhatsApp more often than by any other route.</p>
+        </div>
+      </div>
+      <div style="margin-top:18px;"><a class="btn btn-outline" href="/bag-quotation-software">How the quotation module works <svg class="icon"><use href="#i-arrow"/></svg></a></div>
+    </div>
+  </section>
+
+  <!-- Everything else that shipped -->
+  <section class="section">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Recent releases</div>
+        <h2>What has shipped since the 3D view</h2>
+        <p>Nexora ships weekly. These are the changes a plant actually notices.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card reveal">
+          <h4>The denier is the physical one</h4>
+          <p>Denier now comes from <b>GSM &times; 228.6 &divide; (warp mesh + weft mesh)</b>, so a 70 GSM 10 &times; 10 fabric reports the 800 denier tape that is actually in it. The old formula reported 3070. The weight never depended on it — denier is a reporting figure — and the factor sits in the Constants Master for a plant that allows for crimp. The <a href="/denier-to-gsm">converters on this site</a> use the same formula.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Mesh counted the way you count it</h4>
+          <p>Per inch, per centimetre or per 10 cm, chosen under Settings &rarr; Units. The forms, the figures, the printed sheets, the quotation and the calculator all follow it. Underneath, Nexora always stores tapes per inch, so the setting is a lens and nothing saved changes when you switch.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Calculate by weight</h4>
+          <p>Type the bag weight you have been asked to hit and get the GSM and the GPM that reach it, instead of guessing a GSM and checking what it weighs. The specification and the strip agree in both directions.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Register your plant yourself</h4>
+          <p>A company registers from the activation window — no email thread, no waiting. The demo starts immediately and the licence is attached to that company when you are ready.</p>
+        </div>
+        <div class="card reveal">
+          <h4>One seat, one person</h4>
+          <p>The Users &amp; Access card says whose seat is whose, and a person who has left can be removed to free their seat for somebody else. Your administrator owns that list.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Help you can search</h4>
+          <p>A help window with a search box, and a guided tour that covers the whole application rather than one screen. New staff stop being a phone call.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Units a plant measures in</h4>
+          <p>Settings &rarr; Company &rarr; Units sets the length unit the plant thinks in. Saved data never changes — the unit is how figures are shown and taken, not how they are stored.</p>
+        </div>
+        <div class="card reveal">
+          <h4>Delete, with a password</h4>
+          <p>A record can be removed from the History row or its right-click menu — administrators only, one password, every time. Numbers that cannot be right are refused at entry rather than saved and found later.</p>
+        </div>
+        <div class="card reveal">
+          <h4>A dashboard that opens first</h4>
+          <p>The Dashboard is the first thing you see and it is live: what is wrong, what is waiting, and the whole of the last day. Every constant says where it is used, saves on purpose, and can be reset to the factory value one at a time or all at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Editions -->
   <section class="section">
     <div class="wrap">
@@ -476,6 +557,8 @@
         <details><summary>Can more than one person use it in the same company?</summary><p>Yes. Each person signs in with their own name and PIN on any licensed seat. Materials, prices, processes and routes are shared company-wide and the latest save wins by the server's clock, while calculations stay private unless your administrator grants wider access.</p></details>
         <details><summary>What is the 3D bag view for?</summary><p>It draws the bag your specification describes so a wrong patch depth or valve size is visible at a glance, and it breaks the bag into parts with a size, weight and share against each. See <a href="#bag-3d-view">the recording above</a>.</p></details>
         <details><summary>How does the ink assumption work, and is my artwork safe?</summary><p>Nexora reads the artwork on your own computer and works out the coverage of each colour. Only those coverage figures, the white share, the substrate and the size are sent for the calculation — never the image, and never to another company's model. Untrained it uses published trade practice; trained on your measured jobs it uses your own press.</p></details>
+        <details><summary>Can I send a quotation to a buyer from it?</summary><p>Yes. A finished calculation becomes a quotation on your own letterhead — several items on one sheet, freight and packing as their own lines, your own terms and conditions, the profit before tax visible while you type, and the sheet out by mail or WhatsApp in one click. See <a href="/bag-quotation-software">the quotation module</a>.</p></details>
+        <details><summary>Which denier formula does the engine use?</summary><p>Denier = GSM &times; 228.6 &divide; (warp mesh + weft mesh), the physical denier of the tape in the fabric. A 70 GSM 10 &times; 10 fabric reports 800 denier. The factor is a constant you can edit if your plant allows for crimp, and the bag weight does not depend on it — denier is a reporting figure. The <a href="/denier-to-gsm">free converters</a> here use the same formula.</p></details>
         <details><summary>Is this the Nexora ERP?</summary><p>It is the technical calculation module that the wider <a href="/products/erp">Nexora ERP</a> is built around. Masters created here — materials, prices, processes, routes — carry into the ERP modules.</p></details>
       </div>
     </div>
@@ -530,6 +613,7 @@
         <h5>Free calculators</h5>
         <ul>
           <li><a href="/bag-costing">Bag costing guide</a></li>
+          <li><a href="/bag-quotation-software">Bag quotation software</a></li>
           <li><a href="/calculator">Woven bag weight &amp; costing</a></li>
           <li><a href="/bopp-bag-calculation">BOPP bag calculation</a></li>
           <li><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a></li>
@@ -616,7 +700,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609180743" defer></script>
+<script src="/assets/js/site.js?v=202609180908" defer></script>
 </body>
 </html>
 
