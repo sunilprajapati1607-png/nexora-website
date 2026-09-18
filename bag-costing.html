@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609180908" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609180924" />
   <script>
     (function () {
       var t = 'light';
@@ -308,19 +308,19 @@
         <tr><td>Printing ink &mdash; 1.5 GSM, one side</td><td class="num"><span class="blur">1.48</span></td><td class="num"><span class="blur">1.3%</span></td><td>Per colour, from coverage</td></tr>
         <tr><td>Stitching thread</td><td class="num"><span class="blur">1.67</span></td><td class="num"><span class="blur">1.5%</span></td><td>Thread rate per kg</td></tr>
         <tr class="total"><td><b>Finished bag weight</b></td><td class="num"><b>113.12</b></td><td class="num"><b>100%</b></td><td>&mdash;</td></tr>
-        <tr><td>Process waste @ 3% &mdash; bought, never sold</td><td class="num">3.39</td><td class="num">&mdash;</td><td>Charged on material</td></tr>
-        <tr><td><b>Raw material one bag actually consumes</b></td><td class="num"><b>116.51</b></td><td class="num">&mdash;</td><td>&times; each rate = material cost</td></tr>
+        <tr><td>Process waste &mdash; bought, never sold</td><td class="num"><span class="blur">3.39</span></td><td class="num">&mdash;</td><td>Your own figure, per process</td></tr>
+        <tr><td><b>Raw material one bag actually consumes</b></td><td class="num"><b class="blur">116.51</b></td><td class="num">&mdash;</td><td>&times; each rate = material cost</td></tr>
         <tr><td>Conversion cost</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td>Per kg at each process the bag visits</td></tr>
         <tr><td>Factory overhead</td><td class="num">&mdash;</td><td class="num">&mdash;</td><td>Per kg of saleable output</td></tr>
       </table></div>
-      <p class="hint" style="margin-top:10px;"><b>The finished bag weight is yours to read.</b> The gram and share against each part are blurred on purpose &mdash; that break-up, and the formula behind every value, is what the Nexora desktop app is for. <button class="btn-link" data-open-demo data-interest="Bag costing">Unlock it in a free demo</button>.</p>
+      <p class="hint" style="margin-top:10px;"><b>The finished bag weight is yours to read.</b> The gram and share against each part, and the waste each process adds, are blurred on purpose &mdash; that break-up, and the formula behind every value, is what the Nexora desktop app is for. <button class="btn-link" data-open-demo data-interest="Bag costing">Unlock it in a free demo</button>.</p>
 
       <h3>What that table tells you before any rate is applied</h3>
       <ul>
         <li><b>The woven fabric dwarfs every other line.</b> A GSM argument is a cost argument; an argument about the ink rate is not.</li>
         <li><b>Coating and film weigh more than their GSM suggests</b>, because both run 10 mm wider than the body &mdash; a small percentage on the two most expensive lines in the bag.</li>
-        <li><b>Waste is 3.39 grams that leave the plant as scrap.</b> On 1,00,000 bags that is 339 kilograms of raw material bought and never sold.</li>
-        <li><b>Five grams of specification is about 515 kilograms</b> of extra raw material on the same order &mdash; before anyone argues about a rate.</li>
+        <li><b>Waste is raw material bought and never sold.</b> It is small per bag and large per order, and it differs by process &mdash; which is why one flat percentage across the whole bag under-costs a printed laminate.</li>
+        <li><b>Five grams of specification is about half a tonne</b> of extra raw material on an order of 1,00,000 bags &mdash; before anyone argues about a rate.</li>
       </ul>
 
       <h2>Where spreadsheet bag costing goes wrong</h2>
@@ -553,7 +553,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609180908" defer></script>
+<script src="/assets/js/site.js?v=202609180924" defer></script>
 </body>
 </html>
 

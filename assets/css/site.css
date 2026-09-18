@@ -602,3 +602,7 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 .btn-link { background: none; border: 0; padding: 0; font: inherit; color: var(--primary); font-weight: 600; cursor: pointer; text-decoration: underline; text-underline-offset: 2px; }
 .btn-link:hover { text-decoration: none; }
+
+.steps-list { counter-reset: sl; list-style: none; display: grid; gap: 10px; margin: 6px 0 0; }
+.steps-list li { counter-increment: sl; position: relative; padding-left: 40px; }
+.steps-list li::before { content: counter(sl); position: absolute; left: 0; top: 1px; width: 26px; height: 26px; border-radius: 999px; background: var(--primary-50); color: var(--primary); font-size: 13px; font-weight: 800; display: grid; place-items: center; }
