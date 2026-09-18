@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inside Nexora — Every Screen of the Bag Costing App</title>
-  <meta name="description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the ink assumption." />
+  <meta name="description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the 3D bag view." />
   <meta name="keywords" content="" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.nexoraofficial.org/screens" />
@@ -13,13 +13,13 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Nexora" />
   <meta property="og:title" content="Inside Nexora — Every Screen of the Bag Costing App" />
-  <meta property="og:description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the ink assumption." />
+  <meta property="og:description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the 3D bag view." />
   <meta property="og:url" content="https://www.nexoraofficial.org/screens" />
   <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Inside Nexora — Every Screen of the Bag Costing App" />
-  <meta name="twitter:description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the ink assumption." />
+  <meta name="twitter:description" content="A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the 3D bag view." />
   <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609181001" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609181007" />
   <script>
     (function () {
       var t = 'light';
@@ -81,7 +81,7 @@
         "@id": "https://www.nexoraofficial.org/screens#webpage",
         "url": "https://www.nexoraofficial.org/screens",
         "name": "Inside Nexora — Every Screen of the Bag Costing App",
-        "description": "A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the ink assumption.",
+        "description": "A screen-by-screen tour of the Nexora desktop app: dashboard, calculation with formula traceability, masters, costed BOM and the 3D bag view.",
         "isPartOf": { "@id": "https://www.nexoraofficial.org/#website" },
         "about": { "@id": "https://www.nexoraofficial.org/#organization" }
       }
@@ -226,14 +226,14 @@
       <div class="crumbs"><a href="/">Home</a> / <span>App Screens</span></div>
       <div class="eyebrow"><svg class="icon"><use href="#i-monitor"/></svg> Real screenshots &bull; not a mockup</div>
       <h1>Inside Nexora — every screen, straight off the shop-floor PC</h1>
-      <p class="lead">Nine screens from the installed desktop application running an actual saved calculation: from the dashboard that tells you what is broken, through the Bill of Materials that reconciles material and conversion cost to the rupee, to the 3D view that draws the bag and the ink model that reads your artwork. Click any screen to enlarge.</p>
+      <p class="lead">Ten screens from the installed desktop application running an actual saved calculation: from the dashboard that tells you what is broken, through the Bill of Materials that reconciles material and conversion cost to the rupee, to the 3D view that draws the bag and the ink model that reads your artwork. Click any screen to enlarge.</p>
     </div>
   </section>
 
   <section class="section-tight">
     <div class="wrap">
       <nav class="jump reveal" aria-label="Jump to screen">
-        <a href="#s01">01 Dashboard</a><a href="#s02">02 Workload</a><a href="#s03">03 Calculation</a><a href="#s04">04 Structures</a><a href="#s05">05 RM Master</a><a href="#s06">06 Route Builder</a><a href="#s07">07 BOM</a><a href="#s08">08 BOM Roll-up</a><a href="#s09">09 Ink Assumption</a>
+        <a href="#s01">01 Dashboard</a><a href="#s02">02 Workload</a><a href="#s03">03 Calculation</a><a href="#s04">04 Structures</a><a href="#s05">05 RM Master</a><a href="#s06">06 Route Builder</a><a href="#s07">07 BOM</a><a href="#s08">08 BOM Roll-up</a><a href="#s09">09 3D Bag View</a><a href="#s10">10 Ink Assumption</a>
       </nav>
     </div>
   </section>
@@ -358,7 +358,31 @@
 
       <article class="screen" id="s09" style="scroll-margin-top:90px;">
         <div class="reveal">
-          <div class="no">SCREEN 09 &bull; INK ASSUMPTION (BETA)</div>
+          <div class="no">SCREEN 09 &bull; 3D BAG VIEW</div>
+          <h2>The bag drawn, turned and taken apart</h2>
+          <p>The newest screen. Nexora draws the construction your specification describes, prints the item name on its face, and lets you pull it apart part by part — each one carrying its own size, weight and share of the bag.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A pasted bag is drawn as a block whose ends are its patches; an open-mouth sack as the lay-flat tube</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Body, patches, valve, handle, liner, yarn, easy-open tape and back seam, each in its own colour</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>The flat view beside it is to scale and dimensioned, so a cutting size can be checked before the loom runs</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A parts table with size, weight and share, and the bag's total against its target</li>
+          </ul>
+        </div>
+        <figure class="video-frame reveal" style="margin:0;">
+          <video controls preload="none" playsinline poster="/assets/img/3d-view-poster.jpg" width="1902" height="998"
+                 aria-label="The Nexora 3D bag view turning a block bottom cement bag and pulling it apart into its parts">
+            <source src="/assets/video/nexora-3d-bag-view.mp4" type="video/mp4" />
+            Your browser cannot play this video. <a href="/assets/video/nexora-3d-bag-view.mp4">Download it instead</a>.
+          </video>
+          <figcaption>32 seconds, recorded in the application</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+      <article class="screen" id="s10" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">SCREEN 10 &bull; INK ASSUMPTION (BETA)</div>
           <h2>The one material a costing usually guesses</h2>
           <p>Drop in the artwork you print. Nexora reads the coverage of each colour on your own computer and returns the ink and solvent the job should draw, per square metre, per bag, per 1,000 bags and per kilogram of substrate.</p>
           <ul class="checks">
@@ -382,6 +406,9 @@
   </section>
 </main>
 
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"VideoObject","name":"Nexora 3D bag view — a block bottom cement bag drawn, turned and taken apart","description":"The Nexora bag weight calculation software draws the bag a specification describes, prints the item name on its face, turns it, and pulls it apart into body, patches and valve with the size, weight and share of each part.","thumbnailUrl":"https://www.nexoraofficial.org/assets/img/3d-view-poster.jpg","uploadDate":"2026-09-14","duration":"PT33S","contentUrl":"https://www.nexoraofficial.org/assets/video/nexora-3d-bag-view.mp4","embedUrl":"https://www.nexoraofficial.org/screens#s09","publisher":{"@type":"Organization","name":"Nexora","logo":{"@type":"ImageObject","url":"https://www.nexoraofficial.org/assets/img/logo-square.png"}}}
+  </script>
 <footer class="footer">
   <div class="wrap">
     <div class="cols">
@@ -503,7 +530,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609181001" defer></script>
+<script src="/assets/js/site.js?v=202609181007" defer></script>
 </body>
 </html>
 
