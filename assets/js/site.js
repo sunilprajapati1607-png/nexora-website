@@ -84,9 +84,9 @@
   /* ---------- Forms: always empty, fresh example placeholders ---------- */
   var EX = {
     name: ['Ramesh Patel', 'Priya Shah', 'Amit Desai', 'Kiran Mehta', 'Suresh Agarwal', 'Neha Joshi', 'Vikram Jain', 'Hardik Modi'],
-    company: ['Shree Ganesh Polymers', 'Sunrise Packaging Pvt Ltd', 'Om Sai Woven Sacks', 'Balaji Polyfab', 'Rudra Flexipack', 'Ganpati Bags Industries', 'Navkar Polymers', 'Ambica Woven Sacks LLP'],
-    phone: ['+91 98250 12345', '+91 99090 45678', '+91 97120 33445', '+91 94260 78901', '+91 98790 56712'],
-    email: ['ramesh@company.com', 'purchase@plantname.in', 'director@yourcompany.com', 'info@woven-sacks.in'],
+    company: ['Northpoint Polymers', 'Blue River Packaging', 'Crestline Flexipack', 'Harbour Mills Packaging', 'Greenfield Sacks Co.', 'Meridian Polyfab', 'Stonebridge Woven Sacks', 'Fairwind Packaging'],
+    phone: ['+91 90000 00001', '+91 90000 00002', '+91 90000 00003', '+91 90000 00004', '+91 90000 00005'],
+    email: ['purchase@example.com', 'director@example.in', 'accounts@example.com', 'info@example.in'],
     message: [
       'We run 24 circular looms and want to forecast RM cost per order.',
       'Looking for an ERP that covers order to dispatch for our PP woven sack unit.',
