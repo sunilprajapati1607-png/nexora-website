@@ -201,7 +201,26 @@
       (sumRows ? '<div class="doc-sum"><table>' + sumRows + '</table></div>' : '') + foot;
 
     saveSeller();
+    fit();
   }
+
+  /* The document is laid out at a fixed A4 content width and scaled to whatever
+     the preview column gives it, so the miniature is the printed page and not a
+     second, narrower layout. Below the two-column breakpoint we let it scroll
+     instead — a half-size page on a phone would be unreadable. */
+  var A4_CONTENT = 720;
+  function fit() {
+    var box = $('#inv_scale'), doc = $('#inv_doc');
+    if (!box || !doc) return;
+    var two = window.matchMedia('(min-width: 1081px)').matches;
+    root.classList.toggle('scaled', two);
+    if (!two) { doc.style.transform = ''; box.style.height = ''; return; }
+    var s = Math.min(1, box.clientWidth / A4_CONTENT);
+    doc.style.transform = s < 1 ? 'scale(' + s + ')' : '';
+    box.style.height = Math.ceil(doc.offsetHeight * s) + 'px';
+  }
+  var fitTimer;
+  window.addEventListener('resize', function () { clearTimeout(fitTimer); fitTimer = setTimeout(fit, 120); });
 
   /* ---------- seller details remembered, buyer and items never ---------- */
   var SELLER = ['inv_co', 'inv_coaddr', 'inv_cogst', 'inv_cophone', 'inv_coemail', 'inv_terms', 'inv_bank'];

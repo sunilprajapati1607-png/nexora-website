@@ -609,7 +609,7 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 
 
 /* ---------- Invoice & quotation generator ---------- */
-.invtool { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.invtool { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 24px; align-items: start; }
 @media (max-width: 1080px) { .invtool { grid-template-columns: minmax(0, 1fr); } }
 .inv-block { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; margin-bottom: 16px; }
 .inv-block h2 { font-size: 16px; margin: 0 0 14px; }
@@ -634,6 +634,10 @@ blockquote.quote { border-left: 4px solid var(--primary); padding: 12px 18px; ba
 }
 .inv-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 16px; }
 .inv-preview { position: sticky; top: 86px; }
+/* the preview is a scaled miniature of the real page, so it matches the print */
+.inv-scale { position: relative; overflow: hidden; }
+.inv-scale > .doc { transform-origin: top left; }
+.invtool.scaled .inv-scale > .doc { width: 720px; }
 .inv-preview-head { font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); font-weight: 700; margin-bottom: 8px; }
 
 /* the document itself */
@@ -683,13 +687,15 @@ table.doc-items .c { text-align: center; }
   .wrap { max-width: none !important; padding: 0 !important; }
   .invtool { display: block !important; }
   .inv-preview { position: static !important; }
-  .doc { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; font-size: 12px; }
+  .doc { border: 0 !important; border-radius: 0 !important; box-shadow: none !important; padding: 0 !important; font-size: 12px;
+         width: auto !important; transform: none !important; }
+  .inv-scale { overflow: visible !important; height: auto !important; }
   @page { size: A4; margin: 14mm; }
 }
 
 /* the document keeps its proportions on a phone by scrolling inside its own box,
    rather than pushing the page sideways */
-.inv-preview { overflow-x: auto; }
+.invtool:not(.scaled) .inv-preview { overflow-x: auto; }
 @media (max-width: 720px) {
   .doc { padding: 16px; font-size: 11.5px; min-width: 460px; }
   .doc-head, .doc-party, .doc-cols, .doc-sign { gap: 12px; }
