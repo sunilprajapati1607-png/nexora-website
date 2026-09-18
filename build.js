@@ -69,7 +69,7 @@ for (const file of walk(PAGES)) {
 }
 
 // sitemap
-const today = new Date().toISOString().slice(0, 10);
+const today = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 const sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'];
 for (const u of urls) sm.push(`  <url><loc>${u.loc}</loc><lastmod>${today}</lastmod><changefreq>monthly</changefreq><priority>${u.priority}</priority></url>`);
 sm.push('</urlset>', '');
