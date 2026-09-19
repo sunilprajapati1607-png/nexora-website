@@ -121,6 +121,10 @@
   window.addEventListener('pageshow', function () { $$('form.nx-form').forEach(freshForm); });
 
   var FORMSPREE = 'https://formspree.io/f/xzebyndo';
+  /* The enquiry also goes straight into Nexora's own console, where it can be
+     answered, followed up and counted. Formspree stays as it was: it is the
+     copy that reaches a human inbox even if the service happens to be asleep. */
+  var NEXORA_API = 'https://nexora-api-55jv.onrender.com/enquiry';
   function collect(form) {
     var d = {};
     $$('input, select, textarea', form).forEach(function (el) { if (el.name) d[el.name] = (el.value || '').trim(); });
@@ -135,6 +139,21 @@
           name: d.name, company: d.company, phone: d.phone, email: d.email || '', interest: d.interest || '', message: d.message || '',
           channel_chosen: channel, source_page: location.href,
           _subject: 'Nexora enquiry — ' + (d.company || d.name)
+        })
+      }).catch(function () {});
+    } catch (e) {}
+    /* Fire and forget, exactly like the one above: the visitor is never kept
+       waiting on it, and a service that is asleep or unreachable changes
+       nothing about what they see. */
+    try {
+      fetch(NEXORA_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: d.name, company: d.company, phone: d.phone, email: d.email || '',
+          interest: d.interest || '', message: d.message || '',
+          channel_chosen: channel, source_page: location.href,
+          _gotcha: d._gotcha || ''
         })
       }).catch(function () {});
     } catch (e) {}
