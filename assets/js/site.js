@@ -177,7 +177,7 @@
     lines.push('Page: ' + location.href);
     if (channel === 'whatsapp') {
       var text = '*New Nexora enquiry (nexoraofficial.org)*\n\n' + lines.join('\n');
-      window.open('https://wa.me/917567161607?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      window.open('https://wa.me/919213415996?text=' + encodeURIComponent(text), '_blank', 'noopener');
     } else {
       var subject = 'Nexora enquiry — ' + d.company;
       var bodyTxt = lines.join('\n') + '\n\nPlease arrange a walkthrough for our plant.';

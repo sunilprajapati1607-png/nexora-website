@@ -137,7 +137,7 @@
     co: 'Nexora Softgen',
     coaddr: 'B-404, Shivalik Business Centre\nBodakdev, Ahmedabad 380054\nGujarat, India',
     cogst: '24ABCDE1234F1Z5',
-    cophone: '+91 75671 61607',
+    cophone: '+91 92134 15996',
     coemail: 'sales@nexoraofficial.org',
     buyer: 'Westbay Trading FZE',
     buyeraddr: 'Warehouse 12, Jebel Ali Free Zone\nPO Box 261500, Dubai\nUnited Arab Emirates',
