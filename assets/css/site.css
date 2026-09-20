@@ -410,6 +410,19 @@ table.t td.num, table.t th.num { text-align: right; font-family: var(--mono); }
 .jump { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
 .jump a { font-size: 13px; font-weight: 600; padding: 8px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); color: var(--text-2); }
 .jump a:hover { border-color: var(--primary); color: var(--primary); text-decoration: none; }
+/* Feature screenshots carry a light and a dark rendering; one shows. */
+.shot-dual { position: relative; }
+.shot-dual img.mode-dark { display: none; }
+.shot-dual.dark img.mode-light { display: none; }
+.shot-dual.dark img.mode-dark { display: block; }
+.shot-toggle { position: absolute; top: 10px; right: 10px; z-index: 2; display: flex; gap: 3px; padding: 3px; border-radius: 999px; background: rgba(11, 20, 38, .78); border: 1px solid rgba(255,255,255,.18); backdrop-filter: blur(6px); }
+.shot-toggle button { border: 0; background: transparent; color: #cbd5e1; font: 700 12px/1 var(--font, inherit); padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+.shot-toggle button.on { background: #fff; color: #0b1426; }
+.theme-all { display: inline-flex; align-items: center; gap: 6px; padding: 4px 4px 4px 14px; border-radius: 999px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); color: #c7d2e5; font-size: 13px; font-weight: 600; }
+.theme-all button { border: 0; background: transparent; color: #e2e8f0; font: 700 13px/1 inherit; padding: 8px 14px; border-radius: 999px; cursor: pointer; }
+.theme-all button.on { background: #fff; color: #0b1426; }
+.jump a { white-space: nowrap; }
+
 .lightbox { position: fixed; inset: 0; z-index: 1100; background: rgba(3, 8, 18, .92); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
 .lightbox.open { display: flex; }
 .lightbox img { max-width: 100%; max-height: 92vh; width: auto; border-radius: 10px; box-shadow: 0 30px 80px rgba(0,0,0,.6); }

@@ -214,9 +214,24 @@
   function closeLightbox() { if (lb) { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); } }
   if (lb) {
     lb.addEventListener('click', closeLightbox);
+    /* light / dark on a feature screenshot — the toggle must not open the lightbox */
+    function setMode(fig, mode) {
+      fig.classList.toggle('dark', mode === 'dark');
+      $$('.shot-toggle button', fig).forEach(function (b) { b.classList.toggle('on', b.getAttribute('data-mode') === mode); });
+    }
+    $$('.shot-toggle button').forEach(function (b) {
+      b.addEventListener('click', function (e) { e.stopPropagation(); setMode(b.closest('.shot-dual'), b.getAttribute('data-mode')); });
+    });
+    $$('[data-theme-all]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var mode = b.getAttribute('data-theme-all');
+        $$('[data-theme-all]').forEach(function (x) { x.classList.toggle('on', x === b); });
+        $$('.shot-dual').forEach(function (fig) { setMode(fig, mode); });
+      });
+    });
     $$('[data-zoom]').forEach(function (fig) {
       fig.addEventListener('click', function () {
-        var img = fig.tagName === 'IMG' ? fig : $('img', fig);
+        var img = fig.tagName === 'IMG' ? fig : (fig.classList.contains('dark') ? $('img.mode-dark', fig) : $('img', fig));
         if (!img) return;
         lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
         lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
