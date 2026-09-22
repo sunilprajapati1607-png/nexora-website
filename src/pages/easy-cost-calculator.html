@@ -1,0 +1,293 @@
+<!--
+title: Easy Cost Calculator — PP Woven & BOPP Bag Price in 10 Seconds | Nexora
+description: Free easy cost calculator for PP woven and both-side BOPP laminated bags. Width, length and the trade gram to bag weight and an indicative price per bag. Sample rates, all editable.
+keywords: pp bag price calculator, bag cost calculator, bopp bag cost calculator, woven bag price per bag, pp woven bag rate calculator, bag gram calculator, bopp laminated bag price, bag cost estimate, sack price calculator, pp bag weight gram
+priority: 0.9
+-->
+{{> head}}
+{{> header}}
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <div class="crumbs"><a href="/">Home</a> / <a href="/calculator">Calculators</a> / <span>Easy cost</span></div>
+      <div class="eyebrow"><svg class="icon"><use href="#i-calc"/></svg> Free &bull; no login &bull; ten seconds</div>
+      <h1>Easy cost calculator for PP woven and BOPP bags</h1>
+      <p class="lead">The quick sum the woven bag trade already does on the back of an envelope. Pick a width, type a length, choose the <b>gram</b> &mdash; and get the weight of one bag and an indicative price. Two sums: a plain or laminated PP woven sack, and a both-side BOPP laminated bag with liner, gusset and glossy or matt film.</p>
+      <div class="related" style="margin-top:18px;">
+        <a href="/calculator">Full bag weight &amp; costing</a><a href="/bopp-bag-calculation">BOPP bag calculation</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/liner-calculator">LDPE liner weight</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:34px;">
+    <div class="wrap">
+
+      <div class="es-warn">
+        <div class="es-warn-ico"><svg class="icon"><use href="#i-tag"/></svg></div>
+        <div>
+          <b>Every rate on this page is a sample.</b>
+          The numbers this calculator starts with are round, illustrative figures, not anybody's
+          price list &mdash; not ours and not your supplier's. They are there so the page shows you
+          something instead of zero. <b>Put your own rates in</b>: open <i>the sample rates</i>
+          below the calculator and every one of them is an editable box.
+          <br>
+          A real cost comes from your own dated raw material prices, your own waste and your own
+          route through the plant. That is a different piece of arithmetic, and it is what the
+          <a href="/bag-costing">Nexora desktop engine</a> does.
+        </div>
+      </div>
+
+      <div id="nxEasy">
+      <div class="calc sim">
+        <div class="calc-in">
+          <div class="sim-head">
+            <h3>Bag specification</h3>
+            <div class="unit-toggle es-tabs" role="group" aria-label="Bag type">
+              <button type="button" class="on" data-es-tab="pp">PP woven</button>
+              <button type="button" data-es-tab="bopp">BOPP laminated</button>
+            </div>
+          </div>
+
+          <!-- ============ PP woven ============ -->
+          <div data-es-panel="pp">
+            <div class="fieldset-title">Size</div>
+            <div class="calc-fields">
+              <div class="field"><label for="pp_width">Width (inch)</label>
+                <select id="pp_width">
+                  <option>19</option><option selected>22</option><option>24</option><option>26</option>
+                  <option>28</option><option>30</option><option>32</option><option>34</option>
+                  <option>36</option><option>38</option><option>40</option><option>42</option>
+                  <option>44</option><option>46</option><option>48</option><option>50</option>
+                </select>
+                <div class="hint">Roll size. 36&Prime; and over is a maxi roll</div></div>
+              <div class="field"><label for="pp_length">Length (inch)</label>
+                <input type="number" id="pp_length" value="36" min="10" step="1" inputmode="decimal">
+                <div class="hint">One inch is added for stitching</div></div>
+            </div>
+
+            <div class="fieldset-title">Fabric</div>
+            <div class="calc-fields">
+              <div class="field"><label for="pp_gram">Gram</label>
+                <select id="pp_gram">
+                  <option value="2.5">2.5 &mdash; light</option>
+                  <option value="3">3.0 &mdash; standard</option>
+                  <option value="3.5" selected>3.5 &mdash; medium</option>
+                  <option value="4">4.0 &mdash; heavy</option>
+                  <option value="4.5">4.5 &mdash; extra heavy</option>
+                </select>
+                <div class="hint">The trade gram, not g/m&sup2;</div></div>
+              <div class="field"><label for="pp_quality">Quality</label>
+                <select id="pp_quality">
+                  <option value="janta">Janta &mdash; economy</option>
+                  <option value="silver">Silver &mdash; standard</option>
+                  <option value="gold" selected>Gold &mdash; premium</option>
+                  <option value="natural">Natural &mdash; virgin PP</option>
+                </select></div>
+            </div>
+
+            <div class="fieldset-title">Finish</div>
+            <div class="calc-fields">
+              <div class="field"><label for="pp_lam">Lamination</label>
+                <select id="pp_lam">
+                  <option value="none">None &mdash; plain</option>
+                  <option value="natural">Natural lamination</option>
+                  <option value="milky" selected>Milky lamination</option>
+                </select></div>
+              <div class="field"><label for="pp_print">Printing</label>
+                <select id="pp_print">
+                  <option value="none">None &mdash; plain</option>
+                  <option value="one_side" selected>One side</option>
+                  <option value="two_side">Two side</option>
+                </select></div>
+            </div>
+          </div>
+
+          <!-- ============ BOPP laminated ============ -->
+          <div data-es-panel="bopp" hidden>
+            <div class="fieldset-title">Size</div>
+            <div class="calc-fields">
+              <div class="field"><label for="bp_width">Width (inch)</label>
+                <select id="bp_width">
+                  <option>15</option><option>17</option><option>19</option><option selected>22</option>
+                  <option>24</option><option>26</option><option>28</option>
+                </select></div>
+              <div class="field"><label for="bp_length">Length (inch)</label>
+                <input type="number" id="bp_length" value="36" min="10" step="1" inputmode="decimal">
+                <div class="hint">One inch is added for stitching</div></div>
+            </div>
+
+            <div class="fieldset-title">Fabric and film</div>
+            <div class="calc-fields">
+              <div class="field"><label for="bp_gram">Fabric gram</label>
+                <select id="bp_gram">
+                  <option value="2.5">2.5</option><option value="3">3</option>
+                  <option value="3.5" selected>3.5</option><option value="4">4</option>
+                  <option value="4.5">4.5</option>
+                </select></div>
+              <div class="field"><label for="bp_finish">BOPP finish</label>
+                <select id="bp_finish"><option value="glossy" selected>Glossy</option><option value="matt">Matt</option></select>
+                <div class="hint">12 micron film, both sides</div></div>
+            </div>
+
+            <div class="fieldset-title">Liner and gusset</div>
+            <div class="calc-fields">
+              <div class="field"><label for="bp_liner">Liner</label>
+                <select id="bp_liner">
+                  <option value="none">No liner</option>
+                  <option value="natural">Natural liner</option>
+                  <option value="semi">Semi natural liner</option>
+                  <option value="milky" selected>Milky liner</option>
+                </select></div>
+              <div class="field" id="f_bp_linergram"><label for="bp_linergram">Liner gram (per bag)</label>
+                <input type="number" id="bp_linergram" value="18" min="0" step="1" inputmode="decimal"></div>
+              <div class="field" id="f_bp_stitch"><label for="bp_stitch">Liner / bottom stitch</label>
+                <select id="bp_stitch"><option value="with" selected>With bottom stitch</option><option value="without">Without bottom stitch</option></select></div>
+              <div class="field"><label for="bp_gusset">Gusset</label>
+                <select id="bp_gusset"><option value="none" selected>No gusset</option><option value="side">Side gusset</option></select>
+                <div class="hint">A gusset lifts the fabric rate</div></div>
+            </div>
+          </div>
+
+          <p class="calc-note">This is the trade's own quick sum on the gram, not a bill of materials. It does not know your construction, your route, your recipes or your prices &mdash; so its weight and its price <b>will not agree</b> with a costed BOM, and they are not meant to. Final price also moves with order quantity, artwork and the day's market rate.</p>
+        </div>
+
+        <div class="calc-out">
+          <div data-es-panel="pp">
+            <div class="calc-big"><small>Weight per bag</small><b><span id="pp_weight">0</span><em>g</em></b>
+              <div class="o-sub" id="pp_cutline"><span id="pp_cut">&mdash;</span></div></div>
+            <div class="calc-big" style="margin-top:12px;"><small>Indicative cost per bag</small><b><span id="pp_cost">&#8377;0.00</span></b>
+              <div class="o-sub">at the <b>sample</b> rates below</div></div>
+            <div class="es-table">
+              <div class="es-row es-head"><span>What</span><b>Weight</b><b>Rate</b><b>Cost</b></div>
+              <div id="pp_rows"></div>
+            </div>
+            <div class="calc-formula" id="pp_why"></div>
+            <div class="es-strength"><small>Bag strength</small><div id="pp_strength"></div></div>
+          </div>
+
+          <div data-es-panel="bopp" hidden>
+            <div class="calc-big"><small>Weight per bag</small><b><span id="bp_weight">0</span><em>g</em></b>
+              <div class="o-sub"><span id="bp_cut">&mdash;</span></div></div>
+            <div class="calc-big" style="margin-top:12px;"><small>Indicative price per bag</small><b><span id="bp_price">&#8377;0.00</span></b>
+              <div class="o-sub">at the <b>sample</b> rates below</div></div>
+            <div class="es-table">
+              <div class="es-row es-head"><span>What</span><b>Weight</b><b>Rate</b><b>Cost</b></div>
+              <div id="bp_rows"></div>
+            </div>
+            <div class="calc-formula" id="bp_why"></div>
+            <div class="es-strength"><small>Bag strength</small><div id="bp_strength"></div></div>
+          </div>
+
+          <div class="locked" style="margin-top:14px;">
+            <div class="locked-head"><span>Your own cost, not a sample</span><span class="tag">Nexora desktop</span></div>
+            <div class="locked-cta">
+              <p>A real cost per bag comes from your construction, your route through the plant, your recipes and your own dated raw material prices &mdash; every figure traceable to the formula and the price behind it. That is what the Nexora engine does, and it is a different calculation from this one.</p>
+              <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Show me a real costing</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ the sample rates, in the open ============ -->
+      <div class="es-rates-bar">
+        <button type="button" class="btn btn-ghost btn-sm" id="es-rates-toggle">Show the sample rates</button>
+        <span class="muted">Every number this calculator uses &mdash; change any of them and the estimate follows.</span>
+      </div>
+      <div id="es-rates" hidden>
+        <div class="es-warn es-warn-sm">
+          <div class="es-warn-ico"><svg class="icon"><use href="#i-tag"/></svg></div>
+          <div><b>These are samples, chosen to be round.</b> They are not a quotation, not a market
+          rate and not a price list. Type your own over them &mdash; nothing is saved and nothing is
+          sent anywhere.</div>
+        </div>
+
+        <div class="es-rate-grid">
+          <div>
+            <h4>PP woven &mdash; fabric &#8377; / kg</h4>
+            <div class="calc-fields">
+              <div class="field"><label for="r_q_janta">Janta</label><input type="number" id="r_q_janta" value="120" data-sample="120" step="1"></div>
+              <div class="field"><label for="r_q_silver">Silver</label><input type="number" id="r_q_silver" value="130" data-sample="130" step="1"></div>
+              <div class="field"><label for="r_q_gold">Gold</label><input type="number" id="r_q_gold" value="140" data-sample="140" step="1"></div>
+              <div class="field"><label for="r_q_natural">Natural</label><input type="number" id="r_q_natural" value="180" data-sample="180" step="1"></div>
+            </div>
+            <h4>Lamination &#8377; / kg &middot; printing &#8377; / bag</h4>
+            <div class="calc-fields">
+              <div class="field"><label for="r_lam_natural">Natural lamination</label><input type="number" id="r_lam_natural" value="200" data-sample="200" step="1"></div>
+              <div class="field"><label for="r_lam_milky">Milky lamination</label><input type="number" id="r_lam_milky" value="130" data-sample="130" step="1"></div>
+              <div class="field"><label for="r_print_one_side">One side printing</label><input type="number" id="r_print_one_side" value="0.80" data-sample="0.80" step="0.05"></div>
+              <div class="field"><label for="r_print_two_side">Two side printing</label><input type="number" id="r_print_two_side" value="1.10" data-sample="1.10" step="0.05"></div>
+              <div class="field"><label for="r_fixed">Fixed per bag</label><input type="number" id="r_fixed" value="1.50" data-sample="1.50" step="0.10"></div>
+              <div class="field"><label for="r_jumbo">Jumbo addition (36&Prime;+)</label><input type="number" id="r_jumbo" value="3.00" data-sample="3.00" step="0.10"></div>
+            </div>
+          </div>
+
+          <div>
+            <h4>BOPP laminated</h4>
+            <div class="calc-fields">
+              <div class="field"><label for="r_base">Fabric base &#8377; / kg</label><input type="number" id="r_base" value="140" data-sample="140" step="1"></div>
+              <div class="field"><label for="r_coating">Coating &#8377; / kg</label><input type="number" id="r_coating" value="190" data-sample="190" step="1"></div>
+              <div class="field"><label for="r_film_glossy">Glossy film &#8377; / kg</label><input type="number" id="r_film_glossy" value="500" data-sample="500" step="10"></div>
+              <div class="field"><label for="r_film_matt">Matt film &#8377; / kg</label><input type="number" id="r_film_matt" value="550" data-sample="550" step="10"></div>
+              <div class="field"><label for="r_micron">Film micron</label><input type="number" id="r_micron" value="12" data-sample="12" step="1"></div>
+              <div class="field"><label for="r_making">Making &#8377; / bag</label><input type="number" id="r_making" value="0.40" data-sample="0.40" step="0.05"></div>
+              <div class="field"><label for="r_profit">Profit &#8377; / bag</label><input type="number" id="r_profit" value="1.20" data-sample="1.20" step="0.10"></div>
+            </div>
+            <h4>Liner &#8377; / kg &middot; stitching &#8377; / bag</h4>
+            <div class="calc-fields">
+              <div class="field"><label for="r_liner_natural">Natural liner</label><input type="number" id="r_liner_natural" value="170" data-sample="170" step="5"></div>
+              <div class="field"><label for="r_liner_semi">Semi natural liner</label><input type="number" id="r_liner_semi" value="140" data-sample="140" step="5"></div>
+              <div class="field"><label for="r_liner_milky">Milky liner</label><input type="number" id="r_liner_milky" value="120" data-sample="120" step="5"></div>
+              <div class="field"><label for="r_stitch_with">With bottom stitch</label><input type="number" id="r_stitch_with" value="0.80" data-sample="0.80" step="0.05"></div>
+              <div class="field"><label for="r_stitch_without">Without bottom stitch</label><input type="number" id="r_stitch_without" value="0.40" data-sample="0.40" step="0.05"></div>
+            </div>
+          </div>
+        </div>
+        <div class="es-rates-bar"><button type="button" class="btn btn-ghost btn-sm" id="es-rates-reset">Put the samples back</button></div>
+      </div>
+      </div><!-- /#nxEasy -->
+
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="wrap prose" style="max-width:860px;">
+      <h2>What the gram is, and why it is not GSM</h2>
+      <p>A bag maker quoting on the phone says "three and a half gram", and everyone in the room knows what is meant. That figure is <b>not</b> grams per square metre. It is the shop-floor number the whole trade sum is built on: width in inches, multiplied by the gram, multiplied by the cut length in inches, divided by 39.37. This calculator keeps the gram exactly as the trade uses it and never converts it, because the point of a quick estimate is that it answers the question you actually asked.</p>
+      <div class="formula-box">
+        <b>PP woven</b><br>
+        cut length = length + 1&Prime; stitching<br>
+        fabric (g) = width &times; gram &times; cut &divide; 39.37 + 1 g thread<br>
+        lamination (g) = width &times; 0.5 &times; cut &divide; 39.37 &nbsp;(if laminated)<br>
+        cost = fabric&times;rate&divide;1000 + lamination&times;rate&divide;1000 + printing + fixed + jumbo<br><br>
+        <b>BOPP laminated, both sides</b><br>
+        plain (g) = width &times; gram &divide; 39.37 &times; cut + 1 g thread<br>
+        coating (g) = width &times; 0.70 &divide; 39.37 &times; cut<br>
+        film (g) = width&times;25.4 &times; cut&times;25.4 &times; 0.91 &times; micron &times; 2 sides &divide; 1,000,000 + 0.2 g trim<br>
+        price = fabric + coating + film + liner + stitching + making + profit
+      </div>
+      <p>The fabric rate is not one number: it moves with the gram, with a 19&Prime; roll, with a maxi roll at 36&Prime; and over, and on a BOPP bag with a side gusset. The calculator shows the arithmetic under the result, so you can see which adjustment did what.</p>
+
+      <h2>Why this will not match a real costing</h2>
+      <p>It cannot, and it should not. A quick sum on the gram treats the bag as fabric plus a film plus a couple of per-bag charges. A real cost per bag is built the other way round: from the construction, every layer's own weight, the route the bag takes through the plant, the recipe at each process, the waste at each stage and the price you actually paid for each raw material on the date you bought it. The two are different arithmetic answering different questions.</p>
+      <p>Use this one when a buyer is on the phone. Use the <a href="/bag-costing">Nexora engine</a> when you are quoting.</p>
+
+      <h2>FAQ</h2>
+      <div class="faq">
+        <details><summary>Are these your rates?</summary><p>No. Every rate on the page is a round, illustrative sample so that the calculator shows something rather than zero. They are not a quotation, not a market rate and not anybody's price list. Open the sample rates and type your own over them.</p></details>
+        <details><summary>Is the gram the same as GSM?</summary><p>No. The trade gram (2.5 to 4.5) is the figure the shop-floor formula uses; grams per square metre is a different number entirely. This page stays on the gram and never converts it. If you want to work in GSM, micron and denier, use the <a href="/calculator">full bag weight calculator</a>.</p></details>
+        <details><summary>Why is one inch added to the length?</summary><p>For the stitching allowance. The cut length is always a little more than the finished length, and one inch is what the trade sum assumes. Your own allowance may differ.</p></details>
+        <details><summary>Why is the thread in the weight but not in the fabric charge?</summary><p>Because a gram of stitching yarn is not a gram of woven PP and is not bought at the fabric rate. The BOPP sum carries it in the weight and leaves it out of the fabric charge, which is what the trade sheet does.</p></details>
+        <details><summary>Is anything I type here saved or sent?</summary><p>No. The calculator runs entirely in your browser. Nothing is stored and nothing is sent anywhere.</p></details>
+      </div>
+      <div class="related" style="margin-top:18px;"><a href="/calculator">Bag weight &amp; costing calculator</a><a href="/bopp-bag-calculation">BOPP bag calculation</a><a href="/block-bottom-bag-calculation">Block bottom bag calculation</a><a href="/liner-calculator">LDPE liner weight</a><a href="/bag-costing">Bag costing software</a></div>
+    </div>
+  </section>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.nexoraofficial.org/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.nexoraofficial.org/calculator"},{"@type":"ListItem","position":3,"name":"Easy cost calculator","item":"https://www.nexoraofficial.org/easy-cost-calculator"}]},{"@type":"WebApplication","name":"Easy Cost Calculator for PP Woven and BOPP Bags","url":"https://www.nexoraofficial.org/easy-cost-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"featureList":["PP woven bag weight and cost per bag from width, length and the trade gram","Both-side BOPP laminated bag weight and price with liner, gusset and film finish","Every rate editable on the page","Bag strength indication by gram and quality"],"publisher":{"@type":"Organization","name":"Nexora","url":"https://www.nexoraofficial.org"}},{"@type":"HowTo","name":"How to estimate a PP woven or BOPP bag price in ten seconds","description":"The quick sum the woven bag trade does on the gram, to get a bag weight and an indicative price per bag before a proper costing.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Nexora easy cost calculator"}],"step":[{"@type":"HowToStep","name":"Choose the bag type","text":"Pick PP woven for a plain or laminated sack, or BOPP laminated for a both-side printed film bag.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step1"},{"@type":"HowToStep","name":"Enter the size","text":"Select the roll width in inches and type the finished length. One inch is added for the stitching allowance.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step2"},{"@type":"HowToStep","name":"Choose the gram and quality","text":"The trade gram from 2.5 to 4.5, and the fabric quality. On a BOPP bag choose the film finish, liner and gusset instead.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step3"},{"@type":"HowToStep","name":"Put your own rates in","text":"Open the sample rates and replace every figure with your own. The rates the page starts with are illustrative samples, not a price list.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step4"},{"@type":"HowToStep","name":"Read the weight and the price","text":"The weight per bag and the indicative cost or price per bag are shown with the arithmetic behind them, line by line.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step5"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these your rates?","acceptedAnswer":{"@type":"Answer","text":"No. Every rate on the page is a round, illustrative sample so that the calculator shows something rather than zero. They are not a quotation, not a market rate and not anybody’s price list. Open the sample rates and type your own over them."}},{"@type":"Question","name":"Is the gram the same as GSM?","acceptedAnswer":{"@type":"Answer","text":"No. The trade gram (2.5 to 4.5) is the figure the shop-floor formula uses; grams per square metre is a different number entirely. This page stays on the gram and never converts it. If you want to work in GSM, micron and denier, use the full bag weight calculator."}},{"@type":"Question","name":"Why is one inch added to the length?","acceptedAnswer":{"@type":"Answer","text":"For the stitching allowance. The cut length is always a little more than the finished length, and one inch is what the trade sum assumes. Your own allowance may differ."}},{"@type":"Question","name":"Why is the thread in the weight but not in the fabric charge?","acceptedAnswer":{"@type":"Answer","text":"Because a gram of stitching yarn is not a gram of woven PP and is not bought at the fabric rate. The BOPP sum carries it in the weight and leaves it out of the fabric charge, which is what the trade sheet does."}},{"@type":"Question","name":"Is anything I type here saved or sent?","acceptedAnswer":{"@type":"Answer","text":"No. The calculator runs entirely in your browser. Nothing is stored and nothing is sent anywhere."}}]}]}
+  </script>
+  <script src="/assets/js/easycost.js?v={{build}}" defer></script>
+</main>
+
+{{> footer}}

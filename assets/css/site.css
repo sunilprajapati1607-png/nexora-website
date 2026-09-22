@@ -767,3 +767,54 @@ table.doc-sum tr.doc-sub td { border-top: 1px solid var(--dline); padding-top: 6
   .doc-head, .doc-party, .doc-cols, .doc-sign { gap: 12px; }
   .inv-block { padding: 16px; }
 }
+
+/* ---------- Easy cost calculator (the trade's quick sum) ----------
+   The rates on that page are SAMPLES, and the page has to say so where
+   nobody can miss it — hence .es-warn, which is loud on purpose and
+   appears twice: above the calculator and again inside the rates
+   drawer. A visitor who takes a sample rate for a quotation is the one
+   failure this page must not have. */
+.es-warn { display: flex; gap: 14px; align-items: flex-start; margin: 0 0 22px;
+  padding: 16px 18px; border-radius: 14px; font-size: 14px; line-height: 1.65;
+  color: var(--text-2); background: rgba(245, 158, 11, .09);
+  border: 1px solid rgba(245, 158, 11, .32); border-left-width: 4px; }
+.es-warn b { color: var(--text); }
+.es-warn-ico { flex: 0 0 auto; color: #f59e0b; margin-top: 2px; }
+.es-warn-ico .icon { width: 20px; height: 20px; }
+.es-warn-sm { margin-bottom: 16px; padding: 12px 14px; font-size: 13px; }
+
+.es-tabs button { min-width: 104px; }
+
+.es-table { margin-top: 14px; }
+.es-row { display: grid; grid-template-columns: 1.6fr .8fr .9fr .9fr; gap: 10px;
+  font-size: 13.5px; padding: 9px 0; border-bottom: 1px dashed rgba(255,255,255,.14); }
+.es-row span { color: #a9b8d3; }
+.es-row b { font-family: var(--mono); font-weight: 600; text-align: right; }
+.es-row.es-head { font-size: 11.5px; letter-spacing: .07em; text-transform: uppercase; color: #93a4c4; }
+.es-row.es-head b { color: #93a4c4; font-family: inherit; font-weight: 700; }
+.es-row.es-sum { border-bottom: 0; border-top: 1px solid rgba(255,255,255,.2); }
+.es-row.es-sum span, .es-row.es-sum b:last-child { color: var(--cyan); font-weight: 700; }
+
+.es-strength { margin-top: 14px; }
+.es-strength small { display: block; font-size: 11.5px; letter-spacing: .08em;
+  text-transform: uppercase; color: #93a4c4; margin-bottom: 6px; }
+.es-meter { height: 7px; border-radius: 999px; background: rgba(255,255,255,.12); overflow: hidden; margin-bottom: 6px; }
+.es-meter i { display: block; height: 100%; border-radius: 999px;
+  background: linear-gradient(90deg, #ef4444, #f59e0b 45%, #22c55e); }
+
+.es-rates-bar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px; }
+.es-rates-bar .muted { font-size: 13px; color: var(--muted); }
+.es-rate-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 16px;
+  padding: 20px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
+.es-rate-grid h4 { margin: 0 0 10px; font-size: 13px; letter-spacing: .06em;
+  text-transform: uppercase; color: #93a4c4; }
+.es-rate-grid h4 + .calc-fields + h4 { margin-top: 20px; }
+@media (max-width: 880px) {
+  .es-rate-grid { grid-template-columns: 1fr; gap: 20px; }
+  .es-row { grid-template-columns: 1.4fr .8fr .8fr; }
+  .es-row b:nth-child(3) { display: none; }
+}
+/* .calc-big b is the 44px headline figure, and it catches any <b> inside
+   the box — including the one in the sub-line that says these rates are
+   samples. The sub-line is prose; it reads at prose size. */
+.calc-big .o-sub b { display: inline; font-size: inherit; color: inherit; margin: 0; }
