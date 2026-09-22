@@ -242,11 +242,16 @@
   });
 
   /* ---- the rates drawer -------------------------------------------- */
+  /* The prices start OPEN. Folding is for a reader who has already put
+     their own in and wants the room back — not the state a first
+     visitor meets, which is how the section came to be invisible. */
   var toggle = $('#es-rates-toggle');
   if (toggle) toggle.addEventListener('click', function () {
     var d = $('#es-rates');
+    var lead = $('.es-rates-lead');
     d.hidden = !d.hidden;
-    toggle.textContent = d.hidden ? 'Show the sample rates' : 'Hide the sample rates';
+    if (lead) lead.hidden = d.hidden;
+    toggle.textContent = d.hidden ? 'Edit the material prices' : 'Fold this away';
   });
   var reset = $('#es-rates-reset');
   if (reset) reset.addEventListener('click', function () {

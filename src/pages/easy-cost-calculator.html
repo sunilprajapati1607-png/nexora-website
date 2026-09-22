@@ -29,8 +29,8 @@ priority: 0.9
           <b>This is Nexora’s demo calculator, for a quick look only &mdash; we give no
           guarantee of its accuracy.</b> It works on the standard rough sum from the gram, and
           <b>every rate it starts with is a sample</b>: round, illustrative figures rather than a
-          price list. Open <i>the sample rates</i> below and put your own in &mdash; every one of
-          them is an editable box.
+          price list. <a href="#rates"><b>Material prices &amp; constants</b></a> is further down this
+          page, open, with every figure in an editable box &mdash; type your own over them.
           <br>
           A figure you can stand behind comes from your own construction, your own route through
           the plant, your own recipes and your own dated raw material prices. That is what the
@@ -158,7 +158,7 @@ priority: 0.9
             <div class="calc-big"><small>Weight per bag</small><b><span id="pp_weight">0</span><em>g</em></b>
               <div class="o-sub" id="pp_cutline"><span id="pp_cut">&mdash;</span></div></div>
             <div class="calc-big" style="margin-top:12px;"><small>Indicative cost per bag</small><b><span id="pp_cost">&#8377;0.00</span></b>
-              <div class="o-sub">demo figure, at the <b>sample</b> rates below</div></div>
+              <div class="o-sub">demo figure, at the <a href="#rates"><b>sample</b> prices</a> you can edit</div></div>
             <div class="es-table">
               <div class="es-row es-head"><span>What</span><b>Weight</b><b>Rate</b><b>Cost</b></div>
               <div id="pp_rows"></div>
@@ -171,7 +171,7 @@ priority: 0.9
             <div class="calc-big"><small>Weight per bag</small><b><span id="bp_weight">0</span><em>g</em></b>
               <div class="o-sub"><span id="bp_cut">&mdash;</span></div></div>
             <div class="calc-big" style="margin-top:12px;"><small>Indicative price per bag</small><b><span id="bp_price">&#8377;0.00</span></b>
-              <div class="o-sub">demo figure, at the <b>sample</b> rates below</div></div>
+              <div class="o-sub">demo figure, at the <a href="#rates"><b>sample</b> prices</a> you can edit</div></div>
             <div class="es-table">
               <div class="es-row es-head"><span>What</span><b>Weight</b><b>Rate</b><b>Cost</b></div>
               <div id="bp_rows"></div>
@@ -190,12 +190,20 @@ priority: 0.9
         </div>
       </div>
 
-      <!-- ============ the sample rates, in the open ============ -->
-      <div class="es-rates-bar">
-        <button type="button" class="btn btn-ghost btn-sm" id="es-rates-toggle">Show the sample rates</button>
-        <span class="muted">Every number this calculator uses &mdash; change any of them and the estimate follows.</span>
+      <!-- ============ the material prices, IN THE OPEN ============
+           They used to be folded behind "Show the sample rates" with no
+           heading, so the page read as a calculator with fixed prices —
+           the one thing it spends three paragraphs promising it is not.
+           Open, headed and anchored now; the fold is still offered, for
+           a reader who has set their rates and wants them out of the
+           way, but shut is no longer where it starts. -->
+      <div class="es-rates-head" id="rates">
+        <h3>Material prices &amp; constants</h3>
+        <button type="button" class="btn btn-ghost btn-sm" id="es-rates-toggle">Fold this away</button>
       </div>
-      <div id="es-rates" hidden>
+      <p class="muted es-rates-lead">Every number this calculator uses, and every one of them yours to change.
+        Type over any box and the weight and the price follow it straight away.</p>
+      <div id="es-rates">
         <div class="es-warn es-warn-sm">
           <div class="es-warn-ico"><svg class="icon"><use href="#i-tag"/></svg></div>
           <div><b>These are samples, chosen to be round.</b> They are not a quotation, not a market

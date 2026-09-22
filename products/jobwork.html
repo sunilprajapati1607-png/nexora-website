@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609221156" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609221837" />
   <script>
     (function () {
       var t = 'light';
@@ -423,7 +423,22 @@
 
       <article class="screen" style="scroll-margin-top:90px;">
         <div class="reveal">
-          <div class="no">10 &bull; BACKUP &amp; TWO MACHINES</div>
+          <div class="no">10 &bull; THE RELATIONSHIP MAP</div>
+          <h2>Right-click any document and the whole job is drawn</h2>
+          <p>What came in, what each stage did with it, what went back out, and the invoice — with a line for every link and a sentence saying what each line means. Underneath, the two chains: where this came from, and what became of it, step by step.</p>
+          <p>Most software draws a map like this by remembering that somebody copied one document from another. This one is drawn from the <b>batch chain</b>: every output batch records the batches it was made from, so a line means <em>this material became that</em>. Colour says what each document is, dragging moves the map and Ctrl with the wheel zooms it.</p>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/jobwork/11-relation-light.jpg" alt="The relationship map of a jobwork plan, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/jobwork/11-relation-dark.jpg" alt="The relationship map of a jobwork plan, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">11 &bull; BACKUP &amp; TWO MACHINES</div>
           <h2>The office PC and the floor tablet, a day apart</h2>
           <p>Each machine carries a site code that goes inside its document numbers, so two machines working with no connection between them cannot allocate the same number. Merging is checked before it is applied: every posting from both machines, present exactly once.</p>
         </div>
@@ -449,6 +464,7 @@
         <div class="module"><svg class="icon"><use href="#i-monitor"/></svg><div><b>Works offline, always</b><span>The data lives on the machine. No internet, no server, no subscription to the plant floor being connected.</span></div></div>
         <div class="module"><svg class="icon"><use href="#i-chart"/></svg><div><b>Real Excel, not CSV</b><span>Every register exports as a proper workbook: frozen heading, sized columns, and figures that are numbers you can sum.</span></div></div>
         <div class="module"><svg class="icon"><use href="#i-zap"/></svg><div><b>Every message a bulb</b><span>The software explains itself, and puts the words away when you do not need them. Hover to read; the screen stays clean.</span></div></div>
+        <div class="module"><svg class="icon"><use href="#i-route"/></svg><div><b>The document map</b><span>Right-click any document: the whole job drawn from the batch chain, with backward and forward from wherever you are.</span></div></div>
         <div class="module"><svg class="icon"><use href="#i-db"/></svg><div><b>Hands off to your books</b><span>No second ledger. Invoices go to Tally or SAP B1 as structured documents, with the party statement to reconcile against.</span></div></div>
       </div>
     </div>
@@ -588,7 +604,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609221156" defer></script>
+<script src="/assets/js/site.js?v=202609221837" defer></script>
 </body>
 </html>
 

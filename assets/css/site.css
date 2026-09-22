@@ -316,8 +316,14 @@ a.card { color: var(--text); text-decoration: none !important; display: block; }
 
 /* Check lists */
 .checks { list-style: none; display: grid; gap: 10px; }
-.checks li { display: flex; gap: 10px; align-items: flex-start; color: var(--text-2); font-size: 15px; }
-.checks li .icon { width: 20px; height: 20px; color: var(--success); margin-top: 2px; }
+/* NOT display:flex. A flex row makes every inline element inside the
+   line its own flex item, so a <b> or an <em> in the middle of a bullet
+   breaks into a column of its own and the sentence comes apart. The icon
+   is placed instead and the text flows as text. */
+.checks li { display: block; position: relative; padding-left: 30px;
+  color: var(--text-2); font-size: 15px; }
+.checks li .icon { position: absolute; left: 0; top: 3px;
+  width: 20px; height: 20px; color: var(--success); }
 .checks.cols { grid-template-columns: repeat(2, 1fr); }
 @media (max-width: 640px) { .checks.cols { grid-template-columns: 1fr; } }
 
@@ -844,3 +850,19 @@ table.doc-sum tr.doc-sub td { border-top: 1px solid var(--dline); padding-top: 6
    the box — including the one in the sub-line that says these rates are
    samples. The sub-line is prose; it reads at prose size. */
 .calc-big .o-sub b { display: inline; font-size: inherit; color: inherit; margin: 0; }
+
+/* The material prices carry a real heading now, because a section with
+   no heading behind a fold is a section a reader cannot find. */
+.es-rates-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 26px 0 4px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 90px;
+}
+.es-rates-head h3 { margin: 0; font-size: 19px; }
+.es-rates-lead { margin: 0 0 14px; max-width: 62ch; }
