@@ -20,7 +20,7 @@ priority: 0.8
   <section class="section-tight">
     <div class="wrap">
       <nav class="jump reveal" aria-label="Jump to feature">
-        <a href="#s01">01 DASHBOARD</a><a href="#s02">02 WEIGHT CALCULATION</a><a href="#s03">03 3D BAG VIEW</a><a href="#s04">04 CALCULATION SHEET</a><a href="#s05">05 STRUCTURES</a><a href="#s06">06 RM PRICE TRACKING</a><a href="#s07">07 PROCESS &amp; ROUTE</a><a href="#s08">08 COSTED BOM</a><a href="#s09">09 BOM SHEET</a><a href="#s10">10 QUOTATION</a><a href="#s11">11 QUOTATION SHEET</a><a href="#s12">12 INK ASSUMPTION</a><a href="#s13">13 NOTES</a><a href="#s14">14 COMPANY CHAT</a><a href="#s15">15 STRUCTURE EDITOR</a><a href="#s16">16 NEXORA CONTACT</a>
+        <a href="#s01">01 DASHBOARD</a><a href="#s02">02 WEIGHT CALCULATION</a><a href="#s03">03 3D BAG VIEW</a><a href="#s04">04 CALCULATION SHEET</a><a href="#s05">05 STRUCTURES</a><a href="#s06">06 RM PRICE TRACKING</a><a href="#s07">07 PROCESS &amp; ROUTE</a><a href="#s08">08 COSTED BOM</a><a href="#s09">09 BOM SHEET</a><a href="#s10">10 QUOTATION</a><a href="#s11">11 QUOTATION SHEET</a><a href="#s12">12 INK ASSUMPTION</a><a href="#s13">13 NOTES</a><a href="#s14">14 COMPANY CHAT</a><a href="#s15">15 STRUCTURE EDITOR</a><a href="#s16">16 NEXORA CONTACT</a><a href="#s17">Constants</a><a href="#s18">Easy Cost</a><a href="#s19">BOM section</a><a href="#s20">Settings</a>
       </nav>
     </div>
   </section>
@@ -326,6 +326,77 @@ priority: 0.8
         </figure>
       </article>
 
+      <article class="screen" id="s17" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">FEATURE 17 &bull; CONSTANTS MASTER</div>
+          <h2>Every factor the engine works to, and not one of them written into the code</h2>
+          <p>The BOPP micron-to-GSM factor, the denier factor, fold and hamming sizes, patch overlaps, trim allowances — all of it is data a plant edits, read at calculation time. Change one and every bag costed afterwards follows it.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Each constant lists the fields it feeds, so you can see what a change will move before you make it</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A plant that trims 12 mm and not 10 says so once, here, instead of correcting every sheet</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/17-constants-light.jpg" alt="Constants Master, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/17-constants-dark.jpg" alt="Constants Master, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="s18" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">FEATURE 18 &bull; EASY COST</div>
+          <h2>A price in ten seconds, for the buyer who is on the phone</h2>
+          <p>Six choices and a rupee figure, on the trade’s own gram. It is a demo for a quick look with no accuracy guaranteed — the real cost comes from the construction, the route, the recipes and your own dated prices — and the window says so on its face.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Seventy-one rates, all editable, all arriving as round samples rather than a price list</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Linked to nothing: no route, no BOM, no saved calculation, and nothing typed in it is kept</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/18-easy-cost-light.jpg" alt="Easy Cost calculator, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/18-easy-cost-dark.jpg" alt="Easy Cost calculator, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="s19" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">FEATURE 19 &bull; A BOM SECTION</div>
+          <h2>What a stage is issued, line by line, and where each kilogram came from</h2>
+          <p>Material bought, material made at an earlier stage, a part made on a parallel route, and the resources that convert it — each with its quantity, its rate and its cost, and the stage’s waste grossing the whole of it up.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A line can point at a part weight from the calculation, so it is re-read for every bag rather than typed once</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>An earlier stage is priced at what that stage actually came out at, not at a purchase price</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/19-bom-section-light.jpg" alt="A BOM section being edited, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/19-bom-section-dark.jpg" alt="A BOM section being edited, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="s20" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">FEATURE 20 &bull; SETTINGS</div>
+          <h2>Your company, your units, your people — and what this installation switches on</h2>
+          <p>The letterhead every printed sheet carries, the unit you measure in, the currency, and the people with their PINs and their scope. Features can be switched off one by one, and what is in reach at all is decided by the plan.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A feature switched off disappears wherever it appears — button, task bar, shortcut and printed figure alike</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Nothing already made is deleted, so switching one back on brings its work with it</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/20-settings-light.jpg" alt="Settings, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/20-settings-dark.jpg" alt="Settings, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
     </div>
   </section>
 
