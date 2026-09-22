@@ -1,7 +1,10 @@
-/* Nexora — Easy Cost: the trade's quick estimate, on the GRAM
+/* Nexora — Easy Cost: the demo calculator, on the GRAM
    ======================================================================
-   Two sums the woven bag trade already does on the back of an envelope,
-   written out so a buyer can do them in ten seconds:
+   Nexora’s quick look at a bag price, on the standard shop-floor sum the
+   whole trade quotes to, written out so a buyer can do it in ten seconds.
+   NO ACCURACY IS GUARANTEED, and the page says so three times over; a
+   figure to stand behind comes from the Nexora engine, which is a
+   different calculation altogether. The two sums:
 
      PP woven
        fabric  = width × gram × (length + stitching) ÷ 39.37 + thread

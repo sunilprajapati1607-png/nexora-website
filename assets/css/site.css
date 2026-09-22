@@ -189,7 +189,9 @@ h4 { font-size: 17px; }
 .nav-toggle .icon { width: 22px; height: 22px; }
 
 @media (max-width: 1440px) { .header-actions .btn-outline { display: none; } }
-@media (max-width: 1300px) { .brand small { display: none; } }
+/* The tagline goes at 1360, not 1300: between 1305 and 1355 the brand is
+   still wide enough to push the menu past the window edge. */
+@media (max-width: 1360px) { .brand small { display: none; } }
 @media (max-width: 1200px) {
   .nav a, .nav .navbtn { padding: 9px 8px; font-size: 13.5px; }
 }
@@ -215,6 +217,30 @@ h4 { font-size: 17px; }
   .header-actions .theme-btn { width: 100%; }
 }
 @media (min-width: 1101px) { .nav-panel-head { display: none; } .nav-panel { display: flex; align-items: center; gap: 18px; } }
+
+/* THE HEADER ROW GETS THE ROOM IT NEEDS.
+
+   The row is brand + menu + actions, and a nav link is nowrap, so the
+   row cannot shrink: past a certain number of menu items it simply runs
+   out of the 1180 px wrap and out of the window with it. It overflowed
+   by 70 px at 1366 and 33 px at 1440 - the two widths most laptops
+   actually are - which let the whole page be dragged sideways and left
+   Request Demo hanging off the edge.
+
+   The header is a row of controls, not prose, so between the hamburger
+   and 1560 px it takes the window rather than the measure. Everything
+   else on the page keeps the 1180 px wrap it always had. */
+@media (min-width: 1101px) and (max-width: 1560px) {
+  .header .wrap { width: calc(100% - 32px); }
+}
+/* And in the last band before the hamburger, even the full width is not
+   enough for an untightened menu, so it tightens a step earlier. */
+@media (min-width: 1101px) and (max-width: 1240px) {
+  .nav { gap: 0; }
+  .nav a, .nav .navbtn { padding: 9px 6px; font-size: 13px; }
+  .header .wrap { gap: 10px; }
+  .header-actions { gap: 6px; }
+}
 
 /* ---------- Hero ---------- */
 .hero {

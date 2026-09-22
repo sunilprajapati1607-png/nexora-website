@@ -1,3 +1,7 @@
 .vercel
 .env*
 node_modules
+
+# Scratch screenshots taken while checking a layout — never part of the site.
+hdr-*.png
+easy-*.png
