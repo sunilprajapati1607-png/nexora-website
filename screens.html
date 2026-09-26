@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609221837" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609260750" />
   <script>
     (function () {
       var t = 'light';
@@ -235,13 +235,127 @@
   <section class="section-tight">
     <div class="wrap">
       <nav class="jump reveal" aria-label="Jump to feature">
-        <a href="#s01">01 DASHBOARD</a><a href="#s02">02 WEIGHT CALCULATION</a><a href="#s03">03 3D BAG VIEW</a><a href="#s04">04 CALCULATION SHEET</a><a href="#s05">05 STRUCTURES</a><a href="#s06">06 RM PRICE TRACKING</a><a href="#s07">07 PROCESS &amp; ROUTE</a><a href="#s08">08 COSTED BOM</a><a href="#s09">09 BOM SHEET</a><a href="#s10">10 QUOTATION</a><a href="#s11">11 QUOTATION SHEET</a><a href="#s12">12 INK ASSUMPTION</a><a href="#s13">13 NOTES</a><a href="#s14">14 COMPANY CHAT</a><a href="#s15">15 STRUCTURE EDITOR</a><a href="#s16">16 NEXORA CONTACT</a><a href="#s17">Constants</a><a href="#s18">Easy Cost</a><a href="#s19">BOM section</a><a href="#s20">Settings</a><a href="#s21">Quotation Records</a><a href="#s22">Constants</a>
+        <a href="#ai">&#10022; NEXORA AI</a><a href="#s01">01 DASHBOARD</a><a href="#s02">02 WEIGHT CALCULATION</a><a href="#s03">03 3D BAG VIEW</a><a href="#s04">04 CALCULATION SHEET</a><a href="#s05">05 STRUCTURES</a><a href="#s06">06 RM PRICE TRACKING</a><a href="#s07">07 PROCESS &amp; ROUTE</a><a href="#s08">08 COSTED BOM</a><a href="#s09">09 BOM SHEET</a><a href="#s10">10 QUOTATION</a><a href="#s11">11 QUOTATION SHEET</a><a href="#s12">12 INK ASSUMPTION</a><a href="#s13">13 NOTES</a><a href="#s14">14 COMPANY CHAT</a><a href="#s15">15 STRUCTURE EDITOR</a><a href="#s16">16 NEXORA CONTACT</a><a href="#s17">Constants</a><a href="#s18">Easy Cost</a><a href="#s19">BOM section</a><a href="#s20">Settings</a><a href="#s21">Quotation Records</a><a href="#s22">Constants</a>
       </nav>
     </div>
   </section>
 
   <section class="section" style="padding-top:20px;">
     <div class="wrap">
+
+      <article class="screen" id="ai" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; ONE SENTENCE</div>
+          <h2>Say the bag and ask for the cost &mdash; Nexora AI shows the steps</h2>
+          <p>&ldquo;1L stitch bag, 490 &times; 550, single fold, 70 gram, 40&times;40, tape 80+20, give me the cost&rdquo; &mdash; spoken or typed, in &#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;, &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; or English, on any window.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Calculation, route or saved workflow, which part goes where, every stage&rsquo;s recipe and waste, a check, the cost</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>&ldquo;70 gram&rdquo; is the target weight &mdash; the GSM is found by Nexora; a GSM said gives the weight</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Nothing is done until you press <b>Run</b>; say &ldquo;make it 75 gram&rdquo; and the same bag changes</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/26-calculation-ai-light.jpg" alt="Nexora AI on the calculation window with the steps it will run, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/26-calculation-ai-dark.jpg" alt="Nexora AI on the calculation window with the steps it will run, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="ai-run" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; RUN</div>
+          <h2>One Run &mdash; weighed, routed, checked, costed</h2>
+          <p>Every step is ticked or says why it stopped. The cost is the BOM&rsquo;s own figure, worked out on your computer &mdash; Nexora AI never sees it, nor an item name or a customer.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>It checks what it built before the cost: &ldquo;is everything right?&rdquo;</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>It learns from your routes, workflows and usual recipes &mdash; and from every change you make to what it did</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Each window keeps its own conversation; move it, size it, make it small</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/32-nexora-ai-run-light.jpg" alt="Nexora AI after Run: the BOM checked and costed, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/32-nexora-ai-run-dark.jpg" alt="Nexora AI after Run: the BOM checked and costed, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="ai-fill" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; FILL THIS FORM</div>
+          <h2>Or say the bag &mdash; or show a photo &mdash; and it fills the form</h2>
+          <p>Speak or type the specification in &#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752;, &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; or English, or show a photo, a drawing or a PDF. What was heard is shown; what is missing is asked.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Construction, size, GSM, mesh, BOPP and bag quantity, placed on your own constructions and fields</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A dropdown where a field has options, a box where it is a number</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>The engine weighs it as ever &mdash; nothing is saved until you save</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/27-nexora-ai-voice-light.jpg" alt="Nexora AI filling a calculation from a spoken specification, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/27-nexora-ai-voice-dark.jpg" alt="Nexora AI filling a calculation from a spoken specification, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="ai-check" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; BOM CHECK</div>
+          <h2>It reads a BOM and says what to fix</h2>
+          <p>Stages, sources, recipes and waste, read in plain words &mdash; with a link to the stage. It never sees a price or a cost.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>A stage taking the wrong material, a recipe that does not add up, a waste that looks wrong</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>In English, &#2711;&#2753;&#2716;&#2736;&#2750;&#2724;&#2752; or &#2361;&#2367;&#2344;&#2381;&#2342;&#2368; &mdash; it answers in the language you use</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>It changes nothing: every figure is still the engine&rsquo;s</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/29-nexora-ai-gujarati-light.jpg" alt="Nexora AI checking a BOM, answering in Gujarati, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/29-nexora-ai-gujarati-dark.jpg" alt="Nexora AI checking a BOM, answering in Gujarati, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="ai-plan" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; ROUTE PLAN</div>
+          <h2>Say what the bag is &mdash; it plans the route</h2>
+          <p>A saved workflow that fits, a saved route, or a new route built only from your own process master.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Each step with the reason for it</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Create or Use &mdash; nothing is made until you press it</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>It learns from your plant: the routes your bags run on, your saved workflows, your usual recipes</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/30-nexora-ai-plan-light.jpg" alt="Nexora AI proposing a production route, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/30-nexora-ai-plan-dark.jpg" alt="Nexora AI proposing a production route, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
+
+      <article class="screen" id="ai-change" style="scroll-margin-top:90px;">
+        <div class="reveal">
+          <div class="no">&#10022; NEXORA AI &bull; BOM CHANGE</div>
+          <h2>Tell it the change &mdash; you apply it</h2>
+          <p>&ldquo;Tape ma master batch 2 taka karo, weaving waste 2 karo&rdquo; becomes a list of changes, ticked, before anything moves.</p>
+          <ul class="checks">
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Only your materials and your stages</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Untick what you do not want</li>
+            <li><svg class="icon"><use href="#i-check-circle"/></svg>Applied in one press, recosted at once</li>
+          </ul>
+        </div>
+        <figure class="shot shot-dual reveal" data-zoom>
+          <div class="shot-toggle" role="group" aria-label="Theme"><button type="button" class="on" data-mode="light">Light</button><button type="button" data-mode="dark">Dark</button></div>
+          <img class="mode-light" src="/assets/img/screens/features/31-nexora-ai-change-light.jpg" alt="Nexora AI turning a spoken instruction into BOM changes, light theme" loading="lazy" width="1600" height="1000" />
+          <img class="mode-dark" src="/assets/img/screens/features/31-nexora-ai-change-dark.jpg" alt="Nexora AI turning a spoken instruction into BOM changes, dark theme" loading="lazy" width="1600" height="1000" />
+          <figcaption>Click to enlarge</figcaption>
+        </figure>
+      </article>
 
       <article class="screen" id="s01" style="scroll-margin-top:90px;">
         <div class="reveal">
@@ -672,6 +786,7 @@
         <h5>Products</h5>
         <ul>
           <li><a href="/products/bag-weight-calculation">Bag Weight &amp; Cost Forecasting</a></li>
+          <li><a href="/products/jobwork">Nexora Jobwork</a></li>
           <li><a href="/products/erp">Nexora ERP</a></li>
           <li><a href="/products/inventory">Inventory &amp; Roll Traceability</a></li>
           <li><a href="/products/hr-payroll">HR &amp; Payroll</a></li>
@@ -782,7 +897,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609221837" defer></script>
+<script src="/assets/js/site.js?v=202609260750" defer></script>
 </body>
 </html>
 
