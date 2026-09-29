@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609290707" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609290759" />
   <script>
     (function () {
       var t = 'light';
@@ -133,6 +133,186 @@
   <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m0 1.67c4.54 0 8.24 3.7 8.24 8.24s-3.7 8.24-8.24 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01"/></symbol>
 </svg>
+
+<!-- WELCOME VIDEO — on EVERY page, via the head partial.
+     Plays first on whichever page somebody enters the site by — the home
+     page, or a calculator they found on Google — and that page appears when
+     it ends (or on Skip / Escape). Once per visit: moving to another page in
+     the same visit does not play it again — sessionStorage remembers.
+
+     Browsers only let a video start by itself if it is MUTED, so it starts
+     muted. The Sound button shows the state: grey "Sound off" with a
+     crossed speaker while muted, blue "Sound on" with waves once it is on.
+     Turning the sound ON starts the film again from the beginning, so the
+     welcome is heard from its first word; turning it OFF lets it run on.
+     "Watch the welcome video" (home hero, and every page's footer) replays
+     it WITH sound, because that play follows a click.
+
+     To change the video: put the new file in assets/video/ under a NEW name
+     and change the src below. Files in /assets are cached for a year, so a
+     new video under the old name would never reach anybody who has visited.
+
+     This first script runs before anything is painted, so the page never
+     flashes before the video, and the video never flashes before a page
+     that is not going to show it. -->
+<script>
+  /* WHO GETS THE FILM, decided before the first paint.
+
+     GOOGLE RANKING COMES FIRST (owner, 29 Sep 2026). Google marks down a
+     page that is covered by a full-screen layer right after somebody
+     arrives from its search results ("intrusive interstitial"), and most
+     of this site's visitors will come that way, to a calculator. So:
+
+       - search engines and page-speed testers never see the film at all,
+         so they read and measure the page itself;
+       - a visitor FROM a search engine is not covered: a small "Watch our
+         welcome video" button waits in the corner instead;
+       - everybody else — a link, WhatsApp, a bookmark, the address typed —
+         gets the full film first, on whichever page they entered by;
+       - once per visit, whatever was decided. */
+  (function () {
+    var r = document.documentElement, mode = 'full', seen = false;
+    try { seen = sessionStorage.getItem('nx-intro') === 'seen'; } catch (e) {}
+    var ua = navigator.userAgent || '';
+    var ref = document.referrer || '';
+    var bot = /bot|crawl|spider|slurp|lighthouse|pagespeed|google-inspectiontool|bingpreview|facebookexternalhit|whatsapp/i.test(ua);
+    var fromSearch = /^https?:\/\/([^\/]+\.)?(google|bing|yahoo|duckduckgo|yandex|baidu|ecosia|brave)\.[a-z.]+(\/|$)/i.test(ref) ||
+                     /googlequicksearchbox/i.test(ref);
+    var reduced = false;
+    try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (bot || seen || reduced) mode = 'skip';
+    else if (fromSearch) mode = 'offer';
+    r.classList.add(mode === 'full' ? 'intro-on' : 'intro-skip');
+    if (mode === 'offer') r.classList.add('intro-offer');
+  })();
+</script>
+<div id="intro" class="intro" role="dialog" aria-modal="true" aria-label="Welcome to Nexora">
+  <div class="intro-wait" aria-hidden="true"><img src="/assets/img/favicon-192.png" alt="" width="84" height="84" /></div>
+  <video id="introVideo" class="intro-video" playsinline muted preload="none" src="/assets/video/welcome-20260928.mp4"></video>
+  <div class="intro-bar" aria-hidden="true"><i id="introProgress"></i></div>
+  <div class="intro-controls">
+    <!-- The button shows the STATE, not the action: grey with a crossed
+         speaker while muted, blue with sound waves once the sound is on. -->
+    <button type="button" class="intro-btn intro-sound" id="introSound" aria-pressed="false" aria-label="Sound off. Press to turn the sound on">
+      <svg class="intro-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="ico-on" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="ico-off" d="m16 9 6 6M22 9l-6 6"/></svg>
+      <span class="intro-sound-txt">Sound off</span>
+    </button>
+    <button type="button" class="intro-btn intro-btn-skip" id="introSkip">Skip &rsaquo;</button>
+  </div>
+</div>
+<!-- For a visitor from a search engine: the film offered, not imposed.
+     Small, in the corner the WhatsApp button does not use, and gone once
+     it is played or closed. -->
+<div class="intro-offer-pill" id="introOffer" hidden>
+  <button type="button" class="intro-offer-play" data-replay-intro><svg class="icon" aria-hidden="true"><use href="#i-play"/></svg> Watch our welcome video</button>
+  <button type="button" class="intro-offer-x" id="introOfferX" aria-label="Hide the welcome video button">&times;</button>
+</div>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var box = document.getElementById('intro');
+    var v = document.getElementById('introVideo');
+    var sound = document.getElementById('introSound');
+    var skip = document.getElementById('introSkip');
+    var bar = document.getElementById('introProgress');
+    if (!box || !v) return;
+    var guard = null, closing = false;
+
+    function setSound(on) {
+      v.muted = !on;
+      sound.setAttribute('aria-pressed', on ? 'true' : 'false');
+      sound.setAttribute('aria-label', on ? 'Sound on. Press to mute' : 'Sound off. Press to turn the sound on');
+      sound.querySelector('.intro-sound-txt').textContent = on ? 'Sound on' : 'Sound off';
+    }
+
+    function close() {
+      if (closing) return;
+      closing = true;
+      clearTimeout(guard);
+      try { sessionStorage.setItem('nx-intro', 'seen'); } catch (e) {}
+      box.classList.add('intro-out');
+      setTimeout(function () {
+        v.pause();
+        root.classList.remove('intro-on');
+        root.classList.add('intro-skip');
+        box.classList.remove('intro-out', 'intro-playing');
+        bar.style.width = '0';
+        closing = false;
+      }, 600);
+    }
+
+    function open(withSound) {
+      closing = false;
+      root.classList.remove('intro-skip');
+      root.classList.add('intro-on');
+      box.classList.remove('intro-out', 'intro-playing');
+      setSound(!!withSound);
+      v.preload = 'auto';
+      try { v.currentTime = 0; } catch (e) {}
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {
+        /* Sound refused, or the browser refuses to play by itself at all:
+           try once more muted, and if even that is refused, show the page. */
+        if (!v.muted) { setSound(false); v.play().catch(close); } else { close(); }
+      });
+      /* A slow connection must never leave a visitor on a dark screen. */
+      clearTimeout(guard);
+      guard = setTimeout(close, 7000);
+      try { skip.focus({ preventScroll: true }); } catch (e) {}
+    }
+
+    v.addEventListener('playing', function () { clearTimeout(guard); box.classList.add('intro-playing'); });
+    v.addEventListener('ended', close);
+    v.addEventListener('error', close);
+    v.addEventListener('timeupdate', function () {
+      if (v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%';
+    });
+    skip.addEventListener('click', close);
+    sound.addEventListener('click', function () {
+      var turningOn = v.muted;
+      setSound(turningOn);
+      /* Sound ON: from the first word, not from wherever the silent film
+         had got to. Sound OFF: it simply runs on. */
+      if (turningOn) {
+        try { v.currentTime = 0; } catch (e) {}
+        bar.style.width = '0';
+      }
+      if (v.paused) v.play().catch(function () {});
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && root.classList.contains('intro-on')) close();
+    });
+    document.addEventListener('click', function (e) {
+      var t = e.target.closest && e.target.closest('[data-replay-intro]');
+      if (t) { e.preventDefault(); hideOffer(); open(true); }
+    });
+
+    /* The corner button, for a visitor who came from a search engine. The
+       visit is marked at once, so the next page does not spring the full
+       film on somebody who is already reading. */
+    var offer = document.getElementById('introOffer');
+    function hideOffer() { if (offer) offer.hidden = true; }
+    if (offer && root.classList.contains('intro-offer')) {
+      offer.hidden = false;
+      try { sessionStorage.setItem('nx-intro', 'seen'); } catch (e) {}
+      document.getElementById('introOfferX').addEventListener('click', hideOffer);
+    }
+
+    /* A site opened in a background tab (Ctrl+click, a link from another
+       tab) is not allowed to start a video, and would have given up at
+       once. So it waits, dark and still, until the tab is looked at. */
+    function start() {
+      if (!document.hidden) { open(false); return; }
+      document.addEventListener('visibilitychange', function once() {
+        if (document.hidden) return;
+        document.removeEventListener('visibilitychange', once);
+        if (root.classList.contains('intro-on')) open(false);
+      });
+    }
+    if (root.classList.contains('intro-on')) start();
+  })();
+</script>
+
 
 
 <div class="topbar">
@@ -431,7 +611,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/invoice.js?v=202609290707" defer></script>
+  <script src="/assets/js/invoice.js?v=202609290759" defer></script>
 <footer class="footer">
   <div class="wrap">
     <div class="cols">
@@ -500,7 +680,7 @@
       </div>
     </div>
     <div class="bottom">
-      <div>&copy; <span data-year></span> Nexora. All rights reserved. &nbsp;&bull;&nbsp; <a href="/terms">Terms of use &amp; disclaimer</a></div>
+      <div>&copy; <span data-year></span> Nexora. All rights reserved. &nbsp;&bull;&nbsp; <a href="/terms">Terms of use &amp; disclaimer</a> &nbsp;&bull;&nbsp; <button type="button" class="footer-replay" data-replay-intro><svg class="icon"><use href="#i-play"/></svg> Watch the welcome video</button></div>
       <div>ERP &bull; Cost Forecasting &bull; Industrial Software &bull; Web Development</div>
     </div>
   </div>
@@ -555,7 +735,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609290707" defer></script>
+<script src="/assets/js/site.js?v=202609290759" defer></script>
 </body>
 </html>
 
