@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609290642" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609290707" />
   <script>
     (function () {
       var t = 'light';
@@ -143,7 +143,8 @@
      it again — that is what sessionStorage remembers.
 
      Browsers only let a video start by itself if it is MUTED, so it starts
-     muted with a "Sound on" button. The Welcome video button in the hero
+     muted. The Sound button shows the state: grey "Sound off" with a
+     crossed speaker while muted, blue "Sound on" with waves once it is on. The Welcome video button in the hero
      replays it WITH sound, because that play follows a click.
 
      To change the video: put the new file in assets/video/ under a NEW name
@@ -168,7 +169,12 @@
   <video id="introVideo" class="intro-video" playsinline muted preload="none" src="/assets/video/welcome-20260928.mp4"></video>
   <div class="intro-bar" aria-hidden="true"><i id="introProgress"></i></div>
   <div class="intro-controls">
-    <button type="button" class="intro-btn" id="introSound" aria-pressed="false">&#128266; Sound on</button>
+    <!-- The button shows the STATE, not the action: grey with a crossed
+         speaker while muted, blue with sound waves once the sound is on. -->
+    <button type="button" class="intro-btn intro-sound" id="introSound" aria-pressed="false" aria-label="Sound off. Press to turn the sound on">
+      <svg class="intro-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path class="ico-on" d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/><path class="ico-off" d="m16 9 6 6M22 9l-6 6"/></svg>
+      <span class="intro-sound-txt">Sound off</span>
+    </button>
     <button type="button" class="intro-btn intro-btn-skip" id="introSkip">Skip &rsaquo;</button>
   </div>
 </div>
@@ -186,7 +192,8 @@
     function setSound(on) {
       v.muted = !on;
       sound.setAttribute('aria-pressed', on ? 'true' : 'false');
-      sound.innerHTML = on ? '&#128263; Sound off' : '&#128266; Sound on';
+      sound.setAttribute('aria-label', on ? 'Sound on. Press to mute' : 'Sound off. Press to turn the sound on');
+      sound.querySelector('.intro-sound-txt').textContent = on ? 'Sound on' : 'Sound off';
     }
 
     function close() {
@@ -825,7 +832,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609290642" defer></script>
+<script src="/assets/js/site.js?v=202609290707" defer></script>
 </body>
 </html>
 

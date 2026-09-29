@@ -905,6 +905,17 @@ html.intro-on { overflow: hidden; }
   -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
 }
 .intro-btn:hover { background: rgba(255, 255, 255, .24); }
+/* Sound shows its STATE: grey and crossed out while muted, Nexora blue with
+   waves once it is on — so the button reads the way it sounds. */
+.intro-sound { display: inline-flex; align-items: center; gap: 8px; color: #b8c0d0; background: rgba(120, 128, 145, .32); border-color: rgba(184, 192, 208, .35); }
+.intro-sound:hover { background: rgba(120, 128, 145, .45); }
+.intro-sound[aria-pressed="true"] { color: #fff; background: #4f7cff; border-color: #7d9dff; box-shadow: 0 0 0 3px rgba(79, 124, 255, .28); }
+.intro-sound[aria-pressed="true"]:hover { background: #3f6cf0; }
+.intro-ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.intro-ico path:first-child { fill: currentColor; }
+.intro-sound .ico-on { display: none; }
+.intro-sound[aria-pressed="true"] .ico-on { display: inline; }
+.intro-sound[aria-pressed="true"] .ico-off { display: none; }
 .intro-btn:focus-visible { outline: 2px solid #6d93ff; outline-offset: 2px; }
 .intro-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255, 255, 255, .12); }
 .intro-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #6d93ff, #4f7cff); transition: width .25s linear; }
