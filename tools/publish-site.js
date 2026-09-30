@@ -57,8 +57,11 @@ function run(cmd, cwd) { console.log('> ' + cmd); return execSync(cmd, { cwd: cw
     for (const line of lines) {
       const m = line.match(/https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/i);
       if (m && !before.has(m[0])) {
-        if (/Ready/i.test(line)) { url = m[0]; break; }
-        if (/Error|Canceled/i.test(line)) { try { child.kill(); } catch (e) {} throw new Error('The new deployment failed on Vercel: ' + line.trim()); }
+        /* the list's columns are cut on a narrow window, so the status is asked of the deployment itself */
+        let st = '';
+        try { st = run('npx vercel inspect ' + m[0] + ' --scope ' + SCOPE, DEPLOY); } catch (e) { st = String(e.stdout || '') + String(e.stderr || ''); }
+        if (/status\s+\W*\s*Ready/i.test(st) || /Ready/i.test(line)) { url = m[0]; break; }
+        if (/status\s+\W*\s*(Error|Canceled)/i.test(st)) { try { child.kill(); } catch (e) {} throw new Error('The new deployment failed on Vercel: ' + m[0]); }
         console.log('  building: ' + m[0] + ' …');
       }
     }
