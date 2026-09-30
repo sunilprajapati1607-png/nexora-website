@@ -972,3 +972,77 @@ html.intro-on { overflow: hidden; }
 .footer-replay .icon { width: 1.2em; height: 1.2em; }
 
 @media print { .intro, .intro-offer-pill { display: none !important; } }
+
+/* =========================================================
+   Colour gradients, 30 Sep 2026 — owner: "add gradiant effect in website also with different colour not at
+   everywhere but where its look good". The palette is the app's own (4.70.1 / phone 0.9.1): blue into cyan, amber into
+   rose, violet into pink, green into sky, and Marketing's sunrise. Only the home page's hero, its phone band, the
+   flagship card, the four "Only in Nexora" cards, the four figures and Nexora AI's kicker wear them.
+   ========================================================= */
+:root {
+  --sun: linear-gradient(100deg, #f59e0b 0%, #ec4899 52%, #8b5cf6 100%);
+  --ai: linear-gradient(95deg, #6366f1, #a855f7 55%, #ec4899);
+}
+.grad-sun { background: var(--sun); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero h1 .grad { background: linear-gradient(95deg, #fcd34d, #fb7185 48%, #c084fc); -webkit-background-clip: text; background-clip: text; }
+.hero { background: radial-gradient(900px 520px at 100% 100%, rgba(236, 72, 153, .20), transparent 60%),
+                    radial-gradient(1200px 600px at 80% -10%, rgba(0, 210, 255, .24), transparent 60%),
+                    radial-gradient(900px 500px at -10% 110%, rgba(0, 98, 255, .35), transparent 60%),
+                    linear-gradient(160deg, var(--navy-950), var(--navy-900) 60%, #0b2350); }
+.hero .btn-primary { background: linear-gradient(95deg, #2563eb, #7c3aed); box-shadow: 0 10px 24px -10px #7c3aed; }
+.hero .btn-primary:hover { background: linear-gradient(95deg, #1d4ed8, #6d28d9); }
+.btn-grad { background: var(--sun); color: #fff; box-shadow: 0 10px 24px -10px #ec4899; }
+.btn-grad:hover { filter: brightness(1.06); }
+
+/* the hero: the PC and, beside it, the phone; the picture reaches into the margin on a wide screen so the
+   dashboard reads, and the one note sits at its foot, off the briefing and the figures */
+.hero-duo { padding: 0 46px 42px 0; }
+@media (min-width: 1360px) { .hero-duo { margin-right: -84px; } }
+@media (min-width: 1101px) and (max-width: 1359px) { .hero-duo { margin-right: -12px; } }
+.hero-phone { position: absolute; right: 0; bottom: 0; width: 25%; max-width: 170px; padding: 5px; border-radius: 24px;
+  background: linear-gradient(160deg, #334155, #0b1220); transform: rotate(3deg);
+  box-shadow: 0 30px 60px -18px rgba(0, 0, 0, .8), 0 0 0 1px rgba(255, 255, 255, .16); }
+.hero-phone img { width: 100%; border-radius: 19px; }
+.hero-duo .f1 { top: auto; bottom: 0; left: -34px; }
+.hero-duo .float b { font-size: 17px; }
+@media (max-width: 1100px) { .hero-duo { padding: 0 26px 30px 0; } .hero-duo .f1 { left: 0; } }
+@media (max-width: 560px) { .hero-phone { width: 30%; } .hero-duo .float { display: none; } }
+
+/* Nexora Mobile: a band of its own */
+.mobile-band { background: linear-gradient(135deg, #eef2ff 0%, #fdf2f8 48%, #fff7ed 100%); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+:root[data-theme="dark"] .mobile-band { background: linear-gradient(135deg, #0e1733 0%, #221233 50%, #25170d 100%); }
+.eyebrow-sun { background: var(--sun); color: #fff; }
+.phones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; max-width: 900px; margin: 0 auto; align-items: start; }
+.phone { margin: 0; cursor: zoom-in; }
+.phone img { width: 100%; border-radius: 24px; border: 6px solid #0f172a; box-shadow: 0 26px 50px -22px rgba(15, 23, 42, .55), 0 0 0 1px rgba(15, 23, 42, .12); background: #0f172a; transition: transform .25s; }
+:root[data-theme="dark"] .phone img { border-color: #1e293b; box-shadow: 0 26px 50px -22px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .1); }
+.phone:hover img { transform: translateY(-6px); }
+.phone:nth-child(even) { margin-top: 34px; }
+.phone figcaption { text-align: center; font-size: 13px; font-weight: 700; color: var(--text-2); margin-top: 12px; }
+.mobile-points { margin-top: 44px; }
+@media (max-width: 800px) { .phones { grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 420px; } .phone:nth-child(even) { margin-top: 22px; } }
+
+/* cards and figures, each in its own colour */
+.color-cards > .card, .stats-color > .stat { --g1: #2563eb; --g2: #06b6d4; }
+.color-cards > .card:nth-child(4n+2), .stats-color > .stat:nth-child(4n+2) { --g1: #f59e0b; --g2: #f43f5e; }
+.color-cards > .card:nth-child(4n+3), .stats-color > .stat:nth-child(4n+3) { --g1: #8b5cf6; --g2: #ec4899; }
+.color-cards > .card:nth-child(4n+4), .stats-color > .stat:nth-child(4n+4) { --g1: #10b981; --g2: #0ea5e9; }
+.color-cards > .card { overflow: hidden; background: linear-gradient(180deg, color-mix(in srgb, var(--g1) 7%, var(--card)), var(--card) 55%); }
+.color-cards > .card::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: linear-gradient(90deg, var(--g1), var(--g2)); }
+.color-cards > .card .ico { background: linear-gradient(135deg, var(--g1), var(--g2)); color: #fff; box-shadow: 0 10px 20px -10px var(--g1); }
+.color-cards > .card.hover:hover { border-color: color-mix(in srgb, var(--g1) 45%, var(--line)); }
+.color-cards .only-no { background: linear-gradient(95deg, var(--g1), var(--g2)); -webkit-background-clip: text; background-clip: text; color: transparent; opacity: 1; font-size: 15px; }
+:root[data-theme="dark"] .color-cards > .card { background: linear-gradient(180deg, color-mix(in srgb, var(--g1) 16%, var(--card)), var(--card) 60%); }
+.stats-color > .stat { position: relative; overflow: hidden; background: linear-gradient(180deg, color-mix(in srgb, var(--g1) 8%, var(--card)), var(--card) 70%); }
+.stats-color > .stat::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; background: linear-gradient(90deg, var(--g1), var(--g2)); }
+.stats-color > .stat b { background: linear-gradient(95deg, var(--g1), var(--g2)); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: 40px; padding-bottom: 2px; }
+:root[data-theme="dark"] .stats-color > .stat { background: linear-gradient(180deg, color-mix(in srgb, var(--g1) 18%, var(--card)), var(--card) 75%); }
+
+/* the flagship: a sunrise edge and badge */
+.card.flag.flag-sun { border: 1.5px solid transparent;
+  background: linear-gradient(180deg, color-mix(in srgb, #ec4899 6%, var(--card)), var(--card) 65%) padding-box, var(--sun) border-box; }
+.card.flag.flag-sun::after { background: var(--sun); }
+.card.flag.flag-sun .ico { background: var(--sun); color: #fff; }
+
+/* Nexora AI's kicker */
+.kicker-ai { background: var(--ai); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800; }
