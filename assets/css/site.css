@@ -1054,3 +1054,17 @@ html.intro-on { overflow: hidden; }
 :root[data-theme="dark"] .theme-light { display: none !important; }
 /* the hero's note in the dark theme: a dark card with light words (it was a white card with light words) */
 :root[data-theme="dark"] .hero-visual .float { background: #0e1830; color: #e6edf7; border-color: #2a3a5a; }
+
+/* 30 Sep 2026 — "in website at home page add new screenshot along with mobile screen also replace old one": each
+   computer picture on the home page has the phone's screen beside it, tilted over its corner */
+.duo { position: relative; padding: 0 42px 40px 0; }
+.duo .shot { margin: 0; }
+.duo-phone { position: absolute; right: 0; bottom: 18px; width: 25%; max-width: 165px; padding: 5px; border-radius: 24px; cursor: zoom-in;
+  background: linear-gradient(160deg, #334155, #0b1220); transform: rotate(3deg);
+  box-shadow: 0 26px 50px -18px rgba(15, 23, 42, .6), 0 0 0 1px rgba(255, 255, 255, .16); transition: transform .25s; }
+.duo-phone:hover { transform: rotate(0deg) translateY(-4px); }
+.duo-phone img { width: 100%; border-radius: 19px; }
+.duo-cap { font-size: 13px; color: var(--muted); margin-top: 12px; padding-right: 26%; }
+:root[data-theme="dark"] .duo-phone { box-shadow: 0 26px 50px -18px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .12); }
+@media (max-width: 560px) { .duo { padding: 0 20px 30px 0; } .duo-phone { width: 30%; } .duo .duo-cap { padding-right: 36%; } }
+.split .duo-cap, .duo .duo-cap { font-size: 13px; line-height: 1.5; color: var(--muted); }
