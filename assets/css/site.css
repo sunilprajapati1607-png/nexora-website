@@ -1046,3 +1046,11 @@ html.intro-on { overflow: hidden; }
 
 /* Nexora AI's kicker */
 .kicker-ai { background: var(--ai); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 800; }
+
+/* 30 Sep 2026 — "for dark and light both mode": the hero and the phone dashboard show the picture of the theme the
+   site is in (the dark one is only fetched when it is shown) */
+.theme-dark { display: none !important; }
+:root[data-theme="dark"] .theme-dark { display: block !important; }
+:root[data-theme="dark"] .theme-light { display: none !important; }
+/* the hero's note in the dark theme: a dark card with light words (it was a white card with light words) */
+:root[data-theme="dark"] .hero-visual .float { background: #0e1830; color: #e6edf7; border-color: #2a3a5a; }

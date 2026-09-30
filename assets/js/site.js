@@ -231,7 +231,7 @@
     });
     $$('[data-zoom]').forEach(function (fig) {
       fig.addEventListener('click', function () {
-        var img = fig.tagName === 'IMG' ? fig : (fig.classList.contains('dark') ? $('img.mode-dark', fig) : $('img', fig));
+        var img = fig.tagName === 'IMG' ? fig : (fig.classList.contains('dark') ? $('img.mode-dark', fig) : ($('img', fig).filter(function (i) { return i.offsetParent !== null; })[0] || $('img', fig)));
         if (!img) return;
         lbImg.src = img.currentSrc || img.src; lbImg.alt = img.alt || '';
         lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
