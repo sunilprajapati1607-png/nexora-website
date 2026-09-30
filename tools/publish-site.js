@@ -39,22 +39,32 @@ function run(cmd, cwd) { console.log('> ' + cmd); return execSync(cmd, { cwd: cw
   console.log('copied ' + top.length + ' pages, products/ and assets/');
 
   step('3. Deploy to production');
-  const url = await new Promise((resolve, reject) => {
-    const child = spawn('npx', ['vercel', '--prod', '--yes', '--scope', SCOPE], { cwd: DEPLOY, shell: true, stdio: ['ignore', 'pipe', 'pipe'] });
-    let seen = '', done = false;
-    const look = (buf) => {
-      const t = buf.toString(); seen += t; process.stdout.write(t);
-      const m = seen.match(/https:\/\/nexora-11092026-[a-z0-9]+-[a-z0-9-]+\.vercel\.app/i) || seen.match(/https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/i);
-      if (m && /Production|Ready|Deployed|Inspect/i.test(seen) && !done) {
-        done = true;
-        /* the deployment is made; the CLI would wait on nothing */
-        setTimeout(() => { try { child.kill(); } catch (e) {} resolve(m[0]); }, 20000);
+  /* The CLI on this PC often prints nothing and never exits, although the deployment IS made. So the new deployment is
+     found in Vercel's own list: the first address that was not there before, once it says Ready. */
+  const URL_RX = /https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/ig;
+  const listNow = () => { try { return run('npx vercel ls nexora-11092026 --scope ' + SCOPE, DEPLOY); } catch (e) { return String(e.stdout || '') + String(e.stderr || ''); } };
+  const before = new Set(listNow().match(URL_RX) || []);
+  console.log(before.size + ' deployments already there');
+  const child = spawn('npx vercel --prod --yes --scope ' + SCOPE, { cwd: DEPLOY, shell: true, stdio: ['ignore', 'pipe', 'pipe'] });
+  child.stdout.on('data', (b) => process.stdout.write(b.toString()));
+  child.stderr.on('data', (b) => process.stdout.write(b.toString()));
+  const started = Date.now();
+  let url = null;
+  while (!url && Date.now() - started < 10 * 60 * 1000) {
+    await new Promise((r) => setTimeout(r, 15000));
+    const out = listNow();
+    const lines = out.split(/\r?\n/);
+    for (const line of lines) {
+      const m = line.match(/https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/i);
+      if (m && !before.has(m[0])) {
+        if (/Ready/i.test(line)) { url = m[0]; break; }
+        if (/Error|Canceled/i.test(line)) { try { child.kill(); } catch (e) {} throw new Error('The new deployment failed on Vercel: ' + line.trim()); }
+        console.log('  building: ' + m[0] + ' …');
       }
-    };
-    child.stdout.on('data', look); child.stderr.on('data', look);
-    child.on('exit', () => { if (!done) { const m = seen.match(/https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/i); m ? resolve(m[0]) : reject(new Error('No deployment address was printed.')); } });
-    setTimeout(() => { if (!done) { try { child.kill(); } catch (e) {} const m = seen.match(/https:\/\/nexora-11092026-[a-z0-9-]+\.vercel\.app/i); m ? resolve(m[0]) : reject(new Error('Vercel did not answer in 6 minutes.')); } }, 6 * 60 * 1000);
-  });
+    }
+  }
+  try { child.kill(); } catch (e) {}
+  if (!url) throw new Error('No new Ready deployment in 10 minutes — look at vercel.com, then run this again.');
   console.log('\ndeployment ' + url);
 
   step('4. Point the domains at it');
