@@ -15,12 +15,15 @@
   <meta property="og:title" content="Block Bottom Bag Calculation — Weight & Cost | Nexora" />
   <meta property="og:description" content="Block bottom bag calculation: bottom width, patch depth, valve, mesh, denier and BOPP micron to bag weight and laminated GSM. Pinch and valve bags too." />
   <meta property="og:url" content="https://www.nexoraofficial.org/block-bottom-bag-calculation" />
-  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301352" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nexora Sales &amp; Costing" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Block Bottom Bag Calculation — Weight & Cost | Nexora" />
   <meta name="twitter:description" content="Block bottom bag calculation: bottom width, patch depth, valve, mesh, denier and BOPP micron to bag weight and laminated GSM. Pinch and valve bags too." />
-  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301352" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -33,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609290844" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609301352" />
   <script>
     (function () {
       var t = 'light';
@@ -65,7 +68,7 @@
         "telephone": ["+91-92134-15996", "+91-75671-61607"],
         "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
         "founder": { "@type": "Person", "name": "Sunil Prajapati" },
-        "description": "ERP, bag weight and cost forecasting software, and industrial tools for the woven sack and packaging industry.",
+        "description": "ERP, Nexora Sales & Costing (enquiries, bag weight, BOM, cost and quotation, with Nexora AI, on Windows and Android), and industrial tools for the woven sack and packaging industry.",
         "sameAs": ["https://wa.me/919213415996"]
       },
       {
@@ -135,9 +138,10 @@
 </svg>
 
 <!-- WELCOME VIDEO — on EVERY page, via the head partial.
-     Plays first on whichever page somebody enters the site by — the home
-     page, or a calculator they found on Google — and that page appears when
-     it ends (or on Skip / Escape). Once per visit: moving to another page in
+     Plays first on the page somebody enters the site by — unless they came
+     from a search engine (see WHO GETS THE FILM below: they get a small
+     button instead) — and that page appears when it ends (or on Skip /
+     Escape). Once per visit: moving to another page in
      the same visit does not play it again — sessionStorage remembers.
 
      Browsers only let a video start by itself if it is MUTED, so it starts
@@ -166,7 +170,10 @@
        - search engines and page-speed testers never see the film at all,
          so they read and measure the page itself;
        - a visitor FROM a search engine is not covered: a small "Watch our
-         welcome video" button waits in the corner instead;
+         welcome video" button waits in the corner instead — and so is anyone
+         landing straight on an inner page with no referrer (30 Sep 2026: the
+         likeliest search visitor whose referrer Google did not send), or by a
+         search ad;
        - everybody else — a link, WhatsApp, a bookmark, the address typed —
          gets the full film first, on whichever page they entered by;
        - once per visit, whatever was decided. */
@@ -178,10 +185,20 @@
     var bot = /bot|crawl|spider|slurp|lighthouse|pagespeed|google-inspectiontool|bingpreview|facebookexternalhit|whatsapp/i.test(ua);
     var fromSearch = /^https?:\/\/([^\/]+\.)?(google|bing|yahoo|duckduckgo|yandex|baidu|ecosia|brave)\.[a-z.]+(\/|$)/i.test(ref) ||
                      /googlequicksearchbox/i.test(ref);
+    /* 30 Sep 2026 — "welcome video should not come when someone is visiting direct page from google". Google (and
+       its app, and privacy settings) often sends NO referrer at all, so a visitor who lands straight on an inner page
+       — a calculator, a product page — with no referrer is most likely from a search, and is offered the film, not
+       shown it. So is anyone arriving by a search ad or a tagged search link. Only the home page, entered directly,
+       and a visitor sent by another site, get the film first. */
+    var qs = location.search || '';
+    var fromAd = /[?&](gclid|gbraid|wbraid|msclkid)=|[?&]utm_source=(google|bing|yahoo|duckduckgo)/i.test(qs);
+    var path = (location.pathname || '/').replace(/\/index(\.html)?$/i, '/');
+    var home = path === '/' || path === '';
+    var inner = !home && !ref;
     var reduced = false;
     try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     if (bot || seen || reduced) mode = 'skip';
-    else if (fromSearch) mode = 'offer';
+    else if (fromSearch || fromAd || inner) mode = 'offer';
     r.classList.add(mode === 'full' ? 'intro-on' : 'intro-skip');
     if (mode === 'offer') r.classList.add('intro-offer');
   })();
@@ -317,7 +334,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="tag">ERP &amp; cost-forecasting software for the woven sack &amp; packaging industry &bull; Ahmedabad, India</div>
+    <div class="tag">ERP, sales &amp; costing software for the woven sack &amp; packaging industry &bull; Ahmedabad, India</div>
     <div class="links">
       <a href="tel:+919213415996"><svg class="icon"><use href="#i-phone"/></svg>+91 92134 15996</a>
       <a href="mailto:info@nexoraofficial.org"><svg class="icon"><use href="#i-mail"/></svg>info@nexoraofficial.org</a>
@@ -348,7 +365,7 @@
         <li class="has-dd" data-nav="/products">
           <button class="navbtn" aria-expanded="false" aria-haspopup="true">Products <svg class="icon"><use href="#i-chev"/></svg></button>
           <div class="dropdown">
-            <a href="/products/bag-weight-calculation"><svg class="icon"><use href="#i-scale"/></svg><span><b>Bag Weight &amp; Cost Forecasting</b><small>Flagship: GSM, bag weight, RM forecast &amp; costed BOM</small></span></a>
+            <a href="/products/bag-weight-calculation"><svg class="icon"><use href="#i-scale"/></svg><span><b>Nexora Sales &amp; Costing</b><small>Flagship: sales, bag weight, BOM &amp; cost &mdash; with Nexora AI</small></span></a>
             <a href="/bag-quotation-software"><svg class="icon"><use href="#i-file"/></svg><span><b>Bag Quotation</b><small>Costing to buyer quotation, on your own letterhead</small></span></a>
             <a href="/products/jobwork"><svg class="icon"><use href="#i-route"/></svg><span><b>Nexora Jobwork</b><small>Inward &amp; outward jobwork, challans, ITC-04, reconciliation</small></span></a>
             <a href="/products/erp"><svg class="icon"><use href="#i-factory"/></svg><span><b>Nexora ERP for Woven Sack &amp; Packaging</b><small>Order to dispatch, costing, planning &amp; masters</small></span></a>
@@ -442,7 +459,7 @@
     <div class="fieldset-title">Fabric — denier and GSM update each other</div>
     <div class="field mode-field">
       <label for="s_meshmode">When I change the mesh</label>
-      <select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as the Nexora app does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select>
+      <select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as Nexora Sales &amp; Costing does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select>
       <div class="hint">Mesh, denier and GSM are one equation, so a mesh change has to move one of the other two. Set this first, then enter the values below. Typing in either box always recalculates the other.</div>
     </div>
     <div class="calc-fields">
@@ -477,7 +494,7 @@
       <button type="button" class="btn btn-ghost btn-sm" id="s_reset">Reset to defaults</button>
     </div>
     <div class="prices" id="s_prices" hidden>
-      <p class="hint" style="margin-bottom:10px;"><b>Example rates only</b> (₹ per kg). Real costing uses your own versioned price master in the Nexora app.</p>
+      <p class="hint" style="margin-bottom:10px;"><b>Example rates only</b> (₹ per kg). Real costing uses your own versioned price master in Nexora Sales &amp; Costing.</p>
       <div class="calc-fields">
         <div class="field"><label for="p_fabric">PP tape fabric</label><input type="number" id="p_fabric" step="1"></div>
         <div class="field"><label for="p_coat">Coating / lamination</label><input type="number" id="p_coat" step="1"></div>
@@ -487,7 +504,7 @@
         <div class="field"><label for="p_conv">Conversion (power, labour, machine)</label><input type="number" id="p_conv" step="0.5"></div>
       </div>
     </div>
-    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora desktop engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92. A liner is a separate article — use the <a href="/liner-calculator">liner calculator</a> for it. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
+    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora Sales &amp; Costing engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92. A liner is a separate article — use the <a href="/liner-calculator">liner calculator</a> for it. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
   </div>
 
   <div class="calc-out">
@@ -515,7 +532,7 @@
       <div class="cost-total">Order value estimate: <b class="blur" id="o_costqty">₹0</b></div>
       <div class="locked-cta">
         <p>Costing is built from your own dated RM price master and process-wise resource rates — not from example rates. We will run your bag and your prices in a free demo.</p>
-        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Get my costing</button>
+        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Nexora Sales &amp; Costing">Get my costing</button>
       </div>
     </div>
 
@@ -523,8 +540,8 @@
       <div class="locked-head"><span>Component-wise breakdown · <b id="o_compcount">0</b> parts</span><span class="tag">Demo feature</span></div>
       <ul id="o_components" class="locked-list"></ul>
       <div class="locked-cta">
-        <p>Body, patch, valve, film, ink and thread grams with % share, plus the formula behind every value, are shown in the Nexora desktop app.</p>
-        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Unlock in a free demo</button>
+        <p>Body, patch, valve, film, ink and thread grams with % share, plus the formula behind every value, are shown in Nexora Sales &amp; Costing.</p>
+        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Nexora Sales &amp; Costing">Unlock in a free demo</button>
       </div>
     </div>
 
@@ -557,7 +574,7 @@
         <li><b>BOPP block bottom 10–25 kg (rice, pet food, seeds):</b> 800–900 denier, 10 × 10 to 12 × 12 mesh, 18–20 GSM coating, 18–25 µm BOPP.</li>
         <li><b>Putty / tile adhesive 20–40 kg:</b> 1000 denier, 12 × 12 mesh, valve type, sometimes with a PE liner.</li>
       </ul>
-      <p>Plants differ in patch overlap, valve length and bottom forming allowance, so treat the figures here as a first check. The <a href="/products/bag-weight-calculation">Nexora desktop app</a> models block bottom constructions with 80 fields including patch, valve, metallised film and liner, each traceable to its formula.</p>
+      <p>Plants differ in patch overlap, valve length and bottom forming allowance, so treat the figures here as a first check. The <a href="/products/bag-weight-calculation">Nexora Sales &amp; Costing</a> desktop app models block bottom constructions with 80 fields including patch, valve, metallised film and liner, each traceable to its formula.</p>
       <h2>FAQ</h2>
       <div class="faq">
         <details><summary>What is the difference between block bottom and pinch bottom?</summary><p>Both form a rectangular bottom from the tube. A block bottom (pasted) bag closes the bottom with a pasted patch; a pinch bottom folds and hot-melt seals the end. Weight calculation is nearly the same; pinch bottom bags have a smaller patch or none.</p></details>
@@ -578,7 +595,7 @@
     ]}
   ]}
   </script>
-  <script src="/assets/js/calc.js?v=202609290844" defer></script>
+  <script src="/assets/js/calc.js?v=202609301352" defer></script>
 </main>
 
 <footer class="footer">
@@ -586,13 +603,13 @@
     <div class="cols">
       <div>
         <a href="/" class="brand"><img src="/assets/img/logo.png" alt="Nexora logo" width="44" height="27" /><span><b>NEX<span>O</span>RA</b><small>Smarter Today &bull; Better Tomorrow</small></span></a>
-        <p class="about">ERP, bag weight &amp; cost forecasting, and industrial software built by a woven sack industry insider for woven sack &amp; packaging plants.</p>
+        <p class="about">ERP, Nexora Sales &amp; Costing, and industrial software built by a woven sack industry insider for woven sack &amp; packaging plants.</p>
         <p class="about" style="margin-top:10px;"><strong style="color:#fff;">Official domain:</strong> nexoraofficial.org</p>
       </div>
       <div>
         <h5>Products</h5>
         <ul>
-          <li><a href="/products/bag-weight-calculation">Bag Weight &amp; Cost Forecasting</a></li>
+          <li><a href="/products/bag-weight-calculation">Nexora Sales &amp; Costing</a></li>
           <li><a href="/products/jobwork">Nexora Jobwork</a></li>
           <li><a href="/products/erp">Nexora ERP</a></li>
           <li><a href="/products/inventory">Inventory &amp; Roll Traceability</a></li>
@@ -650,7 +667,7 @@
     </div>
     <div class="bottom">
       <div>&copy; <span data-year></span> Nexora. All rights reserved. &nbsp;&bull;&nbsp; <a href="/terms">Terms of use &amp; disclaimer</a> &nbsp;&bull;&nbsp; <button type="button" class="footer-replay" data-replay-intro><svg class="icon"><use href="#i-play"/></svg> Watch the welcome video</button></div>
-      <div>ERP &bull; Cost Forecasting &bull; Industrial Software &bull; Web Development</div>
+      <div>ERP &bull; Sales &amp; Costing &bull; Industrial Software &bull; Web Development</div>
     </div>
   </div>
 </footer>
@@ -680,7 +697,7 @@
       <div class="field">
         <label for="dm_interest">I am interested in</label>
         <select id="dm_interest" name="interest">
-          <option value="Bag Weight & Cost Forecasting">Bag Weight &amp; Cost Forecasting software</option>
+          <option value="Nexora Sales & Costing">Nexora Sales &amp; Costing (desktop + Android)</option>
           <option value="Nexora ERP">Nexora ERP for woven sack / packaging</option>
           <option value="Inventory & Roll Traceability">Inventory &amp; roll traceability</option>
           <option value="HR & Payroll">HR &amp; Payroll</option>
@@ -704,7 +721,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609290844" defer></script>
+<script src="/assets/js/site.js?v=202609301352" defer></script>
 </body>
 </html>
 

@@ -15,12 +15,15 @@
   <meta property="og:title" content="Easy Cost Calculator — PP Woven & BOPP Bag Price in 10 Seconds | Nexora" />
   <meta property="og:description" content="Free easy cost calculator for PP woven and both-side BOPP laminated bags. Width, length and the trade gram to bag weight and an indicative price per bag. Sample rates, all editable." />
   <meta property="og:url" content="https://www.nexoraofficial.org/easy-cost-calculator" />
-  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301352" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nexora Sales &amp; Costing" />
   <meta property="og:locale" content="en_IN" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Easy Cost Calculator — PP Woven & BOPP Bag Price in 10 Seconds | Nexora" />
   <meta name="twitter:description" content="Free easy cost calculator for PP woven and both-side BOPP laminated bags. Width, length and the trade gram to bag weight and an indicative price per bag. Sample rates, all editable." />
-  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/dashboard-hero.jpg" />
+  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301352" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -33,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609290844" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202609301352" />
   <script>
     (function () {
       var t = 'light';
@@ -65,7 +68,7 @@
         "telephone": ["+91-92134-15996", "+91-75671-61607"],
         "address": { "@type": "PostalAddress", "addressLocality": "Ahmedabad", "addressRegion": "Gujarat", "addressCountry": "IN" },
         "founder": { "@type": "Person", "name": "Sunil Prajapati" },
-        "description": "ERP, bag weight and cost forecasting software, and industrial tools for the woven sack and packaging industry.",
+        "description": "ERP, Nexora Sales & Costing (enquiries, bag weight, BOM, cost and quotation, with Nexora AI, on Windows and Android), and industrial tools for the woven sack and packaging industry.",
         "sameAs": ["https://wa.me/919213415996"]
       },
       {
@@ -135,9 +138,10 @@
 </svg>
 
 <!-- WELCOME VIDEO — on EVERY page, via the head partial.
-     Plays first on whichever page somebody enters the site by — the home
-     page, or a calculator they found on Google — and that page appears when
-     it ends (or on Skip / Escape). Once per visit: moving to another page in
+     Plays first on the page somebody enters the site by — unless they came
+     from a search engine (see WHO GETS THE FILM below: they get a small
+     button instead) — and that page appears when it ends (or on Skip /
+     Escape). Once per visit: moving to another page in
      the same visit does not play it again — sessionStorage remembers.
 
      Browsers only let a video start by itself if it is MUTED, so it starts
@@ -166,7 +170,10 @@
        - search engines and page-speed testers never see the film at all,
          so they read and measure the page itself;
        - a visitor FROM a search engine is not covered: a small "Watch our
-         welcome video" button waits in the corner instead;
+         welcome video" button waits in the corner instead — and so is anyone
+         landing straight on an inner page with no referrer (30 Sep 2026: the
+         likeliest search visitor whose referrer Google did not send), or by a
+         search ad;
        - everybody else — a link, WhatsApp, a bookmark, the address typed —
          gets the full film first, on whichever page they entered by;
        - once per visit, whatever was decided. */
@@ -178,10 +185,20 @@
     var bot = /bot|crawl|spider|slurp|lighthouse|pagespeed|google-inspectiontool|bingpreview|facebookexternalhit|whatsapp/i.test(ua);
     var fromSearch = /^https?:\/\/([^\/]+\.)?(google|bing|yahoo|duckduckgo|yandex|baidu|ecosia|brave)\.[a-z.]+(\/|$)/i.test(ref) ||
                      /googlequicksearchbox/i.test(ref);
+    /* 30 Sep 2026 — "welcome video should not come when someone is visiting direct page from google". Google (and
+       its app, and privacy settings) often sends NO referrer at all, so a visitor who lands straight on an inner page
+       — a calculator, a product page — with no referrer is most likely from a search, and is offered the film, not
+       shown it. So is anyone arriving by a search ad or a tagged search link. Only the home page, entered directly,
+       and a visitor sent by another site, get the film first. */
+    var qs = location.search || '';
+    var fromAd = /[?&](gclid|gbraid|wbraid|msclkid)=|[?&]utm_source=(google|bing|yahoo|duckduckgo)/i.test(qs);
+    var path = (location.pathname || '/').replace(/\/index(\.html)?$/i, '/');
+    var home = path === '/' || path === '';
+    var inner = !home && !ref;
     var reduced = false;
     try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     if (bot || seen || reduced) mode = 'skip';
-    else if (fromSearch) mode = 'offer';
+    else if (fromSearch || fromAd || inner) mode = 'offer';
     r.classList.add(mode === 'full' ? 'intro-on' : 'intro-skip');
     if (mode === 'offer') r.classList.add('intro-offer');
   })();
@@ -317,7 +334,7 @@
 
 <div class="topbar">
   <div class="wrap">
-    <div class="tag">ERP &amp; cost-forecasting software for the woven sack &amp; packaging industry &bull; Ahmedabad, India</div>
+    <div class="tag">ERP, sales &amp; costing software for the woven sack &amp; packaging industry &bull; Ahmedabad, India</div>
     <div class="links">
       <a href="tel:+919213415996"><svg class="icon"><use href="#i-phone"/></svg>+91 92134 15996</a>
       <a href="mailto:info@nexoraofficial.org"><svg class="icon"><use href="#i-mail"/></svg>info@nexoraofficial.org</a>
@@ -348,7 +365,7 @@
         <li class="has-dd" data-nav="/products">
           <button class="navbtn" aria-expanded="false" aria-haspopup="true">Products <svg class="icon"><use href="#i-chev"/></svg></button>
           <div class="dropdown">
-            <a href="/products/bag-weight-calculation"><svg class="icon"><use href="#i-scale"/></svg><span><b>Bag Weight &amp; Cost Forecasting</b><small>Flagship: GSM, bag weight, RM forecast &amp; costed BOM</small></span></a>
+            <a href="/products/bag-weight-calculation"><svg class="icon"><use href="#i-scale"/></svg><span><b>Nexora Sales &amp; Costing</b><small>Flagship: sales, bag weight, BOM &amp; cost &mdash; with Nexora AI</small></span></a>
             <a href="/bag-quotation-software"><svg class="icon"><use href="#i-file"/></svg><span><b>Bag Quotation</b><small>Costing to buyer quotation, on your own letterhead</small></span></a>
             <a href="/products/jobwork"><svg class="icon"><use href="#i-route"/></svg><span><b>Nexora Jobwork</b><small>Inward &amp; outward jobwork, challans, ITC-04, reconciliation</small></span></a>
             <a href="/products/erp"><svg class="icon"><use href="#i-factory"/></svg><span><b>Nexora ERP for Woven Sack &amp; Packaging</b><small>Order to dispatch, costing, planning &amp; masters</small></span></a>
@@ -429,7 +446,7 @@
           <br>
           A figure you can stand behind comes from your own construction, your own route through
           the plant, your own recipes and your own dated raw material prices. That is what the
-          <a href="/bag-costing">Nexora desktop engine</a> does, and it is a different
+          <a href="/bag-costing">Nexora Sales &amp; Costing engine</a> does, and it is a different
           calculation from this one.
         </div>
       </div>
@@ -576,10 +593,10 @@
           </div>
 
           <div class="locked" style="margin-top:14px;">
-            <div class="locked-head"><span>Your own cost, not a sample</span><span class="tag">Nexora desktop</span></div>
+            <div class="locked-head"><span>Your own cost, not a sample</span><span class="tag">Nexora Sales &amp; Costing</span></div>
             <div class="locked-cta">
               <p>A real cost per bag comes from your construction, your route through the plant, your recipes and your own dated raw material prices &mdash; every figure traceable to the formula and the price behind it. That is what the Nexora engine does, and it is a different calculation from this one.</p>
-              <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Show me a real costing</button>
+              <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Nexora Sales &amp; Costing">Show me a real costing</button>
             </div>
           </div>
         </div>
@@ -679,7 +696,7 @@
       <h2>FAQ</h2>
       <div class="faq">
         <details><summary>Are these your rates?</summary><p>No. Every rate on the page is a round, illustrative sample so that the calculator shows something rather than zero. They are not a quotation, not a market rate and not anybody's price list. Open the sample rates and type your own over them.</p></details>
-        <details><summary>Is this the same as Nexora’s costing?</summary><p>No. This is Nexora’s demo calculator for a quick look, and we give no guarantee of its accuracy. The Nexora desktop engine costs a bag from its construction, its route through the plant, the recipe at each process and your own dated raw material prices, with every figure traceable to the formula and the price behind it.</p></details>
+        <details><summary>Is this the same as Nexora’s costing?</summary><p>No. This is Nexora’s demo calculator for a quick look, and we give no guarantee of its accuracy. The Nexora Sales &amp; Costing engine costs a bag from its construction, its route through the plant, the recipe at each process and your own dated raw material prices, with every figure traceable to the formula and the price behind it.</p></details>
         <details><summary>Is the gram the same as GSM?</summary><p>No. The trade gram (2.5 to 4.5) is the figure the shop-floor formula uses; grams per square metre is a different number entirely. This page stays on the gram and never converts it. If you want to work in GSM, micron and denier, use the <a href="/calculator">full bag weight calculator</a>.</p></details>
         <details><summary>Why is one inch added to the length?</summary><p>For the stitching allowance. The cut length is always a little more than the finished length, and one inch is what the trade sum assumes. Your own allowance may differ.</p></details>
         <details><summary>Why is the thread in the weight but not in the fabric charge?</summary><p>Because a gram of stitching yarn is not a gram of woven PP and is not bought at the fabric rate. The BOPP sum carries it in the weight and leaves it out of the fabric charge, which is what the trade sheet does.</p></details>
@@ -690,9 +707,9 @@
   </section>
 
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.nexoraofficial.org/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.nexoraofficial.org/calculator"},{"@type":"ListItem","position":3,"name":"Easy cost calculator","item":"https://www.nexoraofficial.org/easy-cost-calculator"}]},{"@type":"WebApplication","name":"Easy Cost Calculator for PP Woven and BOPP Bags","url":"https://www.nexoraofficial.org/easy-cost-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"featureList":["PP woven bag weight and cost per bag from width, length and the trade gram","Both-side BOPP laminated bag weight and price with liner, gusset and film finish","Every rate editable on the page","Bag strength indication by gram and quality"],"publisher":{"@type":"Organization","name":"Nexora","url":"https://www.nexoraofficial.org"}},{"@type":"HowTo","name":"How to estimate a PP woven or BOPP bag price in ten seconds","description":"The quick sum the woven bag trade does on the gram, to get a bag weight and an indicative price per bag before a proper costing.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Nexora easy cost calculator"}],"step":[{"@type":"HowToStep","name":"Choose the bag type","text":"Pick PP woven for a plain or laminated sack, or BOPP laminated for a both-side printed film bag.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step1"},{"@type":"HowToStep","name":"Enter the size","text":"Select the roll width in inches and type the finished length. One inch is added for the stitching allowance.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step2"},{"@type":"HowToStep","name":"Choose the gram and quality","text":"The trade gram from 2.5 to 4.5, and the fabric quality. On a BOPP bag choose the film finish, liner and gusset instead.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step3"},{"@type":"HowToStep","name":"Put your own rates in","text":"Open the sample rates and replace every figure with your own. The rates the page starts with are illustrative samples, not a price list.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step4"},{"@type":"HowToStep","name":"Read the weight and the price","text":"The weight per bag and the indicative cost or price per bag are shown with the arithmetic behind them, line by line.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step5"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these your rates?","acceptedAnswer":{"@type":"Answer","text":"No. Every rate on the page is a round, illustrative sample so that the calculator shows something rather than zero. They are not a quotation, not a market rate and not anybody’s price list. Open the sample rates and type your own over them."}},{"@type":"Question","name":"Is this the same as Nexora’s costing?","acceptedAnswer":{"@type":"Answer","text":"No. This is Nexora’s demo calculator for a quick look, and we give no guarantee of its accuracy. The Nexora desktop engine costs a bag from its construction, its route through the plant, the recipe at each process and your own dated raw material prices, with every figure traceable to the formula and the price behind it."}},{"@type":"Question","name":"Is the gram the same as GSM?","acceptedAnswer":{"@type":"Answer","text":"No. The trade gram (2.5 to 4.5) is the figure the shop-floor formula uses; grams per square metre is a different number entirely. This page stays on the gram and never converts it. If you want to work in GSM, micron and denier, use the full bag weight calculator."}},{"@type":"Question","name":"Why is one inch added to the length?","acceptedAnswer":{"@type":"Answer","text":"For the stitching allowance. The cut length is always a little more than the finished length, and one inch is what the trade sum assumes. Your own allowance may differ."}},{"@type":"Question","name":"Why is the thread in the weight but not in the fabric charge?","acceptedAnswer":{"@type":"Answer","text":"Because a gram of stitching yarn is not a gram of woven PP and is not bought at the fabric rate. The BOPP sum carries it in the weight and leaves it out of the fabric charge, which is what the trade sheet does."}},{"@type":"Question","name":"Is anything I type here saved or sent?","acceptedAnswer":{"@type":"Answer","text":"No. The calculator runs entirely in your browser. Nothing is stored and nothing is sent anywhere."}}]}]}
+  {"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.nexoraofficial.org/"},{"@type":"ListItem","position":2,"name":"Calculators","item":"https://www.nexoraofficial.org/calculator"},{"@type":"ListItem","position":3,"name":"Easy cost calculator","item":"https://www.nexoraofficial.org/easy-cost-calculator"}]},{"@type":"WebApplication","name":"Easy Cost Calculator for PP Woven and BOPP Bags","url":"https://www.nexoraofficial.org/easy-cost-calculator","applicationCategory":"BusinessApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"featureList":["PP woven bag weight and cost per bag from width, length and the trade gram","Both-side BOPP laminated bag weight and price with liner, gusset and film finish","Every rate editable on the page","Bag strength indication by gram and quality"],"publisher":{"@type":"Organization","name":"Nexora","url":"https://www.nexoraofficial.org"}},{"@type":"HowTo","name":"How to estimate a PP woven or BOPP bag price in ten seconds","description":"The quick sum the woven bag trade does on the gram, to get a bag weight and an indicative price per bag before a proper costing.","totalTime":"PT1M","tool":[{"@type":"HowToTool","name":"Nexora easy cost calculator"}],"step":[{"@type":"HowToStep","name":"Choose the bag type","text":"Pick PP woven for a plain or laminated sack, or BOPP laminated for a both-side printed film bag.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step1"},{"@type":"HowToStep","name":"Enter the size","text":"Select the roll width in inches and type the finished length. One inch is added for the stitching allowance.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step2"},{"@type":"HowToStep","name":"Choose the gram and quality","text":"The trade gram from 2.5 to 4.5, and the fabric quality. On a BOPP bag choose the film finish, liner and gusset instead.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step3"},{"@type":"HowToStep","name":"Put your own rates in","text":"Open the sample rates and replace every figure with your own. The rates the page starts with are illustrative samples, not a price list.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step4"},{"@type":"HowToStep","name":"Read the weight and the price","text":"The weight per bag and the indicative cost or price per bag are shown with the arithmetic behind them, line by line.","url":"https://www.nexoraofficial.org/easy-cost-calculator#step5"}]},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Are these your rates?","acceptedAnswer":{"@type":"Answer","text":"No. Every rate on the page is a round, illustrative sample so that the calculator shows something rather than zero. They are not a quotation, not a market rate and not anybody’s price list. Open the sample rates and type your own over them."}},{"@type":"Question","name":"Is this the same as Nexora’s costing?","acceptedAnswer":{"@type":"Answer","text":"No. This is Nexora’s demo calculator for a quick look, and we give no guarantee of its accuracy. The Nexora Sales & Costing engine costs a bag from its construction, its route through the plant, the recipe at each process and your own dated raw material prices, with every figure traceable to the formula and the price behind it."}},{"@type":"Question","name":"Is the gram the same as GSM?","acceptedAnswer":{"@type":"Answer","text":"No. The trade gram (2.5 to 4.5) is the figure the shop-floor formula uses; grams per square metre is a different number entirely. This page stays on the gram and never converts it. If you want to work in GSM, micron and denier, use the full bag weight calculator."}},{"@type":"Question","name":"Why is one inch added to the length?","acceptedAnswer":{"@type":"Answer","text":"For the stitching allowance. The cut length is always a little more than the finished length, and one inch is what the trade sum assumes. Your own allowance may differ."}},{"@type":"Question","name":"Why is the thread in the weight but not in the fabric charge?","acceptedAnswer":{"@type":"Answer","text":"Because a gram of stitching yarn is not a gram of woven PP and is not bought at the fabric rate. The BOPP sum carries it in the weight and leaves it out of the fabric charge, which is what the trade sheet does."}},{"@type":"Question","name":"Is anything I type here saved or sent?","acceptedAnswer":{"@type":"Answer","text":"No. The calculator runs entirely in your browser. Nothing is stored and nothing is sent anywhere."}}]}]}
   </script>
-  <script src="/assets/js/easycost.js?v=202609290844" defer></script>
+  <script src="/assets/js/easycost.js?v=202609301352" defer></script>
 </main>
 
 <footer class="footer">
@@ -700,13 +717,13 @@
     <div class="cols">
       <div>
         <a href="/" class="brand"><img src="/assets/img/logo.png" alt="Nexora logo" width="44" height="27" /><span><b>NEX<span>O</span>RA</b><small>Smarter Today &bull; Better Tomorrow</small></span></a>
-        <p class="about">ERP, bag weight &amp; cost forecasting, and industrial software built by a woven sack industry insider for woven sack &amp; packaging plants.</p>
+        <p class="about">ERP, Nexora Sales &amp; Costing, and industrial software built by a woven sack industry insider for woven sack &amp; packaging plants.</p>
         <p class="about" style="margin-top:10px;"><strong style="color:#fff;">Official domain:</strong> nexoraofficial.org</p>
       </div>
       <div>
         <h5>Products</h5>
         <ul>
-          <li><a href="/products/bag-weight-calculation">Bag Weight &amp; Cost Forecasting</a></li>
+          <li><a href="/products/bag-weight-calculation">Nexora Sales &amp; Costing</a></li>
           <li><a href="/products/jobwork">Nexora Jobwork</a></li>
           <li><a href="/products/erp">Nexora ERP</a></li>
           <li><a href="/products/inventory">Inventory &amp; Roll Traceability</a></li>
@@ -764,7 +781,7 @@
     </div>
     <div class="bottom">
       <div>&copy; <span data-year></span> Nexora. All rights reserved. &nbsp;&bull;&nbsp; <a href="/terms">Terms of use &amp; disclaimer</a> &nbsp;&bull;&nbsp; <button type="button" class="footer-replay" data-replay-intro><svg class="icon"><use href="#i-play"/></svg> Watch the welcome video</button></div>
-      <div>ERP &bull; Cost Forecasting &bull; Industrial Software &bull; Web Development</div>
+      <div>ERP &bull; Sales &amp; Costing &bull; Industrial Software &bull; Web Development</div>
     </div>
   </div>
 </footer>
@@ -794,7 +811,7 @@
       <div class="field">
         <label for="dm_interest">I am interested in</label>
         <select id="dm_interest" name="interest">
-          <option value="Bag Weight & Cost Forecasting">Bag Weight &amp; Cost Forecasting software</option>
+          <option value="Nexora Sales & Costing">Nexora Sales &amp; Costing (desktop + Android)</option>
           <option value="Nexora ERP">Nexora ERP for woven sack / packaging</option>
           <option value="Inventory & Roll Traceability">Inventory &amp; roll traceability</option>
           <option value="HR & Payroll">HR &amp; Payroll</option>
@@ -818,7 +835,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609290844" defer></script>
+<script src="/assets/js/site.js?v=202609301352" defer></script>
 </body>
 </html>
 

@@ -1,7 +1,8 @@
 <!-- WELCOME VIDEO — on EVERY page, via the head partial.
-     Plays first on whichever page somebody enters the site by — the home
-     page, or a calculator they found on Google — and that page appears when
-     it ends (or on Skip / Escape). Once per visit: moving to another page in
+     Plays first on the page somebody enters the site by — unless they came
+     from a search engine (see WHO GETS THE FILM below: they get a small
+     button instead) — and that page appears when it ends (or on Skip /
+     Escape). Once per visit: moving to another page in
      the same visit does not play it again — sessionStorage remembers.
 
      Browsers only let a video start by itself if it is MUTED, so it starts
@@ -30,7 +31,10 @@
        - search engines and page-speed testers never see the film at all,
          so they read and measure the page itself;
        - a visitor FROM a search engine is not covered: a small "Watch our
-         welcome video" button waits in the corner instead;
+         welcome video" button waits in the corner instead — and so is anyone
+         landing straight on an inner page with no referrer (30 Sep 2026: the
+         likeliest search visitor whose referrer Google did not send), or by a
+         search ad;
        - everybody else — a link, WhatsApp, a bookmark, the address typed —
          gets the full film first, on whichever page they entered by;
        - once per visit, whatever was decided. */
@@ -42,10 +46,20 @@
     var bot = /bot|crawl|spider|slurp|lighthouse|pagespeed|google-inspectiontool|bingpreview|facebookexternalhit|whatsapp/i.test(ua);
     var fromSearch = /^https?:\/\/([^\/]+\.)?(google|bing|yahoo|duckduckgo|yandex|baidu|ecosia|brave)\.[a-z.]+(\/|$)/i.test(ref) ||
                      /googlequicksearchbox/i.test(ref);
+    /* 30 Sep 2026 — "welcome video should not come when someone is visiting direct page from google". Google (and
+       its app, and privacy settings) often sends NO referrer at all, so a visitor who lands straight on an inner page
+       — a calculator, a product page — with no referrer is most likely from a search, and is offered the film, not
+       shown it. So is anyone arriving by a search ad or a tagged search link. Only the home page, entered directly,
+       and a visitor sent by another site, get the film first. */
+    var qs = location.search || '';
+    var fromAd = /[?&](gclid|gbraid|wbraid|msclkid)=|[?&]utm_source=(google|bing|yahoo|duckduckgo)/i.test(qs);
+    var path = (location.pathname || '/').replace(/\/index(\.html)?$/i, '/');
+    var home = path === '/' || path === '';
+    var inner = !home && !ref;
     var reduced = false;
     try { reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     if (bot || seen || reduced) mode = 'skip';
-    else if (fromSearch) mode = 'offer';
+    else if (fromSearch || fromAd || inner) mode = 'offer';
     r.classList.add(mode === 'full' ? 'intro-on' : 'intro-skip');
     if (mode === 'offer') r.classList.add('intro-offer');
   })();

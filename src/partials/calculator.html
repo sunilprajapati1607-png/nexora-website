@@ -26,7 +26,7 @@
     <div class="fieldset-title">Fabric — denier and GSM update each other</div>
     <div class="field mode-field">
       <label for="s_meshmode">When I change the mesh</label>
-      <select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as the Nexora app does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select>
+      <select id="s_meshmode"><option value="keepgsm">Keep the GSM — recalculate the denier (as Nexora Sales &amp; Costing does)</option><option value="keepden">Keep the denier — recalculate the GSM and the bag weight</option></select>
       <div class="hint">Mesh, denier and GSM are one equation, so a mesh change has to move one of the other two. Set this first, then enter the values below. Typing in either box always recalculates the other.</div>
     </div>
     <div class="calc-fields">
@@ -61,7 +61,7 @@
       <button type="button" class="btn btn-ghost btn-sm" id="s_reset">Reset to defaults</button>
     </div>
     <div class="prices" id="s_prices" hidden>
-      <p class="hint" style="margin-bottom:10px;"><b>Example rates only</b> (₹ per kg). Real costing uses your own versioned price master in the Nexora app.</p>
+      <p class="hint" style="margin-bottom:10px;"><b>Example rates only</b> (₹ per kg). Real costing uses your own versioned price master in Nexora Sales &amp; Costing.</p>
       <div class="calc-fields">
         <div class="field"><label for="p_fabric">PP tape fabric</label><input type="number" id="p_fabric" step="1"></div>
         <div class="field"><label for="p_coat">Coating / lamination</label><input type="number" id="p_coat" step="1"></div>
@@ -71,7 +71,7 @@
         <div class="field"><label for="p_conv">Conversion (power, labour, machine)</label><input type="number" id="p_conv" step="0.5"></div>
       </div>
     </div>
-    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora desktop engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92. A liner is a separate article — use the <a href="/liner-calculator">liner calculator</a> for it. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
+    <p class="calc-note">Geometry, allowances and layer build-up follow the Nexora Sales &amp; Costing engine: cut length from fold, hamming and patch overlap; coating and film spread over body width + 10 mm; film GSM = micron × 0.92. A liner is a separate article — use the <a href="/liner-calculator">liner calculator</a> for it. Your plant's own constants, 29 constructions and the exact per-component result live in the app.</p>
   </div>
 
   <div class="calc-out">
@@ -99,7 +99,7 @@
       <div class="cost-total">Order value estimate: <b class="blur" id="o_costqty">₹0</b></div>
       <div class="locked-cta">
         <p>Costing is built from your own dated RM price master and process-wise resource rates — not from example rates. We will run your bag and your prices in a free demo.</p>
-        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Get my costing</button>
+        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Nexora Sales &amp; Costing">Get my costing</button>
       </div>
     </div>
 
@@ -107,8 +107,8 @@
       <div class="locked-head"><span>Component-wise breakdown · <b id="o_compcount">0</b> parts</span><span class="tag">Demo feature</span></div>
       <ul id="o_components" class="locked-list"></ul>
       <div class="locked-cta">
-        <p>Body, patch, valve, film, ink and thread grams with % share, plus the formula behind every value, are shown in the Nexora desktop app.</p>
-        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Bag Weight &amp; Cost Forecasting">Unlock in a free demo</button>
+        <p>Body, patch, valve, film, ink and thread grams with % share, plus the formula behind every value, are shown in Nexora Sales &amp; Costing.</p>
+        <button type="button" class="btn btn-primary btn-sm" data-open-demo data-interest="Nexora Sales &amp; Costing">Unlock in a free demo</button>
       </div>
     </div>
 
