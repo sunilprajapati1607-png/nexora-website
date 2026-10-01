@@ -59,7 +59,8 @@ function run(cmd, cwd) { console.log('> ' + cmd); return execSync(cmd, { cwd: cw
       if (m && !before.has(m[0])) {
         /* the list's columns are cut on a narrow window, so the status is asked of the deployment itself */
         let st = '';
-        try { st = run('npx vercel inspect ' + m[0] + ' --scope ' + SCOPE, DEPLOY); } catch (e) { st = String(e.stdout || '') + String(e.stderr || ''); }
+        /* the CLI prints the "status ● Ready" block on stderr, so both streams are read (2026-10-01: stdout alone never said Ready) */
+        try { st = run('npx vercel inspect ' + m[0] + ' --scope ' + SCOPE + ' 2>&1', DEPLOY); } catch (e) { st = String(e.stdout || '') + String(e.stderr || ''); }
         if (/status\s+\W*\s*Ready/i.test(st) || /Ready/i.test(line)) { url = m[0]; break; }
         if (/status\s+\W*\s*(Error|Canceled)/i.test(st)) { try { child.kill(); } catch (e) {} throw new Error('The new deployment failed on Vercel: ' + m[0]); }
         console.log('  building: ' + m[0] + ' …');
