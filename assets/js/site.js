@@ -120,8 +120,8 @@
   }
 
   /* 4.73.0 — "all information are mandatory": EVERY FIELD IS REQUIRED, the
-     new three included (manufacturing location, website, product range) —
-     except the e-mail (the owner, 2 Oct 2026: kept, not required; one typed
+     new ones included (manufacturing location, product range) — except the
+     e-mail and, since 4.74.0, the website (the owner, 2 Oct 2026: kept, not required; one typed
      must still be a plain address). What is missing is said on the field
      itself, in the site's red, and the first one is brought into view. The
      service checks the same (form: 2) and anything it calls missing is said
@@ -148,6 +148,8 @@
       var msg = null;
       if (k === 'products') { if (!d.products.length) msg = NEED.products; }
       else if (k === 'productOther') { if (d.products.indexOf('Other') >= 0 && !d.productOther) msg = NEED.productOther; }
+      /* 4.74.0 — owner: "website par enquiry form ma website mendetory mathi optional kri do" — like the e-mail, it may be left empty */
+      else if (k === 'website') { /* optional */ }
       else if (k === 'email') { if (d.email && (d.email.length > 160 || !PLAIN_EMAIL.test(d.email))) msg = 'Please enter a valid email address, like name@company.com — or leave it empty.'; }
       else if (!d[k]) msg = NEED[k];
       else if (k === 'phone' && d.phone.replace(/\D/g, '').length < 10) msg = 'Please enter a valid mobile number with at least 10 digits.';
