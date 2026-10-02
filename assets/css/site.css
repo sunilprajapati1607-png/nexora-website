@@ -1090,3 +1090,43 @@ html.intro-on { overflow: hidden; }
 :root[data-theme="dark"] .duo-phone { box-shadow: 0 26px 50px -18px rgba(0, 0, 0, .9), 0 0 0 1px rgba(255, 255, 255, .12); }
 @media (max-width: 560px) { .duo { padding: 0 20px 30px 0; } .duo-phone { width: 30%; } .duo .duo-cap { padding-right: 36%; } }
 .split .duo-cap, .duo .duo-cap { font-size: 13px; line-height: 1.5; color: var(--muted); }
+
+/* ---------- Download page ---------- */
+.dl-warning { margin-top: 0; }
+.dl-warning h2 { display: flex; align-items: center; gap: 8px; }
+.dl-warning h2 .icon { width: 20px; height: 20px; color: #d98218; }
+.dl-warn-list { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14px; color: var(--text-2); }
+.dl-warn-list b { color: var(--text); }
+.dl-warning code, .dl-card code { font-family: var(--mono); font-size: .92em; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; word-break: break-all; }
+.dl-inline-btn { background: none; border: 0; padding: 0; font: inherit; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: underline; }
+.dl-accept { display: flex; align-items: flex-start; gap: 10px; margin-top: 16px; padding: 12px 14px; background: var(--card); border: 1px solid var(--line-2); border-radius: 10px; font-size: 14.5px; font-weight: 600; cursor: pointer; }
+.dl-accept input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--primary); flex: none; }
+.dl-flash { animation: dlflash 1.6s ease; }
+@keyframes dlflash { 0%, 100% { box-shadow: none; } 30%, 70% { box-shadow: 0 0 0 4px rgba(217, 130, 24, .35); } }
+.dl-list { display: grid; gap: 22px; margin-top: 30px; }
+.dl-card { padding: 26px; }
+.dl-head { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: start; }
+.dl-head .ico { margin: 0; }
+.dl-head h3 { margin: 2px 0 4px; font-size: 21px; }
+.dl-sub { margin: 0; }
+.dl-ver { white-space: nowrap; }
+.dl-body { display: grid; grid-template-columns: 1.3fr 1fr; gap: 26px; margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--line); }
+.dl-body h4 { font-size: 14px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 12px; }
+.dl-files { font-size: 14.5px; }
+.dl-specs { display: grid; grid-template-columns: auto 1fr; gap: 8px 16px; margin: 0; font-size: 14.5px; }
+.dl-specs dt { font-weight: 700; }
+.dl-specs dd { margin: 0; color: var(--text-2); }
+.dl-steps { margin-top: 22px; font-size: 14.5px; }
+.dl-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 22px; }
+.dl-btn.is-off { opacity: .55; cursor: not-allowed; filter: grayscale(.35); }
+.dl-hint { flex-basis: 100%; margin: 0; font-size: 13.5px; color: var(--muted); }
+.dl-hint:empty { display: none; }
+.dl-mobile-text { margin-top: 16px; }
+.dl-more { margin-top: 26px; font-size: 14.5px; color: var(--text-2); }
+@media (max-width: 720px) {
+  .dl-card { padding: 20px; }
+  .dl-head { grid-template-columns: auto 1fr; }
+  .dl-head .dl-ver { grid-column: 1 / -1; justify-self: start; }
+  .dl-body { grid-template-columns: 1fr; gap: 20px; }
+  .dl-actions .btn { width: 100%; justify-content: center; }
+}
