@@ -87,6 +87,9 @@
     company: ['Northpoint Polymers', 'Blue River Packaging', 'Crestline Flexipack', 'Harbour Mills Packaging', 'Greenfield Sacks Co.', 'Meridian Polyfab', 'Stonebridge Woven Sacks', 'Fairwind Packaging'],
     phone: ['+91 90000 00001', '+91 90000 00002', '+91 90000 00003', '+91 90000 00004', '+91 90000 00005'],
     email: ['purchase@example.com', 'director@example.in', 'accounts@example.com', 'info@example.in'],
+    location: ['Ahmedabad, Gujarat', 'Vapi, Gujarat', 'Indore, Madhya Pradesh', 'Kanpur, Uttar Pradesh', 'Kolkata, West Bengal', 'Hyderabad, Telangana'],
+    website: ['www.example.com', 'www.example.in'],
+    productOther: ['Jumbo bags (FIBC)', 'Leno bags', 'Tarpaulin', 'Laminated fabric rolls', 'LDPE liners'],
     message: [
       'We run 24 circular looms and want to forecast RM cost per order.',
       'Looking for an ERP that covers order to dispatch for our PP woven sack unit.',
@@ -101,20 +104,123 @@
     form.reset();
     $$('input, textarea', form).forEach(function (el) {
       if (el.type === 'hidden') return;
+      /* a tick's value is the product's name: it is unticked, never emptied */
+      if (el.type === 'checkbox') { el.checked = false; return; }
       el.value = '';
       el.setAttribute('autocomplete', 'off');
       var k = el.getAttribute('data-ph');
       if (k && EX[k]) el.placeholder = 'e.g. ' + pick(EX[k]);
     });
     $$('select', form).forEach(function (s) { s.selectedIndex = 0; });
+    $$('.tick', form).forEach(function (t) { t.classList.remove('on'); });
+    showOther(form);
+    clearErrors(form);
+    busy(form, false);
     var st = $('.form-status', form); if (st) { st.className = 'form-status'; st.textContent = ''; }
   }
+
+  /* 4.73.0 — "all information are mandatory": EVERY FIELD IS REQUIRED, the
+     new three included (manufacturing location, website, product range) —
+     except the e-mail (the owner, 2 Oct 2026: kept, not required; one typed
+     must still be a plain address). What is missing is said on the field
+     itself, in the site's red, and the first one is brought into view. The
+     service checks the same (form: 2) and anything it calls missing is said
+     the same way. */
+  var NEED = {
+    name: 'Please enter your name.',
+    company: 'Please enter your company or plant name.',
+    phone: 'Please enter your WhatsApp / mobile number.',
+    location: 'Please enter your manufacturing location — city and state.',
+    website: 'Please enter your company website.',
+    products: 'Please tick at least one product in your range.',
+    productOther: 'Please write your other products.',
+    interest: 'Please choose what you are interested in.',
+    message: 'Please write a short message.'
+  };
+  var ORDER = ['name', 'company', 'phone', 'email', 'location', 'website', 'products', 'productOther', 'interest', 'message'];
+  /* the service's own rule for an address it keeps (register.js plainEmail) */
+  var PLAIN_EMAIL = /^[A-Za-z0-9._+'-]{1,64}@[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?(?:\.[A-Za-z0-9](?:[A-Za-z0-9-]{0,61}[A-Za-z0-9])?)*\.[A-Za-z]{2,24}$/;
+
+  function problems(form, d) {
+    var out = [];
+    ORDER.forEach(function (k) {
+      if (!$('[name="' + k + '"]', form)) return;
+      var msg = null;
+      if (k === 'products') { if (!d.products.length) msg = NEED.products; }
+      else if (k === 'productOther') { if (d.products.indexOf('Other') >= 0 && !d.productOther) msg = NEED.productOther; }
+      else if (k === 'email') { if (d.email && (d.email.length > 160 || !PLAIN_EMAIL.test(d.email))) msg = 'Please enter a valid email address, like name@company.com — or leave it empty.'; }
+      else if (!d[k]) msg = NEED[k];
+      else if (k === 'phone' && d.phone.replace(/\D/g, '').length < 10) msg = 'Please enter a valid mobile number with at least 10 digits.';
+      if (msg) out.push([k, msg]);
+    });
+    return out;
+  }
+  function boxOf(form, name) {
+    var el = $('[name="' + name + '"]', form);
+    return el ? el.closest('.field') : null;
+  }
+  function setError(form, name, msg) {
+    var box = boxOf(form, name);
+    if (!box) return false;
+    box.hidden = false;
+    box.classList.add('has-err');
+    var m = $('.field-err', box);
+    if (!m) {
+      m = document.createElement('div');
+      m.className = 'field-err';
+      m.id = (form.id || 'nx') + '_' + name + '_err';
+      box.appendChild(m);
+    }
+    m.textContent = msg;
+    $$('input, select, textarea', box).forEach(function (el) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', m.id); });
+    return true;
+  }
+  function clearError(box) {
+    if (!box || !box.classList.contains('has-err')) return;
+    box.classList.remove('has-err');
+    var m = $('.field-err', box); if (m) m.parentNode.removeChild(m);
+    $$('input, select, textarea', box).forEach(function (el) { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); });
+    /* the last one put right: the red line by the buttons goes too */
+    var form = box.closest('form'), st = form && $('.form-status.err', form);
+    if (st && !$('.field.has-err', form)) { st.className = 'form-status'; st.textContent = ''; }
+  }
+  function clearErrors(form) { $$('.field.has-err', form).forEach(clearError); }
+  function focusField(form, name) {
+    var el = $('[name="' + name + '"]', form);
+    if (!el) return;
+    try { el.focus({ preventScroll: true }); } catch (e) { el.focus(); }
+    var box = el.closest('.field') || el;
+    try { box.scrollIntoView({ block: 'center', behavior: 'smooth' }); } catch (e) { box.scrollIntoView(); }
+  }
+  /* "Other" ticked opens a box for what else the plant makes, and that box is then required */
+  function showOther(form) {
+    var tick = $('[data-other]', form), box = $('[data-other-box]', form);
+    if (!tick || !box) return;
+    box.hidden = !tick.checked;
+    if (!tick.checked) clearError(box);
+  }
+  function busy(form, on) {
+    if (on) form.setAttribute('data-busy', '1'); else form.removeAttribute('data-busy');
+    $$('[data-send]', form).forEach(function (b) { b.disabled = !!on; });
+  }
+  function say(st, kind, text) { if (st) { st.className = 'form-status ' + kind; st.textContent = text; } }
+
   $$('form.nx-form').forEach(function (f) {
     freshForm(f);
     f.setAttribute('autocomplete', 'off');
     f.addEventListener('submit', function (e) { e.preventDefault(); });
     $$('[data-send]', f).forEach(function (b) {
       b.addEventListener('click', function () { sendForm(f, b.getAttribute('data-send')); });
+    });
+    /* a field's message goes as soon as it is filled in */
+    f.addEventListener('input', function (e) { if (e.target.closest) clearError(e.target.closest('.field')); });
+    f.addEventListener('change', function (e) {
+      var t = e.target;
+      if (t.type === 'checkbox') {
+        var lab = t.closest('.tick'); if (lab) lab.classList.toggle('on', t.checked);
+        if (t.hasAttribute('data-other')) showOther(f);
+      }
+      if (t.closest) clearError(t.closest('.field'));
     });
   });
   // some browsers restore values on back/forward cache — clear again
@@ -125,59 +231,121 @@
      answered, followed up and counted. Formspree stays as it was: it is the
      copy that reaches a human inbox even if the service happens to be asleep. */
   var NEXORA_API = 'https://nexora-api-55jv.onrender.com/enquiry';
+  /* 4.73.0 — how long the visitor waits for the service's answer before
+     WhatsApp or the mail app opens anyway. It only ever says "this field is
+     missing" (400 MISSING); asleep, slow or unreachable, it changes nothing
+     about what the visitor sees, as before. Kept under the five seconds a
+     browser still counts the click as the visitor's (so the new window is
+     not taken for a pop-up). */
+  var WAIT_MS = 3000;
   function collect(form) {
-    var d = {};
-    $$('input, select, textarea', form).forEach(function (el) { if (el.name) d[el.name] = (el.value || '').trim(); });
+    var d = { products: [] };
+    $$('input, select, textarea', form).forEach(function (el) {
+      if (!el.name) return;
+      if (el.type === 'checkbox') { if (el.checked && el.name === 'products') d.products.push(el.value); return; }
+      d[el.name] = (el.value || '').trim();
+    });
+    if (d.products.indexOf('Other') < 0) d.productOther = '';
     return d;
+  }
+  /* "BOPP bags, Tape, Other (Jumbo bags)" — for WhatsApp, the mail and the inbox copy */
+  function productText(d) {
+    return d.products.map(function (p) { return p === 'Other' && d.productOther ? 'Other (' + d.productOther + ')' : p; }).join(', ');
   }
   function notify(d, channel) {
     try {
       fetch(FORMSPREE, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        keepalive: true,   /* 4.73.0 — still sent when this tab itself goes on to WhatsApp */
         body: JSON.stringify({
           name: d.name, company: d.company, phone: d.phone, email: d.email || '', interest: d.interest || '', message: d.message || '',
+          location: d.location || '', website: d.website || '', products: productText(d),
           channel_chosen: channel, source_page: location.href,
           _subject: 'Nexora enquiry — ' + (d.company || d.name)
         })
       }).catch(function () {});
     } catch (e) {}
-    /* Fire and forget, exactly like the one above: the visitor is never kept
-       waiting on it, and a service that is asleep or unreachable changes
-       nothing about what they see. */
-    try {
-      fetch(NEXORA_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: d.name, company: d.company, phone: d.phone, email: d.email || '',
-          interest: d.interest || '', message: d.message || '',
-          channel_chosen: channel, source_page: location.href,
-          _gotcha: d._gotcha || ''
-        })
-      }).catch(function () {});
-    } catch (e) {}
+  }
+  /* The service's copy, sent first. Resolves with its answer when that is a
+     400 naming a field (form: 2 — {error:'MISSING', field, message}), and
+     with null for anything else: stored, throttled, asleep, unreachable, or
+     no answer within WAIT_MS. The request itself is never cut off — a slow
+     service still gets the enquiry (keepalive: even if the page moves on). */
+  function askService(d, channel) {
+    return new Promise(function (resolve) {
+      var settled = false, timer = null;
+      function done(v) { if (settled) return; settled = true; clearTimeout(timer); resolve(v); }
+      timer = setTimeout(function () { done(null); }, WAIT_MS);
+      try {
+        fetch(NEXORA_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          keepalive: true,
+          body: JSON.stringify({
+            name: d.name, company: d.company, phone: d.phone, email: d.email || '',
+            interest: d.interest || '', message: d.message || '',
+            channel_chosen: channel, source_page: location.href,
+            _gotcha: d._gotcha || '',
+            form: 2,
+            location: d.location || '', website: d.website || '',
+            products: d.products, productOther: d.productOther || ''
+          })
+        }).then(function (r) {
+          return r.status === 400 ? r.json().catch(function () { return null; }) : null;
+        }).then(function (j) {
+          done(j && j.field && j.message ? j : null);
+        }, function () { done(null); });
+      } catch (e) { done(null); }
+    });
   }
   function sendForm(form, channel) {
+    if (form.getAttribute('data-busy')) return;
     var st = $('.form-status', form);
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      if (st) { st.className = 'form-status err'; st.textContent = 'Please fill your name, company and mobile number.'; }
+    var d = collect(form);
+    clearErrors(form);
+    var bad = problems(form, d);
+    if (bad.length) {
+      bad.forEach(function (p) { setError(form, p[0], p[1]); });
+      say(st, 'err', bad.length === 1 ? bad[0][1] : 'Please fill the fields marked in red — every field with a * is required.');
+      focusField(form, bad[0][0]);
       return;
     }
-    var d = collect(form);
     if (d._gotcha) return; // honeypot
-    var phoneDigits = d.phone.replace(/\D/g, '');
-    if (phoneDigits.length < 10) { if (st) { st.className = 'form-status err'; st.textContent = 'Please enter a valid mobile number with at least 10 digits.'; } return; }
+    busy(form, true);
+    say(st, 'wait', 'Sending…');
+    askService(d, channel).then(function (ans) {
+      busy(form, false);
+      if (ans) {
+        var field = ans.field === 'product_other' ? 'productOther' : String(ans.field);
+        /* the service's words on the first; any others it lists in the page's own words */
+        (Array.isArray(ans.fields) ? ans.fields : []).forEach(function (f) { if (f !== field && NEED[f]) setError(form, f, NEED[f]); });
+        say(st, 'err', String(ans.message));
+        if (setError(form, field, String(ans.message))) focusField(form, field);
+        return;
+      }
+      deliver(form, d, channel);
+    });
+  }
+  function deliver(form, d, channel) {
+    var st = $('.form-status', form);
     notify(d, channel);
     var lines = ['Name: ' + d.name, 'Company: ' + d.company, 'Mobile: ' + d.phone];
     if (d.email) lines.push('Email: ' + d.email);
+    if (d.location) lines.push('Manufacturing location: ' + d.location);
+    if (d.website) lines.push('Website: ' + d.website);
+    if (d.products.length) lines.push('Product range: ' + productText(d));
     if (d.interest) lines.push('Interested in: ' + d.interest);
     if (d.message) lines.push('Message: ' + d.message);
     lines.push('Page: ' + location.href);
     if (channel === 'whatsapp') {
       var text = '*New Nexora enquiry (nexoraofficial.org)*\n\n' + lines.join('\n');
-      window.open('https://wa.me/919213415996?text=' + encodeURIComponent(text), '_blank', 'noopener');
+      var wa = 'https://wa.me/919213415996?text=' + encodeURIComponent(text);
+      /* opened after the service's answer: if the browser still takes it for
+         a pop-up and refuses, this tab goes to WhatsApp instead */
+      var w = null;
+      try { w = window.open(wa, '_blank'); } catch (e) { w = null; }
+      if (w) { try { w.opener = null; } catch (e) {} } else location.href = wa;
     } else {
       var subject = 'Nexora enquiry — ' + d.company;
       var bodyTxt = lines.join('\n') + '\n\nPlease arrange a walkthrough for our plant.';

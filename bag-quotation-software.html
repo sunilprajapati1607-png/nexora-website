@@ -15,7 +15,7 @@
   <meta property="og:title" content="Bag Quotation Software for Woven Sack Plants | Nexora" />
   <meta property="og:description" content="Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead." />
   <meta property="og:url" content="https://www.nexoraofficial.org/bag-quotation-software" />
-  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301825" />
+  <meta property="og:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202610021544" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Nexora Sales &amp; Costing" />
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Bag Quotation Software for Woven Sack Plants | Nexora" />
   <meta name="twitter:description" content="Turn a bag costing into a buyer quotation without retyping: several items on one sheet, freight and packing, your own terms, on your own letterhead." />
-  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202609301825" />
+  <meta name="twitter:image" content="https://www.nexoraofficial.org/assets/img/og-nexora-sales-costing.jpg?v=202610021544" />
   <!-- Favicons: square and a multiple of 48 px, which is what Google needs to show
        the logo beside the search result. Keep these URLs stable. -->
   <link rel="icon" href="/favicon.ico" sizes="48x48" />
@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/assets/css/site.css?v=202609301825" />
+  <link rel="stylesheet" href="/assets/css/site.css?v=202610021544" />
   <script>
     (function () {
       var t = 'light';
@@ -636,16 +636,33 @@
     <form class="form nx-form" id="demoForm" data-kind="demo" autocomplete="off" novalidate>
       <div class="hp" aria-hidden="true"><label>Leave empty <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
       <div class="row2">
-        <div class="field"><label for="dm_name">Your name *</label><input type="text" id="dm_name" name="name" required data-ph="name" autocomplete="off"></div>
-        <div class="field"><label for="dm_company">Company / plant *</label><input type="text" id="dm_company" name="company" required data-ph="company" autocomplete="off"></div>
+        <div class="field"><label for="dm_name">Your name *</label><input type="text" id="dm_name" name="name" required maxlength="120" data-ph="name" autocomplete="off"></div>
+        <div class="field"><label for="dm_company">Company / plant *</label><input type="text" id="dm_company" name="company" required maxlength="160" data-ph="company" autocomplete="off"></div>
       </div>
       <div class="row2">
-        <div class="field"><label for="dm_phone">WhatsApp / mobile *</label><input type="tel" id="dm_phone" name="phone" required data-ph="phone" autocomplete="off"></div>
-        <div class="field"><label for="dm_email">Email</label><input type="email" id="dm_email" name="email" data-ph="email" autocomplete="off"></div>
+        <div class="field"><label for="dm_phone">WhatsApp / mobile *</label><input type="tel" id="dm_phone" name="phone" required maxlength="40" data-ph="phone" autocomplete="off"></div>
+        <div class="field"><label for="dm_email">Email</label><input type="email" id="dm_email" name="email" maxlength="160" data-ph="email" autocomplete="off"></div>
       </div>
+      <div class="row2">
+        <div class="field"><label for="dm_location">Manufacturing location *</label><input type="text" id="dm_location" name="location" required maxlength="160" data-ph="location" autocomplete="off"><div class="hint">City and state of your plant</div></div>
+        <div class="field"><label for="dm_website">Website *</label><input type="text" id="dm_website" name="website" required maxlength="200" inputmode="url" autocapitalize="off" spellcheck="false" data-ph="website" autocomplete="off"></div>
+      </div>
+      <fieldset class="field ticks-field">
+        <legend>Product range *</legend>
+        <div class="ticks">
+          <label class="tick"><input type="checkbox" name="products" value="BOPP bags">BOPP bags</label>
+          <label class="tick"><input type="checkbox" name="products" value="Tape">Tape</label>
+          <label class="tick"><input type="checkbox" name="products" value="Fabric">Fabric</label>
+          <label class="tick"><input type="checkbox" name="products" value="BOPP printing">BOPP printing</label>
+          <label class="tick"><input type="checkbox" name="products" value="Block bottom bags">Block bottom bags</label>
+          <label class="tick"><input type="checkbox" name="products" value="Pinch bottom bags">Pinch bottom bags</label>
+          <label class="tick"><input type="checkbox" name="products" value="Other" data-other>Other</label>
+        </div>
+      </fieldset>
+      <div class="field" data-other-box hidden><label for="dm_other">Other products *</label><input type="text" id="dm_other" name="productOther" maxlength="160" data-ph="productOther" autocomplete="off"></div>
       <div class="field">
-        <label for="dm_interest">I am interested in</label>
-        <select id="dm_interest" name="interest">
+        <label for="dm_interest">I am interested in *</label>
+        <select id="dm_interest" name="interest" required>
           <option value="Nexora Sales & Costing">Nexora Sales &amp; Costing (desktop + Android)</option>
           <option value="Nexora ERP">Nexora ERP for woven sack / packaging</option>
           <option value="Inventory & Roll Traceability">Inventory &amp; roll traceability</option>
@@ -657,7 +674,7 @@
           <option value="Custom Software">Custom software / automation</option>
         </select>
       </div>
-      <div class="field"><label for="dm_msg">Message</label><textarea id="dm_msg" name="message" data-ph="message"></textarea></div>
+      <div class="field"><label for="dm_msg">Message *</label><textarea id="dm_msg" name="message" required maxlength="4000" data-ph="message"></textarea></div>
       <div class="form-status" id="demoStatus" role="status"></div>
       <div class="form-actions">
         <button type="button" class="btn btn-wa" data-send="whatsapp"><svg class="icon"><use href="#i-wa"/></svg> Send on WhatsApp</button>
@@ -670,7 +687,7 @@
 
 <div class="lightbox" id="lightbox" aria-hidden="true"><button aria-label="Close">&times;</button><img id="lightboxImg" alt="" width="1600" height="900" /></div>
 
-<script src="/assets/js/site.js?v=202609301825" defer></script>
+<script src="/assets/js/site.js?v=202610021544" defer></script>
 </body>
 </html>
 
