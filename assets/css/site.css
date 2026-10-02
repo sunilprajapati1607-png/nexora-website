@@ -242,6 +242,23 @@ h4 { font-size: 17px; }
   .header-actions { gap: 6px; }
 }
 
+/* Download joined the top menu (2026-10-03), one item more than the row
+   had room for: it ran 88 px past the window at 1241 and 1366 and 48 px
+   at 1600. Measured at every width 1101-2560 (scratchpad navscan.js):
+   - above 1560 the row is wider than the 1180 px wrap, so the header
+     keeps the window width up to 1480 px instead of dropping to 1180;
+   - from 1241 to 1560 the items sit closer (7 px each side, no gap);
+   - in the last band before the hamburger they tighten one more step. */
+@media (min-width: 1101px) { .header .wrap { width: min(100% - 32px, 1480px); } }
+@media (min-width: 1241px) and (max-width: 1560px) {
+  .nav { gap: 0; }
+  .nav a, .nav .navbtn { padding: 9px 7px; font-size: 13.5px; }
+}
+@media (min-width: 1101px) and (max-width: 1240px) {
+  .nav a, .nav .navbtn { padding: 9px 5px; font-size: 12.5px; }
+  .header .wrap { gap: 8px; }
+}
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative; overflow: hidden; color: #fff;
